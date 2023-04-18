@@ -1,3 +1,4 @@
-# front-end
+# ELADIN
 
-eladin front-end
+## 주제
+- 책 쇼핑몰 홈페이지
