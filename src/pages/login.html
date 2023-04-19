@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eladin</title>
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <header id="header">
+        <div class="container">
+          <div class="row">
+            <div class="header">
+              <div class="header-logo">
+                <!-- <img src="../img/test.jpeg" alt="로고 이미지"> -->
+                <h1>Eladin</h1>
+              </div>
+              <div class="header-user">
+                <div class="header-user-login">
+                  <ul>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                  </ul>
+                </div>
+                <div class="header-user-info">
+                  <ul>
+                    <li>
+                      <a href="#"
+                        ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+                      ></a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><i
+                          class="fa fa-user"
+                          blank="_target"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <article id="login">
+        <div class="login container">
+          <div class="row">
+            <form action="/login" method="post">
+              <div class="login-area">
+                <div class="login-area-center">
+                  <h2 class="login-tit">
+                    환영합니다! Eladin 이에요! <br />
+                    우측 상단 버튼을 통해 회원가입 해주세요!
+                  </h2>
+                </div>
+
+                <div class="login-id mt40">
+                  <label for="id" class="login-form-label">아이디</label>
+                  <input type="text" name="id" id="id" placeholder="아이디" />
+                </div>
+                <div class="login-pw mt20">
+                  <label for="password" class="form-label">비밀번호</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="비밀번호"
+                  />
+                </div>
+                <div class="login-button">
+                  <input type="submit" value="로그인" id="login_btn" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
+    </div>
+  </body>
+</html>
