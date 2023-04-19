@@ -33,7 +33,7 @@
 .header-user-info ul li:last-child:before { content:""; width: 75px; height: 1px; background-color: gray; position: absolute; bottom: 5px; right: -42px;}
 .header-user-info ul li a { font-size: 30px;}
 
-/* login */
+/* signup */
 #signup .signup-area { display: flex; justify-content: flex-start; flex-direction: column; text-align: left;}
 .signup-area .signup-tit { text-align: center; margin-top: 6rem; margin-bottom: 2rem; font-size: 4rem; font-weight: 400;}
 .signup-area .signup-form-label { display: inline-block; margin: 4px 8px 4px 8px; }
@@ -54,8 +54,6 @@
   -ms-progress-appearance: none;
   appearance: none;
 }
-
-
 
 .signup-id, .signup-pw, 
 .signup-button, .signup-name,
