@@ -37,6 +37,8 @@
 /* 초기 display */
 section { display: none;}
 .on { display: block; }
+.fix_modal.on { display: block;}
+.update_modal.on {display: block;}
 
 /* 카테고리 등록*/
 section h2 { font-size: 24px; color:#606DB8; font-weight: 400; }
@@ -98,3 +100,20 @@ select:focus { outline: 1px solid #606DB8;}
 .order-col2-list button { padding: 4px 20px; background-color: #606DB8; font-size: 11px; color: #fff; border-radius: 5px; }
 .order-col2-list { margin: 6px 0;}
 .order-col2-list td { padding: 2px 0; }
+
+/* 상품등록, 수정 modal */
+.fix_modal, .update_modal { width: 50%; height: 85vh; position: fixed; top: 80px; left: 394px; border: 2px solid lightgray; border-radius: 20px; background-color: #fff; z-index: 2; display: none;}
+.modal-container { width: 100%;}
+.modal-container .row { padding: 50px 50px 50px 26px;}
+.modal-title { margin-left: 26px; border-bottom: 2px solid lightgray;}
+.modal-title h2 { font-size: 24px; color:#606DB8; font-weight: 400;}
+.modal-cont { margin-top: 2rem;}
+.modal-cont input { width: 80%; }
+.modal-cont div { display: flex; justify-content: space-between; align-items: center; padding: 12px 0;}
+.modal-cont div:last-child { align-items:flex-start; }
+.modal-cont div:last-child input { height: 258px; }
+.modal-cont div label { padding-left: 26px; }
+#modal-book-info { width: 80%; height: 258px; padding: 0 15px; display: block; background: #fff; border-radius: 4px; border: solid 1px #ddd; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+#modal-book-info:focus { outline: 2px solid #606DB8;}
+.modal-button { margin-left: 48px; text-align: center;}
+.modal-button button { padding: 4px 20px; background-color: #606DB8; font-size: 18px; font-weight: 400; color: #fff; border-radius: 5px;}

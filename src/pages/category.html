@@ -38,8 +38,6 @@
             <div class="category-title">
               <h2>카테고리 목록</h2>
             </div>
-
-            <!--list-->
             <div class="category-list">
               <div class="category-list-title">
                 <h3>소설</h3>
@@ -109,42 +107,45 @@
                 <h2>상품 목록</h2>
               </div>
               <div class="item-header-button">
-                <button class="add">상품 등록</button>
+                <button class="add-item">상품 등록</button>
               </div>
             </div>
 
             <table>
-                <thead class="item-col1">
+              <thead class="item-col1">
                 <tr class="item-col1-list">
-                    <td>제목</td>
-                    <td>저자</td>
-                    <td>판매가</td>
-                </tr>    
+                  <td>제목</td>
+                  <td>저자</td>
+                  <td>판매가</td>
+                </tr>
               </thead>
               <tbody class="item-col2">
                 <tr class="item-col2-list first">
                   <td class="col2-title"><h4>무소유</h4></td>
                   <td class="col2-author"><h4>홍길동</h4></td>
                   <td class="col2-price"><h4>38,000원</h4></td>
-                  <td class="col2-button"><button>수정</button>
+                  <td class="col2-button">
+                    <button class="item-fix-button">수정</button>
                     <button>삭제</button>
-                </td>
+                  </td>
                 </tr>
                 <tr class="item-col2-list">
                   <td class="col2-title"><h4>해커스 토익 보카</h4></td>
                   <td class="col2-author"><h4>홍길동</h4></td>
                   <td class="col2-price"><h4>48,000원</h4></td>
-                  <td class="col2-button"><button>수정</button>
+                  <td class="col2-button">
+                    <button class="item-fix-button">수정</button>
                     <button>삭제</button>
-                </td>
+                  </td>
                 </tr>
                 <tr class="item-col2-list">
                   <td class="col2-title"><h4>인생</h4></td>
                   <td class="col2-author"><h4>홍길동</h4></td>
                   <td class="col2-price"><h4>78,000원</h4></td>
-                  <td class="col2-button"><button>수정</button>
+                  <td class="col2-button">
+                    <button class="item-fix-button">수정</button>
                     <button>삭제</button>
-                </td>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -161,11 +162,11 @@
             <table>
               <thead class="delivery-col1">
                 <tr class="delivery-col1-list">
-                    <td>주문일시</td>
-                    <td>주문자명</td>
-                    <td>상품명</td>
-                    <td>배송 상태</td>
-                </tr>    
+                  <td>주문일시</td>
+                  <td>주문자명</td>
+                  <td>상품명</td>
+                  <td>배송 상태</td>
+                </tr>
               </thead>
               <tbody class="delivery-col2">
                 <tr class="delivery-col2-list first">
@@ -174,9 +175,9 @@
                   <td class="col2-book">무소유</td>
                   <td class="col2-drop">
                     <select name="delivery-status" id="delivery-status">
-                        <option value="주문완료">주문완료</option>
-                        <option value="배송 준비">배송 준비</option>
-                        <option value="배송 중">배송 중</option>
+                      <option value="주문완료">주문완료</option>
+                      <option value="배송 준비">배송 준비</option>
+                      <option value="배송 중">배송 중</option>
                     </select>
                   </td>
                 </tr>
@@ -186,9 +187,9 @@
                   <td class="col2-book">무소유</td>
                   <td class="col2-drop">
                     <select name="delivery-status" id="delivery-status">
-                        <option value="주문완료">주문완료</option>
-                        <option value="배송 준비">배송 준비</option>
-                        <option value="배송 중">배송 중</option>
+                      <option value="주문완료">주문완료</option>
+                      <option value="배송 준비">배송 준비</option>
+                      <option value="배송 중">배송 중</option>
                     </select>
                   </td>
                 </tr>
@@ -198,9 +199,9 @@
                   <td class="col2-book">무소유</td>
                   <td class="col2-drop">
                     <select name="delivery-status" id="delivery-status">
-                        <option value="주문완료">주문완료</option>
-                        <option value="배송 준비">배송 준비</option>
-                        <option value="배송 중">배송 중</option>
+                      <option value="주문완료">주문완료</option>
+                      <option value="배송 준비">배송 준비</option>
+                      <option value="배송 중">배송 중</option>
                     </select>
                   </td>
                 </tr>
@@ -219,11 +220,11 @@
             <table>
               <thead class="order-col1">
                 <tr class="order-col1-list">
-                    <td>주문일시</td>
-                    <td>주문자명</td>
-                    <td>상품명</td>
-                    <td>삭제</td>
-                </tr>    
+                  <td>주문일시</td>
+                  <td>주문자명</td>
+                  <td>상품명</td>
+                  <td>삭제</td>
+                </tr>
               </thead>
               <tbody class="order-col2">
                 <tr class="order-col2-list first">
@@ -256,6 +257,88 @@
         </div>
       </section>
 
+      <!--상품 수정 modal-->
+      <div class="fix_modal">
+        <div class="modal-container">
+          <div class="row">
+            <div class="modal-title">
+              <h2>상품 수정</h2>
+            </div>
+
+            <div class="modal-cont">
+              <div>
+                <label for="title">제목</label>
+                <input type="text" name="title" />
+              </div>
+              <div>
+                <label for="author">저자</label>
+                <input type="text" name="author" />
+              </div>
+              <div>
+                <label for="price">판매가</label>
+                <input type="text" name="price" />
+              </div>
+              <div>
+                <label for="info">소개</label>
+                <textarea
+                  name="info"
+                  id="modal-book-info"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="modal-button">
+              <button class="fix-modal-close">취소</button>
+              <button>완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--//상품 수정 모달-->
+
+      <!--상품 등록 모달-->
+      <div class="update_modal">
+        <div class="modal-container">
+          <div class="row">
+            <div class="modal-title">
+              <h2>상품 등록</h2>
+            </div>
+
+            <div class="modal-cont">
+              <div>
+                <label for="title">제목</label>
+                <input type="text" name="title" />
+              </div>
+              <div>
+                <label for="author">저자</label>
+                <input type="text" name="author" />
+              </div>
+              <div>
+                <label for="price">판매가</label>
+                <input type="text" name="price" />
+              </div>
+              <div>
+                <label for="info">소개</label>
+                <textarea
+                  name="info"
+                  id="modal-book-info"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="modal-button">
+              <button class="update-modal-close">취소</button>
+              <button>완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--//상품 등록 모달-->
     </div>
   </body>
   <script src="../js/category.js"></script>
