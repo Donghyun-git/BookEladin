@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/category.css" />
+    <title>Eladin</title>
+  </head>
+  <body>
+    <div id="wrap">
+      <header id="header">
+        <div class="container">
+          <div class="row">
+            <div class="header">
+              <div class="header-logo">
+                <!-- <img src="../img/test.jpeg" alt="로고 이미지"> -->
+                <h1>Eladin</h1>
+              </div>
+            </div>
+            <nav class="header-nav">
+              <div class="header-nav-list">
+                <ul>
+                  <li><a href="#" data-type="category">카테고리 관리</a></li>
+                  <li><a href="#" data-type="item">상품 관리</a></li>
+                  <li><a href="#" data-type="delivery">배송 관리</a></li>
+                  <li><a href="#" data-type="order">주문 관리</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <section id="category" class="mt60">
+        <div class="category container">
+          <div class="row">
+            <div class="category-title">
+              <h2>카테고리 목록</h2>
+            </div>
+
+            <!--list-->
+            <div class="category-list">
+              <div class="category-list-title">
+                <h3>소설</h3>
+              </div>
+              <div class="category-list-button">
+                <button>수정</button>
+                <button>삭제</button>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <div class="category-list-title">
+                <h3>경영/경제</h3>
+              </div>
+              <div class="category-list-button">
+                <button>수정</button>
+                <button>삭제</button>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <div class="category-list-title">
+                <h3>인문/사회/역사</h3>
+              </div>
+              <div class="category-list-button">
+                <button>수정</button>
+                <button>삭제</button>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <div class="category-list-title">
+                <h3>만화</h3>
+              </div>
+              <div class="category-list-button">
+                <button>수정</button>
+                <button>삭제</button>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <div class="category-list-title">
+                <h3>과학</h3>
+              </div>
+              <div class="category-list-button">
+                <button>수정</button>
+                <button>삭제</button>
+              </div>
+            </div>
+
+            <div class="category-add">
+              <input
+                type="text"
+                placeholder="필요한 카테고리를 입력해주세요."
+              />
+              <button>카테고리 등록</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="item" class="mt60">
+        <div class="category container">
+          <div class="row">
+            <div class="item-header">
+              <div class="item-header-title">
+                <h2>상품 목록</h2>
+              </div>
+              <div class="item-header-button">
+                <button class="add">상품 등록</button>
+              </div>
+            </div>
+
+            <table>
+                <thead class="item-col1">
+                <tr class="item-col1-list">
+                    <td>제목</td>
+                    <td>저자</td>
+                    <td>판매가</td>
+                </tr>    
+              </thead>
+              <tbody class="item-col2">
+                <tr class="item-col2-list first">
+                  <td class="col2-title"><h4>무소유</h4></td>
+                  <td class="col2-author"><h4>홍길동</h4></td>
+                  <td class="col2-price"><h4>38,000원</h4></td>
+                  <td class="col2-button"><button>수정</button>
+                    <button>삭제</button>
+                </td>
+                </tr>
+                <tr class="item-col2-list">
+                  <td class="col2-title"><h4>해커스 토익 보카</h4></td>
+                  <td class="col2-author"><h4>홍길동</h4></td>
+                  <td class="col2-price"><h4>48,000원</h4></td>
+                  <td class="col2-button"><button>수정</button>
+                    <button>삭제</button>
+                </td>
+                </tr>
+                <tr class="item-col2-list">
+                  <td class="col2-title"><h4>인생</h4></td>
+                  <td class="col2-author"><h4>홍길동</h4></td>
+                  <td class="col2-price"><h4>78,000원</h4></td>
+                  <td class="col2-button"><button>수정</button>
+                    <button>삭제</button>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="delivery" class="mt60">
+        <div class="category container">
+          <div class="row">
+            <div class="category-title">
+              <h2>배송 관리</h2>
+            </div>
+            <table>
+              <thead class="delivery-col1">
+                <tr class="delivery-col1-list">
+                    <td>주문일시</td>
+                    <td>주문자명</td>
+                    <td>상품명</td>
+                    <td>배송 상태</td>
+                </tr>    
+              </thead>
+              <tbody class="delivery-col2">
+                <tr class="delivery-col2-list first">
+                  <td class="col2-date">0000-00-00 00:00</td>
+                  <td class="col2-name">홍길동</td>
+                  <td class="col2-book">무소유</td>
+                  <td class="col2-drop">
+                    <select name="delivery-status" id="delivery-status">
+                        <option value="주문완료">주문완료</option>
+                        <option value="배송 준비">배송 준비</option>
+                        <option value="배송 중">배송 중</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="delivery-col2-list first">
+                  <td class="col2-date">0000-00-00 00:00</td>
+                  <td class="col2-name">홍길동</td>
+                  <td class="col2-book">무소유</td>
+                  <td class="col2-drop">
+                    <select name="delivery-status" id="delivery-status">
+                        <option value="주문완료">주문완료</option>
+                        <option value="배송 준비">배송 준비</option>
+                        <option value="배송 중">배송 중</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr class="delivery-col2-list first">
+                  <td class="col2-date">0000-00-00 00:00</td>
+                  <td class="col2-name">홍길동</td>
+                  <td class="col2-book">무소유</td>
+                  <td class="col2-drop">
+                    <select name="delivery-status" id="delivery-status">
+                        <option value="주문완료">주문완료</option>
+                        <option value="배송 준비">배송 준비</option>
+                        <option value="배송 중">배송 중</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="order" class="mt60">
+        <div class="category container">
+          <div class="row">
+            <div class="category-title">
+              <h2>주문 내역</h2>
+            </div>
+            <table>
+              <thead class="order-col1">
+                <tr class="order-col1-list">
+                    <td>주문일시</td>
+                    <td>주문자명</td>
+                    <td>상품명</td>
+                    <td>삭제</td>
+                </tr>    
+              </thead>
+              <tbody class="order-col2">
+                <tr class="order-col2-list first">
+                  <td class="col2-date">0000-00-00 00:00</td>
+                  <td class="col2-name">홍길동</td>
+                  <td class="col2-book">무소유</td>
+                  <td class="col2-delete">
+                    <button>삭제</button>
+                  </td>
+                </tr>
+                <tr class="order-col2-list first">
+                  <td class="col2-date">0000-00-00 00:00</td>
+                  <td class="col2-name">홍길동</td>
+                  <td class="col2-book">무소유</td>
+                  <td class="col2-delete">
+                    <button>삭제</button>
+                  </td>
+                </tr>
+                <tr class="order-col2-list first">
+                  <td class="col2-date">0000-00-00 00:00</td>
+                  <td class="col2-name">홍길동</td>
+                  <td class="col2-book">무소유</td>
+                  <td class="col2-delete">
+                    <button>삭제</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </body>
+  <script src="../js/category.js"></script>
+</html>
