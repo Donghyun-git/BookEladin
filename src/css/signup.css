@@ -56,5 +56,5 @@
 }
 
 .signup-id, .signup-pw, 
-.signup-button, .signup-name,
-.signup-regist { font-size: 2rem;}
+.signup-button, .signup-email,
+.signup-name { font-size: 2rem;}
