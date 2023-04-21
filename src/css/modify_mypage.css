@@ -1,11 +1,10 @@
-@import "./css/fonts.css";
-@import "./css/default.css";
-@import "./css/font-awesome.css";
+@import "./fonts.css";
+@import "./default.css";
+@import "./font-awesome.css";
 
-/* 전체 레이아웃 */
 #wrap {
     width: 100%;
-    background-color: #eee;
+    font-family: "Noto Sans KR";
 }
 #header {
     width: 100%;
@@ -14,11 +13,12 @@
     width: 100%;
 }
 
-/* 공용 컨테이너 */
 .container {
     width: 950px;
     margin: 0 auto;
-    text-align: center;
+}
+
+.row {
 }
 
 /* 헤더 css */
@@ -111,12 +111,12 @@
 }
 
 .search-input {
-    width: 100%;
-    height: 100%;
-    padding: 10px 12px;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 10px 12px !important;
     margin-left: 35px;
-    border: none;
-    background: none;
+    border: none !important;
+    background: none !important;
     font-size: 14px;
 }
 
@@ -148,119 +148,130 @@
     height: 28px;
 }
 
-/* 카테고리 네비 css */
-.all-category-container {
-    display: flex;
-    border-bottom: 1px solid #f5f5f5;
+main .header-text {
+    font-size: 25px;
+    color: #11111;
+    font-weight: 500;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 2px solid #dbdbdb;
 }
 
-.all-category-link {
-    display: inline-flex;
-    padding: 18px;
-}
-
-.all-category-text {
-    font-weight: 700;
-    font-size: 16px;
-    color: #000000;
-}
-
-/* 메인 css */
-.carousel-section {
-    margin-top: 50px;
-}
-
-.carousel-section-content {
+main .header-text > span {
     position: relative;
-    width: 950px;
-    height: 400px;
-    overflow: hidden;
+    padding-left: 10px;
 }
 
-.carousel-section-list {
+main .header-text::marker {
+    content: "\f053";
+    font-family: "FontAwesome";
+    color: #606db8;
+    font-size: 25px;
+}
+
+main h3 {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 25px;
+    color: #606db8;
+    font-weight: 500;
+    padding: 20px 0;
+}
+
+.table {
+    width: 80%;
+    height: 750px;
+    margin: 0 auto 100px auto;
+    display: grid;
+    background-color: white;
+    border: 2px solid rgba(128, 128, 128, 0.224);
+    font-size: 17px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 3fr 6fr;
+    grid-template-areas:
+        "name name-field"
+        "id id-field"
+        "email email-field"
+        "password password-field";
+}
+
+.table > .default {
+    padding-right: 20px;
+    border: 1px solid #ffffff;
+    background-color: #cfd2e287;
     display: flex;
-    width: 100%;
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.2s;
-}
-
-.carousel-section-item {
-    list-style: none;
-}
-
-.carousel-img {
-    list-style: none;
-    width: 950px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.select-category-section {
-    margin-top: 100px;
-}
-
-.select-category-btn-content {
-    width: 100%;
-}
-
-.select-category-btn-list {
-    display: flex;
-    justify-content: space-around;
-}
-
-.select-category-best-btn,
-.select-category-new-btn,
-.select-category-recommend-btn {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 80px;
-    border: none;
-    border-radius: 20px;
-    background-color: #606db8;
-    font-weight: 700;
-    font-size: 16px;
-    color: #ffffff;
-    cursor: pointer;
+    justify-content: end;
 }
 
-.select-category-content {
-    width: 100%;
-    margin-top: 40px;
-}
-
-.best-category-content-list,
-.new-category-content-list,
-.recommend-category-content-list {
+.table > .field {
+    font-weight: 500;
+    padding-left: 20px;
+    border: 1px solid #e6e6e6;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: baseline;
 }
 
-.best-category-content-item,
-.new-category-content-item,
-.recommend-category-content-item {
+.table .email-field {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 10px 0;
+    align-items: baseline;
+    justify-content: center;
 }
 
-.best-item-img {
-    width: 180px;
-    border-radius: 10px;
+.table .email-field > button {
+    width: 120px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 450;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    background: #606db8;
 }
 
-.best-item-title {
-    width: 180px;
-    overflow: visible;
-    font-weight: 700;
-    font-size: 14px;
+.table .password-field input {
+    border: 1px solid darkgrey;
+    margin-bottom: 10px;
 }
 
-/* 푸터 css */
+.table .password-field input:hover {
+    border: #606db8;
+}
+
+.table .password-field p {
+    padding-top: 10px;
+}
+
+.table .password-field ul > li::before {
+    content: "•  ";
+}
+
+.table .password-field button {
+    width: 120px;
+    height: 45px;
+    font-size: 16px;
+    font-weight: 450;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    background: #606db8;
+}
+
+/* .footer {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.footer .row > ul{
+    margin: 10px 100px;
+    display: flex;
+    justify-content: space-around;
+} */
+
 #footer {
     width: 100%;
     border-top: 1px solid #dbdbdb;
@@ -268,23 +279,18 @@
 
 .footer {
     text-align: center;
-    margin-top: 200px;
-    height: 100px;
     padding: 20px 50px;
     font-size: 10px;
 }
-
 .footer li {
     position: relative;
     display: inline;
     padding: 0 7px 0 10px;
     white-space: nowrap;
 }
-
 .footer address {
     padding-top: 15px;
 }
-
 .footer li:before {
     content: "";
     width: 1px;
@@ -293,4 +299,8 @@
     position: absolute;
     left: 0;
     top: 2px;
+}
+
+.footer li:first-child:before {
+    width: 0;
 }

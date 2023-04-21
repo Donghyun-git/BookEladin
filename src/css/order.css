@@ -1,0 +1,372 @@
+@import "./fonts.css";
+@import "./default.css";
+@import "./font-awesome.css";
+
+#wrap {
+    width: 100%;
+    font-family: "Noto Sans KR";
+}
+#header {
+    width: 100%;
+}
+#main {
+    width: 100%;
+}
+
+.container {
+    width: 950px;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+.row {
+}
+
+.header {
+    width: 100%;
+}
+
+.header-top-list {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.header-top-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.header-top-item .join,
+.header-top-item .login {
+    display: inline-flex;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #787878;
+}
+
+.header-top-item:first-child::after {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-top: 3px;
+    border-radius: 3px;
+    background: #e6e6e6;
+}
+
+.header-title-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.header-title-logo {
+    display: flex;
+    margin: 0;
+    margin-right: auto;
+}
+
+.header-title-link {
+    display: flex;
+    align-items: center;
+}
+
+.header-title-link .logo-img {
+    width: 50px;
+    height: 50px;
+    padding-right: 8px;
+}
+
+.header-title-link .header-title-name {
+    font-weight: 700;
+    font-size: 50px;
+    color: #606db8;
+}
+
+.header-title-search {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 8px;
+}
+
+.header-title-search-bar {
+    position: relative;
+    display: flex;
+    width: 300px;
+    border: 2px solid #606db8;
+    border-radius: 50px;
+}
+
+.search-img {
+    position: absolute;
+    width: 17px;
+    top: 11px;
+    left: 12px;
+    margin-right: 12px;
+}
+
+.search-input {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 10px 12px !important;
+    margin-left: 35px;
+    border: none !important;
+    background: none !important;
+    font-size: 14px;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.header-title-info {
+    display: flex;
+    align-items: center;
+}
+
+.header-info-item {
+    display: inline-flex;
+    margin: 0 6px;
+}
+
+.header-info-basket,
+.header-info-my {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+.basket-img,
+.my-img {
+    width: 28px;
+    height: 28px;
+}
+
+main h2 {
+    height: 60px;
+    color: white;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: #3e4989;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-header {
+    height: 70px;
+    font-size: 23px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    font-weight: 500;
+}
+
+.fa-chevron-down {
+    color: #7780b1;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.box {
+    border: 1px solid #adadad;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.product-list {
+    display: block;
+}
+
+.product-list section:nth-child(n + 2) {
+    border-top: 1px solid #adadad;
+}
+
+.product-detail {
+    height: 180px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 200px 1fr 130px;
+    grid-template-areas: "cover book-detail price";
+    user-select: none;
+}
+
+.cover {
+    width: 108px;
+    min-height: 162px;
+}
+
+.product-detail > .book-detail > .title {
+    font-size: 20px;
+}
+
+.product-detail > .price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3e4989;
+}
+
+.order-detail {
+    height: 100px;
+    padding: 0 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.order-detail p:nth-child(1) {
+    font-size: 17px;
+    font-weight: 600;
+    color: gray;
+}
+
+.order-price {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.delivery-detail {
+    height: 450px;
+    font-size: 16px;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-areas:
+        "name name-field"
+        "address address-field"
+        "phone-num phone-num-field"
+        "message message-field";
+    user-select: none;
+}
+
+.delivery-detail .default {
+    padding: 10px 0 0 20px;
+    display: flex;
+    justify-content: start;
+}
+
+.delivery-detail .default span {
+    color: rgb(97, 176, 255);
+}
+
+.delivery-detail .field input {
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #aaaaabc5;
+}
+.delivery-detail > .field {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 20px;
+}
+
+.address-field > * {
+    margin-bottom: 10px;
+}
+
+.delivery-detail .zipcode-input {
+    display: flex;
+}
+
+.delivery-detail .zipcode-input > input {
+    width: 180px;
+}
+
+.delivery-detail .zipcode-input > button {
+    width: 120px;
+}
+
+input#check-btn {
+    display: none;
+}
+
+.agreement > h3 {
+    height: 70px;
+    font-size: 23px;
+    font-weight: 500px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agreement > label > span {
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+
+input#check-btn + label:before {
+    content: "";
+    width: 17px;
+    height: 17px;
+    display: inline-block;
+    border: 2px solid #7780b1;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+input#check-btn:checked + label:before {
+    content: "";
+    background-color: #7780b1;
+}
+
+.purchase-btn {
+    height: 60px;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    margin: 60px 0;
+    background-color: #7780b1;
+}
+
+#footer {
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 50px;
+    font-size: 10px;
+}
+.footer li {
+    position: relative;
+    display: inline;
+    padding: 0 7px 0 10px;
+    white-space: nowrap;
+}
+.footer address {
+    padding-top: 15px;
+}
+.footer li:before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    background-color: #dbdbdb;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+.footer li:first-child:before {
+    width: 0;
+}
