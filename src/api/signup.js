@@ -13,13 +13,14 @@ signupButton.addEventListener("click", () => {
     userName: userName.value,
     email: email.value
   };
+
   axios
     .post(uri, userData)
     .then((res) => {
       const token = res.data.token;
       localStorage.setItem('token', token);
 
-      
+      window.location.href = "./login.html";
     })
     .catch((error) => {
       console.error(error);
