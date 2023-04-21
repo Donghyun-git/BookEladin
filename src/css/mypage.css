@@ -1,11 +1,10 @@
-@import "./css/fonts.css";
-@import "./css/default.css";
-@import "./css/font-awesome.css";
+@import "./fonts.css";
+@import "./default.css";
+@import "./font-awesome.css";
 
-/* 전체 레이아웃 */
 #wrap {
     width: 100%;
-    background-color: #eee;
+    font-family: "Noto Sans KR";
 }
 #header {
     width: 100%;
@@ -14,11 +13,13 @@
     width: 100%;
 }
 
-/* 공용 컨테이너 */
 .container {
     width: 950px;
     margin: 0 auto;
-    text-align: center;
+    /* text-align: center; */
+}
+
+.row {
 }
 
 /* 헤더 css */
@@ -88,13 +89,13 @@
     color: #606db8;
 }
 
-.header-title-search {
+.header .header-title-search {
     display: flex;
     align-items: flex-start;
     margin-right: 8px;
 }
 
-.header-title-search-bar {
+.header .header-title-search-bar {
     position: relative;
     display: flex;
     width: 300px;
@@ -102,7 +103,7 @@
     border-radius: 50px;
 }
 
-.search-img {
+.header .search-img {
     position: absolute;
     width: 17px;
     top: 11px;
@@ -110,7 +111,7 @@
     margin-right: 12px;
 }
 
-.search-input {
+.header .search-input {
     width: 100%;
     height: 100%;
     padding: 10px 12px;
@@ -120,7 +121,7 @@
     font-size: 14px;
 }
 
-.search-input:focus {
+.header .search-input:focus {
     outline: none;
 }
 
@@ -148,119 +149,137 @@
     height: 28px;
 }
 
-/* 카테고리 네비 css */
-.all-category-container {
+main .header-text {
+    font-size: 25px;
+    color: #11111;
+    font-weight: 500;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 2px solid #dbdbdb;
+}
+
+.main-profile {
+    height: 200px;
+    background-color: #606db8;
+    border-radius: 15px;
+    margin: 20px 0;
     display: flex;
-    border-bottom: 1px solid #f5f5f5;
 }
 
-.all-category-link {
-    display: inline-flex;
-    padding: 18px;
-}
-
-.all-category-text {
-    font-weight: 700;
-    font-size: 16px;
-    color: #000000;
-}
-
-/* 메인 css */
-.carousel-section {
-    margin-top: 50px;
-}
-
-.carousel-section-content {
-    position: relative;
-    width: 950px;
-    height: 400px;
-    overflow: hidden;
-}
-
-.carousel-section-list {
-    display: flex;
-    width: 100%;
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.2s;
-}
-
-.carousel-section-item {
-    list-style: none;
-}
-
-.carousel-img {
-    list-style: none;
-    width: 950px;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.select-category-section {
-    margin-top: 100px;
-}
-
-.select-category-btn-content {
-    width: 100%;
-}
-
-.select-category-btn-list {
-    display: flex;
-    justify-content: space-around;
-}
-
-.select-category-best-btn,
-.select-category-new-btn,
-.select-category-recommend-btn {
+.main-profile > .main-avata {
+    width: 292px;
+    margin: auto 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 80px;
-    border: none;
-    border-radius: 20px;
-    background-color: #606db8;
-    font-weight: 700;
-    font-size: 16px;
-    color: #ffffff;
-    cursor: pointer;
 }
 
-.select-category-content {
-    width: 100%;
-    margin-top: 40px;
+.main-profile > .main-avata > img {
+    border-radius: 100px;
 }
 
-.best-category-content-list,
-.new-category-content-list,
-.recommend-category-content-list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.best-category-content-item,
-.new-category-content-item,
-.recommend-category-content-item {
+.main-profile > .main-aboutUser {
+    color: white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.main-profile > .main-aboutUser > .top {
+    display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding-bottom: 10px;
 }
 
-.best-item-img {
-    width: 180px;
+.main-profile > .main-aboutUser > .top > h3 {
+    font-size: 25px;
+    font-weight: 500;
+    padding-right: 10px;
+}
+
+.update-detail-btn {
+    width: 100px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border-radius: 5px;
+    margin: auto;
+    background: white;
+}
+
+.main-profile > .main-aboutUser > p {
+    font-size: 17px;
+}
+
+.main-orderlist {
+    margin-bottom: 100px;
+    font-weight: 400;
+}
+
+.order-date {
+    font-weight: 600;
+    font-size: 18px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid rgb(210, 210, 210);
+    padding: 20px 0 10px 0;
+}
+
+.order-content {
+    height: 180px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 200px 1fr 130px 130px 130px;
+    grid-template-areas: "cover title price delivery-status button";
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.cover {
+    width: 108px;
+    height: 162px;
+}
+
+.title,
+.price,
+.delivery-status {
+    font-weight: 600;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.delivery-status {
+    font-size: 16px;
+    color: #606db8;
+}
+
+.review-btn {
+    width: 120px;
+    height: 50px;
+    font-size: 17px;
+    font-weight: 500;
+    border: 2.5px solid #606db8;
     border-radius: 10px;
+    color: #606db8;
+    background: white;
 }
 
-.best-item-title {
-    width: 180px;
-    overflow: visible;
-    font-weight: 700;
-    font-size: 14px;
+.review-btn:hover {
+    background-color: #606db8;
+    color: white;
 }
 
-/* 푸터 css */
+/* .footer {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.footer .row > ul{
+    margin: 10px 100px;
+    display: flex;
+    justify-content: space-around;
+} */
+
 #footer {
     width: 100%;
     border-top: 1px solid #dbdbdb;
@@ -268,23 +287,18 @@
 
 .footer {
     text-align: center;
-    margin-top: 200px;
-    height: 100px;
     padding: 20px 50px;
     font-size: 10px;
 }
-
 .footer li {
     position: relative;
     display: inline;
     padding: 0 7px 0 10px;
     white-space: nowrap;
 }
-
 .footer address {
     padding-top: 15px;
 }
-
 .footer li:before {
     content: "";
     width: 1px;
@@ -293,4 +307,8 @@
     position: absolute;
     left: 0;
     top: 2px;
+}
+
+.footer li:first-child:before {
+    width: 0;
 }
