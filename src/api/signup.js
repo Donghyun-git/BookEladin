@@ -5,24 +5,23 @@ const email = document.querySelector("#email");
 
 const signupButton = document.querySelector("#signup-btn");
 
-signupButton.addEventListener("click", () => {
+signupButton.addEventListener("click", async () => {
   const uri = "http://localhost:5500/auth/signup";
   const userData = {
     userId: id.value,
     password: password.value,
     userName: userName.value,
-    email: email.value
+    email: email.value,
   };
 
-  axios
-    .post(uri, userData)
+  await axios.post(uri, userData)
     .then((res) => {
-      const token = res.data.token;
-      localStorage.setItem('token', token);
-
+      console.log(res);
+      window.alert(`${res.data.message}`);
       window.location.href = "./login.html";
     })
     .catch((error) => {
       console.error(error);
+      window.alert(`${error.response.data.message}`);
     });
 });
