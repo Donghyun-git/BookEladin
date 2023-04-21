@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="index.css" />
-        <title>엘라딘</title>
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="../css/modify_mypage.css"
+        />
     </head>
     <body>
-        <div class="app-container">
+        <div id="wrap">
             <!-- 헤더 영역 시작 -->
             <header class="header">
                 <div class="header-container container">
@@ -64,80 +69,85 @@
                 </div>
             </header>
             <!-- 헤더 영역 종료 -->
-            <!-- 카테고리 네비게이션 영역 시작 -->
-            <nav class="all-category-nav">
-                <div class="all-category-container container">
-                    <a href="./pages/category.html" class="all-category-link">
-                        <span class="all-category-text">전체 카테고리</span>
-                    </a>
+
+            <main id="main" role="main">
+                <div class="container">
+                    <div class="row">
+                        <a href="#"
+                            ><li class="header-text">
+                                <span>마이페이지</span>
+                            </li></a
+                        >
+                        <h3>정보 변경</h3>
+                        <div class="table">
+                            <div class="name default">
+                                <p>이름</p>
+                            </div>
+                            <div class="name-field field">
+                                <p>홍길동</p>
+                            </div>
+                            <div class="id default">
+                                <p>아이디</p>
+                            </div>
+                            <div class="id-field field">
+                                <p>eladin</p>
+                            </div>
+                            <div class="email default">
+                                <p>이메일</p>
+                            </div>
+                            <div class="email-field field">
+                                <p class="user-email">eladin@gmail.com</p>
+                                <button class="change-email">
+                                    이메일 변경
+                                </button>
+                            </div>
+                            <div class="password default">
+                                <p>비밀번호 변경</p>
+                            </div>
+                            <div class="password-field field">
+                                <form id="password-form">
+                                    <input
+                                        id="current-password"
+                                        type="password"
+                                        placeholder="현재 비밀번호"
+                                        value=""
+                                        name="currentpsw"
+                                    />
+                                    <input
+                                        id="new-password"
+                                        type="password"
+                                        placeholder="새 비밀번호"
+                                        value=""
+                                        name="newpsw"
+                                    />
+                                    <input
+                                        id="new-password-check"
+                                        type="password"
+                                        placeholder="새 비밀번호 확인"
+                                        value=""
+                                        name="newpswcheck"
+                                    />
+                                    <p><b>비밀번호 변경 시 유의사항</b></p>
+                                    <ul>
+                                        <li>8자 이상을 입력해주세요.</li>
+                                        <li>
+                                            연속된 3자 이상의 같은 문자는
+                                            제한합니다.
+                                        </li>
+                                        <li>
+                                            ID와 같은 비밀번호는 사용할 수
+                                            없습니다.
+                                        </li>
+                                    </ul>
+                                    <button class="change-password">
+                                        비밀번호 변경
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </nav>
-            <!-- 카테고리 네비게이션 영역 종료 -->
-            <!-- 메인 영역 시작 -->
-            <main class="main">
-                <section class="carousel-section container">
-                    <div class="carousel-section-content">
-                        <ul class="carousel-section-list">
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://grepp-programmers.s3.amazonaws.com/production/file_resource/2866/certi-book-event_1200x628.png"
-                                    alt=""
-                                />
-                            </li>
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://i.ytimg.com/vi/H91z8YxNrOY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBPmx01JUAv4_WSAp2NkHqKuVOUQQ"
-                                    alt=""
-                                />
-                            </li>
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://i.ytimg.com/vi/6kzsVLNZQ0E/maxresdefault.jpg"
-                                    alt=""
-                                />
-                            </li>
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://contents.kyobobook.co.kr/pmtn/2022/event/68a088ac677f48a689f5dce8046cce7f.jpg"
-                                    alt=""
-                                />
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-                <section class="select-category-section container">
-                    <div class="select-category-btn-content">
-                        <div class="select-category-btn-list">
-                            <button class="select-category-best-btn">
-                                베스트 셀러
-                            </button>
-                            <button class="select-category-new-btn">
-                                신규 도서
-                            </button>
-                            <button class="select-category-recommend-btn">
-                                추천 도서
-                            </button>
-                        </div>
-                    </div>
-                    <div class="select-category-content">
-                        <div class="select-best-category-content">
-                            <ul class="best-category-content-list"></ul>
-                        </div>
-                        <div class="select-new-category-content">
-                            <ul class="new-category-content-list"></ul>
-                        </div>
-                        <div class="select-recommend-category-content">
-                            <ul class="recommend-category-content-list"></ul>
-                        </div>
-                    </div>
-                </section>
             </main>
-            <!-- 메인 영역 종료 -->
-            <!-- 푸터 영역 시작 -->
             <footer id="footer" style="border: none">
                 <div class="footer">
                     <div class="container">
@@ -168,8 +178,7 @@
                     </div>
                 </div>
             </footer>
-            <!-- 푸터 영역 종료 -->
         </div>
-        <script src="./events/kakao.js"></script>
+        <script src="../js/modify_mypage.js"></script>
     </body>
 </html>
