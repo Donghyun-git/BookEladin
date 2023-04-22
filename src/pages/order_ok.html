@@ -1,98 +1,108 @@
 <!--주문완료-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../css/order_ok.css" />
-    <title>Eladin</title>
-  </head>
-  <body>
-    <div id="wrap">
-      <header id="header">
-        <div class="container">
-          <div class="row">
-            <div class="header">
-              <div class="header-logo">
-                <!-- <img src="../img/test.jpeg" alt="로고 이미지"> -->
-                <h1>Eladin</h1>
-              </div>
-              <div class="header-user">
-                <div class="header-user-login">
-                  <ul>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">로그인</a></li>
-                  </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="../css/order_ok.css" />
+        <title>Eladin</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <header id="header">
+                <div class="container">
+                    <div class="row">
+                        <div class="header">
+                            <div class="header-logo">
+                                <!-- <img src="../img/test.jpeg" alt="로고 이미지"> -->
+                                <a href="../index.html"><h1>Eladin</h1></a>
+                            </div>
+                            <div class="header-user">
+                                <div class="header-user-login">
+                                    <ul>
+                                        <li>
+                                            <a href="./signup.html">회원가입</a>
+                                        </li>
+                                        <li>
+                                            <a href="./login.html">로그인</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="header-user-info">
+                                    <ul>
+                                        <li>
+                                            <a href="./cart.html"
+                                                ><i
+                                                    class="fa fa-shopping-cart"
+                                                    aria-hidden="true"
+                                                ></i
+                                            ></a>
+                                        </li>
+                                        <li>
+                                            <a href="./mypage.html"
+                                                ><i
+                                                    class="fa fa-user"
+                                                    blank="_target"
+                                                    aria-hidden="true"
+                                                ></i
+                                            ></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="header-user-info">
-                  <ul>
-                    <li>
-                      <a href="#"
-                        ><i class="fa fa-shopping-cart" aria-hidden="true"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a href="#"
-                        ><i
-                          class="fa fa-user"
-                          blank="_target"
-                          aria-hidden="true"
-                        ></i
-                      ></a>
-                    </li>
-                  </ul>
+            </header>
+
+            <article id="order_ok">
+                <div class="order_ok container">
+                    <div class="row">
+                        <div class="order_ok-tit">
+                            <h2>주문완료</h2>
+                        </div>
+                        <div class="order_ok-subtit">
+                            <h3>주문이 완료되었습니다.</h3>
+                        </div>
+
+                        <div class="order_ok-list">
+                            <ul class="list-row-1">
+                                <li><a>주문번호</a></li>
+                                <li>2020060149794</li>
+                            </ul>
+
+                            <ul class="list-row-2">
+                                <li><a>배송지</a></li>
+                                <li>
+                                    <div class="row-2-cont">
+                                        <h4>홍길동</h4>
+                                        <p>010-3948-3716</p>
+                                        <b
+                                            >서울 마포구 동교로 194 (동교동,
+                                            혜원빌딩) 2층</b
+                                        >
+                                        <p>(03995)</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <ul class="list-row-3">
+                                <li><a>배송 방법</a></li>
+                                <li>택배</li>
+                            </ul>
+
+                            <ul class="list-row-4">
+                                <li><a>배송메모</a></li>
+                                <li>배송 전에 미리 연락 바랍니다.</li>
+                            </ul>
+                        </div>
+                        <div class="order_ok-hmbtn">
+                            <a href="../index.html">홈으로</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+            </article>
         </div>
-      </header>
-
-      <article id="order_ok">
-        <div class="order_ok container">
-          <div class="row">
-            <div class="order_ok-tit">
-              <h2>주문완료</h2>
-            </div>
-            <div class="order_ok-subtit">
-              <h3>주문이 완료되었습니다.</h3>
-            </div>
-
-            <div class="order_ok-list">
-              <ul class="list-row-1">
-                <li><a>주문번호</a></li>
-                <li>2020060149794</li>
-              </ul>
-
-              <ul class="list-row-2">
-                <li><a>배송지</a></li>
-                <li>
-                  <div class="row-2-cont">
-                    <h4>홍길동</h4>
-                    <p>010-3948-3716</p>
-                    <b>서울 마포구 동교로 194 (동교동, 혜원빌딩) 2층</b>
-                    <p>(03995)</p>
-                  </div>
-                </li>
-              </ul>
-
-              <ul class="list-row-3">
-                <li><a>배송 방법</a></li>
-                <li>택배</li>
-              </ul>
-
-              <ul class="list-row-4">
-                <li><a>배송메모</a></li>
-                <li>배송 전에 미리 연락 바랍니다.</li>
-              </ul>
-            </div>
-            <div class="order_ok-hmbtn">
-              <a href="#">홈으로</a>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </body>
+    </body>
 </html>
