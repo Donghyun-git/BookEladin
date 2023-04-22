@@ -3,58 +3,189 @@
 @import "./font-awesome.css";
 
 /* 전체 레이아웃 */
-#wrap { width: 100%; }
-#header { width: 100%; }
-#main { width: 100%; }
-
+#wrap {
+    width: 100%;
+}
+#header {
+    width: 100%;
+}
+#main {
+    width: 100%;
+}
 
 /* 공용 컨테이너 */
-.container { width: 950px; margin: 0 auto; text-align: center;}
+.container {
+    width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /* 로그인, 회원가입, 주문확인 */
-.signup.container { width: 700px; margin: 0 auto; text-align: center;}
+.signup.container {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /* 레이아웃 여백 */
-.row { }  
+.row {
+}
 
 /* 헤더 */
 
-.header { display: flex; justify-content:space-between; align-items: center; flex-wrap: nowrap;}
-.header-logo { }
-.header-logo h1 { color: #606DB8; font-size: 40px; letter-spacing: 0.1em; font-weight: bold;}
-
-.header-user { display: flex; flex-direction: column; align-items:center; justify-content: flex-end; }
-.header-user ul li { display: inline-block; }
-
-.header-user-login ul li { display: inline-block; padding: 20px 0 16px 16px; } 
-.header-user-login ul li a { font-size: 20px; color: gray;}
-
-.header-user-info ul li { position: relative; display: inline-block; padding: 0 0 16px 16px; margin-left: 38px;}
-.header-user-info ul li:last-child:before { content:""; width: 75px; height: 1px; background-color: gray; position: absolute; bottom: 5px; right: -42px;}
-.header-user-info ul li a { font-size: 30px;}
-
-/* signup */
-#signup .signup-area { display: flex; justify-content: flex-start; flex-direction: column; text-align: left;}
-.signup-area .signup-tit { text-align: center; margin-top: 6rem; margin-bottom: 2rem; font-size: 4rem; font-weight: 400;}
-.signup-area .signup-form-label { display: inline-block; margin: 4px 8px 4px 8px; }
-.signup-area-center { text-align: center;}
-.signup-button input {  
-  margin-top: 40px;    
-  height: 46px;
-  color: #fff;
-  padding: 0 15px;
-  display: block;
-  font-size: 16px;
-  width: 105%;
-  background: #606DB8;
-  border: none;
-  border-radius: 4px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-progress-appearance: none;
-  appearance: none;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header-logo {
+}
+.header-logo h1 {
+    color: #606db8;
+    font-size: 40px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
 }
 
-.signup-id, .signup-pw, 
-.signup-button, .signup-email,
-.signup-name { font-size: 2rem;}
+.header-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+.header-user ul li {
+    display: inline-block;
+}
+
+.header-user-login ul li {
+    display: inline-block;
+    padding: 20px 0 16px 16px;
+}
+.header-user-login ul li a {
+    font-size: 20px;
+    color: gray;
+}
+
+.header-user-info ul li {
+    position: relative;
+    display: inline-block;
+    padding: 0 0 16px 16px;
+    margin-left: 38px;
+}
+.header-user-info ul li:last-child:before {
+    content: "";
+    width: 75px;
+    height: 1px;
+    background-color: gray;
+    position: absolute;
+    bottom: 5px;
+    right: -42px;
+}
+.header-user-info ul li a {
+    font-size: 30px;
+}
+
+/* signup */
+#signup .signup-area {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: left;
+}
+.signup-area .signup-tit {
+    text-align: center;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    font-size: 4rem;
+    font-weight: 400;
+}
+.signup-area .signup-form-label {
+    font-weight: 500;
+    display: inline-block;
+    margin: 4px 8px 4px 8px;
+}
+.signup-area-center {
+    text-align: center;
+}
+.signup-button input {
+    margin-top: 40px;
+    height: 46px;
+    color: #fff;
+    padding: 0 15px;
+    display: block;
+    font-size: 16px;
+    width: 105%;
+    background: #606db8;
+    border: none;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: none;
+    appearance: none;
+}
+
+/* 유효성 검사용 start */
+
+.error input#id,
+.error input#password,
+.error input#password2,
+.error input#name,
+.error input#email {
+    outline: 2px solid #e74c3c;
+}
+
+small {
+    visibility: hidden;
+    padding: 0px 0px 2px 10px;
+}
+
+.error small {
+    font-size: 14px;
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.pwform {
+    position: relative;
+}
+.unlock-icon {
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    color: grey;
+}
+
+.lock-icon {
+    visibility: hidden;
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    color: #7987da;
+}
+
+.error .unlock-icon {
+    color: rgb(224, 49, 0);
+}
+
+.success .unlock-icon {
+    visibility: hidden;
+}
+
+.error .lock-icon {
+    visibility: hidden;
+}
+.success .lock-icon {
+    visibility: visible;
+}
+
+/* 유효성 검사용 end */
+
+.signup-id,
+.signup-pw,
+.check-pw,
+.signup-button,
+.signup-email,
+.signup-name {
+    font-size: 2rem;
+}
