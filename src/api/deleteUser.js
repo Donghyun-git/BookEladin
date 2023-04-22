@@ -6,7 +6,7 @@
 const deleteUser = document.querySelector(".delete-user-button");
 
 deleteUser.addEventListener("click", async (e) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("accessToken");
     const header = {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -15,9 +15,9 @@ deleteUser.addEventListener("click", async (e) => {
     await axios
         .post("/delete", null, header) // 필요하다면 body에 정보 넘김.
         .then((res) => {
-            localStorage.removeItem("token");
+            localStorage.clear();
             window.alert(`${res.data.message}`);
-            window.location.href = "/login";
+            window.location.href = "./login.html";
         })
         .catch((err) => {
             e.preventDefault();
