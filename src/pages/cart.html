@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../css/cart.css" />
+        <title>엘라딘</title>
+    </head>
+    <body>
+        <div class="app-container">
+            <!-- 헤더 영역 시작 -->
+            <header class="header">
+                <div class="header-container container">
+                    <div class="header-top-bar">
+                        <ul class="header-top-list">
+                            <li class="header-top-item">
+                                <a href="#" class="join">회원가입</a>
+                            </li>
+                            <li class="header-top-item">
+                                <a href="#" class="login">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-title">
+                        <nav class="header-title-nav">
+                            <div class="header-title-logo">
+                                <a href="#" class="header-title-link">
+                                    <div class="header-title-name">Eladin</div>
+                                </a>
+                            </div>
+                            <form class="header-title-search" role="seacrch">
+                                <div class="header-title-search-bar">
+                                    <img
+                                        src="https://svgsilh.com/svg/1093183.svg"
+                                        alt="돋보기"
+                                        class="search-img"
+                                    />
+                                    <input type="text" class="search-input" />
+                                </div>
+                            </form>
+                            <div class="header-title-info">
+                                <div class="header-info-item">
+                                    <a href="#" class="header-info-basket">
+                                        <img
+                                            src="https://svgsilh.com/svg/371980.svg"
+                                            alt="장바구니 이미지"
+                                            class="basket-img"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="header-info-item">
+                                    <a href="#" class="header-info-my">
+                                        <img
+                                            src="https://svgsilh.com/svg/158453.svg"
+                                            alt="사람모양 이미지"
+                                            class="my-img"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!-- 헤더 영역 종료 -->
+            <!-- 메인 영역 시작 -->
+            <main class="main">
+                <div class="main-container container">
+                    <section class="cart-section">
+                        <div class="cart-section-top">
+                            <label class="cart-list-all-select">
+                                <input
+                                    type="checkbox"
+                                    class="cart-list-all-select-btn"
+                                />
+                                <span class="cart-list-all-select-text"
+                                    >전체 선택</span
+                                >
+                            </label>
+                            <button
+                                type="button"
+                                class="cart-list-all-select-delete"
+                            >
+                                선택 삭제
+                            </button>
+                        </div>
+                        <ul class="cart-section-list">
+                            <li class="cart-section-item">
+                                <input
+                                    type="checkbox"
+                                    class="cart-section-item-select"
+                                />
+                                <img
+                                    src="https://www.readersnews.com/news/photo/202106/103485_71171_2613.jpg"
+                                    alt=""
+                                    class="cart-section-item-img"
+                                />
+                                <div class="cart-section-item-introduce">
+                                    <div class="cart-section-item-title">
+                                        제목
+                                    </div>
+                                    <div class="cart-section-item-author">
+                                        저자
+                                    </div>
+                                    <div class="cart-section-item-btns">
+                                        <button
+                                            type="button"
+                                            class="cart-section-item-delete-btn"
+                                        >
+                                            삭제
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="cart-section-item-price-box">
+                                    <span class="cart-section-item-price"
+                                        >2,700원</span
+                                    >
+                                </div>
+                            </li>
+                            <li class="cart-section-item">
+                                <input
+                                    type="checkbox"
+                                    class="cart-section-item-select"
+                                />
+                                <img
+                                    src="https://www.readersnews.com/news/photo/202106/103485_71171_2613.jpg"
+                                    alt=""
+                                    class="cart-section-item-img"
+                                />
+                                <div class="cart-section-item-introduce">
+                                    <div class="cart-section-item-title">
+                                        제목
+                                    </div>
+                                    <div class="cart-section-item-author">
+                                        저자
+                                    </div>
+                                    <div class="cart-section-item-btns">
+                                        <button
+                                            type="button"
+                                            class="cart-section-item-delete-btn"
+                                        >
+                                            삭제
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="cart-section-item-price-box">
+                                    <span class="cart-section-item-price"
+                                        >2,700원</span
+                                    >
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <div class="cart-section-bottom">
+                        <div class="cart-section-select-item-count">
+                            <div class="cart-section-select-check-ico"></div>
+                            <span class="cart-section-select-item-count-text"
+                                >3개를 선택하셨습니다.</span
+                            >
+                        </div>
+                        <div class="cart-section-select-item-amount">
+                            <div class="cart-section-select-item-total">
+                                총 상품 금액
+                            </div>
+                            <p class="cart-section-select-item-total-amount">
+                                38,600원
+                            </p>
+                        </div>
+                        <div class="cart-section-btns">
+                            <a href="" class="no-user-order-btn"
+                                >비회원 주문하기</a
+                            >
+                            <a href="" class="user-order-btn">회원 주문하기</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- 푸터 영역 시작 -->
+            <footer id="footer" style="border: none">
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <ul>
+                                <li><a href="#">사이트 도움말</a></li>
+                                <li><a href="#">사이트 이용약관</a></li>
+                                <li><a href="#">사이트 운영원칙</a></li>
+                                <li>
+                                    <a href="#"
+                                        ><strong>개인정보취급방침</strong></a
+                                    >
+                                </li>
+                                <li><a href="#">책임의 한계와 법적고지</a></li>
+                                <li><a href="#">게시중단요청서비스</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                            <address>
+                                Copyright ©
+                                <a href="#"
+                                    ><strong style="letter-spacing: 0.2em"
+                                        >Eladin</strong
+                                    ></a
+                                >
+                                All Rights Reserved.
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- 푸터 영역 종료 -->
+        </div>
+    </body>
+</html>

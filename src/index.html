@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="index.css" />
+        <title>엘라딘</title>
+    </head>
+    <body>
+        <div class="app-container">
+            <!-- 헤더 영역 시작 -->
+            <header class="header">
+                <div class="header-container container">
+                    <div class="header-top-bar">
+                        <ul class="header-top-list">
+                            <li class="header-top-item">
+                                <a href="#" class="join">회원가입</a>
+                            </li>
+                            <li class="header-top-item">
+                                <a href="#" class="login">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-title">
+                        <nav class="header-title-nav">
+                            <div class="header-title-logo">
+                                <a href="#" class="header-title-link">
+                                    <div class="header-title-name">Eladin</div>
+                                </a>
+                            </div>
+                            <form class="header-title-search" role="seacrch">
+                                <div class="header-title-search-bar">
+                                    <img
+                                        src="https://svgsilh.com/svg/1093183.svg"
+                                        alt="돋보기"
+                                        class="search-img"
+                                    />
+                                    <input type="text" class="search-input" />
+                                </div>
+                            </form>
+                            <div class="header-title-info">
+                                <div class="header-info-item">
+                                    <a href="#" class="header-info-basket">
+                                        <img
+                                            src="https://svgsilh.com/svg/371980.svg"
+                                            alt="장바구니 이미지"
+                                            class="basket-img"
+                                        />
+                                    </a>
+                                </div>
+                                <div class="header-info-item">
+                                    <a href="#" class="header-info-my">
+                                        <img
+                                            src="https://svgsilh.com/svg/158453.svg"
+                                            alt="사람모양 이미지"
+                                            class="my-img"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!-- 헤더 영역 종료 -->
+            <!-- 카테고리 네비게이션 영역 시작 -->
+            <nav class="all-category-nav">
+                <div class="all-category-container container">
+                    <a href="./pages/category.html" class="all-category-link">
+                        <span class="all-category-text">전체 카테고리</span>
+                    </a>
+                </div>
+            </nav>
+            <!-- 카테고리 네비게이션 영역 종료 -->
+            <!-- 메인 영역 시작 -->
+            <main class="main">
+                <section class="carousel-section container">
+                    <div class="carousel-section-content">
+                        <ul class="carousel-section-list">
+                            <li class="carousel-sction-item">
+                                <img
+                                    class="carousel-img"
+                                    src="https://grepp-programmers.s3.amazonaws.com/production/file_resource/2866/certi-book-event_1200x628.png"
+                                    alt=""
+                                />
+                            </li>
+                            <li class="carousel-sction-item">
+                                <img
+                                    class="carousel-img"
+                                    src="https://i.ytimg.com/vi/H91z8YxNrOY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBPmx01JUAv4_WSAp2NkHqKuVOUQQ"
+                                    alt=""
+                                />
+                            </li>
+                            <li class="carousel-sction-item">
+                                <img
+                                    class="carousel-img"
+                                    src="https://i.ytimg.com/vi/6kzsVLNZQ0E/maxresdefault.jpg"
+                                    alt=""
+                                />
+                            </li>
+                            <li class="carousel-sction-item">
+                                <img
+                                    class="carousel-img"
+                                    src="https://contents.kyobobook.co.kr/pmtn/2022/event/68a088ac677f48a689f5dce8046cce7f.jpg"
+                                    alt=""
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="select-category-section container">
+                    <div class="select-category-btn-content">
+                        <div class="select-category-btn-list">
+                            <button class="select-category-best-btn">
+                                베스트 셀러
+                            </button>
+                            <button class="select-category-new-btn">
+                                신규 도서
+                            </button>
+                            <button class="select-category-recommend-btn">
+                                추천 도서
+                            </button>
+                        </div>
+                    </div>
+                    <div class="select-category-content">
+                        <div class="select-best-category-content">
+                            <ul class="best-category-content-list"></ul>
+                        </div>
+                        <div class="select-new-category-content">
+                            <ul class="new-category-content-list"></ul>
+                        </div>
+                        <div class="select-recommend-category-content">
+                            <ul class="recommend-category-content-list"></ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <!-- 메인 영역 종료 -->
+            <!-- 푸터 영역 시작 -->
+            <footer id="footer" style="border: none">
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <ul>
+                                <li><a href="#">사이트 도움말</a></li>
+                                <li><a href="#">사이트 이용약관</a></li>
+                                <li><a href="#">사이트 운영원칙</a></li>
+                                <li>
+                                    <a href="#"
+                                        ><strong>개인정보취급방침</strong></a
+                                    >
+                                </li>
+                                <li><a href="#">책임의 한계와 법적고지</a></li>
+                                <li><a href="#">게시중단요청서비스</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                            <address>
+                                Copyright ©
+                                <a href="#"
+                                    ><strong style="letter-spacing: 0.2em"
+                                        >Eladin</strong
+                                    ></a
+                                >
+                                All Rights Reserved.
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- 푸터 영역 종료 -->
+        </div>
+        <script src="./events/kakao.js"></script>
+    </body>
+</html>

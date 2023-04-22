@@ -1,0 +1,314 @@
+@import "./fonts.css";
+@import "./default.css";
+@import "./font-awesome.css";
+
+#wrap {
+    width: 100%;
+    font-family: "Noto Sans KR";
+}
+#header {
+    width: 100%;
+}
+#main {
+    width: 100%;
+}
+
+.container {
+    width: 950px;
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+.row {
+}
+
+/* 헤더 css */
+.header {
+    width: 100%;
+}
+
+.header-top-list {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.header-top-item {
+    display: inline-flex;
+    align-items: center;
+}
+
+.header-top-item .join,
+.header-top-item .login {
+    display: inline-flex;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #787878;
+}
+
+.header-top-item:first-child::after {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-top: 3px;
+    border-radius: 3px;
+    background: #e6e6e6;
+}
+
+.header-title-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.header-title-logo {
+    display: flex;
+    margin: 0;
+    margin-right: auto;
+}
+
+.header-title-link {
+    display: flex;
+    align-items: center;
+}
+
+.header-title-link .logo-img {
+    width: 50px;
+    height: 50px;
+    padding-right: 8px;
+}
+
+.header-title-link .header-title-name {
+    font-weight: 700;
+    font-size: 50px;
+    color: #606db8;
+}
+
+.header .header-title-search {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 8px;
+}
+
+.header .header-title-search-bar {
+    position: relative;
+    display: flex;
+    width: 300px;
+    border: 2px solid #606db8;
+    border-radius: 50px;
+}
+
+.header .search-img {
+    position: absolute;
+    width: 17px;
+    top: 11px;
+    left: 12px;
+    margin-right: 12px;
+}
+
+.header .search-input {
+    width: 100%;
+    height: 100%;
+    padding: 10px 12px;
+    margin-left: 35px;
+    border: none;
+    background: none;
+    font-size: 14px;
+}
+
+.header .search-input:focus {
+    outline: none;
+}
+
+.header-title-info {
+    display: flex;
+    align-items: center;
+}
+
+.header-info-item {
+    display: inline-flex;
+    margin: 0 6px;
+}
+
+.header-info-basket,
+.header-info-my {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+}
+
+.basket-img,
+.my-img {
+    width: 28px;
+    height: 28px;
+}
+
+main .header-text {
+    font-size: 25px;
+    color: #11111;
+    font-weight: 500;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 2px solid #dbdbdb;
+}
+
+.main-profile {
+    height: 200px;
+    background-color: #606db8;
+    border-radius: 15px;
+    margin: 20px 0;
+    display: flex;
+}
+
+.main-profile > .main-avata {
+    width: 292px;
+    margin: auto 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-profile > .main-avata > img {
+    border-radius: 100px;
+}
+
+.main-profile > .main-aboutUser {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-profile > .main-aboutUser > .top {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.main-profile > .main-aboutUser > .top > h3 {
+    font-size: 25px;
+    font-weight: 500;
+    padding-right: 10px;
+}
+
+.update-detail-btn {
+    width: 100px;
+    height: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 0;
+    border-radius: 5px;
+    margin: auto;
+    background: white;
+}
+
+.main-profile > .main-aboutUser > p {
+    font-size: 17px;
+}
+
+.main-orderlist {
+    margin-bottom: 100px;
+    font-weight: 400;
+}
+
+.order-date {
+    font-weight: 600;
+    font-size: 18px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid rgb(210, 210, 210);
+    padding: 20px 0 10px 0;
+}
+
+.order-content {
+    height: 180px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 200px 1fr 130px 130px 130px;
+    grid-template-areas: "cover title price delivery-status button";
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.cover {
+    width: 108px;
+    height: 162px;
+}
+
+.title,
+.price,
+.delivery-status {
+    font-weight: 600;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.delivery-status {
+    font-size: 16px;
+    color: #606db8;
+}
+
+.review-btn {
+    width: 120px;
+    height: 50px;
+    font-size: 17px;
+    font-weight: 500;
+    border: 2.5px solid #606db8;
+    border-radius: 10px;
+    color: #606db8;
+    background: white;
+}
+
+.review-btn:hover {
+    background-color: #606db8;
+    color: white;
+}
+
+/* .footer {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.footer .row > ul{
+    margin: 10px 100px;
+    display: flex;
+    justify-content: space-around;
+} */
+
+#footer {
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 50px;
+    font-size: 10px;
+}
+.footer li {
+    position: relative;
+    display: inline;
+    padding: 0 7px 0 10px;
+    white-space: nowrap;
+}
+.footer address {
+    padding-top: 15px;
+}
+.footer li:before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    background-color: #dbdbdb;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+.footer li:first-child:before {
+    width: 0;
+}
