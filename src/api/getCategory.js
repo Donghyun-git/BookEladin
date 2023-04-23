@@ -22,7 +22,7 @@ const getCategoriesForUser = async () => {
 
 const getCategoriesForGuestUser = async () => {
     const Category = await axios.get(
-        "http://localhost:5500/products/categoryList"
+        "http://localhost:5500/products/categories"
     );
     const { data } = Category.data;
 
