@@ -18,12 +18,13 @@ loginButton.addEventListener("click", async () => {
     try {
         const response = await axios.post(uri, loginData, header);
         const { data } = await response;
-        const accessToken = response.headers["authorization"].split(' ')[1];
-        const refreshToken = data.refreshToken;
-        localStorage.setItem("userData", JSON.stringify(data));
+        console.log(response);
+        const { accessToken, refreshToken } = data.data;
+        localStorage.setItem("userData", JSON.stringify(data.data));
         localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken);
+        localStorage.setItem("refreshToken", refreshToken); // 쿠키로 수정 예정
         window.alert(`${data.message}`);
+        window.location.href = "../index.html";
     } catch (err) {
         window.alert(`${err.response.data.message}`);
     }

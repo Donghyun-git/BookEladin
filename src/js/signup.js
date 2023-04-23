@@ -99,7 +99,6 @@ function checkAllInputs(e) {
         setErrorFor(email, "이메일 주소를 다시 확인해주세요");
     } else {
         console.log("success");
-        console.log(e);
     }
 }
 
