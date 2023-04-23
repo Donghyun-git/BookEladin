@@ -11,11 +11,14 @@ deleteUser.addEventListener("click", async (e) => {
         headers: {
             Authorization: `Bearer ${token}`,
         },
+        withCredentials: true,
     };
     await axios
         .post("/delete", null, header) // 필요하다면 body에 정보 넘김.
         .then((res) => {
-            localStorage.clear();
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            localStorage.removeItem("userData");
             window.alert(`${res.data.message}`);
             window.location.href = "./login.html";
         })

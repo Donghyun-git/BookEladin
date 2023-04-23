@@ -14,12 +14,12 @@ signupButton.addEventListener('click', async () => {
     };
     const header = {
         headers: {
-            'Content-type': 'application/json',
+            "Content-type": "application/json",
         },
     };
 
     await axios
-        .post(uri, userData)
+        .post(uri, userData, header)
         .then((res) => {
             console.log(res);
             window.alert(`${res.data.message}`);
