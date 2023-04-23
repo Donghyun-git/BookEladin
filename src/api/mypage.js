@@ -17,7 +17,6 @@ myPage.addEventListener("click", async (e) => {
             const header = {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
-                    Cookie: `refreshToken=${refreshToken}; SameSite=None; secure;`,
                 },
                 withCrential:true,
             };
@@ -27,6 +26,7 @@ myPage.addEventListener("click", async (e) => {
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;
             localStorage.setItem("myData", JSON.stringify(myPageData));
+            window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
         }
