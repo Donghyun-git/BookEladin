@@ -5,7 +5,7 @@ signupButton.addEventListener("click", async () => {
     const password = document.querySelector("#password").value;
     const userName = document.querySelector("#name").value;
     const email = document.querySelector("#email").value;
-    const uri = "http://localhost:5500/auth/signup";
+    const uri = "http://localhost:3000/auth/signup";
     const userData = {
         userId: id,
         password: password,
