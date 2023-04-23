@@ -21,11 +21,12 @@ myPage.addEventListener("click", async (e) => {
                 withCredentials: true,
             };
 
-            const uri = `http://localhost:5501/auth/users/${userId}`;
+            const uri = `http://localhost:5500/auth/users/${userId}`;
 
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;
             localStorage.setItem("myData", JSON.stringify(myPageData));
+            window.location.href = "./pages/mypage.html";
         } catch (err) {
             console.log(err);
         }

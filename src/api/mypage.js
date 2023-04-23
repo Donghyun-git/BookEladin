@@ -22,7 +22,7 @@ myPage.addEventListener("click", async (e) => {
                 withCrential:true,
             };
 
-            const uri = `http://localhost:5501/auth/users/${userId}`;
+            const uri = `http://localhost:5500/auth/users/${userId}`;
 
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;

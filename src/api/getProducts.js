@@ -8,7 +8,7 @@ const getProductsForUser = async () => {
         withCredentials: true,
     };
 
-    const Products = await axios.get("http://localhost:5501/products", header);
+    const Products = await axios.get("http://localhost:5500/products", header);
 
     const { data } = Products.data;
 
@@ -16,7 +16,7 @@ const getProductsForUser = async () => {
 };
 
 const getProductsForGuestUser = async () => {
-    const Products = await axios.get("http://localhost:5501/products");
+    const Products = await axios.get("http://localhost:5500/products");
     const { data } = Products.data;
 
     return data;
