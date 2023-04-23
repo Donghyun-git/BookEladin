@@ -134,7 +134,7 @@
                             </div>
                         </div>
 
-                        <form action="/order" id="form" method="post">
+                        <form action="http://localhost:5501/orders" id="form" method="post">
                             <div class="delievery">
                                 <div class="box-header">
                                     <h3>배송 정보</h3>
@@ -284,7 +284,12 @@
                 </div>
             </footer>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/isLogin.js"></script>
+        <script src="../api/logout.js"></script>
         <script src="../js/order.js"></script>
+        <script src="../api/mypage.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="../api/address.js"></script>
     </body>

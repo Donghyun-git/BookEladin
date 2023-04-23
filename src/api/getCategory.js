@@ -1,15 +1,19 @@
-const token = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("accessToken");
+const refreshToken = localStorage.getItem("refreshToken");
+
+//쿠키에 refreshToken 저장
+document.cookie = `refreshToken=${refreshToken}; path=/`;
 
 const getCategoriesForUser = async () => {
     const header = {
         headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${accessToken}`,
         },
+        withCredentials: true,
     };
-    const Category = await axios.get(
-        "http://localhost:5500/products/categoryList",
-        header
-    );
+
+    const uri = "http://localhost:5501/products/categoryList";
+    const Category = await axios.get(uri, header);
 
     const { data } = Category.data;
 
@@ -17,7 +21,9 @@ const getCategoriesForUser = async () => {
 };
 
 const getCategoriesForGuestUser = async () => {
-    const Category = await axios.get("/products/categoryList");
+    const Category = await axios.get(
+        "http://localhost:5501/products/categoryList"
+    );
     const { data } = Category.data;
 
     return data;
@@ -25,7 +31,7 @@ const getCategoriesForGuestUser = async () => {
 
 const fetchCategoryList = async () => {
     let categoryList;
-    if (token) {
+    if (accessToken) {
         categoryList = await getCategoriesForUser();
     } else {
         categoryList = await getCategoriesForGuestUser();

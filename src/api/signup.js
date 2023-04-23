@@ -5,16 +5,21 @@ signupButton.addEventListener("click", async () => {
     const password = document.querySelector("#password").value;
     const userName = document.querySelector("#name").value;
     const email = document.querySelector("#email").value;
-    const uri = "http://localhost:5500/auth/signup";
+    const uri = "http://localhost:5501/auth/signup";
     const userData = {
         userId: id,
         password: password,
         userName: userName,
         email: email,
     };
+    const header = {
+        headers: {
+            "Content-type": "application/json",
+        },
+    };
 
     await axios
-        .post(uri, userData)
+        .post(uri, userData, header)
         .then((res) => {
             console.log(res);
             window.alert(`${res.data.message}`);

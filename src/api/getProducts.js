@@ -1,13 +1,14 @@
-//index.html 에서 쓰는 api script , getCategory.js에 token 변수 존재..
-
+//index.html 에서 쓰는 api script , getCategory.js에 access,refresh token 변수 존재
 const getProductsForUser = async () => {
 
     const header = {
         headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${accessToken}`,
         },
+        withCredentials: true,
     };
-    const Products = await axios.get("http://localhost:5500/products", header);
+
+    const Products = await axios.get("http://localhost:5501/products", header);
 
     const { data } = Products.data;
 
@@ -15,7 +16,7 @@ const getProductsForUser = async () => {
 };
 
 const getProductsForGuestUser = async () => {
-    const Products = await axios.get("http://localhost:5500/products");
+    const Products = await axios.get("http://localhost:5501/products");
     const { data } = Products.data;
 
     return data;
@@ -23,7 +24,7 @@ const getProductsForGuestUser = async () => {
 
 const fetchProducts = async () => {
     let productsList;
-    if (token) {
+    if (accessToken) {
         productsList = await getProductsForUser();
     } else {
         productsList = await getProductsForGuestUser();
