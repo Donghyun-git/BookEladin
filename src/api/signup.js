@@ -25,7 +25,23 @@ signupButton.addEventListener("click", async () => {
         userName: userName,
         email: email,
     };
+    const header = {
+        headers: {
+            "Content-type": "application/json",
+        },
+    };
 
+    await axios
+        .post(uri, userData, header)
+        .then((res) => {
+            console.log(res);
+            window.alert(`${res.data.message}`);
+            window.location.href = "./login.html";
+        })
+        .catch((error) => {
+            console.error(error);
+            window.alert(`${error.response.data.message}`);
+        });
     if (id === "") {
         setErrorFor(idInput, "아이디를 입력하세요.");
     } else if (password === "") {

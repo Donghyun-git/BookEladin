@@ -11,8 +11,8 @@ loginButton.addEventListener("click", async () => {
     const header = {
         headers: {
             "Content-type": "application/json",
-            withCredentials: true,
         },
+        withCredentials: true,
     };
 
     try {
@@ -22,7 +22,7 @@ loginButton.addEventListener("click", async () => {
         const { accessToken, refreshToken } = data.data;
         localStorage.setItem("userData", JSON.stringify(data.data));
         localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken); // 쿠키로 수정 예정
+        localStorage.setItem("refreshToken", refreshToken);
         window.alert(`${data.message}`);
         window.location.href = "../index.html";
     } catch (err) {
