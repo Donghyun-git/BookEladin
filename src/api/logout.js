@@ -20,6 +20,7 @@ if (
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
             localStorage.removeItem("userData");
+            localStorage.removeItem("myData");
             window.alert(`${logoutMessage.message}`);
             window.location.href = "../index.html";
         } catch (err) {

@@ -18,7 +18,6 @@ myPage.addEventListener("click", async (e) => {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
-                withCredentials: true,
             };
 
             const uri = `http://localhost:5501/auth/users/${userId}`;
