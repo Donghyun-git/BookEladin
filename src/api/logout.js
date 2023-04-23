@@ -14,7 +14,7 @@ if (
         };
 
         try {
-            const uri = "http://localhost:5501/auth/logout";
+            const uri = "http://localhost:5500/auth/logout";
             const logoutResponse = await axios.delete(uri, header); 
             const logoutMessage = logoutResponse.data;
             localStorage.removeItem("accessToken");

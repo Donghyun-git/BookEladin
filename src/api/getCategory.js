@@ -12,7 +12,7 @@ const getCategoriesForUser = async () => {
         withCredentials: true,
     };
 
-    const uri = "http://localhost:5501/products/categoryList";
+    const uri = "http://localhost:5500/products/categoryList";
     const Category = await axios.get(uri, header);
 
     const { data } = Category.data;
@@ -22,7 +22,7 @@ const getCategoriesForUser = async () => {
 
 const getCategoriesForGuestUser = async () => {
     const Category = await axios.get(
-        "http://localhost:5501/products/categoryList"
+        "http://localhost:5500/products/categoryList"
     );
     const { data } = Category.data;
 

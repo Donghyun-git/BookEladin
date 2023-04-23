@@ -3,7 +3,7 @@ const loginButton = document.querySelector("#login_btn");
 loginButton.addEventListener("click", async () => {
     const id = document.querySelector("#id").value;
     const password = document.querySelector("#password").value;
-    const uri = "http://localhost:5501/auth/login";
+    const uri = "http://localhost:5500/auth/login";
     const loginData = {
         userId: id,
         password: password,
