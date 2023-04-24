@@ -26,6 +26,10 @@ loginButton.addEventListener("click", async () => {
         window.alert(`${data.message}`);
         window.location.href = "../index.html";
     } catch (err) {
-        console.log(err);
+        if(err.response.data.message){
+            window.alert(`${err.response.data.message}`);
+        } else {
+            window.alert('로그인에 실패했습니다!');
+        }
     }
 });
