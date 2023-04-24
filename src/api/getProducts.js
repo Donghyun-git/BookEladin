@@ -1,6 +1,5 @@
 //index.html 에서 쓰는 api script , getCategory.js에 access,refresh token 변수 존재
 const getProductsForUser = async () => {
-
     const header = {
         headers: {
             Authorization: `Bearer ${accessToken}`,

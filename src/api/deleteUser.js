@@ -3,6 +3,8 @@
 // 3. 회원 탈퇴 완료되면 Response 메시지 띄우고 로컬스토리지 토큰 제거, 로그인 페이지로 이동
 // 4. 에러나면 에러 메시지 띄우고 페이지 이동 막고 그대로.
 
+//시간 되면 백에서 api 만들 예정
+
 const deleteUser = document.querySelector(".delete-user-button");
 
 deleteUser.addEventListener("click", async (e) => {
