@@ -1,4 +1,4 @@
-const myData = JSON.parse(localStorage.getItem('myData')).data;
+const myData = JSON.parse(localStorage.getItem('myData'));
 
 const { userId, email, userName } = myData;
 
