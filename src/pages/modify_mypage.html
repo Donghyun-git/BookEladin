@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link
             rel="stylesheet"
@@ -95,35 +96,32 @@
                                 <p>이름</p>
                             </div>
                             <div class="name-field field">
-                                <p>홍길동</p>
+                                <input type="text" class="change-username" name="username">
                             </div>
                             <div class="id default">
                                 <p>아이디</p>
                             </div>
                             <div class="id-field field">
-                                <p>eladin</p>
+                                <input type="text" class="change-userid" name="userid" disabled>
                             </div>
                             <div class="email default">
                                 <p>이메일</p>
                             </div>
                             <div class="email-field field">
-                                <p class="user-email">eladin@gmail.com</p>
-                                <button class="change-email">
-                                    이메일 변경
-                                </button>
+                                <input type="email" class="change-email" name="email">
                             </div>
                             <div class="password default">
                                 <p>비밀번호 변경</p>
                             </div>
                             <div class="password-field field">
-                                <form id="password-form">
-                                    <input
+                                <div id="password-form">
+                                    <!-- <input
                                         id="current-password"
                                         type="password"
                                         placeholder="현재 비밀번호"
                                         value=""
                                         name="currentpsw"
-                                    />
+                                    /> -->
                                     <input
                                         id="new-password"
                                         type="password"
@@ -150,10 +148,10 @@
                                             없습니다.
                                         </li>
                                     </ul>
-                                    <button class="change-password">
+                                    <button class="change-user-info">
                                         비밀번호 변경
                                     </button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -196,5 +194,6 @@
         <script src="../api/logout.js"></script>
         <script src="../api/mypage.js"></script>
         <script src="../api/modify_mypage.js"></script>
+        <script src="../js/myeditRender.js"></script>
     </body>
 </html>

@@ -38,9 +38,12 @@ signupButton.addEventListener("click", async () => {
             window.alert(`${res.data.message}`);
             window.location.href = "./login.html";
         })
-        .catch((error) => {
-            console.error(error);
-            window.alert(`${error.response.data.message}`);
+        .catch((err) => {
+            if(err.response.data.message){
+                window.alert(`${err.response.data.message}`);
+            } else {
+                window.alert("회원가입에 실패했습니다!");
+            }
         });
     if (id === "") {
         setErrorFor(idInput, "아이디를 입력하세요.");

@@ -12,7 +12,6 @@ loginButton.addEventListener("click", async () => {
         headers: {
             "Content-type": "application/json",
         },
-        withCredentials: true,
     };
 
     try {
@@ -23,9 +22,14 @@ loginButton.addEventListener("click", async () => {
         localStorage.setItem("userData", JSON.stringify(data.data));
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("refreshToken", refreshToken);
+        console.log(data);
         window.alert(`${data.message}`);
         window.location.href = "../index.html";
     } catch (err) {
-        window.alert(`${err.response.data.message}`);
+        if(err.response.data.message){
+            window.alert(`${err.response.data.message}`);
+        } else {
+            window.alert('로그인에 실패했습니다!');
+        }
     }
 });
