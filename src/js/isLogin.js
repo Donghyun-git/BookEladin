@@ -3,9 +3,27 @@ if (
     localStorage.getItem("accessToken") ||
     localStorage.getItem("refreshToken")
 ) {
-    const userData = JSON.parse(localStorage.getItem("userData"));    
-    const fixHeader = document.querySelector(".header-top-list");
-    fixHeader.innerHTML = `
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    let fixHeader = document.querySelector(".header-top-list");
+
+    if (localStorage.getItem("myData") && localStorage.getItem("userData")) {
+        const myData = JSON.parse(localStorage.getItem("myData")).data;
+
+        if (myData.userName !== userData.userName) {
+            fixHeader.innerHTML = `
+        <li class="header-top-item">
+            <a class="join"
+                >${myData.userName} 님 환영합니다!</a
+            >
+        </li>
+        <li class="header-top-item">
+            <a id="logout-button" class="login"
+                >로그아웃</a
+            >
+        </li>
+    `;
+        }
+        fixHeader.innerHTML = `
         <li class="header-top-item">
             <a class="join"
                 >${userData.userName} 님 환영합니다!</a
@@ -17,4 +35,18 @@ if (
             >
         </li>
     `;
+    } else {
+        fixHeader.innerHTML = `
+        <li class="header-top-item">
+            <a class="join"
+                >${userData.userName} 님 환영합니다!</a
+            >
+        </li>
+        <li class="header-top-item">
+            <a id="logout-button" class="login"
+                >로그아웃</a
+            >
+        </li>
+    `;
+    }
 }
