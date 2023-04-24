@@ -5,7 +5,7 @@ const nav = document.querySelector(".nav-side-category-bar");
 const ul = document.querySelector(".category-book-list");
 const title = document.querySelector(".category-book-title");
 
-let query = "경영\/경제";
+let query = "경영/경제";
 
 class Category {
     target;
@@ -63,6 +63,7 @@ class Book {
     }
 
     async setState() {
+        let encodedQuery = encodeURIComponent(query);
         const uri = "http://localhost:5500/products/categories";
         const accessToken = localStorage.getItem("accessToken");
         const header = {
@@ -71,7 +72,7 @@ class Book {
             },
             withCrenditials: true,
         };
-        this.state = await axios.get(`${uri}/${query}`, header);
+        this.state = await axios.get(`${uri}/${encodedQuery}`, header);
         console.log(this.state);
     }
 
@@ -80,22 +81,25 @@ class Book {
         const bookList = this.state;
 
         let template = "";
-        await bookList.data.map((book, i) => {
+
+        await bookList.data.data.map((book, i) => {
             template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
                         <div class="category-book-img-link">
-                            <img
+                            <a href="./detail.html">
+                                <img
                                 src=${book.imgUrl}
                                 alt=""
                                 class="category-book-img"
                             />
+                            </a>
                         </div>
                     </div>
                     <div class="category-book-item-introduce">
                         <h3 class="category-book-item-title-head">
                             <a
-                                href=""
+                                href="./detail.html"
                                 class="category-book-item-title"
                                 >${book.title}</a
                             >
