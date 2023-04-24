@@ -29,8 +29,8 @@ function checkInputs(input) {
     const nameValue = username.value.trim();
     const emailValue = email.value.trim();
 
-    const regul1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/;
-    const regul2 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regul1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/; // 패스워드
+    const regul2 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; //이메일
 
     if (input === id) {
         if (idValue === "") {
