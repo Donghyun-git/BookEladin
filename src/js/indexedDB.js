@@ -100,3 +100,29 @@ function getAllIDB() {
         };
     });
 };
+
+// 데이터 삭제
+function deleteIDB(key) {
+    const request = IDB.open(cart);
+
+    request.onerror = (e) => {
+        console.log(e.target.errorCode);
+    }
+    request.onsuccess = (e) => {
+        const db = request.result;
+        const transaction = db.transaction('Book', 'readwrite');
+
+        transaction.onerror = (e) => {
+            console.log('fail');
+        }
+        transaction.oncomplete = (e) => {
+            console.log('success');
+        }
+
+        const objStore = transaction.objectStore('Book');
+        const objStoreRequest = objStore.delete(key);
+        objStoreRequest.onsuccess = (e) => {
+            console.log('delete');
+        };
+    };
+};
