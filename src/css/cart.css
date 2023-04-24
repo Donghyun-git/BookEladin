@@ -209,14 +209,21 @@
   border-top: 1px solid #D1D5D9
 }
 
+.cart-section-item-selcet-box {
+  width: 28px;
+  height: 28px;
+}
+
 .cart-section-item-select {
+  display: block;
   width: 24px;
   height: 24px;
 }
 
 .cart-section-item-img {
-  width: 120px;
-  height: 174px;
+  max-width: 120px;
+  width: 100%;
+  height: 180px;
   border-radius: 3px;
   margin-left: 10px;
 }
@@ -226,13 +233,14 @@
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  width: 100%;
   height: 100%;
   margin-left: 20px;
 }
 
 .cart-section-item-title {
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .cart-section-item-author {
@@ -257,8 +265,8 @@
   display: flex;
   justify-content: end;
   height: 100%;
-  width: 100px;
-  margin-left: 530px;
+  width: 120px;
+  margin-left: 100px;
 }
 
 .cart-section-item-price {
