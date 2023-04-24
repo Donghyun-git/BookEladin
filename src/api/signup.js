@@ -1,6 +1,6 @@
 const signupButton = document.querySelector("#signup-btn");
 
-signupButton.addEventListener("click", async () => {
+const signUp = async () => {
     const id = document.querySelector("#id").value;
     const password = document.querySelector("#password").value;
     const userName = document.querySelector("#name").value;
@@ -32,4 +32,6 @@ signupButton.addEventListener("click", async () => {
                 window.alert("회원가입에 실패했습니다!");
             }
         });
-});
+};
+
+signupButton.addEventListener("click", signUp);

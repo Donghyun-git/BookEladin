@@ -1,7 +1,7 @@
 const loginButton = document.querySelector("#login_btn");
 
-loginButton.addEventListener("click", async () => {
-    const id = document.querySelector("#id").value;
+const logIn = async () => {
+     const id = document.querySelector("#id").value;
     const password = document.querySelector("#password").value;
     const uri = "http://localhost:5500/auth/login";
     const loginData = {
@@ -32,4 +32,6 @@ loginButton.addEventListener("click", async () => {
             window.alert('로그인에 실패했습니다!');
         }
     }
-});
+}
+
+loginButton.addEventListener("click", logIn);

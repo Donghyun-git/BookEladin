@@ -1,6 +1,7 @@
 // mypage 로고 누를 시 마이페이지 출력하기 위한 로직
 const myPage = document.querySelector(".header-info-my");
-myPage.addEventListener("click", async (e) => {
+
+const getUserInfo = async (e) => {
     e.preventDefault();
     const accessToken = localStorage.getItem("accessToken");
     const refreshToken = localStorage.getItem("refreshToken");
@@ -11,13 +12,13 @@ myPage.addEventListener("click", async (e) => {
         window.location.href = "./login.html";
     } else {
         try {
-            const userData = JSON.parse(localStorage.getItem('userData'));
+            const userData = JSON.parse(localStorage.getItem("userData"));
             const userId = userData.userId;
             const header = {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
                 },
-                withCrenditials:true,
+                withCrenditials: true,
             };
             const uri = `http://localhost:5500/auth/users/${userId}`;
 
@@ -30,4 +31,6 @@ myPage.addEventListener("click", async (e) => {
             console.log(err);
         }
     }
-});
+};
+
+myPage.addEventListener("click", getUserInfo);
