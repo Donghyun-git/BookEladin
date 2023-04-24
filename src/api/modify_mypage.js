@@ -19,7 +19,7 @@ const isMatchPassword = (password, checkPassword) => {
 };
 
 const updateUserInfo = async () => {
-    const userName = document.querySelector(".change-username").value.trim();
+    const userName = document.querySelector(".change-username");
     const email = document.querySelector(".change-email");
     const password = document.querySelector("#new-password");
 
@@ -39,6 +39,7 @@ const updateUserInfo = async () => {
     } else {
         try {
             const accessToken = localStorage.getItem("accessToken");
+            const userId = JSON.parse(localStorage.getItem('userData')).userId;
             const header = {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
@@ -46,7 +47,7 @@ const updateUserInfo = async () => {
                 withCredentials: true,
             };
             const body = {
-                userName: userName.value,
+                userName: userName.value.trim(),
                 password: password.value,
                 email: email.value,
             };
@@ -54,12 +55,12 @@ const updateUserInfo = async () => {
 
             const updateResponse = await axios.patch(uri, body, header);
             const updateMessage = await updateResponse.data.message;
-            const updateData = await updateResponse.data.data;
-            localStorage.setItem("myData", JSON.stringify(updateData)); // 백 데이터 넘겨주는거 변경됐을 때 풀기.
+            localStorage.setItem("myData", JSON.stringify({ userName: body.userName, email: body.email, userId: userId })); // 백 데이터 넘겨주는거 변경됐을 때 풀기.
             window.alert(updateMessage);
             window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
+            window.alert(`서버오류입니다! ${err.response.data.message}`)
         }
     }
 };
