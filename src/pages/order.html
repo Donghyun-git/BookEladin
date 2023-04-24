@@ -5,26 +5,32 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
         <link rel="stylesheet" type="text/css" href="../css/order.css" />
     </head>
     <body>
         <div id="wrap">
+            <!-- 헤더 영역 시작 -->
             <header class="header">
                 <div class="header-container container">
                     <div class="header-top-bar">
                         <ul class="header-top-list">
                             <li class="header-top-item">
-                                <a href="#" class="join">회원가입</a>
+                                <a href="./pages/signup.html" class="join"
+                                    >회원가입</a
+                                >
                             </li>
                             <li class="header-top-item">
-                                <a href="#" class="login">로그인</a>
+                                <a href="./pages/login.html" class="login"
+                                    >로그인</a
+                                >
                             </li>
                         </ul>
                     </div>
                     <div class="header-title">
                         <nav class="header-title-nav">
                             <div class="header-title-logo">
-                                <a href="#" class="header-title-link">
+                                <a href="." class="header-title-link">
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
@@ -40,7 +46,10 @@
                             </form>
                             <div class="header-title-info">
                                 <div class="header-info-item">
-                                    <a href="#" class="header-info-basket">
+                                    <a
+                                        href="./pages/cart.html"
+                                        class="header-info-basket"
+                                    >
                                         <img
                                             src="https://svgsilh.com/svg/371980.svg"
                                             alt="장바구니 이미지"
@@ -49,7 +58,10 @@
                                     </a>
                                 </div>
                                 <div class="header-info-item">
-                                    <a href="#" class="header-info-my">
+                                    <a
+                                        href="./pages/mypage.html"
+                                        class="header-info-my"
+                                    >
                                         <img
                                             src="https://svgsilh.com/svg/158453.svg"
                                             alt="사람모양 이미지"
@@ -62,6 +74,7 @@
                     </div>
                 </div>
             </header>
+            <!-- 헤더 영역 종료 -->
 
             <main id="main" role="main">
                 <div class="container">
@@ -122,113 +135,122 @@
                             </div>
                         </div>
 
-                        <div class="delievery">
-                            <div class="box-header">
-                                <h3>배송 정보</h3>
-                                <i
-                                    class="fa fa-chevron-down"
-                                    aria-hidden="true"
-                                ></i>
-                            </div>
-                            <div class="delivery-detail box">
-                                <div class="name default">
-                                    <p>받는사람<span> *</span></p>
+                        <form action="http://localhost:5500/orders" id="form" method="post">
+                            <div class="delievery">
+                                <div class="box-header">
+                                    <h3>배송 정보</h3>
+                                    <i
+                                        class="fa fa-chevron-down"
+                                        aria-hidden="true"
+                                    ></i>
                                 </div>
-                                <div class="name-field field">
-                                    <input
-                                        id="name"
-                                        class="essential"
-                                        type="text"
-                                        name="name"
-                                    />
-                                </div>
-                                <div class="address default">
-                                    <p>주소<span> *</span></p>
-                                </div>
-                                <div class="address-field field">
-                                    <div class="zipcode-input">
+                                <div class="delivery-detail box">
+                                    <div class="name default">
+                                        <p>받는사람<span> *</span></p>
+                                    </div>
+                                    <div class="name-field field">
                                         <input
-                                            id="postcode"
+                                            id="name"
                                             class="essential"
                                             type="text"
-                                            placeholder="우편번호"
+                                            name="username"
                                         />
-                                        <button id="search-btn">
-                                            주소검색
-                                        </button>
                                     </div>
-                                    <input
-                                        id="address"
-                                        class="essential"
-                                        type="text"
-                                        placeholder="주소"
-                                    />
-                                    <input
-                                        id="detailAddress"
-                                        class="essential"
-                                        type="text"
-                                        placeholder="상세 주소"
-                                        name="address2"
-                                    />
-                                    <input
-                                        id="extraAddress"
-                                        type="text"
-                                        placeholder="참고 항목"
-                                    />
-                                </div>
-                                <div class="phone-num default">
-                                    <p>휴대전화<span> *</span></p>
-                                </div>
-                                <div class="phone-num-field field">
-                                    <input
-                                        type="tel"
-                                        id="phone-num"
-                                        class="essential"
-                                        name="phone-num"
-                                        maxlength="13"
-                                    />
-                                </div>
-                                <div class="message default">
-                                    <p>배송메세지</p>
-                                </div>
-                                <div class="message-field field">
-                                    <select name="message" id="message">
-                                        <option value="">
-                                            --메시지 선택 (선택사항)
-                                        </option>
-                                        <option value="">
-                                            배송 전에 미리 연락 바랍니다.
-                                        </option>
-                                        <option value="">
-                                            부재 시 경비실에 맡겨주세요.
-                                        </option>
-                                        <option value="">
-                                            부재 시 문 앞에 놓아주세요.
-                                        </option>
-                                        <option value="">
-                                            택배함에 보관해주세요.
-                                        </option>
-                                    </select>
+                                    <div class="address default">
+                                        <p>주소<span> *</span></p>
+                                    </div>
+                                    <div class="address-field field">
+                                        <div class="postcode-input">
+                                            <input
+                                                id="postcode"
+                                                class="essential"
+                                                type="text"
+                                                name="postcode"
+                                                placeholder="우편번호"
+                                            />
+                                            <button
+                                                type="button"
+                                                id="search-btn"
+                                            >
+                                                주소검색
+                                            </button>
+                                        </div>
+                                        <input
+                                            id="address1"
+                                            class="essential"
+                                            type="text"
+                                            name="address1"
+                                            placeholder="주소"
+                                        />
+                                        <input
+                                            id="address2"
+                                            class="essential"
+                                            type="text"
+                                            name="address2"
+                                            placeholder="상세 주소"
+                                        />
+                                        <input
+                                            id="extraAddress"
+                                            type="text"
+                                            placeholder="참고 항목"
+                                        />
+                                    </div>
+                                    <div class="phone-num default">
+                                        <p>휴대전화<span> *</span></p>
+                                    </div>
+                                    <div class="phone-num-field field">
+                                        <input
+                                            type="tel"
+                                            id="phone-num"
+                                            class="essential"
+                                            name="phone-num"
+                                            maxlength="13"
+                                        />
+                                    </div>
+                                    <div class="message default">
+                                        <p>배송메세지</p>
+                                    </div>
+                                    <div class="message-field field">
+                                        <select name="message" id="message">
+                                            <option value="">
+                                                --메시지 선택 (선택사항)
+                                            </option>
+                                            <option value="message1">
+                                                배송 전에 미리 연락 바랍니다.
+                                            </option>
+                                            <option value="message2">
+                                                부재 시 경비실에 맡겨주세요.
+                                            </option>
+                                            <option value="message3">
+                                                부재 시 문 앞에 놓아주세요.
+                                            </option>
+                                            <option value="message4">
+                                                택배함에 보관해주세요.
+                                            </option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="agreement">
-                            <h3>구매 동의</h3>
-                            <input
-                                type="checkbox"
-                                name="purchase-agree"
-                                id="check-btn"
-                            />
-                            <label for="check-btn"
-                                ><span
-                                    >상품, 가격, 유의 사항 등을 확인하였으며
-                                    구매에 동의합니다.</span
-                                ></label
-                            >
-                        </div>
-                        <div>
-                            <button class="purchase-btn">결제하기</button>
-                        </div>
+                            <div class="agreement">
+                                <h3>구매 동의</h3>
+                                <input
+                                    type="checkbox"
+                                    name="purchase-agree"
+                                    id="check-btn"
+                                />
+                                <label for="check-btn"
+                                    ><span
+                                        >상품, 가격, 유의 사항 등을 확인하였으며
+                                        구매에 동의합니다.</span
+                                    ></label
+                                >
+                            </div>
+                            <div>
+                                <button type="submit" class="purchase-btn">
+                                    결제하기
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </main>
@@ -263,7 +285,12 @@
                 </div>
             </footer>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/isLogin.js"></script>
+        <script src="../api/logout.js"></script>
         <script src="../js/order.js"></script>
+        <script src="../api/mypage.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="../api/address.js"></script>
     </body>
