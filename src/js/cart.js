@@ -62,7 +62,7 @@ class Cart extends CartSection {
                         />
                     </div>
                     <img
-                        src=${item.url}
+                        src=${item.imgUrl}
                         alt=""
                         class="cart-section-item-img"
                     />
@@ -71,7 +71,7 @@ class Cart extends CartSection {
                             ${item.title}
                         </div>
                         <div class="cart-section-item-author">
-                            ${item.authors}
+                            ${item.author}
                         </div>
                         <div class="cart-section-item-btns">
                             <button
