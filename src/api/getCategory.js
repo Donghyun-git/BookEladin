@@ -12,7 +12,7 @@ const getCategoriesForUser = async () => {
         withCredentials: true,
     };
 
-    const uri = "http://localhost:5500/products/categoryList";
+    const uri = "http://localhost:5500/products/categories";
     const Category = await axios.get(uri, header);
 
     const { data } = Category.data;
