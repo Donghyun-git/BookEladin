@@ -38,6 +38,8 @@ const fetchProducts = async () => {
 
 // 전체 상품 불러오기.
 
-fetchProducts().then((productsList) => {
-    localStorage.setItem('productsList', JSON.stringify(productsList));
-});
+// fetchProducts().then((productsList) => {
+//     localStorage.setItem('productsList', JSON.stringify(productsList));
+// });
+
+export { fetchProducts };

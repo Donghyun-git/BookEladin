@@ -1,14 +1,15 @@
-const bestSellerArea = document.querySelector(".best-products");
-const newArea = document.querySelector(".new-products");
-const recommendArea = document.querySelector(".recommend-products");
+const bestSellerArea = document.querySelector('.best-products');
+const newArea = document.querySelector('.new-products');
+const recommendArea = document.querySelector('.recommend-products');
+import { fetchProducts } from './api/getProducts.js';
 
-const productsList = JSON.parse(localStorage.getItem("productsList"));
+const productsList = await fetchProducts();
 console.log(productsList);
 
 //초기값을 ""으로 할당해주지 않으면 undefined로 초기화되어 출력됨!
-let bestProductsHtml = "";
-let RecommendProductsHtml = "";
-let newProductsHtml = "";
+let bestProductsHtml = '';
+let RecommendProductsHtml = '';
+let newProductsHtml = '';
 
 //slice로 10개만 가져옴
 let bestproducts = productsList
@@ -22,7 +23,7 @@ let RecommendProducts = productsList
     .slice(20, 30);
 
 function addProductList(productsType, typeArea) {
-    let newHtml = "";
+    let newHtml = '';
     productsType.forEach((products) => {
         const {
             author,
@@ -54,30 +55,29 @@ function addProductList(productsType, typeArea) {
 }
 
 // bestSellerArea.innerHTML = bestProductsHtml;
-
 addProductList(bestproducts, bestSellerArea);
 addProductList(newProducts, newArea);
 addProductList(RecommendProducts, recommendArea);
 
 let currentIdx = [0, 0, 0];
 
-const chevronRightBtn = document.querySelectorAll(".fa-chevron-circle-right");
+const chevronRightBtn = document.querySelectorAll('.fa-chevron-circle-right');
 chevronRightBtn.forEach((button, idx) => {
-    button.addEventListener("click", function () {
-        let slides = button.parentElement.querySelector(".slides");
+    button.addEventListener('click', function () {
+        let slides = button.parentElement.querySelector('.slides');
 
         if (currentIdx[idx] === 0) {
             console.log(currentIdx);
-            slides.style.left = -950 + "px";
+            slides.style.left = -950 + 'px';
             currentIdx[idx] += 1;
         }
     });
 });
 
-const chevronLeftBtn = document.querySelectorAll(".fa-chevron-circle-left");
+const chevronLeftBtn = document.querySelectorAll('.fa-chevron-circle-left');
 chevronLeftBtn.forEach((button, idx) => {
-    button.addEventListener("click", function () {
-        let slides = button.parentElement.querySelector(".slides");
+    button.addEventListener('click', function () {
+        let slides = button.parentElement.querySelector('.slides');
 
         if (currentIdx[idx] === 1) {
             console.log(currentIdx);

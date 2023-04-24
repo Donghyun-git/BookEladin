@@ -1,11 +1,11 @@
-import IDB from "./indexedDB.js";
-import API from "../api/rest.js";
+import IDB from './indexedDB.js';
+import API from '../api/rest.js';
 
-const nav = document.querySelector(".nav-side-category-bar");
-const ul = document.querySelector(".category-book-list");
-const title = document.querySelector(".category-book-title");
+const nav = document.querySelector('.nav-side-category-bar');
+const ul = document.querySelector('.category-book-list');
+const title = document.querySelector('.category-book-title');
 
-let query = "경영/경제";
+let query = '경영/경제';
 
 class Category {
     target;
@@ -17,13 +17,13 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get("http://localhost:5500/products/categories");
+        this.state = await API.get('http://localhost:5500/books/categories');
     }
 
     async template() {
         await this.setState();
         const categoryList = this.state;
-        let template = "";
+        let template = '';
         await categoryList.data.map((category) => {
             template += `
                 <div class="nav-side-category-link">
@@ -36,8 +36,8 @@ class Category {
     }
 
     async addEvent() {
-        this.target.addEventListener("click", (e) => {
-            if (e.target.classList.contains("nav-side-category-link")) {
+        this.target.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-side-category-link')) {
                 title.innerText = e.target.innerText;
                 query = title.textContent;
                 book.render();
@@ -64,8 +64,8 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = "http://localhost:5500/products/categories";
-        const accessToken = localStorage.getItem("accessToken");
+        const uri = 'http://localhost:5500/books/products';
+        const accessToken = localStorage.getItem('accessToken');
         const header = {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -80,7 +80,7 @@ class Book {
         await this.setState();
         const bookList = this.state;
 
-        let template = "";
+        let template = '';
 
         await bookList.data.data.map((book, i) => {
             template += `
@@ -131,18 +131,18 @@ class Book {
                         </button>
                     </div>
                 </li>
-             `;
+            `;
         });
         return template;
     }
 
     async addEvent() {
-        this.target.addEventListener("click", (e) => {
+        this.target.addEventListener('click', (e) => {
             console.log(e.target);
             console.log(this.state);
-            if (e.target.classList.contains("add-cart")) {
+            if (e.target.classList.contains('add-cart')) {
                 const { title, author, price, imgUrl } =
-                    this.state.data[e.target.dataset.index];
+                    this.state.data.data[e.target.dataset.index];
                 this.addIdxDB(title, author, price, imgUrl);
             }
         });
