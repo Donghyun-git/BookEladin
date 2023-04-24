@@ -25,8 +25,11 @@ signupButton.addEventListener('click', async () => {
             window.alert(`${res.data.message}`);
             window.location.href = './login.html';
         })
-        .catch((error) => {
-            console.error(error);
-            window.alert(`${error.response.message}`);
+        .catch((err) => {
+            if(err.response.data.message){
+                window.alert(`${err.response.data.message}`);
+            } else {
+                window.alert("회원가입에 실패했습니다!");
+            }
         });
 });

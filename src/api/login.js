@@ -22,10 +22,15 @@ loginButton.addEventListener('click', async () => {
         const { accessToken, refreshToken } = data.data;
         localStorage.setItem("userData", JSON.stringify(data.data));
         localStorage.setItem("accessToken", accessToken);
-        localStorage.setItem("refreshToken", refreshToken); // 쿠키로 수정 예정
+        localStorage.setItem("refreshToken", refreshToken);
+        console.log(data);
         window.alert(`${data.message}`);
         window.location.href = '../index.html';
     } catch (err) {
-        window.alert(`${err.response.data.message}`);
+        if(err.response.data.message){
+            window.alert(`${err.response.data.message}`);
+        } else {
+            window.alert('로그인에 실패했습니다!');
+        }
     }
 });
