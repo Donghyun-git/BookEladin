@@ -9,18 +9,18 @@ if (
         const header = {
             headers: {
                 Authorization: `Bearer ${token}`,
-            }, 
+            },
             withCredentials: true,
         };
 
         try {
             const uri = "http://localhost:5500/auth/logout";
-            const logoutResponse = await axios.delete(uri, header); 
+            const logoutResponse = await axios.delete(uri, header);
             const logoutMessage = logoutResponse.data;
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
-            localStorage.removeItem("userData");
             localStorage.removeItem("myData");
+            localStorage.removeItem("userData");
             window.alert(`${logoutMessage.message}`);
             window.location.href = "../index.html";
         } catch (err) {
