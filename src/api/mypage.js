@@ -13,7 +13,6 @@ myPage.addEventListener("click", async (e) => {
         try {
             const userData = JSON.parse(localStorage.getItem('userData'));
             const userId = userData.userId;
-            document.cookie = `refreshToken=${refreshToken}; SameSite=None; secure;`;
             const header = {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
