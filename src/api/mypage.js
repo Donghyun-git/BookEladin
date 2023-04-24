@@ -24,7 +24,7 @@ myPage.addEventListener("click", async (e) => {
 
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;
-            localStorage.setItem("myData", JSON.stringify(myPageData));
+            localStorage.setItem("myData", JSON.stringify(myPageData.data));
             window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
