@@ -18,19 +18,6 @@ signupButton.addEventListener("click", async () => {
     const regul1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/;
     const regul2 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-    const uri = "http://localhost:5500/auth/signup";
-    const userData = {
-        userId: id,
-        password: password,
-        userName: userName,
-        email: email,
-    };
-    const header = {
-        headers: {
-            "Content-type": "application/json",
-        },
-    };
-
     if (id === "") {
         setErrorFor(idInput, "아이디를 입력하세요.");
     } else if (password === "") {
@@ -48,6 +35,19 @@ signupButton.addEventListener("click", async () => {
     } else if (!regul2.test(email)) {
         setErrorFor(emailInput, "이메일 주소를 다시 확인해주세요");
     } else {
+        const uri = "http://localhost:5500/auth/signup";
+        const userData = {
+            userId: id,
+            password: password,
+            userName: userName,
+            email: email,
+        };
+        const header = {
+            headers: {
+                "Content-type": "application/json",
+            },
+        };
+
         await axios
             .post(uri, userData, header)
             .then((res) => {
