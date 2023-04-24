@@ -71,3 +71,32 @@ function getIDB(key) {
         };
     });
 };
+
+// 전체 데이터 조회
+function getAllIDB() {
+    return new Promise((resolve, reject) => {
+
+        const request = IDB.open(cart);
+        let data;
+        request.onerror = (e) => {
+            console.log(e.target.errorCode);
+        }
+        request.onsuccess = (e) => {
+            const db = request.result;
+            const transaction = db.transaction('Book');
+            
+            transaction.onerror = (e) => {
+                console.log('fail');
+            }
+            transaction.oncomplete = (e) => {
+                console.log('success');
+            }
+            
+            const objStore = transaction.objectStore('Book');
+            const cursorRequest = objStore.getAll();
+            cursorRequest.onsuccess = async (e) => {
+                resolve(e.target.result);
+            };
+        };
+    });
+};
