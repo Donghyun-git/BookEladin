@@ -1,15 +1,15 @@
-import IDB from './indexedDB.js';
-import API from '../api/rest.js';
+import IDB from "./indexedDB.js";
+import API from "../api/rest.js";
 
-const nav = document.querySelector('.nav-side-category-bar');
-const ul = document.querySelector('.category-book-list');
-const title = document.querySelector('.category-book-title');
+const nav = document.querySelector(".nav-side-category-bar");
+const ul = document.querySelector(".category-book-list");
+const title = document.querySelector(".category-book-title");
 
-let query = '소설';
+let query = "경영\/경제";
 
 class Category {
-    target
-    state
+    target;
+    state;
 
     constructor(target) {
         this.target = target;
@@ -17,46 +17,45 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get('http://localhost:3000/category');
+        this.state = await API.get("http://localhost:5500/products/categories");
     }
 
     async template() {
         await this.setState();
         const categoryList = this.state;
-        
-        let template = '';
-        await categoryList.map((category) => {
+        let template = "";
+        await categoryList.data.map((category) => {
             template += `
                 <div class="nav-side-category-link">
-                    ${category.category}
+                    ${category}
                 </div>
-            `
+            `;
         });
 
         return template;
     }
 
     async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            if(e.target.classList.contains('nav-side-category-link')) {
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("nav-side-category-link")) {
                 title.innerText = e.target.innerText;
-                query = e.target.innerText;
+                query = title.textContent;
                 book.render();
-            };
+            }
         });
-    };
+    }
 
     async render() {
         const template = await this.template();
-        
+
         this.target.innerHTML = template;
         this.addEvent();
-    };
-};
+    }
+}
 
 class Book {
-    target
-    state
+    target;
+    state;
 
     constructor(target) {
         this.target = target;
@@ -64,21 +63,30 @@ class Book {
     }
 
     async setState() {
-        this.state = await API.getQuery('http://localhost:3000/documents', query);
+        const uri = "http://localhost:5500/products/categories";
+        const accessToken = localStorage.getItem("accessToken");
+        const header = {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            withCrenditials: true,
+        };
+        this.state = await axios.get(`${uri}/${query}`, header);
+        console.log(this.state);
     }
 
     async template() {
         await this.setState();
         const bookList = this.state;
-        
-        let template = '';
-        await bookList.map((book, i) => {
+
+        let template = "";
+        await bookList.data.map((book, i) => {
             template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
                         <div class="category-book-img-link">
                             <img
-                                src=${book.url}
+                                src=${book.imgUrl}
                                 alt=""
                                 class="category-book-img"
                             />
@@ -94,7 +102,7 @@ class Book {
                         </h3>
                         <div class="category-book-item-output">
                             <div class="category-book-item-author">
-                                ${book.authors}
+                                ${book.author}
                             </div>
                             <div
                                 class="category-book-item-publisher"
@@ -103,7 +111,7 @@ class Book {
                             </div>
                         </div>
                         <p class="category-book-item-describe">
-                            ${book.contents}
+                            ${book.introduction}
                         </p>
                         <p class="category-book-item-price">
                             구매
@@ -111,7 +119,7 @@ class Book {
                         </p>
                     </div>
                     <div class="book-btn">
-                        <button class="add-cart" value=${i}>
+                        <button class="add-cart" data-index="${i}">
                             카트에 담기
                         </button>
                         <button class="order-book">
@@ -119,32 +127,36 @@ class Book {
                         </button>
                     </div>
                 </li>
-             `
-        })
+             `;
+        });
         return template;
     }
 
     async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('add-cart')) {
-                const { title, authors, price, url } = this.state[e.target.getAttribute('value')];
-                
-                this.addIdxDB(title, authors, price, url);
+        this.target.addEventListener("click", (e) => {
+            console.log(e.target);
+            console.log(this.state);
+            if (e.target.classList.contains("add-cart")) {
+                const { title, author, price, imgUrl } =
+                    this.state.data[e.target.dataset.index];
+                this.addIdxDB(title, author, price, imgUrl);
             }
-        })
+        });
     }
 
     async render() {
         const template = await this.template();
 
         this.target.innerHTML = template;
-    };
+    }
 
-    async addIdxDB(title, authors, price, url) {
-        const book = [{ title: title, authors: authors, price: price, url: url }];
+    async addIdxDB(title, author, price, imgUrl) {
+        const book = [
+            { title: title, author: author, price: price, imgUrl: imgUrl },
+        ];
         IDB.addIDB(book);
-    };
-};
+    }
+}
 
 const category = new Category(nav);
 category.render();
@@ -152,6 +164,3 @@ category.render();
 const book = new Book(ul);
 book.render();
 book.addEvent();
-
-
-
