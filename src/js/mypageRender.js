@@ -4,5 +4,5 @@ const myData = JSON.parse(localStorage.getItem('myData'));
 const userName = document.querySelector('.user-name');
 const userEmail = document.querySelector('.email');
 
-userName.innerHTML = `${myData.data.userName}`;
-userEmail.innerHTML = `${myData.data.email}`;
+userName.innerHTML = `${myData.userName}`;
+userEmail.innerHTML = `${myData.email}`;
