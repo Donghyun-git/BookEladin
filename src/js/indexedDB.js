@@ -15,3 +15,29 @@ else {
         request.onsuccess = (e) => db = request.result; 
     }
 }
+
+// 데이터 추가
+function addIDB(books) {
+    const request = IDB.open(cart);
+
+    request.onerror = (e) => {
+      alert('DataBase error', e.target.errorCode);
+    }
+    request.onsuccess = (e) => {
+        const db = request.result;
+        const transaction = db.transaction(['Book'], 'readwrite');  
+    
+        transaction.oncomplete = (e) => {
+            console.log('success');
+        }
+        transaction.onerror = (e) => {
+            console.log('fail');
+        }
+        
+        const objStore = transaction.objectStore('Book');
+        for (const book of books) {
+            const request = objStore.add(book);   
+            request.onsuccess = (e) => console.log(e.target.result);
+        };
+    };
+};
