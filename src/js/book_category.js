@@ -81,7 +81,6 @@ class Book {
                                 src=${book.url}
                                 alt=""
                                 class="category-book-img"
-                                value=${i}
                             />
                         </div>
                     </div>
@@ -103,13 +102,21 @@ class Book {
                                 ${book.publisher}
                             </div>
                         </div>
-                    <p class="category-book-item-describe">
-                        ${book.contents}
+                        <p class="category-book-item-describe">
+                            ${book.contents}
                         </p>
                         <p class="category-book-item-price">
                             구매
                             <span>${book.price}원</span>
                         </p>
+                    </div>
+                    <div class="book-btn">
+                        <button class="add-cart" value=${i}>
+                            카트에 담기
+                        </button>
+                        <button class="order-book">
+                            바로 구매
+                        </button>
                     </div>
                 </li>
              `
@@ -119,7 +126,7 @@ class Book {
 
     async addEvent() {
         this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('category-book-img')) {
+            if (e.target.classList.contains('add-cart')) {
                 const { title, authors, price, url } = this.state[e.target.getAttribute('value')];
                 
                 this.addIdxDB(title, authors, price, url);
