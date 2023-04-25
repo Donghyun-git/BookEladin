@@ -281,15 +281,15 @@ h3 {
     margin-bottom: 10px;
 }
 
-.delivery-detail .zipcode-input {
+.delivery-detail .postcode-input {
     display: flex;
 }
 
-.delivery-detail .zipcode-input > input {
+.delivery-detail .postcode-input > input {
     width: 180px;
 }
 
-.delivery-detail .zipcode-input > button {
+.delivery-detail .postcode-input > button {
     width: 120px;
 }
 

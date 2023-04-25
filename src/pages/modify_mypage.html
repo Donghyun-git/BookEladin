@@ -5,6 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link
             rel="stylesheet"
@@ -20,17 +26,22 @@
                     <div class="header-top-bar">
                         <ul class="header-top-list">
                             <li class="header-top-item">
-                                <a href="#" class="join">회원가입</a>
+                                <a href="./signup.html" class="join"
+                                    >회원가입</a
+                                >
                             </li>
                             <li class="header-top-item">
-                                <a href="#" class="login">로그인</a>
+                                <a href="./login.html" class="login">로그인</a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-title">
                         <nav class="header-title-nav">
                             <div class="header-title-logo">
-                                <a href="#" class="header-title-link">
+                                <a
+                                    href="../index.html"
+                                    class="header-title-link"
+                                >
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
@@ -46,7 +57,10 @@
                             </form>
                             <div class="header-title-info">
                                 <div class="header-info-item">
-                                    <a href="#" class="header-info-basket">
+                                    <a
+                                        href="./cart.html"
+                                        class="header-info-basket"
+                                    >
                                         <img
                                             src="https://svgsilh.com/svg/371980.svg"
                                             alt="장바구니 이미지"
@@ -55,7 +69,10 @@
                                     </a>
                                 </div>
                                 <div class="header-info-item">
-                                    <a href="#" class="header-info-my">
+                                    <a
+                                        href="./mypage.html"
+                                        class="header-info-my"
+                                    >
                                         <img
                                             src="https://svgsilh.com/svg/158453.svg"
                                             alt="사람모양 이미지"
@@ -73,7 +90,7 @@
             <main id="main" role="main">
                 <div class="container">
                     <div class="row">
-                        <a href="#"
+                        <a href="./mypage.html"
                             ><li class="header-text">
                                 <span>마이페이지</span>
                             </li></a
@@ -84,35 +101,45 @@
                                 <p>이름</p>
                             </div>
                             <div class="name-field field">
-                                <p>홍길동</p>
+                                <input
+                                    type="text"
+                                    class="change-username"
+                                    name="username"
+                                />
                             </div>
                             <div class="id default">
                                 <p>아이디</p>
                             </div>
                             <div class="id-field field">
-                                <p>eladin</p>
+                                <input
+                                    type="text"
+                                    class="change-userid"
+                                    name="userid"
+                                    disabled
+                                />
                             </div>
                             <div class="email default">
                                 <p>이메일</p>
                             </div>
                             <div class="email-field field">
-                                <p class="user-email">eladin@gmail.com</p>
-                                <button class="change-email">
-                                    이메일 변경
-                                </button>
+                                <input
+                                    type="email"
+                                    class="change-email"
+                                    name="email"
+                                />
                             </div>
                             <div class="password default">
                                 <p>비밀번호 변경</p>
                             </div>
                             <div class="password-field field">
-                                <form id="password-form">
-                                    <input
+                                <div id="password-form">
+                                    <!-- <input
                                         id="current-password"
                                         type="password"
                                         placeholder="현재 비밀번호"
                                         value=""
                                         name="currentpsw"
-                                    />
+                                    /> -->
                                     <input
                                         id="new-password"
                                         type="password"
@@ -139,10 +166,10 @@
                                             없습니다.
                                         </li>
                                     </ul>
-                                    <button class="change-password">
-                                        비밀번호 변경
+                                    <button class="change-user-info">
+                                        회원 정보 수정
                                     </button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -179,6 +206,12 @@
                 </div>
             </footer>
         </div>
-        <script src="../js/modify_mypage.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/isLogin.js"></script>
+        <script src="../api/logout.js"></script>
+        <script src="../api/mypage.js"></script>
+        <script src="../api/modify_mypage.js"></script>
+        <script src="../js/myeditRender.js"></script>
     </body>
 </html>
