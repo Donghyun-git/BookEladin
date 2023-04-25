@@ -51,7 +51,7 @@ const updateUserInfo = async () => {
                 password: password.value,
                 email: email.value,
             };
-            const uri = "http://34.64.105.163/auth/me";
+            const uri = "http://localhost:5500/auth/me";
 
             const updateResponse = await axios.patch(uri, body, header);
             const updateMessage = await updateResponse.data.message;
