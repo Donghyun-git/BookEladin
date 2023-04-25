@@ -84,6 +84,8 @@ class Book {
         let template = "";
 
         await bookList.data.data.map((book, i) => {
+            //원화 단위로 변환
+            const formattedPrice = book.price.toLocaleString() + "원";
             template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
@@ -120,7 +122,7 @@ class Book {
                         </p>
                         <p class="category-book-item-price">
                             구매
-                            <span>${book.price}원</span>
+                            <span>${formattedPrice}</span>
                         </p>
                     </div>
                     <div class="book-btn">
@@ -144,13 +146,21 @@ class Book {
                 const { title, author, price, imgUrl } =
                     categoriesData[e.target.dataset.index];
                 this.addIdxDB(title, author, price, imgUrl);
-            } 
+            }
             if (e.target.classList.contains("category-book-img")) {
                 const foundData = categoriesData.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
-                const { title, author, price, imgUrl, introduction, publisher, productId } = foundData;
-                
+                const {
+                    title,
+                    author,
+                    price,
+                    imgUrl,
+                    introduction,
+                    publisher,
+                    productId,
+                } = foundData;
+
                 const detailData = {
                     productId: productId,
                     title: title,
@@ -158,13 +168,12 @@ class Book {
                     price: price,
                     imgUrl: imgUrl,
                     introduction: introduction,
-                    publisher: publisher
-                }
+                    publisher: publisher,
+                };
 
-                localStorage.setItem('detail', JSON.stringify(detailData));
+                localStorage.setItem("detail", JSON.stringify(detailData));
             }
         });
-        
     }
 
     async render() {
