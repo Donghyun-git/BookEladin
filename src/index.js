@@ -93,3 +93,30 @@ chevronLeftBtn.forEach((button, idx) => {
         }
     });
 });
+
+//자동 스크롤 버튼
+const scrollToTopBtn = document.querySelector(".scroll-to-top");
+const top = document.documentElement.scrollTop;
+
+//버튼 클릭 시 스무스하게 스크롤
+function scrollToTop() {
+    if (top > 0) {
+        document.body.scrollIntoView({ behavior: "smooth" });
+    }
+}
+//현 스크롤 위치 파악하고 버튼 노출 조절
+function checkScroll() {
+    const scrollTop = document.documentElement.scrollTop;
+
+    if (scrollTop > 0) {
+        scrollToTopBtn.style.display = "flex";
+        scrollToTopBtn.style.opacity = 1;
+    } else {
+        scrollToTopBtn.style.opacity = 0;
+        setTimeout(() => {
+            scrollToTopBtn.style.display = "none";
+        }, 700);
+    }
+}
+scrollToTopBtn.addEventListener("click", scrollToTop);
+window.addEventListener("scroll", checkScroll);
