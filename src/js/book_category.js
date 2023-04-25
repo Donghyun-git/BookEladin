@@ -64,8 +64,8 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = 'http://localhost:5500/books/products';
-        const accessToken = localStorage.getItem('accessToken');
+        const uri = "http://localhost:5500/books/categories";
+        const accessToken = localStorage.getItem("accessToken");
         const header = {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
