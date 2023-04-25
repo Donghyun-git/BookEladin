@@ -261,11 +261,11 @@
 } */
 
 /*오늘의 책*/
-.introduction {
+.introduction-corner {
     margin: 50px auto;
 }
 
-.introduction > h2 {
+.introduction-corner > h2 {
     text-align: start;
     padding: 20px;
     font-size: 30px;
