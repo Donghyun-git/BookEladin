@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eladin</title>
+        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/mypage.css" />
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="../css/category.css">
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
+        />
+    </head>
+    <body>
+        <!-- 상품 등록 모달 -->
+        <div class="update_modal">
+                <div class="modal-container">
+                    <div class="row">
+                        <div class="modal-title">
+                            <h2>상품 등록</h2>
+                        </div>
+
+                        <div class="modal-cont">
+                            <div>
+                                <label for="title">제목</label>
+                                <input type="text" class="update-title" name="title" />
+                            </div>
+                            <div>
+                                <label for="author">저자</label>
+                                <input type="text" class="update-author" name="author" />
+                            </div>
+                            <div>
+                                <label for="price">판매가</label>
+                                <input type="text" class="update-price" name="price" />
+                            </div>
+                            <div>
+                                <label for="category">카테고리</label>
+                                <select name="categorylist" class="update-categorylist">
+                                    
+                                </select>
+                                
+                            </div>
+                            <div>
+                                <label for="img">이미지</label>
+                                <input type="text" class="update-img" name="img" />
+                            </div>
+                            <div>
+                                <label for="publisher">출판사</label>
+                                <input type="text" class="update-publisher" name="publisher" />
+                            </div>
+                            <div>
+                                <label for="info">소개</label>
+                                <textarea
+                                    name="info"
+                                    class="update-intro"
+                                    id="modal-book-info"
+                                    cols="30"
+                                    rows="10"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="modal-button">
+                            <button class="update-modal-close">취소</button>
+                            <button class="add-product-complete">완료</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- //상품 등록 모달-->
+
+        <!--상품 수정 모달-->
+
+        <div class="fix_modal">
+                <div class="modal-container">
+                    <div class="row">
+                        <div class="modal-title">
+                            <h2>상품 수정</h2>
+                        </div>
+
+                        <div class="modal-cont">
+                            <div>
+                                <label for="title">제목</label>
+                                <input type="text" class="fix-title" name="title" />
+                            </div>
+                            <div>
+                                <label for="author">저자</label>
+                                <input type="text" class="fix-author" name="author" />
+                            </div>
+                            <div>
+                                <label for="price">판매가</label>
+                                <input type="text" class="fix-price" name="price" />
+                            </div>
+                            <div>
+                                <label for="category">카테고리</label>
+                                <select name="categorylist" class="fix-categorylist">
+                                    
+                                </select>
+                                
+                            </div>
+                            <div>
+                                <label for="img">이미지</label>
+                                <input type="text" class="fix-img" name="img" />
+                            </div>
+                            <div>
+                                <label for="publisher">출판사</label>
+                                <input type="text" class="fix-publisher" name="publisher" />
+                            </div>
+                            <div>
+                                <label for="info">소개</label>
+                                <textarea
+                                    name="info"
+                                    class="fix-intro"
+                                    id="modal-book-info"
+                                    cols="30"
+                                    rows="10"
+                                ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="modal-button">
+                            <button class="fix-modal-close">취소</button>
+                            <button class="fix-product-complete">완료</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- //상품 수정 모달-->
+
+
+        <div id="wrap">
+            <!-- 헤더 영역 시작 -->
+            <header class="header">
+                <div class="header-container container">
+                    <div class="header-top-bar">
+                        <ul class="header-top-list">
+                            <li class="header-top-item">
+                                <a href="./signup.html" class="join"
+                                    >회원가입</a
+                                >
+                            </li>
+                            <li class="header-top-item">
+                                <a href="./login.html" class="login">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-title">
+                        <nav class="header-title-nav">
+                            <div class="header-title-logo">
+                                <a
+                                    href="../index.html"
+                                    class="header-title-link"
+                                >
+                                    <div class="header-title-name">Eladin</div>
+                                </a>
+                            </div>
+                            
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!-- 헤더 영역 종료 -->
+
+            <main id="main" role="main">
+                <div class="container">
+                    <div class="row">
+                        <h2 class="header-text">관리자</h2>
+                        <section class="main-profile">
+                            <div class="main-avata">
+                                <img
+                                    width="133px"
+                                    height="133px"
+                                    src="../img/eladin_genie.png"
+                                    alt="eladin_genie"
+                                />
+                            </div>
+                            <div class="main-aboutUser">
+                                <div class="top">
+                                    <h3 class="user-name">홍길동</h3>
+                                </div>
+                                <p class="email">eladin@gmail.com</p>
+                            </div>
+                        </section>
+                        <div class="main-product-list">
+                            <div>
+                                <h2 class="header-text-product">상품 관리</h2>
+                                <button class="add-product-button">상품 등록</button>  
+                            </div>
+                            
+                             <section id="category">
+                                <div class="category container">
+                                    <div class="row mt30">
+                                        <ul class="category-book-list">
+                                               
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" style="border: none">
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <ul>
+                                <li><a href="#">사이트 도움말</a></li>
+                                <li><a href="#">사이트 이용약관</a></li>
+                                <li><a href="#">사이트 운영원칙</a></li>
+                                <li>
+                                    <a href="#"
+                                        ><strong>개인정보취급방침</strong></a
+                                    >
+                                </li>
+                                <li><a href="#">책임의 한계와 법적고지</a></li>
+                                <li><a href="#">게시중단요청서비스</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                            <address>
+                                Copyright ©
+                                <a href="#"
+                                    ><strong style="letter-spacing: 0.2em"
+                                        >Eladin</strong
+                                    ></a
+                                >
+                                All Rights Reserved.
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script>
+            
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/isLogin.js"></script>
+        <script src="../api/logout.js"></script>
+        <script src="../api/admin/products.js"></script>
+    </body>
+</html>
