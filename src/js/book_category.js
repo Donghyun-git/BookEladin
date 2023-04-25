@@ -17,7 +17,7 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get("http://34.64.105.163/books/categories");
+        this.state = await API.get("http://34.64.105.163:80/books/categories");
     }
 
     async template() {
@@ -64,7 +64,7 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = "http://34.64.105.163/books/categories";
+        const uri = "http://34.64.105.163:80/books/categories";
         const accessToken = localStorage.getItem("accessToken");
         const header = {
             headers: {

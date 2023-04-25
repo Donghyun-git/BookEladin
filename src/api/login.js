@@ -3,7 +3,7 @@ const loginButton = document.querySelector('#login_btn');
 const logIn = async () => {
     const id = document.querySelector('#id').value;
     const password = document.querySelector('#password').value;
-    const uri = 'http://34.64.105.163/auth/login';
+    const uri = 'http://34.64.105.163:80/auth/login';
     const loginData = {
         userId: id,
         password: password,

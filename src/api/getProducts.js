@@ -8,7 +8,7 @@ const getProductsForUser = async () => {
     };
 
     const Products = await axios.get(
-        'http://34.64.105.163/books/products',
+        'http://34.64.105.163:80/books/products',
         header
     );
 
@@ -20,7 +20,7 @@ const getProductsForUser = async () => {
 // [사용자] 상품 목록 - 전체 책 조회 (로그인 안한 사용자나 비회원)
 // const getProductsForGuestUser = async () => {
 
-//     const Products = await axios.get("http://34.64.105.163/books/products");
+//     const Products = await axios.get("http://34.64.105.163:80/books/products");
 //     const { data } = Products.data;
 
 //     return data;

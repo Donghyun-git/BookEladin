@@ -5,7 +5,7 @@ const detailData = JSON.parse(localStorage.getItem('detail'));
 const { productId } = detailData;
 
 const getProductByProductId = async () => {
-    const uri = `http://34.64.105.163/books//products/${productId}`;
+    const uri = `http://34.64.105.163:80/books//products/${productId}`;
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
