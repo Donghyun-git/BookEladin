@@ -196,7 +196,7 @@
     border-radius: 10px;
 }
 
-.select-category-section {
+/* .select-category-section {
     margin-top: 100px;
 }
 
@@ -258,8 +258,61 @@
     overflow: visible;
     font-weight: 700;
     font-size: 14px;
+} */
+
+/*오늘의 책*/
+.introduction {
+    margin: 50px 0;
 }
 
+.introduction > h2 {
+    text-align: start;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.introduction-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.introduction-content > img {
+    width: 229px;
+    height: 337px;
+    filter: drop-shadow(0 0 4px grey);
+}
+
+.introduction-detail {
+    text-align: start;
+    padding: 0 50px 0 100px;
+}
+
+.introduction-detail p {
+    padding-bottom: 15px;
+}
+
+.introduction-detail > .title {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.introduction-detail > .author {
+    color: #787878;
+}
+
+.introduction-detail > .price {
+    font-size: 16px;
+    font-weight: 600;
+}
+.introduction-detail > .intro {
+    font-weight: 600;
+    color: #606db8;
+}
+
+.introduction-detail > .description {
+    color: #787878;
+}
 /* 책 리스트 */
 
 .products-list-header {

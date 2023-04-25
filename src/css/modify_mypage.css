@@ -261,17 +261,20 @@ main h3 {
     background: #606db8;
 }
 
-/* .footer {
-    text-align: center;
-    padding-top: 100px;
-    padding-bottom: 50px;
+/* 유효성 검사용 작업 중 */
+
+small {
+    visibility: hidden;
+    padding: 0px 0px 2px 10px;
 }
 
-.footer .row > ul{
-    margin: 10px 100px;
-    display: flex;
-    justify-content: space-around;
-} */
+.error small {
+    font-size: 14px;
+    color: #e74c3c;
+    visibility: visible;
+}
+
+/* 유효성 검사용 작업 중 */
 
 #footer {
     width: 100%;
