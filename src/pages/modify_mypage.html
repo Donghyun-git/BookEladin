@@ -127,6 +127,7 @@
                                     class="change-email"
                                     name="email"
                                 />
+                                <small>Error message</small>
                             </div>
                             <div class="password default">
                                 <p>비밀번호 변경</p>
@@ -140,20 +141,51 @@
                                         value=""
                                         name="currentpsw"
                                     /> -->
-                                    <input
-                                        id="new-password"
-                                        type="password"
-                                        placeholder="새 비밀번호"
-                                        value=""
-                                        name="newpsw"
-                                    />
-                                    <input
-                                        id="new-password-check"
-                                        type="password"
-                                        placeholder="새 비밀번호 확인"
-                                        value=""
-                                        name="newpswcheck"
-                                    />
+                                    <div class="new-pwd-form pwdform">
+                                        <input
+                                            id="new-password"
+                                            type="password"
+                                            placeholder="새 비밀번호"
+                                            value=""
+                                            name="newpsw"
+                                        />
+                                        <span class="lock-icon">
+                                            <i
+                                                class="fa fa-lock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <span class="unlock-icon">
+                                            <i
+                                                class="fa fa-unlock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <small>Error message</small>
+                                    </div>
+                                    <div class="check-pwd-form pwdform">
+                                        <input
+                                            id="new-password-check"
+                                            type="password"
+                                            placeholder="새 비밀번호 확인"
+                                            value=""
+                                            name="newpswcheck"
+                                        />
+                                        <span class="lock-icon">
+                                            <i
+                                                class="fa fa-lock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <span class="unlock-icon">
+                                            <i
+                                                class="fa fa-unlock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <small>Error message</small>
+                                    </div>
+
                                     <p><b>비밀번호 변경 시 유의사항</b></p>
                                     <ul>
                                         <li>8자 이상을 입력해주세요.</li>
