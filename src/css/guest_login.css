@@ -1,0 +1,144 @@
+@import "./font.css";
+@import "./default.css";
+@import "./font-awesome.css";
+
+/* 전체 레이아웃 */
+#wrap {
+    width: 100%;
+}
+#header {
+    width: 100%;
+}
+#main {
+    width: 100%;
+}
+
+/* 공용 컨테이너 */
+.container {
+    width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 로그인, 회원가입, 주문확인 */
+.login.container {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* 레이아웃 여백 */
+.row {
+}
+
+/* 헤더 */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.header-logo {
+}
+.header-logo h1 {
+    color: #606db8;
+    font-size: 40px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+}
+
+.header-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+.header-user ul li {
+    display: inline-block;
+}
+
+.header-user-login ul li {
+    display: inline-block;
+    padding: 20px 0 16px 16px;
+}
+.header-user-login ul li a {
+    font-size: 20px;
+    color: gray;
+}
+
+.header-user-info ul li {
+    position: relative;
+    display: inline-block;
+    padding: 0 0 16px 16px;
+    margin-left: 38px;
+}
+.header-user-info ul li:last-child:before {
+    content: "";
+    width: 75px;
+    height: 1px;
+    background-color: gray;
+    position: absolute;
+    bottom: 5px;
+    right: -42px;
+}
+.header-user-info ul li a {
+    font-size: 30px;
+}
+
+/* 로그인 */
+.login-content {
+    width: 450px;
+    height: 580px;
+    background-color: white;
+    filter: drop-shadow(0 0 3px grey);
+    border-radius: 30px;
+}
+
+.login-title {
+    font-size: 25px;
+    padding-top: 40px;
+    padding-bottom: 25px;
+}
+
+.login-description {
+    color: rgb(106, 106, 106);
+    padding-bottom: 25px;
+}
+
+.login-area input {
+    width: 350px;
+    height: 50px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.login-area input::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    color: #abb0cfb7;
+}
+
+/* 유효성 검사용 시작 */
+
+small {
+    visibility: hidden;
+    padding: 0px 0px 2px 10px;
+    font-size: 14px;
+    color: #e74c3c;
+}
+
+/* 유효성 검사용 끝 */
+
+#next_btn {
+    width: 380px;
+    height: 60px;
+    display: inline-block;
+    margin: 20px auto;
+    background-color: #606db8;
+    color: white;
+    font-size: 20px;
+}
+
+/* 로그인 끝 */
