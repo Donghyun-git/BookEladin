@@ -94,17 +94,18 @@ chevronLeftBtn.forEach((button, idx) => {
     });
 });
 
-//자동 스크롤 버튼
+// 자동 스크롤 버튼
 const scrollToTopBtn = document.querySelector(".scroll-to-top");
-const top = document.documentElement.scrollTop;
 
-//버튼 클릭 시 스무스하게 스크롤
+// 버튼 클릭 시 스무스하게 스크롤
 function scrollToTop() {
-    if (top > 0) {
-        document.body.scrollIntoView({ behavior: "smooth" });
-    }
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
-//현 스크롤 위치 파악하고 버튼 노출 조절
+
+// 현재 스크롤 위치 파악하고 버튼 노출 조절
 function checkScroll() {
     const scrollTop = document.documentElement.scrollTop;
 
@@ -118,6 +119,7 @@ function checkScroll() {
         }, 700);
     }
 }
+
 scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", checkScroll);
 
