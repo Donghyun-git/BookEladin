@@ -262,7 +262,7 @@
 
 /*오늘의 책*/
 .introduction {
-    margin: 50px 0;
+    margin: 50px auto;
 }
 
 .introduction > h2 {
