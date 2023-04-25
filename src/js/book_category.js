@@ -1,11 +1,11 @@
-import IDB from './indexedDB.js';
-import API from '../api/rest.js';
+import IDB from "./indexedDB.js";
+import API from "../api/rest.js";
 
-const nav = document.querySelector('.nav-side-category-bar');
-const ul = document.querySelector('.category-book-list');
-const title = document.querySelector('.category-book-title');
+const nav = document.querySelector(".nav-side-category-bar");
+const ul = document.querySelector(".category-book-list");
+const title = document.querySelector(".category-book-title");
 
-let query = '경영/경제';
+let query = "경영/경제";
 
 class Category {
     target;
@@ -17,13 +17,13 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get('http://localhost:5500/books/categories');
+        this.state = await API.get("http://localhost:5500/books/categories");
     }
 
     async template() {
         await this.setState();
         const categoryList = this.state;
-        let template = '';
+        let template = "";
         await categoryList.data.map((category) => {
             template += `
                 <div class="nav-side-category-link">
@@ -36,8 +36,8 @@ class Category {
     }
 
     async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-side-category-link')) {
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("nav-side-category-link")) {
                 title.innerText = e.target.innerText;
                 query = title.textContent;
                 book.render();
@@ -64,7 +64,7 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = 'http://localhost:5500/books/categories';
+        const uri = 'http://localhost:5500/books/products';
         const accessToken = localStorage.getItem('accessToken');
         const header = {
             headers: {
@@ -73,14 +73,15 @@ class Book {
             withCrenditials: true,
         };
         this.state = await axios.get(`${uri}/${encodedQuery}`, header);
-        console.log(this.state);
+
+        this.addEvent(this.state.data.data);
     }
 
     async template() {
         await this.setState();
         const bookList = this.state;
 
-        let template = '';
+        let template = "";
 
         await bookList.data.data.map((book, i) => {
             template += `
@@ -90,8 +91,9 @@ class Book {
                             <a href="./detail.html">
                                 <img
                                 src=${book.imgUrl}
-                                alt=""
+                                alt="책 이미지"
                                 class="category-book-img"
+                                data-id="${book.productId}"
                             />
                             </a>
                         </div>
@@ -99,7 +101,6 @@ class Book {
                     <div class="category-book-item-introduce">
                         <h3 class="category-book-item-title-head">
                             <a
-                                href="./detail.html"
                                 class="category-book-item-title"
                                 >${book.title}</a
                             >
@@ -136,16 +137,34 @@ class Book {
         return template;
     }
 
-    async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            console.log(e.target);
-            console.log(this.state);
-            if (e.target.classList.contains('add-cart')) {
+    async addEvent(categories) {
+        const categoriesData = categories;
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("add-cart")) {
                 const { title, author, price, imgUrl } =
-                    this.state.data.data[e.target.dataset.index];
+                    categoriesData[e.target.dataset.index];
                 this.addIdxDB(title, author, price, imgUrl);
+            } 
+            if (e.target.classList.contains("category-book-img")) {
+                const foundData = categoriesData.find((v) => {
+                    return v.productId == e.target.dataset.id;
+                });
+                const { title, author, price, imgUrl, introduction, publisher, productId } = foundData;
+                
+                const detailData = {
+                    productId: productId,
+                    title: title,
+                    author: author,
+                    price: price,
+                    imgUrl: imgUrl,
+                    introduction: introduction,
+                    publisher: publisher
+                }
+
+                localStorage.setItem('detail', JSON.stringify(detailData));
             }
         });
+        
     }
 
     async render() {
@@ -167,4 +186,4 @@ category.render();
 
 const book = new Book(ul);
 book.render();
-book.addEvent();
+// book.addEvent();
