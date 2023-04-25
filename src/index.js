@@ -120,3 +120,31 @@ function checkScroll() {
 }
 scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", checkScroll);
+
+/* 포인터 스크롤 */
+const bestSeller = document.querySelector('.best-seller');
+const newBook = document.querySelector(".new-book");
+const recommendBook = document.querySelector(".recommend-book");
+
+
+const moveToBest = (e) => {
+    e.preventDefault();
+    const targetElement = document.getElementById("best-seller");
+    targetElement.scrollIntoView({ behavior: "smooth" });
+}
+
+const moveToRecommend = (e) => {
+    e.preventDefault();
+    const targetElement = document.getElementById("recommend-book");
+    targetElement.scrollIntoView({ behavior: "smooth" });
+};
+
+const moveToNew = (e) => {
+    e.preventDefault();
+    const targetElement = document.getElementById("new-book");
+    targetElement.scrollIntoView({ behavior: "smooth" });
+};
+
+bestSeller.addEventListener('click', moveToBest);
+recommendBook.addEventListener('click', moveToRecommend);
+newBook.addEventListener('click', moveToNew);
