@@ -252,8 +252,8 @@ input[type="checkbox"] {
     appearance: none;
 }
 input[type="checkbox"]:checked {
-    border-color: #0db565;
-    background: #0db565 url("../img/checkbox_checked.png") no-repeat center
+    border-color: #606db8;
+    background: #606db8 url("../img/checkbox_checked.png") no-repeat center
         center / 14px auto;
 }
 input[type="checkbox"] + label {

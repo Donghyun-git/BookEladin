@@ -5,7 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./style.css" />
-        <link rel="icon" href="./favicon.png" type="image/x-icon" sizes="16x16">
+        <link
+            rel="icon"
+            href="./favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <title>엘라딘</title>
     </head>
     <body>
@@ -151,7 +156,62 @@
                 </section>
                 <!--상품리스트 렌더링-->
 
-                <section class="products-list container"></section>
+                <section class="products-list container">
+                    <div class="products-list-carousel">
+                        <div class="products-list-header">
+                            <h2>베스트 셀러</h2>
+                            <p>더 보기</p>
+                        </div>
+                        <div class="products-list-body">
+                            <ul class="best-products slides"></ul>
+                        </div>
+                        <i
+                            class="fa fa-chevron-circle-left chevron-btn"
+                            aria-hidden="true"
+                        ></i>
+
+                        <i
+                            class="fa fa-chevron-circle-right chevron-btn"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+                    <div class="products-list-carousel">
+                        <div class="products-list-header">
+                            <h2>신규 도서</h2>
+                            <p>더 보기</p>
+                        </div>
+                        <div class="products-list-body">
+                            <ul class="new-products slides"></ul>
+                        </div>
+                        <i
+                            class="fa fa-chevron-circle-left chevron-btn"
+                            aria-hidden="true"
+                        ></i>
+
+                        <i
+                            class="fa fa-chevron-circle-right chevron-btn"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+                    <div class="products-list-carousel">
+                        <div class="products-list-header">
+                            <h2>추천 도서</h2>
+                            <p>더 보기</p>
+                        </div>
+                        <div class="products-list-body">
+                            <ul class="recommend-products slides"></ul>
+                        </div>
+                        <i
+                            class="fa fa-chevron-circle-left chevron-btn"
+                            aria-hidden="true"
+                        ></i>
+
+                        <i
+                            class="fa fa-chevron-circle-right chevron-btn"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+                </section>
             </main>
             <!-- 메인 영역 종료 -->
             <!-- 푸터 영역 시작 -->
@@ -191,9 +251,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./api/getCategory.js"></script>
-    <script src="./api/getProducts.js"></script>
-    <script src="./index.js"></script>
+    <script type="module" src="./api/getProducts.js"></script>
+    <script type="module" src="./index.js"></script>
     <script src="./js/isLogin.js"></script>
     <script src="./api/indexLogout.js"></script>
     <script src="./api/indexMypage.js"></script>
+    <script type="module" src="./js/indexedDB.js"></script>
 </html>

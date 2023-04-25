@@ -2,9 +2,9 @@ if (
     localStorage.getItem("accessToken") ||
     localStorage.getItem("refreshToken")
 ) {
-    const logOut = document.querySelector("#logout-button");
+    const logoutButton = document.querySelector("#logout-button");
 
-    logOut.addEventListener("click", async () => {
+    const logOut = async () => {
         const token = localStorage.getItem("accessToken");
         const header = {
             headers: {
@@ -25,5 +25,6 @@ if (
         } catch (err) {
             console.log(err);
         }
-    });
+    };
+    logoutButton.addEventListener("click", logOut);
 }
