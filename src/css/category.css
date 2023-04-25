@@ -12,7 +12,7 @@
 .container { width: 950px; margin: 0 auto; }
 
 /* 로그인, 회원가입, 주문확인 */
-.category.container { width: 500px; margin: 0 auto; }
+/* .category.container { width: 500px; margin: 0 auto; } */
 
 /* 레이아웃 여백 */
 .row { }  
@@ -35,7 +35,7 @@
 /* 각 관리 페이지 section */
 
 /* 초기 display */
-section { display: none;}
+
 .on { display: block; }
 .fix_modal.on { display: block;}
 .update_modal.on {display: block;}
@@ -43,19 +43,20 @@ section { display: none;}
 /* 카테고리 등록*/
 section h2 { font-size: 24px; color:#606DB8; font-weight: 400; }
 
-.category-title { border-bottom: 2px solid lightgray;}
-.category-list { display: flex; justify-content: space-between; align-items: center; margin: 6px 0;}
-.category .row > div:nth-child(2) { margin-top: 20px;}
-.category .row > div:last-child { padding-top: 24px; }
+.category-list { display: flex; justify-content: space-between; align-items: center; margin: 6px 0; gap: 10px;}
+.category .row > div:last-child { padding-bottom: 24px; }
 
-.category-list-title h3 { position: relative; font-size: 16px; font-weight: 400; padding-left: 22px;}
-.category-list-title h3:before { content:"→"; color: #606DB8; position: absolute; top: 0; left: 0;}
-.category-list-button button { margin: 0 4px; padding: 4px 20px; background-color: #606DB8; font-size: 14px; color: #fff; border-radius: 5px;}
+.category-list-title h3 { position: relative; font-size: 22px; font-weight: 400; padding-left: 22px;}
+.category-list-title h3:before { content:"→"; color: #606DB8; position: absolute; top: 0; left: -12px;}
+.category-list-button button { margin: 0 4px; padding: 7px 20px; background-color: #606DB8; font-size: 14px; color: #fff; border-radius: 5px;}
 
-.category-add { display: flex; justify-content: space-between; align-items: center; }
+.category-add { display: flex; justify-content: space-between; align-items: center; margin-top: 24px;}
 .category-add input { width: 60%; height: 38px;}
-.category-add button { width: 27.5%; margin: 0 4px; padding: 8px 20px; background-color: #606DB8; font-size: 14px; color: #fff; border-radius: 5px;}
+.category-add button, .category-update button { width: 16.5%; margin: 0 4px; padding: 8px 20px; background-color: #606DB8; font-size: 14px; color: #fff; border-radius: 5px;}
 
+.category-update { display: flex; justify-content: space-between; align-items: center; margin-top: 12px;}
+.category-update input { width: 28%; height: 38px;}
+.category-update .new-category { margin-left: -178px;}
 /* 상품 관리 */
 .item-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid lightgray;}
 .item-header-button button {  margin: 4px 4px; padding: 8px 20px; background-color: #606DB8; font-size: 14px; color: #fff; border-radius: 5px; }

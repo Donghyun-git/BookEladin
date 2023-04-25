@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eladin</title>
+        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/mypage.css" />
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="../css/category.css">
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
+        />
+    </head>
+    <body>
+        <div id="wrap">
+            <!-- 헤더 영역 시작 -->
+            <header class="header">
+                <div class="header-container container">
+                    <div class="header-top-bar">
+                        <ul class="header-top-list">
+                            <li class="header-top-item">
+                                <a href="./signup.html" class="join"
+                                    >회원가입</a
+                                >
+                            </li>
+                            <li class="header-top-item">
+                                <a href="./login.html" class="login">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-title">
+                        <nav class="header-title-nav">
+                            <div class="header-title-logo">
+                                <a
+                                    href="../index.html"
+                                    class="header-title-link"
+                                >
+                                    <div class="header-title-name">Eladin</div>
+                                </a>
+                            </div>
+                            
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            <!-- 헤더 영역 종료 -->
+
+            <main id="main" role="main">
+                <div class="container">
+                    <div class="row">
+                        <h2 class="header-text">관리자</h2>
+                        <section class="main-profile">
+                            <div class="main-avata">
+                                <img
+                                    width="133px"
+                                    height="133px"
+                                    src="../img/eladin_genie.png"
+                                    alt="eladin_genie"
+                                />
+                            </div>
+                            <div class="main-aboutUser">
+                                <div class="top">
+                                    <h3 class="user-name">홍길동</h3>
+                                </div>
+                                <p class="email">eladin@gmail.com</p>
+                            </div>
+                        </section>
+                        <div class="main-orderlist">
+                            <h2 class="header-text">카테고리 관리</h2>
+                             <section id="category">
+                                <div class="category container">
+                                    <div class="row mt30">
+                                </div>
+                                    <div class="category-add">
+                                        <input
+                                            type="text"
+                                            placeholder="필요한 카테고리를 입력해주세요."
+                                        />
+                                        <button class="add-category-button">카테고리 등록</button>
+                                        
+                                    </div>
+                                    <div class="category-update">
+                                        <input
+                                            class="current-category"
+                                            type="text"
+                                            placeholder="수정할 현재 카테고리 이름을 입력해주세요."
+                                        />
+                                        <input
+                                            class="new-category"
+                                            type="text"
+                                            placeholder="새로운 카테고리 이름을 지어주세요."
+                                        />
+                                        <button class="update-category-button">카테고리 수정</button>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer id="footer" style="border: none">
+                <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <ul>
+                                <li><a href="#">사이트 도움말</a></li>
+                                <li><a href="#">사이트 이용약관</a></li>
+                                <li><a href="#">사이트 운영원칙</a></li>
+                                <li>
+                                    <a href="#"
+                                        ><strong>개인정보취급방침</strong></a
+                                    >
+                                </li>
+                                <li><a href="#">책임의 한계와 법적고지</a></li>
+                                <li><a href="#">게시중단요청서비스</a></li>
+                                <li><a href="#">고객센터</a></li>
+                            </ul>
+                            <address>
+                                Copyright ©
+                                <a href="#"
+                                    ><strong style="letter-spacing: 0.2em"
+                                        >Eladin</strong
+                                    ></a
+                                >
+                                All Rights Reserved.
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/isLogin.js"></script>
+        <script src="../api/logout.js"></script>
+        <script src="../api/admin/category.js"></script>
+    </body>
+</html>
