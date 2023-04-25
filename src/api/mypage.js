@@ -20,7 +20,7 @@ const getUserInfo = async (e) => {
                 },
                 withCrenditials: true,
             };
-            const uri = `http://localhost:5500/auth/users/${userId}`;
+            const uri = `http://34.64.105.163/auth/users/${userId}`;
 
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;

@@ -36,7 +36,7 @@ signupButton.addEventListener('click', async () => {
         setErrorFor(emailInput, '이메일 주소를 다시 확인해주세요');
         alert('이메일 형식이 올바르지 않습니다.');
     } else {
-        const uri = 'http://localhost:5500/auth/signup';
+        const uri = 'http://34.64.105.163/auth/signup';
         const userData = {
             userId: id,
             password: password,
