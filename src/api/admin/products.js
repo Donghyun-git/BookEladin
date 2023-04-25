@@ -50,7 +50,7 @@ const updateCategoryList = document.querySelector('.update-categorylist');
 const fixCategoryList = document.querySelector(".fix-categorylist");
 
 const getCategories = async () => {
-    const uri = "http://localhost:5500/books/categories";
+    const uri = "http://34.64.105.163/books/categories";
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -88,7 +88,7 @@ const getProducts = async () => {
     };
 
     const Products = await axios.get(
-        "http://localhost:5500/books/products",
+        "http://34.64.105.163/books/products",
         header
     );
 
@@ -156,7 +156,7 @@ const createProducts = async () => {
         const updateImg = document.querySelector(".update-img");
         const updatePublisher = document.querySelector(".update-publisher");
         const updateInfo = document.querySelector(".update-intro");
-        const uri = "http://localhost:5500/books/products";
+        const uri = "http://34.64.105.163/books/products";
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -189,7 +189,7 @@ addProductBtn.addEventListener('click', createProducts);
 
 /* [관리자] 책 정보 삭제 */
 const deleteProducts = async (productId) => {
-    const uri = `http://localhost:5500/books/products/${productId}`;
+    const uri = `http://34.64.105.163/books/products/${productId}`;
     const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -225,7 +225,7 @@ const fixProducts = async () => {
         const fixPublisher = document.querySelector(".fix-publisher");
         const fixInfo = document.querySelector(".fix-intro");
 
-        const uri = `http://localhost:5500/books/products/${productId}`;
+        const uri = `http://34.64.105.163/books/products/${productId}`;
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
