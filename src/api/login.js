@@ -16,14 +16,12 @@ const logIn = async () => {
 
     try {
         const response = await axios.post(uri, loginData, header);
-        const { data } = await response; // 님 뭐함?
-        // 거울치료 =>  let a = await 1  << 이거랑똑같은거임 간지 ㄷㄷ
+        const { data } = await response; 
         console.log(response);
         const { accessToken, refreshToken } = data.data;
         localStorage.setItem('userData', JSON.stringify(data.data));
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
-        console.log(data);
         window.alert(`${data.message}`);
         window.location.href = '../index.html';
     } catch (err) {

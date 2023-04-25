@@ -5,12 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./style.css" />
-        <link
-            rel="icon"
-            href="./favicon.png"
-            type="image/x-icon"
-            sizes="16x16"
-        />
+        <link rel="icon" href="./favicon.png" type="image/x-icon" sizes="16x16"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
         <title>엘라딘</title>
     </head>
     <body>
@@ -83,83 +80,48 @@
             <!-- 카테고리 네비게이션 영역 시작 -->
             <nav class="all-category-nav">
                 <div class="all-category-container container">
-                    <a
-                        href="./pages/book_category.html"
-                        class="all-category-link"
-                    >
-                        <span class="all-category-text">전체 카테고리</span>
-                    </a>
+                    <ul class="all-category-list">
+                        <li>
+                            <a href="./pages/book_category.html" class="all-category-link">
+                                 <span class="all-category-text">전체 카테고리</span>
+                             </a>
+                        </li>
+                        <li>
+                            <ul class="populate-book-list">
+                                <li><a href="#" class="best-seller">베스트 셀러</a></li>
+                                <li><a href="#" class="new-book">신규 도서</a></li>
+                                <li><a href="#" class="recommend-book">추천 도서</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
                 </div>
             </nav>
             <!-- 카테고리 네비게이션 영역 종료 -->
             <!-- 메인 영역 시작 -->
+            </div>
             <main class="main">
-                <section class="carousel-section container">
-                    <div class="carousel-section-content">
-                        <ul class="carousel-section-list">
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://grepp-programmers.s3.amazonaws.com/production/file_resource/2866/certi-book-event_1200x628.png"
-                                    alt=""
-                                />
-                            </li>
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://i.ytimg.com/vi/H91z8YxNrOY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBPmx01JUAv4_WSAp2NkHqKuVOUQQ"
-                                    alt=""
-                                />
-                            </li>
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://i.ytimg.com/vi/6kzsVLNZQ0E/maxresdefault.jpg"
-                                    alt=""
-                                />
-                            </li>
-                            <li class="carousel-sction-item">
-                                <img
-                                    class="carousel-img"
-                                    src="https://contents.kyobobook.co.kr/pmtn/2022/event/68a088ac677f48a689f5dce8046cce7f.jpg"
-                                    alt=""
-                                />
-                            </li>
-                        </ul>
+                <section class="container">
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide fst"></div>
+                            <div class="swiper-slide snd"></div>
+                            <div class="swiper-slide trd"></div>
+                            <div class="swiper-slide fth"></div>
+                        </div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
                 </section>
-                <section class="select-category-section container">
-                    <div class="select-category-btn-content">
-                        <div class="select-category-btn-list">
-                            <button class="select-category-best-btn">
-                                베스트 셀러
-                            </button>
-                            <button class="select-category-new-btn">
-                                신규 도서
-                            </button>
-                            <button class="select-category-recommend-btn">
-                                추천 도서
-                            </button>
-                        </div>
-                    </div>
-                    <div class="select-category-content">
-                        <div class="select-best-category-content">
-                            <ul class="best-category-content-list"></ul>
-                        </div>
-                        <div class="select-new-category-content">
-                            <ul class="new-category-content-list"></ul>
-                        </div>
-                        <div class="select-recommend-category-content">
-                            <ul class="recommend-category-content-list"></ul>
-                        </div>
-                    </div>
-                </section>
+
                 <!--상품리스트 렌더링-->
 
                 <section class="products-list container">
                     <div class="products-list-carousel">
                         <div class="products-list-header">
-                            <h2>베스트 셀러</h2>
+                            <h2 id="best-seller">베스트 셀러</h2>
                         </div>
                         <div class="products-list-body">
                             <ul class="best-products slides"></ul>
@@ -176,7 +138,7 @@
                     </div>
                     <div class="products-list-carousel">
                         <div class="products-list-header">
-                            <h2>신규 도서</h2>
+                            <h2 id="new-book">신규 도서</h2>
                         </div>
                         <div class="products-list-body">
                             <ul class="new-products slides"></ul>
@@ -193,7 +155,7 @@
                     </div>
                     <div class="products-list-carousel">
                         <div class="products-list-header">
-                            <h2>추천 도서</h2>
+                            <h2 id="recommend-book">추천 도서</h2>
                         </div>
                         <div class="products-list-body">
                             <ul class="recommend-products slides"></ul>
@@ -247,6 +209,7 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="./api/getCategory.js"></script>
     <script type="module" src="./api/getProducts.js"></script>
     <script type="module" src="./index.js"></script>
@@ -254,5 +217,6 @@
     <script src="./api/indexLogout.js"></script>
     <script src="./api/indexMypage.js"></script>
     <script type="module" src="./js/indexedDB.js"></script>
+    <script src="./js/swiper.js"></script>
 </html>
  
