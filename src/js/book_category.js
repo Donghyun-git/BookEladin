@@ -15,15 +15,22 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get("http://localhost:5500/books/categories");
+        const uri = "http://localhost:5500/books/categories";
+        const header = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+            withCredentials: true,
+        }
+        this.state = await axios.get(uri, header);
     }
 
     async template() {
         await this.setState();
-        const categoryList = this.state;
+        const categoryList = this.state.data.data;
         console.log(categoryList);
         let template = "";
-        await categoryList.data.map((category) => {
+        await categoryList.map((category) => {
             template += `
                 <div class="nav-side-category-link">
                     ${category}
