@@ -1,4 +1,4 @@
-import API from '../api/rest.js'
+import API from '../api/rest.js';
 import IDB from './indexedDB.js';
 
 const chevron = document.querySelectorAll('.fa-chevron-down');
@@ -32,7 +32,6 @@ chevron[2].addEventListener('click', () => {
 });
 
 class OrderList {
-
     constructor(target) {
         this.target = target;
         this.order;
@@ -44,9 +43,9 @@ class OrderList {
     }
 
     async template() {
-        await this.setOrder()
+        await this.setOrder();
         const orderList = this.order;
-        
+
         let template = '';
         orderList.map((order) => {
             template += `
@@ -62,25 +61,25 @@ class OrderList {
                             ${order.author}
                         </p>
                     </div>
-                    <p class="price">${order.price}</p>
+                    <p class="price">${order.price.toLocaleString()}원</p>
                 </section>
-            `
-        })
+            `;
+        });
         return template;
     }
 
     async totalPrice() {
         let total = 0;
-        const orderPrice = document.querySelector('.order-price')
+        const orderPrice = document.querySelector('.order-price');
         await this.order.map((o) => {
-            total += Number(o.price)
-        })
+            total += Number(o.price);
+        });
 
-        orderPrice.innerText = total;
+        orderPrice.innerText = total.toLocaleString() + '원';
     }
 
     async render() {
-        const template = await this.template()
+        const template = await this.template();
 
         this.target.innerHTML = template;
         this.totalPrice();
@@ -88,7 +87,6 @@ class OrderList {
 }
 
 class OrderForm {
-
     constructor(form) {
         this.form = form;
         this.state = [];
@@ -98,26 +96,26 @@ class OrderForm {
     setState() {
         this.state = [];
         esseatialInput.forEach((tag) => {
-            this.state.push(tag.value)
-        })
+            this.state.push(tag.value);
+        });
     }
 
     validate() {
         this.setState();
         const checkBtn = document.getElementById('check-btn');
 
-        for(let idx = 0; idx < this.state.length - 1; idx++) {
+        for (let idx = 0; idx < this.state.length - 1; idx++) {
             if (this.state[idx] === '') {
                 alert('필수 입력 사항을 모두 작성해주세요.');
-                
-                throw new Error('필수 입력 사항을 모두 작성해주세요.')
+
+                throw new Error('필수 입력 사항을 모두 작성해주세요.');
             }
         }
 
         if (checkBtn.checked === false) {
-            alert('구매 동의 항목에 체크해주세요.')
+            alert('구매 동의 항목에 체크해주세요.');
 
-            throw new Error('구매 동의 항목에 체크해주세요')
+            throw new Error('구매 동의 항목에 체크해주세요');
         }
 
         return true;
@@ -129,41 +127,47 @@ class OrderForm {
                 try {
                     this.validate();
                     this.postDeliveryInfo();
-                } catch(err) {
-                    return err
+                } catch (err) {
+                    return err;
                 }
             }
-        })
+        });
     }
 
     async orderIDB() {
         const data = await IDB.getOrderIDB();
-        const items = []
+        const items = [];
         for (let idx = 0; idx < data.length; idx++) {
-            const item = { 
+            const item = {
                 productId: data[idx].productId,
                 quantity: data[idx].quantity,
-                price: data[idx].price
-             }
-             items.push(item)
-             this.orderCount.push(data[idx].id)
+                price: data[idx].price,
+            };
+            items.push(item);
+            this.orderCount.push(data[idx].id);
         }
 
-        return items
+        return items;
     }
 
     async deleteIDB() {
         this.orderCount.map((count) => {
             IDB.deleteIDB(count);
-        })
+        });
     }
 
     async postDeliveryInfo() {
         const items = await this.orderIDB();
         const userData = JSON.parse(localStorage.getItem('userData'));
-        console.log(items)
+        const uuid = localStorage.getItem('uuid');
+        const accessToken = localStorage.getItem('accessToken');
+
+        const userId = userData ? userData.userId : uuid;
+        console.log(userId);
+        console.log(items);
         const data = {
-            userId: userData.userId,
+            userId: userId,
+            uuid: userId,
             items: items,
             deliveryInfo: {
                 receiverName: this.state[0],
@@ -172,23 +176,29 @@ class OrderForm {
                 addressDetail: this.state[3],
                 receiverPhone: this.state[4],
                 deliveryMessage: this.state[5],
-            }
-        }
-        console.log(data)
-        const header = {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
-            withCredentials: true,
-        }
+        };
+        console.log(data);
+        const header = accessToken
+            ? {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+                withCredentials: true,
+            }
+            : { withCredentials: true };
+        
+            const url = accessToken ? 'http://localhost:5500/orders/user'
+            : 'http://localhost:5500/orders/nonmember';
         try {
-            const response = await axios.post('http://localhost:5500/orders/user', data, header,)
+            const response = await axios.post(url, data, header);
+
             console.log(response.data.data);
-            window.alert('결제가 완료되었습니다.')
-            localStorage.setItem('order', JSON.stringify(response.data.data))
+            window.alert('결제가 완료되었습니다.');
+            localStorage.setItem('order', JSON.stringify(response.data.data));
             this.deleteIDB();
-            location.href = "order_ok.html";
-        } catch(err) {
+            location.href = 'order_ok.html';
+        } catch (err) {
             console.log(err);
         }
     }
@@ -198,10 +208,10 @@ class OrderForm {
     }
 }
 
-const orderList = new OrderList(List)
+const orderList = new OrderList(List);
 orderList.render();
 
-const orderForm = new OrderForm(form) 
+const orderForm = new OrderForm(form);
 orderForm.render();
 
 // for (let i = 0; i < prices.length; i++) {

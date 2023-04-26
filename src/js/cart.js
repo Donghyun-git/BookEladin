@@ -4,7 +4,7 @@ const cartUl = document.querySelector('.cart-section-list');
 const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
 const allDeleteBtn = document.querySelector('.cart-list-all-select-delete');
 const nonOrderBtn = document.querySelector('.no-user-order-btn');
-const orderBtn = document.querySelector('.no-user-order-btn');
+const orderBtn = document.querySelector('.user-order-btn');
 
 class CartSection {
     constructor() {
@@ -40,15 +40,20 @@ class CartSection {
             this.sectionRender();
         });
 
-        nonOrderBtn.addEventListener('click', (e) => {
+        nonOrderBtn.addEventListener('click', async (e) => {
             if (this.selectCount.length === 0) {
                 e.preventDefault();
                 alert('주문하실 상품이 없습니다.');
+            } else {
+                // Update the order property of the selected items
+                for (const num of this.selectCount) {
+                    await IDB.updateIDB(Number(num), true);
+                }
+                // You can remove this part if you don't need it anymore
+                // this.selectCount.map((num) => {
+                //     IDB.updateIDB({ num: num });
+                // });
             }
-
-            this.selectCount.map((num) => {
-                IDB.addIDB({ num: num });
-            });
         });
 
         orderBtn.addEventListener('click', (e) => {
