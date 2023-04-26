@@ -62,7 +62,7 @@ const updateUserInfo = async () => {
                     email: body.email,
                     userId: userId,
                 }})
-            ); // 백 데이터 넘겨주는거 변경됐을 때 풀기.
+            ); 
             window.alert(updateMessage);
             window.location.href = "./mypage.html";
         } catch (err) {

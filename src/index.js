@@ -150,3 +150,21 @@ const moveToNew = (e) => {
 bestSeller.addEventListener('click', moveToBest);
 recommendBook.addEventListener('click', moveToRecommend);
 newBook.addEventListener('click', moveToNew);
+
+/* admin, user 필터링 */
+
+const filterRole = (e) => {
+    if (localStorage.getItem("userData")) {
+        const { role } = JSON.parse(localStorage.getItem("userData"));
+        if (role === "admin") {
+            e.preventDefault();
+            window.location.href = "./pages/manage_category.html";
+        } else {
+            window.alert('접근 권한이 없습니다!');
+        }
+    }
+}
+
+const adminPageButton = document.querySelector('.adminpage-button');
+adminPageButton.addEventListener('click', filterRole);
+
