@@ -1,5 +1,8 @@
-const detailData = JSON.parse(localStorage.getItem('detail'));
+import IDB from "../js/indexedDB.js";
+
+const detailData = JSON.parse(localStorage.getItem("detail"));
 // const { productId, author, title, imgUrl, price, introduction, publisher } = detailData;
+
 const { productId } = detailData;
 
 const getProductByProductId = async () => {
@@ -8,10 +11,12 @@ const getProductByProductId = async () => {
         headers: {},
         withCredentials: true,
     };
-    if (localStorage.getItem('accessToken')) {
-        header.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
-    } else if (document.cookie.includes('uuid')) {
-        const uuid = document.cookie.split('=')[1];
+    if (localStorage.getItem("accessToken")) {
+        header.headers.Authorization = `Bearer ${localStorage.getItem(
+            "accessToken"
+        )}`;
+    } else if (document.cookie.includes("uuid")) {
+        const uuid = document.cookie.split("=")[1];
         header.headers.uuid = uuid;
     }
     try {
@@ -25,7 +30,7 @@ const getProductByProductId = async () => {
 };
 getProductByProductId().then((res) => {
     console.log(res);
-    const mainBook = document.querySelector('.main-book');
+    const mainBook = document.querySelector(".main-book");
     mainBook.innerHTML = `
         <div class="main-book-img">
                                 <img
@@ -63,7 +68,9 @@ getProductByProductId().then((res) => {
                                                     <ul>
                                                         <li>출판사</li>
                                                         <li>
-                                                            <p>${res.publisher}</p>
+                                                            <p>${
+                                                                res.publisher
+                                                            }</p>
                                                         </li>
                                                     </ul>
                                                     <ul class="product-id">
@@ -95,7 +102,7 @@ getProductByProductId().then((res) => {
                                         <li>
                                             <a href="#"
                                                 ><i
-                                                    class="fa fa-shopping-cart"
+                                                    class="fa fa-shopping-cart add-cart"
                                                     aria-hidden="true"
                                                 ></i
                                             ></a>
@@ -107,6 +114,66 @@ getProductByProductId().then((res) => {
                                 </div>
                             </div>
     `;
-    const introduction = document.querySelector('.main-review-intro p');
+    const introduction = document.querySelector(".main-review-intro p");
     introduction.innerHTML = res.introduction;
+
+    const addCartBtn = document.querySelector(".add-cart");
+    const buyBtn = document.querySelector(".buy-button");
+
+    //장바구니담기, 주문하기
+    const { title, author, price, imgUrl, productId } = res;
+    console.log(title, author, price, imgUrl, productId);
+
+    addCartBtn.addEventListener("click", () => {
+        addIdxDB(title, author, price, imgUrl, productId, false);
+        window.alert("장바구니에 담겼습니다.");
+        // openAlert();
+    });
+
+    buyBtn.addEventListener("click", () => {
+        addIdxDB(title, author, price, imgUrl, productId, true);
+        if (localStorage.getItem("userData")) {
+            location.href = "order.html";
+        } else {
+            location.href = "guest_login.html";
+        }
+    });
+
+    function addIdxDB(title, author, price, imgUrl, productId, order) {
+        const book = [
+            {
+                title: title,
+                author: author,
+                price: price,
+                imgUrl: imgUrl,
+                productId: productId,
+                order: !!order,
+                quantity: 1,
+            },
+        ];
+        IDB.addIDB(book);
+    }
 });
+
+// 장바구니 alert
+
+// const closeButton = document.querySelector(".close-alert");
+// const cancelButton = document.querySelector(".cancel-button");
+// const confirmButton = document.querySelector(".confirm-button");
+
+// closeButton.addEventListener("click", closeAlert);
+// cancelButton.addEventListener("click", closeAlert);
+// confirmButton.addEventListener("click", () => {
+//     location.href = "cart.html";
+// });
+
+// function closeAlert() {
+//     cartAlert.style.display = "none";
+// }
+
+// function openAlert() {
+//     cartAlert.style.display = "flex";
+//     setTimeout(() => {
+//         cartAlert.style.display = "none";
+//     }, 3000);
+// }
