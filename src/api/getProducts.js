@@ -18,6 +18,8 @@ const getProductsForUser = async () => {
 
         return data;
     } else if (localStorage.getItem('uuid')) {
+        
+        const uuid = localStorage.getItem('uuid');
         // 비회원 로그인한 상태
         const header = {
             headers: {

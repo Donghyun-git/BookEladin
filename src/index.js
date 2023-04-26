@@ -4,7 +4,7 @@ const recommendArea = document.querySelector(".recommend-products");
 import { fetchProducts } from "./api/getProducts.js";
 
 const productsList = await fetchProducts();
-console.log(productsList);
+// console.log(productsList);
 
 //초기값을 ""으로 할당해주지 않으면 undefined로 초기화되어 출력됨!
 let bestProductsHtml = "";

@@ -1,11 +1,11 @@
-import IDB from "./indexedDB.js";
-import API from "../api/rest.js";
+// import IDB from "./indexedDB.js";
+import API from '../api/rest.js';
 
-const nav = document.querySelector(".nav-side-category-bar");
-const ul = document.querySelector(".category-book-list");
-const title = document.querySelector(".category-book-title");
+const nav = document.querySelector('.nav-side-category-bar');
+const ul = document.querySelector('.category-book-list');
+const title = document.querySelector('.category-book-title');
 
-let query = "경영/경제";
+let query = '경영/경제';
 
 class Category {
     target;
@@ -17,13 +17,13 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get("http://localhost:5500/books/categories");
+        this.state = await API.get('http://localhost:5500/books/categories');
     }
 
     async template() {
         await this.setState();
         const categoryList = this.state;
-        let template = "";
+        let template = '';
         await categoryList.data.map((category) => {
             template += `
                 <div class="nav-side-category-link">
@@ -36,8 +36,8 @@ class Category {
     }
 
     async addEvent() {
-        this.target.addEventListener("click", (e) => {
-            if (e.target.classList.contains("nav-side-category-link")) {
+        this.target.addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-side-category-link')) {
                 title.innerText = e.target.innerText;
                 query = title.textContent;
                 book.render();
@@ -62,18 +62,40 @@ class Book {
         this.state;
     }
 
+    // async setState() {
+    //     let encodedQuery = encodeURIComponent(query);
+    //     const uri = 'http://localhost:5500/books/categories';
+        // const accessToken = localStorage.getItem("accessToken");
+        // const header = {
+        //     headers: {
+        //         Authorization: `Bearer ${accessToken}`,
+        //     },
+        //     withCrenditials: true,
+        // };
+        // this.state = await axios.get(`${uri}/${encodedQuery}`, header);
+    //     this.state = await axios.get(`${uri}/${encodedQuery}`);
+
+    //     this.addEvent(this.state.data.data);
+    // }
+
+    // 위에 주석처리한거 밑에 함수 새로 작성한거 ${김희산} 이 한거입니다. 키보드 손떼세요. 당장.
     async setState() {
         let encodedQuery = encodeURIComponent(query);
         const uri = "http://localhost:5500/books/categories";
-        const accessToken = localStorage.getItem("accessToken");
         const header = {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-            withCrenditials: true,
+            headers: {},
+            withCredentials: true,
         };
+    
+        const accessToken = localStorage.getItem("accessToken");
+        if (accessToken) {
+            header.headers.Authorization = `Bearer ${accessToken}`;
+        } else if (document.cookie.includes("uuid")) {
+            const uuid = document.cookie.split("=")[1];
+            header.headers.uuid = uuid;
+        }
+    
         this.state = await axios.get(`${uri}/${encodedQuery}`, header);
-
         this.addEvent(this.state.data.data);
     }
 
@@ -81,11 +103,11 @@ class Book {
         await this.setState();
         const bookList = this.state;
 
-        let template = "";
+        let template = '';
 
         await bookList.data.data.map((book, i) => {
             //원화 단위로 변환
-            const formattedPrice = book.price.toLocaleString() + "원";
+            const formattedPrice = book.price.toLocaleString() + '원';
             template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
@@ -141,13 +163,13 @@ class Book {
 
     async addEvent(categories) {
         const categoriesData = categories;
-        this.target.addEventListener("click", (e) => {
-            if (e.target.classList.contains("add-cart")) {
+        this.target.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-cart')) {
                 const { title, author, price, imgUrl } =
                     categoriesData[e.target.dataset.index];
                 this.addIdxDB(title, author, price, imgUrl);
             }
-            if (e.target.classList.contains("category-book-img")) {
+            if (e.target.classList.contains('category-book-img')) {
                 const foundData = categoriesData.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
@@ -171,7 +193,7 @@ class Book {
                     publisher: publisher,
                 };
 
-                localStorage.setItem("detail", JSON.stringify(detailData));
+                localStorage.setItem('detail', JSON.stringify(detailData));
             }
         });
     }
@@ -182,12 +204,12 @@ class Book {
         this.target.innerHTML = template;
     }
 
-    async addIdxDB(title, author, price, imgUrl) {
-        const book = [
-            { title: title, author: author, price: price, imgUrl: imgUrl },
-        ];
-        IDB.addIDB(book);
-    }
+    // async addIdxDB(title, author, price, imgUrl) {
+    //     const book = [
+    //         { title: title, author: author, price: price, imgUrl: imgUrl },
+    //     ];
+    //     IDB.addIDB(book);
+    // }
 }
 
 const category = new Category(nav);
