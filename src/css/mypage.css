@@ -151,7 +151,7 @@
 
 main .header-text {
     font-size: 25px;
-    color: #11111;
+    color: #000;
     font-weight: 500;
     padding: 20px 0px 20px 0px;
     border-bottom: 2px solid #dbdbdb;
@@ -227,8 +227,8 @@ main .header-text {
     height: 180px;
     padding: 10px 10px;
     display: flex;
+    justify-content:space-between;
     align-items: center;
-    display: grid;
     grid-template-columns: 200px 1fr 130px 130px 130px;
     grid-template-areas: "cover title price delivery-status button";
     border-bottom: 1px solid #dbdbdb;
@@ -253,6 +253,7 @@ main .header-text {
 }
 
 .review-btn {
+    margin: 8px 0;
     width: 120px;
     height: 50px;
     font-size: 17px;
