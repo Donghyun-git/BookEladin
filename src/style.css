@@ -412,7 +412,7 @@
     padding: 20px 15px;
 }
 
-.products-list-info > img {
+.products-list-info img {
     width: 160px;
     height: 225px;
     filter: drop-shadow(0 0 4px grey);

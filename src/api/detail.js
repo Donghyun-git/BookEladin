@@ -1,5 +1,3 @@
-
-
 const detailData = JSON.parse(localStorage.getItem('detail'));
 // const { productId, author, title, imgUrl, price, introduction, publisher } = detailData;
 const { productId } = detailData;
@@ -7,23 +5,25 @@ const { productId } = detailData;
 const getProductByProductId = async () => {
     const uri = `http://localhost:5500/books//products/${productId}`;
     const header = {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
+        headers: {},
         withCredentials: true,
+    };
+    if (localStorage.getItem('accessToken')) {
+        header.headers.Authorization = `Bearer ${accessToken}`;
+    } else if (document.cookie.includes('uuid')) {
+        const uuid = document.cookie.split('=')[1];
+        header.headers.uuid = uuid;
     }
-
     try {
         const detailResponse = await axios.get(uri, header);
         const { data } = detailResponse.data;
 
         return data;
-
-    } catch(err) {
+    } catch (err) {
         console.log(err);
     }
-}
-getProductByProductId().then(res => {
+};
+getProductByProductId().then((res) => {
     console.log(res);
     const mainBook = document.querySelector('.main-book');
     mainBook.innerHTML = `
@@ -107,9 +107,6 @@ getProductByProductId().then(res => {
                                 </div>
                             </div>
     `;
-    const introduction = document.querySelector(".main-review-intro p");
+    const introduction = document.querySelector('.main-review-intro p');
     introduction.innerHTML = res.introduction;
 });
-
-
-
