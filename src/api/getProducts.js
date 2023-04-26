@@ -1,20 +1,41 @@
 //index.html 에서 쓰는 api script , getCategory.js에 access,refresh token 변수 존재
 const getProductsForUser = async () => {
-    const header = {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-        withCredentials: true,
-    };
+    if(localStorage.getItem('accessToken')){
+        const header = {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            withCredentials: true,
+        };
 
-    const Products = await axios.get(
-        'http://localhost:5500/books/products',
-        header
-    );
+        const Products = await axios.get(
+            "http://localhost:5500/books/products",
+            header
+        );
 
-    const { data } = Products.data;
+        const { data } = Products.data;
 
-    return data;
+        return data;
+    } else if (localStorage.getItem('uuid')){
+        const header = {
+            headers: {
+                uuid: `${uuid}` //나중에;
+            },
+            withCredentials: true,
+        };
+
+        const Products = await axios.get(
+            "http://localhost:5500/books/products",
+            header
+        );
+
+        const { data } = Products.data;
+            console.log(data);
+        return data;
+    } else {
+        window.alert('로그인 후 이용해주세요!');
+        window.location.href = './pages/login.html';
+    }
 };
 
 // [사용자] 상품 목록 - 전체 책 조회 (로그인 안한 사용자나 비회원)

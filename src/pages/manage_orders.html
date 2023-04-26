@@ -16,65 +16,8 @@
         />
     </head>
     <body>
-        <!-- 상품 등록 모달 -->
-        <div class="update_modal">
-                <div class="modal-container">
-                    <div class="row">
-                        <div class="modal-title">
-                            <h2>상품 등록</h2>
-                        </div>
 
-                        <div class="modal-cont">
-                            <div>
-                                <label for="title">제목</label>
-                                <input type="text" class="update-title" name="title" />
-                            </div>
-                            <div>
-                                <label for="author">저자</label>
-                                <input type="text" class="update-author" name="author" />
-                            </div>
-                            <div>
-                                <label for="price">판매가</label>
-                                <input type="text" class="update-price" name="price" />
-                            </div>
-                            <div>
-                                <label for="category">카테고리</label>
-                                <select name="categorylist" class="update-categorylist">
-                                    
-                                </select>
-                                
-                            </div>
-                            <div>
-                                <label for="img">이미지</label>
-                                <input type="text" class="update-img" name="img" />
-                            </div>
-                            <div>
-                                <label for="publisher">출판사</label>
-                                <input type="text" class="update-publisher" name="publisher" />
-                            </div>
-                            <div>
-                                <label for="info">소개</label>
-                                <textarea
-                                    name="info"
-                                    class="update-intro"
-                                    id="modal-book-info"
-                                    cols="30"
-                                    rows="10"
-                                ></textarea>
-                            </div>
-                        </div>
-
-                        <div class="modal-button">
-                            <button class="update-modal-close">취소</button>
-                            <button class="add-product-complete">완료</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <!-- //상품 등록 모달-->
-
-        <!--상품 수정 모달-->
+        <!--배송 수정 모달-->
 
         <div class="fix_modal">
                 <div class="modal-container">
@@ -205,7 +148,45 @@
                                 <div class="category container">
                                     <div class="row mt30">
                                         <ul class="category-book-list">
-                                               
+                                               <li class="admin-book-item">
+                                                    <div class="admin-book-item-img-area">
+                                                        <a href="" class="admin-book-img-link">
+                                                            <img
+                                                                src="${book.imgUrl}"
+                                                                alt="책 이미지"
+                                                                class="admin-book-img"
+                                                            />
+                                                        </a>
+                                                    </div>
+                                                    <div class="admin-book-item-introduce">
+                                                        <h3 class="admin-book-item-title-head">
+                                                            <a href="" class="admin-book-item-title">
+                                                                ${book.title}
+                                                            </a>
+                                                        </h3>
+                                                        <div class="admin-book-item-about">
+                                                            <div class="admin-book-item-output">
+                                                                <div class="admin-book-item-author">${book.author}</div>
+                                                                <div class="admin-book-item-publisher">${book.publisher}</div>
+                                                            </div>
+                                                            <p class="admin-book-item-describe">
+                                                                ${book.introduction}
+                                                            </p>
+                                                            <p class="admin-book-item-price">
+                                                                가격
+                                                                <span>${book.price}원</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="admin-button">
+                                                        <div class="admin-button-area">
+                                                            <button class="admin-fix-button" data-uid=${book.productId}>수정</button>
+                                                            <button class="admin-delete-button" data-did="${book.productId}">삭제</button>
+                                                            <p>배송 상태</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+        
                                         </ul>
                                     </div>
                                 </div>
@@ -252,6 +233,6 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="../js/isLogin.js"></script>
         <script src="../api/logout.js"></script>
-        <script src="../api/admin/products.js"></script>
+        <script src="../api/admin/orders.js"></script>
     </body>
 </html>

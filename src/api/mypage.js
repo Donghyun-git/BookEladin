@@ -4,7 +4,6 @@ const myPage = document.querySelector(".header-info-my");
 const getUserInfo = async (e) => {
     e.preventDefault();
     const accessToken = localStorage.getItem("accessToken");
-    const refreshToken = localStorage.getItem("refreshToken");
 
     if (!accessToken) {
         e.preventDefault();
@@ -25,7 +24,7 @@ const getUserInfo = async (e) => {
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;
 
-            localStorage.setItem("myData", JSON.stringify(myPageData.data));
+            localStorage.setItem("myData", JSON.stringify(myPageData));
             window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
