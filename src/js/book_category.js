@@ -1,4 +1,4 @@
-// import IDB from "./indexedDB.js";
+import IDB from "./indexedDB.js";
 import API from '../api/rest.js';
 
 const nav = document.querySelector('.nav-side-category-bar');
@@ -27,7 +27,7 @@ class Category {
             const uuid = document.cookie.split('=')[1];
             header.headers.uuid = uuid;
         }
-        
+
         this.state = await axios.get(uri, header);
     }
 

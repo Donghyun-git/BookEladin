@@ -206,6 +206,7 @@ class Cart extends CartSection {
                     const updatedPrice = originalPrice * quantity.value;
                     priceElement.innerText =
                         updatedPrice.toLocaleString() + '원';
+                    this.sectionRender(); // Call sectionRender after updating the price
                 }
             }
 
@@ -219,6 +220,7 @@ class Cart extends CartSection {
                 quantity.value = Number(quantity.value) + 1;
                 const updatedPrice = originalPrice * quantity.value;
                 priceElement.innerText = updatedPrice.toLocaleString() + '원';
+                this.sectionRender(); // Call sectionRender after updating the price
             }
         });
     }
