@@ -1,6 +1,5 @@
 /* 사용자 주문 내역 렌더링 */
 const getMyAllOrders = async () => {
-    const myData = JSON.parse(localStorage.getItem("myData"));
     const userData = JSON.parse(localStorage.getItem("userData"));
     const userId = userData.userId;
 

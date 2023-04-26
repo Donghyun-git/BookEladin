@@ -9,7 +9,7 @@ const getProductByProductId = async () => {
         withCredentials: true,
     };
     if (localStorage.getItem('accessToken')) {
-        header.headers.Authorization = `Bearer ${accessToken}`;
+        header.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
     } else if (document.cookie.includes('uuid')) {
         const uuid = document.cookie.split('=')[1];
         header.headers.uuid = uuid;
