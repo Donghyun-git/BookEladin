@@ -191,4 +191,4 @@ function getOrderIDB() {
 };
 
 
-export default { addIDB, getIDB, getAllIDB, deleteIDB, clearIDB, getTitleIDB };
+export default { addIDB, getIDB, getAllIDB, deleteIDB, clearIDB, getOrderIDB };
