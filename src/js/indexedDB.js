@@ -153,7 +153,41 @@ function clearIDB() {
     };
 };
 
+// 데이터 수정
+function updateIDB(key, value) {
+    const request = IDB.open(cart);
 
+    request.onerror = (e) => {
+        console.log(e.target.errorCode);
+    }
+    request.onsuccess = (e) => {
+        const db = request.result;
+        const transaction = db.transaction('Book', 'readwrite');
+
+        transaction.onerror = (e) => {
+            console.log('fail');
+        }
+        transaction.oncomplete = (e) => {
+            console.log('success');
+        }
+
+        const objStore = transaction.objectStore('Book');
+        const objStoreRequest = objStore.get(key);
+        objStoreRequest.onsuccess = (e) => {
+            const book = objStoreRequest.result
+            book.order = value
+            const updateRequest = objStore.put(book);
+            updateRequest.onerror = (e) => {
+                console.log('update error');
+            }
+            updateRequest.onsuccess = (e) => {
+                console.log('success');
+            };
+        }; 
+    };
+};
+
+//전체 데이터중 order: true인 데이터만 조회 
 function getOrderIDB() {
     return new Promise((resolve, reject) => {
         let data = []
@@ -176,14 +210,11 @@ function getOrderIDB() {
             const objStore = transaction.objectStore('Book');
             const objStoreRequest = objStore.getAll();
             objStoreRequest.onsuccess = (e) => {
-                console.log(objStoreRequest.result)
                 for (let i = 0; i < objStoreRequest.result.length; i++) {
-                    if (objStoreRequest.result[i].price >= 10000) {
+                    if (objStoreRequest.result[i].order) {
                         data.push(objStoreRequest.result[i])
                     }
                 }
-
-                console.log(data);
                 resolve(data);
             };
         };
@@ -191,4 +222,4 @@ function getOrderIDB() {
 };
 
 
-export default { addIDB, getIDB, getAllIDB, deleteIDB, clearIDB, getTitleIDB };
+export default { addIDB, getIDB, getAllIDB, deleteIDB, clearIDB, updateIDB, getOrderIDB };
