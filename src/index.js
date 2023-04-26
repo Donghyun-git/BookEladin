@@ -25,14 +25,14 @@ let RecommendProducts = productsList
 function addProductList(productsType, typeArea) {
     let newHtml = "";
     productsType.forEach((products) => {
-        const { author, introduction, price, title, imgUrl } = products;
+        const { author, productId, introduction, price, title, imgUrl } = products;
 
         const formattedPrice = price.toLocaleString() + "원";
 
         if (products) {
             newHtml += `
         <li class="products-list-info">
-            <img class="product-cover" src="${imgUrl}" alt="example_cover"/>
+        <a href="./pages/detail.html" class="book-detail-button"><img class="product-cover" src="${imgUrl}" alt="example_cover" data-id="${productId}"/></a>
             <p class= "title">${title}</p>
             <p class="author">${author}</p>
             <p class ="introduction">${introduction}</p>
@@ -150,3 +150,35 @@ const moveToNew = (e) => {
 bestSeller.addEventListener('click', moveToBest);
 recommendBook.addEventListener('click', moveToRecommend);
 newBook.addEventListener('click', moveToNew);
+
+/* admin, user 필터링 */
+
+const filterRole = (e) => {
+    if (localStorage.getItem("userData")) {
+        const { role } = JSON.parse(localStorage.getItem("userData"));
+        if (role === "admin") {
+            e.preventDefault();
+            window.location.href = "./pages/manage_category.html";
+        } else {
+            window.alert('접근 권한이 없습니다!');
+        }
+    }
+}
+
+const adminPageButton = document.querySelector('.adminpage-button');
+adminPageButton.addEventListener('click', filterRole);
+
+/* 베스트셀러, 추천도서, 신간도서 상세페이지 */
+
+const moveToDetailPage = (e) => {
+    if(e.target.dataset.id){
+        const productId = { 
+            productId: e.target.dataset.id 
+        };
+        localStorage.setItem('detail', JSON.stringify(productId));
+    }
+}
+
+bestSellerArea.addEventListener("click", moveToDetailPage);
+newArea.addEventListener("click", moveToDetailPage);
+recommendArea.addEventListener("click", moveToDetailPage);

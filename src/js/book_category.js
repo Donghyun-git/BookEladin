@@ -8,8 +8,6 @@ const title = document.querySelector('.category-book-title');
 let query = '경영/경제';
 
 class Category {
-    target;
-    state;
 
     constructor(target) {
         this.target = target;
@@ -17,14 +15,22 @@ class Category {
     }
 
     async setState() {
-        this.state = await API.get('http://localhost:5500/books/categories');
+        const uri = "http://localhost:5500/books/categories";
+        const header = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+            withCredentials: true,
+        }
+        this.state = await axios.get(uri, header);
     }
 
     async template() {
         await this.setState();
-        const categoryList = this.state;
-        let template = '';
-        await categoryList.data.map((category) => {
+        const categoryList = this.state.data.data;
+        console.log(categoryList);
+        let template = "";
+        await categoryList.map((category) => {
             template += `
                 <div class="nav-side-category-link">
                     ${category}
@@ -54,8 +60,6 @@ class Category {
 }
 
 class Book {
-    target;
-    state;
 
     constructor(target) {
         this.target = target;
@@ -78,7 +82,7 @@ class Book {
     //     this.addEvent(this.state.data.data);
     // }
 
-    // 위에 주석처리한거 밑에 함수 새로 작성한거 ${김희산} 이 한거입니다. 키보드 손떼세요. 당장.
+    
     async setState() {
         let encodedQuery = encodeURIComponent(query);
         const uri = "http://localhost:5500/books/categories";
@@ -151,7 +155,7 @@ class Book {
                         <button class="add-cart" data-index="${i}">
                             카트에 담기
                         </button>
-                        <button class="order-book">
+                        <button class="order-book" data-index="${i}">
                             바로 구매
                         </button>
                     </div>
@@ -163,13 +167,15 @@ class Book {
 
     async addEvent(categories) {
         const categoriesData = categories;
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('add-cart')) {
-                const { title, author, price, imgUrl } =
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("add-cart")) {
+                const { title, author, price, imgUrl, productId } =
                     categoriesData[e.target.dataset.index];
-                this.addIdxDB(title, author, price, imgUrl);
+                    console.log(categoriesData[e.target.dataset.index])
+                this.addIdxDB(title, author, price, imgUrl, productId, false);
             }
-            if (e.target.classList.contains('category-book-img')) {
+
+            if (e.target.classList.contains("category-book-img")) {
                 const foundData = categoriesData.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
@@ -195,6 +201,18 @@ class Book {
 
                 localStorage.setItem('detail', JSON.stringify(detailData));
             }
+
+            if (e.target.classList.contains('order-book')) {
+                const {title, author, price, imgUrl, productId} = 
+                    categoriesData[e.target.dataset.index];
+                
+                this.addIdxDB(title, author, price, imgUrl, productId, true);
+                if (localStorage.getItem('userData')) {
+                    location.href = "order.html"
+                } else {
+                    location.href = "guest_login.html"
+                }
+            }
         });
     }
 
@@ -204,12 +222,20 @@ class Book {
         this.target.innerHTML = template;
     }
 
-    // async addIdxDB(title, author, price, imgUrl) {
-    //     const book = [
-    //         { title: title, author: author, price: price, imgUrl: imgUrl },
-    //     ];
-    //     IDB.addIDB(book);
-    // }
+    async addIdxDB(title, author, price, imgUrl, productId, order) {
+        const book = [
+            { 
+                title: title,
+                author: author,
+                price: price,
+                imgUrl: imgUrl,
+                productId: productId,
+                order: !!order,
+                quantity: 1,
+            },
+        ];
+        IDB.addIDB(book);
+    }
 }
 
 const category = new Category(nav);

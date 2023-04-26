@@ -2,9 +2,8 @@ import IDB from './indexedDB.js';
 
 const cartUl = document.querySelector('.cart-section-list');
 const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
-const allDeleteBtn = document.querySelector('.cart-list-all-select-delete');
-const nonOrderBtn = document.querySelector('.no-user-order-btn');
-const orderBtn = document.querySelector('.user-order-btn');
+const allDeleteBtn = document.querySelector('.cart-list-all-select-delete')
+const orderBtn = document.querySelector('.no-user-order-btn');
 
 class CartSection {
     constructor() {
@@ -89,13 +88,14 @@ class CartSection {
             '.cart-section-item-price'
         );
         let amount = 0;
-        selectAmount.forEach((sA) => {
-            if (this.selectCount.includes(sA.getAttribute('value'))) {
-                console.log(sA.innerText);
-                amount += Number(sA.innerText);
-            }
-        });
-        totalAmount.innerText = `${amount}원`;
+        selectAmount.forEach((item) => {
+            if (this.selectCount.includes(item.getAttribute('value'))) {
+                console.log(item.innerText)
+                amount += parseInt(item.innerText.replace(/,/g , ''))
+           }
+        })
+        
+        totalAmount.innerText = `${amount.toLocaleString()}원`
     }
 
     sectionRender() {
@@ -158,8 +158,13 @@ class Cart extends CartSection {
                     <div class="cart-section-item-price-box">
                         <span class="cart-section-item-price"
                         value=${item.id}                        
-                        >${item.price}</span
+                        >${formattedPrice}</span
                         >
+                        <div class="cart-section-quantity-btn">
+                            <button type="button" class="minus-btn"></button>
+                            <input type="number" class="item-quantity" value="1">
+                            <button type="button" class="plus-btn"></button>
+                        </div>
                     </div>
                 </li>
             `;
@@ -186,7 +191,24 @@ class Cart extends CartSection {
                 location.reload();
             }
             this.sectionRender();
-        });
+
+            if (e.target.classList.contains("minus-btn")) {
+                const quantity = document.querySelector('.item-quantity')
+                if (quantity.value == 1) {
+                    e.target.setAttribute('disabled');
+                } else {
+                    e.target.removeAttribute('disabled');
+                }
+                quantity.value -= 1
+            }
+
+            if (e.target.classList.contains("plus-btn")) {
+                const quantity = document.querySelector('.item-quantity')
+                console.log(e.target)
+                quantity.value = Number(quantity.value) + 1;
+                console.log(quantity.value)
+            }
+        })
     }
 
     async render() {
