@@ -1,19 +1,18 @@
 import IDB from "./indexedDB.js";
 
-const cartUl = document.querySelector(".cart-section-list");
-const allSelectBtn = document.querySelector(".cart-list-all-select-btn");
-const allDeleteBtn = document.querySelector(".cart-list-all-select-delete");
+const cartUl = document.querySelector('.cart-section-list');
+const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
+const allDeleteBtn = document.querySelector('.cart-list-all-select-delete')
+const orderBtn = document.querySelector('.no-user-order-btn');
 
 class CartSection {
     constructor() {
         this.selectCount = [];
     }
 
-    async addSectionEvent() {
-        allSelectBtn.addEventListener("click", (e) => {
-            const checkBoxList = document.querySelectorAll(
-                ".cart-section-item-select"
-            );
+    addSectionEvent() {
+        allSelectBtn.addEventListener('click', (e) => {
+            const checkBoxList = document.querySelectorAll('.cart-section-item-select')
 
             checkBoxList.forEach((checkBox) => {
                 checkBox.checked = e.target.checked;
@@ -25,8 +24,9 @@ class CartSection {
                 } else if (!e.target.checked) {
                     this.selectCount = [];
                 }
-            });
-        });
+            })
+            this.sectionRender();
+        })
 
         allDeleteBtn.addEventListener("click", (e) => {
             this.selectCount.forEach((count) => {
@@ -34,7 +34,51 @@ class CartSection {
                 location.reload();
             });
             this.selectCount = [];
-        });
+            this.sectionRender();
+        })
+
+        orderBtn.addEventListener('click', (e) => {
+            if (this.selectCount.length === 0) {
+                e.preventDefault();
+                alert('주문하실 상품이 없습니다.')
+            } 
+
+            this.selectCount.map((num) => {
+                IDB.addIDB({num: num})
+            })
+        })
+    }
+
+    totalCountRender() {
+        const totalCount = document.querySelector('.cart-section-select-item-count-text');
+        const totalCountIco = document.querySelector('.cart-section-select-check-ico')
+        if (this.selectCount.length > 0) {
+            totalCount.innerHTML = `${this.selectCount.length}개를 선택하셨습니다.`
+            totalCount.classList.remove('text-no');
+            totalCountIco.classList.remove('ico-no');
+        } else {
+            totalCount.innerHTML = '선택한 상품이 없습니다.'
+            totalCount.classList.add('text-no');
+            totalCountIco.classList.add('ico-no');
+        }
+    }
+
+    totalAmountRender() {
+        const totalAmount = document.querySelector('.cart-section-select-item-total-amount');
+        const selectAmount = document.querySelectorAll('.cart-section-item-price')
+        let amount = 0;
+        selectAmount.forEach((sA) => {
+            if (this.selectCount.includes(sA.getAttribute('value'))) {
+                console.log(sA.innerText)
+                amount += Number(sA.innerText)
+           }
+        })
+        totalAmount.innerText = `${amount}원`
+    }
+
+    sectionRender() {
+        this.totalCountRender()
+        this.totalAmountRender()
     }
 }
 
@@ -90,8 +134,9 @@ class Cart extends CartSection {
                         </div>
                     </div>
                     <div class="cart-section-item-price-box">
-                        <span class="cart-section-item-price"                         
-                        >${formattedPrice}</span
+                        <span class="cart-section-item-price"
+                        value=${item.id}                        
+                        >${item.price}</span
                         >
                     </div>
                 </li>
@@ -118,14 +163,16 @@ class Cart extends CartSection {
                 IDB.deleteIDB(Number(e.target.value));
                 location.reload();
             }
-        });
+            this.sectionRender();
+        })
     }
 
     async render() {
         const template = await this.template();
 
         this.target.innerHTML = template;
-        cart.addSectionEvent();
+        this.sectionRender();
+        this.addSectionEvent();
         this.addEvent();
     }
 }
