@@ -28,6 +28,6 @@ const fetchCategoryList = async () => {
 
 // 카테고리 리스트 불러오기.
 
-fetchCategoryList().then((categoryList) => {
-    localStorage.setItem('categoryList', categoryList);
-});
+// fetchCategoryList().then((categoryList) => {
+//     localStorage.setItem('categoryList', categoryList);
+// });

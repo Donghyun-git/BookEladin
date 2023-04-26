@@ -165,12 +165,12 @@ class OrderForm {
         const uuid = localStorage.getItem("uuid");
         const accessToken = localStorage.getItem("accessToken");
 
-        const userId = userData ? userData.userId : uuid;
-        console.log(userId);
-        console.log(items);
+        // console.log(userId);
+        // console.log(items);
+
         const data = {
-            userId: userId,
-            uuid: userId,
+            userId: userData ? userData.userId : null,
+            uuid: !userData ? uuid : null,
             items: items,
             deliveryInfo: {
                 receiverName: this.state[0],
@@ -182,13 +182,14 @@ class OrderForm {
             },
         };
         console.log(data);
+        
         const header = accessToken
             ? {
-                  headers: {
-                      Authorization: `Bearer ${accessToken}`,
-                  },
-                  withCredentials: true,
-              }
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+                withCredentials: true,
+            }
             : { withCredentials: true };
 
         const url = accessToken
@@ -206,7 +207,7 @@ class OrderForm {
             console.log(err);
         }
     }
-
+    
     render() {
         this.addEvent();
     }

@@ -128,7 +128,7 @@ getProducts().then(res => {
             </p>
             <p class="admin-book-item-price">
                 가격
-                <span>${book.price}원</span>
+                <span>${book.price.toLocaleString()}원</span>
             </p>
         </div>
     </div>

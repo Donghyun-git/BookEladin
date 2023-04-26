@@ -78,7 +78,7 @@ getProductByProductId().then((res) => {
                                 <div class="price">
                                     <ul>
                                         <li>판매가</li>
-                                        <li class="price-won">${res.price} 원</li>
+                                        <li class="price-won">${res.price.toLocaleString()} 원</li>
                                     </ul>
                                 </div>
 

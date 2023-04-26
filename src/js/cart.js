@@ -56,16 +56,26 @@ class CartSection {
             }
         });
 
-        orderBtn.addEventListener('click', (e) => {
+        orderBtn.addEventListener('click', async (e) => {
             if (!localStorage.getItem('accessToken')) {
                 e.preventDefault();
                 alert('로그인 후 이용해주세요.');
                 location.href = './login.html';
             }
+
             if (this.selectCount.length === 0) {
+                e.preventDefault();
                 alert('주문하실 상품이 없습니다.');
                 return;
             }
+            // Update the order property of the selected items
+            for (const num of this.selectCount) {
+                await IDB.updateIDB(Number(num), true);
+            }
+            // You can remove this part if you don't need it anymore
+            // this.selectCount.map((num) => {
+            //     IDB.updateIDB({ num: num });
+            // });
         });
     }
 
