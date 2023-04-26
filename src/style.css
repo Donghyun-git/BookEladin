@@ -120,7 +120,7 @@
     font-size: 14px;
 }
 
-.search-input:focus {
+.header .search-input:focus {
     outline: none;
 }
 
