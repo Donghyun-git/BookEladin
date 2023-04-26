@@ -1,11 +1,12 @@
 import IDB from "./indexedDB.js";
-import API from '../api/rest.js';
+import API from "../api/rest.js";
 
-const nav = document.querySelector('.nav-side-category-bar');
-const ul = document.querySelector('.category-book-list');
-const title = document.querySelector('.category-book-title');
+const nav = document.querySelector(".nav-side-category-bar");
+const ul = document.querySelector(".category-book-list");
+const title = document.querySelector(".category-book-title");
+const cartAlert = document.querySelector(".cart-alert");
 
-let query = '경영/경제';
+let query = "경영/경제";
 
 class Category {
     constructor(target) {
@@ -14,17 +15,17 @@ class Category {
     }
 
     async setState() {
-        const uri = 'http://localhost:5500/books/categories';
+        const uri = "http://localhost:5500/books/categories";
         const header = {
             headers: {},
             withCredentials: true,
         };
 
-        const accessToken = localStorage.getItem('accessToken');
+        const accessToken = localStorage.getItem("accessToken");
         if (accessToken) {
             header.headers.Authorization = `Bearer ${accessToken}`;
-        } else if (document.cookie.includes('uuid')) {
-            const uuid = document.cookie.split('=')[1];
+        } else if (document.cookie.includes("uuid")) {
+            const uuid = document.cookie.split("=")[1];
             header.headers.uuid = uuid;
         }
 
@@ -35,7 +36,7 @@ class Category {
         await this.setState();
         const categoryList = this.state.data.data;
         console.log(categoryList);
-        let template = '';
+        let template = "";
         await categoryList.map((category) => {
             template += `
                 <div class="nav-side-category-link">
@@ -48,8 +49,8 @@ class Category {
     }
 
     async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('nav-side-category-link')) {
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("nav-side-category-link")) {
                 title.innerText = e.target.innerText;
                 query = title.textContent;
                 book.render();
@@ -89,17 +90,17 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = 'http://localhost:5500/books/categories';
+        const uri = "http://localhost:5500/books/categories";
         const header = {
             headers: {},
             withCredentials: true,
         };
 
-        const accessToken = localStorage.getItem('accessToken');
+        const accessToken = localStorage.getItem("accessToken");
         if (accessToken) {
             header.headers.Authorization = `Bearer ${accessToken}`;
-        } else if (document.cookie.includes('uuid')) {
-            const uuid = document.cookie.split('=')[1];
+        } else if (document.cookie.includes("uuid")) {
+            const uuid = document.cookie.split("=")[1];
             header.headers.uuid = uuid;
         }
 
@@ -111,11 +112,11 @@ class Book {
         await this.setState();
         const bookList = this.state;
 
-        let template = '';
+        let template = "";
 
         await bookList.data.data.map((book, i) => {
             //원화 단위로 변환
-            const formattedPrice = book.price.toLocaleString() + '원';
+            const formattedPrice = book.price.toLocaleString() + "원";
             template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
@@ -171,15 +172,16 @@ class Book {
 
     async addEvent(categories) {
         const categoriesData = categories;
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('add-cart')) {
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("add-cart")) {
                 const { title, author, price, imgUrl, productId } =
                     categoriesData[e.target.dataset.index];
                 console.log(categoriesData[e.target.dataset.index]);
                 this.addIdxDB(title, author, price, imgUrl, productId, false);
+                openAlert();
             }
 
-            if (e.target.classList.contains('category-book-img')) {
+            if (e.target.classList.contains("category-book-img")) {
                 const foundData = categoriesData.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
@@ -203,18 +205,18 @@ class Book {
                     publisher: publisher,
                 };
 
-                localStorage.setItem('detail', JSON.stringify(detailData));
+                localStorage.setItem("detail", JSON.stringify(detailData));
             }
 
-            if (e.target.classList.contains('order-book')) {
+            if (e.target.classList.contains("order-book")) {
                 const { title, author, price, imgUrl, productId } =
                     categoriesData[e.target.dataset.index];
 
                 this.addIdxDB(title, author, price, imgUrl, productId, true);
-                if (localStorage.getItem('userData')) {
-                    location.href = 'order.html';
+                if (localStorage.getItem("userData")) {
+                    location.href = "order.html";
                 } else {
-                    location.href = 'guest_login.html';
+                    location.href = "guest_login.html";
                 }
             }
         });
@@ -248,3 +250,26 @@ category.render();
 const book = new Book(ul);
 book.render();
 // book.addEvent();
+
+// 장바구니 alert
+
+const closeButton = document.querySelector(".close-alert");
+const cancelButton = document.querySelector(".cancel-button");
+const confirmButton = document.querySelector(".confirm-button");
+
+closeButton.addEventListener("click", closeAlert);
+cancelButton.addEventListener("click", closeAlert);
+confirmButton.addEventListener("click", () => {
+    location.href = "cart.html";
+});
+
+function closeAlert() {
+    cartAlert.style.display = "none";
+}
+
+function openAlert() {
+    cartAlert.style.display = "flex";
+    setTimeout(() => {
+        cartAlert.style.display = "none";
+    }, 3000);
+}
