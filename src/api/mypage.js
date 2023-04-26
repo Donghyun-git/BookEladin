@@ -18,7 +18,7 @@ const getUserInfo = async (e) => {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
-                    withCrenditials: true,
+                    withCredentials: true,
                 }
                 : { withCredentials: true };
             const uri = `http://localhost:5500/auth/users/${userId}`;
