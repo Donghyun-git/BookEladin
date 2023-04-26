@@ -1,6 +1,6 @@
 const nextButton = document.querySelector("#next_btn");
 
-nextButton.addEventListener("click", async () => {
+const NonMemberlogIn = async () => {
     //input value값(공백 제거)
     const email = document.querySelector("#email").value.trim();
     const userName = document.querySelector("#name").value.trim();
@@ -9,7 +9,6 @@ nextButton.addEventListener("click", async () => {
         .querySelector("#check-password")
         .value.trim();
 
-    console.log(email);
     // 유효성검사용 정규표현식
     const regul1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/;
     const regul2 = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -31,12 +30,39 @@ nextButton.addEventListener("click", async () => {
     } else if (password !== checkPassword) {
         setErrorFor("비밀번호가 일치하지 않습니다.");
     } else {
-        // 여기에 통신로직 작성
+        const uri = "http://localhost:5500/auth/loginNonMember";
+        const loginData = {
+            email: email,
+            userName: userName,
+            password: password,
+        };
+        const header = {
+            headers: {
+                "Content-type": "application/json",
+            },
+        };
+        try {
+            const response = await axios.post(uri, loginData, header);
+            const { data } = await response;
+            console.log(response);
+            const { uuid } = data;
+            localStorage.setItem("uuid", uuid);
+            window.alert(`${data.message}`);
+            window.location.href = "../pages/order.html";
+        } catch (err) {
+            if (err.response.data.message) {
+                window.alert(`${err.response.data.message}`);
+            } else {
+                window.alert("로그인에 실패했습니다!");
+            }
+        }
     }
-});
+};
 
 function setErrorFor(message) {
     const small = document.querySelector("small");
     small.style.visibility = "visible";
     small.innerText = message;
 }
+
+nextButton.addEventListener("click", NonMemberlogIn);
