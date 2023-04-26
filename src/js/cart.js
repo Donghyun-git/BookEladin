@@ -2,7 +2,8 @@ import IDB from './indexedDB.js';
 
 const cartUl = document.querySelector('.cart-section-list');
 const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
-const allDeleteBtn = document.querySelector('.cart-list-all-select-delete')
+const allDeleteBtn = document.querySelector('.cart-list-all-select-delete');
+const nonOrderBtn = document.querySelector('.no-user-order-btn');
 const orderBtn = document.querySelector('.no-user-order-btn');
 
 class CartSection {
@@ -49,6 +50,7 @@ class CartSection {
                 IDB.addIDB({ num: num });
             });
         });
+
         orderBtn.addEventListener('click', (e) => {
             if (!localStorage.getItem('accessToken')) {
                 e.preventDefault();
@@ -90,12 +92,12 @@ class CartSection {
         let amount = 0;
         selectAmount.forEach((item) => {
             if (this.selectCount.includes(item.getAttribute('value'))) {
-                console.log(item.innerText)
-                amount += parseInt(item.innerText.replace(/,/g , ''))
-           }
-        })
-        
-        totalAmount.innerText = `${amount.toLocaleString()}원`
+                console.log(item.innerText);
+                amount += parseInt(item.innerText.replace(/,/g, ''));
+            }
+        });
+
+        totalAmount.innerText = `${amount.toLocaleString()}원`;
     }
 
     sectionRender() {
@@ -157,8 +159,8 @@ class Cart extends CartSection {
                     </div>
                     <div class="cart-section-item-price-box">
                         <span class="cart-section-item-price"
-                        value=${item.id}                        
-                        >${formattedPrice}</span
+                        value=${item.id} data-price=${item.price}</span>            
+                        ${formattedPrice}</span
                         >
                         <div class="cart-section-quantity-btn">
                             <button type="button" class="minus-btn"></button>
@@ -192,23 +194,33 @@ class Cart extends CartSection {
             }
             this.sectionRender();
 
-            if (e.target.classList.contains("minus-btn")) {
-                const quantity = document.querySelector('.item-quantity')
-                if (quantity.value == 1) {
-                    e.target.setAttribute('disabled');
-                } else {
-                    e.target.removeAttribute('disabled');
+            if (e.target.classList.contains('minus-btn')) {
+                const quantity = e.target.nextElementSibling;
+                const priceElement = e.target
+                    .closest('.cart-section-item-price-box')
+                    .querySelector('.cart-section-item-price');
+                const originalPrice = parseInt(priceElement.dataset.price);
+
+                if (quantity.value > 1) {
+                    quantity.value -= 1;
+                    const updatedPrice = originalPrice * quantity.value;
+                    priceElement.innerText =
+                        updatedPrice.toLocaleString() + '원';
                 }
-                quantity.value -= 1
             }
 
-            if (e.target.classList.contains("plus-btn")) {
-                const quantity = document.querySelector('.item-quantity')
-                console.log(e.target)
+            if (e.target.classList.contains('plus-btn')) {
+                const quantity = e.target.previousElementSibling;
+                const priceElement = e.target
+                    .closest('.cart-section-item-price-box')
+                    .querySelector('.cart-section-item-price');
+                const originalPrice = parseInt(priceElement.dataset.price);
+
                 quantity.value = Number(quantity.value) + 1;
-                console.log(quantity.value)
+                const updatedPrice = originalPrice * quantity.value;
+                priceElement.innerText = updatedPrice.toLocaleString() + '원';
             }
-        })
+        });
     }
 
     async render() {
