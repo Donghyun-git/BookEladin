@@ -4,11 +4,11 @@ import API from "../api/rest.js";
 const nav = document.querySelector(".nav-side-category-bar");
 const ul = document.querySelector(".category-book-list");
 const title = document.querySelector(".category-book-title");
+const cartAlert = document.querySelector(".cart-alert");
 
 let query = "경영/경제";
 
 class Category {
-
     constructor(target) {
         this.target = target;
         this.state;
@@ -18,10 +18,10 @@ class Category {
         const uri = "http://localhost:5500/books/categories";
         const header = {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
             withCredentials: true,
-        }
+        };
         this.state = await axios.get(uri, header);
     }
 
@@ -60,7 +60,6 @@ class Category {
 }
 
 class Book {
-
     constructor(target) {
         this.target = target;
         this.state;
@@ -149,8 +148,9 @@ class Book {
             if (e.target.classList.contains("add-cart")) {
                 const { title, author, price, imgUrl, productId } =
                     categoriesData[e.target.dataset.index];
-                    console.log(categoriesData[e.target.dataset.index])
+                console.log(categoriesData[e.target.dataset.index]);
                 this.addIdxDB(title, author, price, imgUrl, productId, false);
+                openAlert();
             }
 
             if (e.target.classList.contains("category-book-img")) {
@@ -180,15 +180,15 @@ class Book {
                 localStorage.setItem("detail", JSON.stringify(detailData));
             }
 
-            if (e.target.classList.contains('order-book')) {
-                const {title, author, price, imgUrl, productId} = 
+            if (e.target.classList.contains("order-book")) {
+                const { title, author, price, imgUrl, productId } =
                     categoriesData[e.target.dataset.index];
-                
+
                 this.addIdxDB(title, author, price, imgUrl, productId, true);
-                if (localStorage.getItem('userData')) {
-                    location.href = "order.html"
+                if (localStorage.getItem("userData")) {
+                    location.href = "order.html";
                 } else {
-                    location.href = "guest_login.html"
+                    location.href = "guest_login.html";
                 }
             }
         });
@@ -202,7 +202,7 @@ class Book {
 
     async addIdxDB(title, author, price, imgUrl, productId, order) {
         const book = [
-            { 
+            {
                 title: title,
                 author: author,
                 price: price,
@@ -222,3 +222,26 @@ category.render();
 const book = new Book(ul);
 book.render();
 // book.addEvent();
+
+// 장바구니 alert
+
+const closeButton = document.querySelector(".close-alert");
+const cancelButton = document.querySelector(".cancel-button");
+const confirmButton = document.querySelector(".confirm-button");
+
+closeButton.addEventListener("click", closeAlert);
+cancelButton.addEventListener("click", closeAlert);
+confirmButton.addEventListener("click", () => {
+    location.href = "cart.html";
+});
+
+function closeAlert() {
+    cartAlert.style.display = "none";
+}
+
+function openAlert() {
+    cartAlert.style.display = "flex";
+    setTimeout(() => {
+        cartAlert.style.display = "none";
+    }, 3000);
+}
