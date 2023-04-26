@@ -1,56 +1,10 @@
-const prices = document.querySelectorAll('.price');
-const orderPrice = document.querySelector('.order-price');
-const chevron = document.querySelectorAll('.fa-chevron-down');
+import API from '../api/rest.js'
+import IDB from './indexedDB.js';
 
+const chevron = document.querySelectorAll('.fa-chevron-down');
 const form = document.getElementById('form');
 const esseatialInput = document.querySelectorAll('.essential');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    checkAllInputs(e);
-});
-
-function checkAllInputs(e) {
-    const recieverName = document.getElementById('name');
-    const postcode = document.getElementById('postcode');
-    const address1 = document.getElementById('address1');
-    const address2 = document.getElementById('address2');
-    const extraAddress = document.getElementById('extraAddress');
-    const phoneNum = document.getElementById('phone-num');
-    const checkBtn = document.getElementById('check-btn');
-
-    let validateItems = [recieverName, postcode, address1, address2, phoneNum];
-
-    let validate = validateItems.every((item) => {
-        if (item.value === '') {
-            alert('필수 입력 사항을 모두 작성해주세요.');
-            // item.focus;
-        }
-        return item.value !== '';
-    });
-
-    if (validate == false) {
-        console.log(validate);
-        return false;
-    } else if (!checkBtn.checked) {
-        alert('구매 동의 항목에 체크해주세요.');
-        return false;
-    } else {
-        console.log(e);
-        window.location.href = './order_ok.html';
-    }
-}
-
-let totalPrice = 0;
-
-for (let i = 0; i < prices.length; i++) {
-    const noComma = prices[i].innerHTML.replace(',', '');
-    totalPrice += Number(noComma);
-}
-
-let result = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-orderPrice.innerHTML = result;
+const List = document.querySelector('.product-list');
 
 chevron[0].addEventListener('click', () => {
     let box = chevron[0].parentElement.nextSibling.nextSibling;
@@ -76,3 +30,144 @@ chevron[2].addEventListener('click', () => {
         box.style.display = 'none';
     }
 });
+
+class OrderList {
+
+    constructor(target) {
+        this.target = target;
+        this.order;
+    }
+
+    async setOrder() {
+        this.order = await IDB.getAllIDB();
+        console.log(this.order);
+    }
+
+    async template() {
+        await this.setOrder()
+        const orderList = this.order;
+        
+        let template = '';
+        orderList.map((order) => {
+            template += `
+                <section class="product-detail">
+                    <img
+                        class="cover"
+                        src="${order.url}"
+                        alt="example_cover"
+                    />
+                    <div class="book-detail">
+                        <p class="title">${order.title}</p>
+                        <p class="author">
+                            ${order.authors}
+                        </p>
+                    </div>
+                    <p class="price">${order.price}</p>
+                </section>
+            `
+        })
+        return template;
+    }
+
+    async totalPrice() {
+        let total = 0;
+        const orderPrice = document.querySelector('.order-price')
+        await this.order.map((o) => {
+            total += Number(o.price)
+        })
+
+        orderPrice.innerText = total;
+    }
+
+    async render() {
+        const template = await this.template()
+
+        this.target.innerHTML = template;
+        this.totalPrice();
+    }
+}
+
+class OrderForm {
+
+    constructor(form) {
+        this.form = form
+        this.state = []
+    }
+
+    setState() {
+        this.state = [];
+        esseatialInput.forEach((tag) => {
+            this.state.push(tag.value)
+        })
+    }
+
+    validate() {
+        this.setState();
+        const checkBtn = document.getElementById('check-btn');
+
+        for(let idx = 0; idx < this.state.length - 1; idx++) {
+            if (this.state[idx] === '') {
+                alert('필수 입력 사항을 모두 작성해주세요.');
+                
+                throw new Error('필수 입력 사항을 모두 작성해주세요.')
+            }
+        }
+
+        if (checkBtn.checked === false) {
+            alert('구매 동의 항목에 체크해주세요.')
+
+            throw new Error('구매 동의 항목에 체크해주세요')
+        }
+
+        return true;
+    }
+
+    addEvent() {
+        this.form.addEventListener('click', (e) => {
+            if (e.target.classList.contains('purchase-btn')) {
+                try {
+                    this.validate();
+                    this.postDeliveryInfo();
+                } catch(err) {
+                    return err
+                }
+            }
+        })
+    }
+
+    async orderIDB() {
+        const data = await IDB.getAllIDB();
+        
+        console.log(data);
+    }
+
+    async postDeliveryInfo() {
+        const data = {
+            receiverName: this.state[0],
+            postCode: this.state[1],
+            address: this.state[2],
+            addressDetail: this.state[3],
+            receiverPhone: this.state[4],
+            deliveryMessage: this.state[5],
+        }
+        API.post('http://localhost:3000/item', data)
+    }
+
+    render() {
+        this.addEvent();
+    }
+}
+
+const orderList = new OrderList(List)
+orderList.render();
+
+const orderForm = new OrderForm(form) 
+orderForm.orderIDB();
+orderForm.render();
+
+// for (let i = 0; i < prices.length; i++) {
+//     const noComma = prices[i].innerHTML.replace(',', '');
+//     totalPrice += Number(noComma);
+// }
+
+// let result = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

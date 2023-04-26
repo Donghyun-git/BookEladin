@@ -89,7 +89,7 @@
                                 ></i>
                             </div>
                             <div class="product-list box">
-                                <section class="product-detail">
+                                <!-- <section class="product-detail">
                                     <img
                                         class="cover"
                                         src="../img/example_cover.jpeg"
@@ -118,7 +118,7 @@
                                         </p>
                                     </div>
                                     <p class="price">39000</p>
-                                </section>
+                                </section> -->
                             </div>
                         </div>
                         <div class="order">
@@ -135,7 +135,7 @@
                             </div>
                         </div>
 
-                        <form action="http://localhost:5500/orders" id="form" method="post">
+                        <form id="form">
                             <div class="delievery">
                                 <div class="box-header">
                                     <h3>배송 정보</h3>
@@ -151,7 +151,7 @@
                                     <div class="name-field field">
                                         <input
                                             id="name"
-                                            class="essential"
+                                            class="essential order-form"
                                             type="text"
                                             name="username"
                                         />
@@ -163,7 +163,7 @@
                                         <div class="postcode-input">
                                             <input
                                                 id="postcode"
-                                                class="essential"
+                                                class="essential order-form"
                                                 type="text"
                                                 name="postcode"
                                                 placeholder="우편번호"
@@ -181,6 +181,7 @@
                                             type="text"
                                             name="address1"
                                             placeholder="주소"
+                                            value="123123"
                                         />
                                         <input
                                             id="address2"
@@ -211,7 +212,7 @@
                                         <p>배송메세지</p>
                                     </div>
                                     <div class="message-field field">
-                                        <select name="message" id="message">
+                                        <select name="message" id="message" class="essential">
                                             <option value="">
                                                 --메시지 선택 (선택사항)
                                             </option>
@@ -246,7 +247,7 @@
                                 >
                             </div>
                             <div>
-                                <button type="submit" class="purchase-btn">
+                                <button type="button" class="purchase-btn">
                                     결제하기
                                 </button>
                             </div>
@@ -289,7 +290,7 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="../js/isLogin.js"></script>
         <script src="../api/logout.js"></script>
-        <script src="../js/order.js"></script>
+        <script type="module" src="../js/order.js"></script>
         <script src="../api/mypage.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script src="../api/address.js"></script>

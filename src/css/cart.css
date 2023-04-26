@@ -312,11 +312,33 @@
   transform: rotate(135deg);
 }
 
+.ico-no {
+  background-color: #FF5A5A;
+  
+}
+
+.ico-no::before {
+  content: none;
+}
+
+.ico-no::after {
+  content: '\00d7';
+  position: absolute;
+  top: -18px;
+  right: 4px;
+  font-size: 35px;
+  color: #ffffff;
+}
+
 .cart-section-select-item-count-text {
   font-size: 20px;
   font-weight: 700;
   color: #606DB8;
   margin-left: 2.5px;
+}
+
+.text-no {
+  color: #FF5A5A;
 }
 
 .cart-section-select-item-amount {

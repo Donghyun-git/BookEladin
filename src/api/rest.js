@@ -21,16 +21,16 @@ async function getQuery(url, query) {
     return res.json();
 }
 
-async function post(url, value) {
+async function post(url, data) {
     const res = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(value),
+        body: JSON.stringify(data),
     });
 
-    return res.json();
+    console.log(res.json())
 }
 
 export default { get, getQuery, post };
