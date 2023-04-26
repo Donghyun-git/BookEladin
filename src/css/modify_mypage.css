@@ -181,7 +181,7 @@ main h3 {
 
 .table {
     width: 80%;
-    height: 750px;
+    height: 780px;
     margin: 0 auto 100px auto;
     display: grid;
     background-color: white;
@@ -215,6 +215,7 @@ main h3 {
 
 .table > .field input {
     width: 87%;
+    margin: 5px 0;
 }
 
 .table .email-field {
@@ -238,7 +239,7 @@ main h3 {
 
 .table .password-field input {
     border: 1px solid darkgrey;
-    margin-bottom: 10px;
+    position: relative;
 }
 
 .table .password-field p {
@@ -261,17 +262,56 @@ main h3 {
     background: #606db8;
 }
 
-/* .footer {
-    text-align: center;
-    padding-top: 100px;
-    padding-bottom: 50px;
+/* 유효성 검사용 작업 중 */
+
+small {
+    visibility: hidden;
+    font-size: 13px;
+    color: #e74c3c;
+    padding: 0px 0px 5px 10px;
+    margin-bottom: 10px;
 }
 
-.footer .row > ul{
-    margin: 10px 100px;
-    display: flex;
-    justify-content: space-around;
-} */
+.error small {
+    visibility: visible;
+}
+
+.pwdform {
+    position: relative;
+}
+.unlock-icon {
+    position: absolute;
+    z-index: 1;
+    right: 25px;
+    top: 10px;
+    color: grey;
+}
+
+.lock-icon {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    right: 25px;
+    top: 10px;
+    color: #7987da;
+}
+
+.error .unlock-icon {
+    color: rgb(224, 49, 0);
+}
+
+.success .unlock-icon {
+    visibility: hidden;
+}
+
+.error .lock-icon {
+    visibility: hidden;
+}
+.success .lock-icon {
+    visibility: visible;
+}
+
+/* 유효성 검사용 작업 중 */
 
 #footer {
     width: 100%;

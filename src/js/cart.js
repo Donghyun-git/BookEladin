@@ -1,4 +1,4 @@
-import IDB from './indexedDB.js'
+import IDB from "./indexedDB.js";
 
 const cartUl = document.querySelector('.cart-section-list');
 const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
@@ -6,7 +6,6 @@ const allDeleteBtn = document.querySelector('.cart-list-all-select-delete')
 const orderBtn = document.querySelector('.no-user-order-btn');
 
 class CartSection {
-
     constructor() {
         this.selectCount = [];
     }
@@ -17,20 +16,23 @@ class CartSection {
 
             checkBoxList.forEach((checkBox) => {
                 checkBox.checked = e.target.checked;
-                if (e.target.checked && !this.selectCount.includes(checkBox.value)) {
+                if (
+                    e.target.checked &&
+                    !this.selectCount.includes(checkBox.value)
+                ) {
                     this.selectCount.push(checkBox.value);
-                } else if(!e.target.checked) {
+                } else if (!e.target.checked) {
                     this.selectCount = [];
                 }
             })
             this.sectionRender();
         })
 
-        allDeleteBtn.addEventListener('click', (e) => {
+        allDeleteBtn.addEventListener("click", (e) => {
             this.selectCount.forEach((count) => {
                 IDB.deleteIDB(Number(count));
                 location.reload();
-            })
+            });
             this.selectCount = [];
             this.sectionRender();
         })
@@ -81,7 +83,6 @@ class CartSection {
 }
 
 class Cart extends CartSection {
-
     constructor(target, selectCount) {
         super(selectCount);
         this.target = target;
@@ -96,9 +97,12 @@ class Cart extends CartSection {
         await this.setState();
         const cartList = this.state;
 
-        let template = '';
+        let template = "";
         cartList.map((item) => {
-            template +=  `
+            //원화 단위로 변환
+            const formattedPrice = item.price.toLocaleString() + "원";
+
+            template += `
                 <li class="cart-section-item">
                     <div class="cart-section-item-selcet-box">
                         <input
@@ -108,7 +112,7 @@ class Cart extends CartSection {
                         />
                     </div>
                     <img
-                        src=${item.url}
+                        src=${item.imgUrl}
                         alt=""
                         class="cart-section-item-img"
                     />
@@ -117,7 +121,7 @@ class Cart extends CartSection {
                             ${item.title}
                         </div>
                         <div class="cart-section-item-author">
-                            ${item.authors}
+                            ${item.author}
                         </div>
                         <div class="cart-section-item-btns">
                             <button
@@ -143,16 +147,19 @@ class Cart extends CartSection {
     }
 
     async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cart-section-item-select')) {
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("cart-section-item-select")) {
                 if (this.selectCount.includes(e.target.value)) {
-                    this.selectCount.splice(this.selectCount.indexOf(e.target.value), 1)
+                    this.selectCount.splice(
+                        this.selectCount.indexOf(e.target.value),
+                        1
+                    );
                 } else {
-                    this.selectCount.push(e.target.value)
+                    this.selectCount.push(e.target.value);
                 }
             }
 
-            if (e.target.classList.contains('cart-section-item-delete-btn')) {
+            if (e.target.classList.contains("cart-section-item-delete-btn")) {
                 IDB.deleteIDB(Number(e.target.value));
                 location.reload();
             }
@@ -167,8 +174,8 @@ class Cart extends CartSection {
         this.sectionRender();
         this.addSectionEvent();
         this.addEvent();
-    };
-};
+    }
+}
 
 const cart = new Cart(cartUl);
 cart.render();

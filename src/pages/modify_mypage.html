@@ -5,7 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link
             rel="stylesheet"
@@ -96,19 +101,33 @@
                                 <p>이름</p>
                             </div>
                             <div class="name-field field">
-                                <input type="text" class="change-username" name="username">
+                                <input
+                                    type="text"
+                                    class="change-username"
+                                    name="username"
+                                />
                             </div>
                             <div class="id default">
                                 <p>아이디</p>
                             </div>
                             <div class="id-field field">
-                                <input type="text" class="change-userid" name="userid" disabled>
+                                <input
+                                    type="text"
+                                    class="change-userid"
+                                    name="userid"
+                                    disabled
+                                />
                             </div>
                             <div class="email default">
                                 <p>이메일</p>
                             </div>
                             <div class="email-field field">
-                                <input type="email" class="change-email" name="email">
+                                <input
+                                    type="email"
+                                    class="change-email"
+                                    name="email"
+                                />
+                                <small>Error message</small>
                             </div>
                             <div class="password default">
                                 <p>비밀번호 변경</p>
@@ -122,20 +141,51 @@
                                         value=""
                                         name="currentpsw"
                                     /> -->
-                                    <input
-                                        id="new-password"
-                                        type="password"
-                                        placeholder="새 비밀번호"
-                                        value=""
-                                        name="newpsw"
-                                    />
-                                    <input
-                                        id="new-password-check"
-                                        type="password"
-                                        placeholder="새 비밀번호 확인"
-                                        value=""
-                                        name="newpswcheck"
-                                    />
+                                    <div class="new-pwd-form pwdform">
+                                        <input
+                                            id="new-password"
+                                            type="password"
+                                            placeholder="새 비밀번호"
+                                            value=""
+                                            name="newpsw"
+                                        />
+                                        <span class="lock-icon">
+                                            <i
+                                                class="fa fa-lock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <span class="unlock-icon">
+                                            <i
+                                                class="fa fa-unlock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <small>Error message</small>
+                                    </div>
+                                    <div class="check-pwd-form pwdform">
+                                        <input
+                                            id="new-password-check"
+                                            type="password"
+                                            placeholder="새 비밀번호 확인"
+                                            value=""
+                                            name="newpswcheck"
+                                        />
+                                        <span class="lock-icon">
+                                            <i
+                                                class="fa fa-lock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <span class="unlock-icon">
+                                            <i
+                                                class="fa fa-unlock"
+                                                aria-hidden="true"
+                                            ></i>
+                                        </span>
+                                        <small>Error message</small>
+                                    </div>
+
                                     <p><b>비밀번호 변경 시 유의사항</b></p>
                                     <ul>
                                         <li>8자 이상을 입력해주세요.</li>
@@ -149,7 +199,7 @@
                                         </li>
                                     </ul>
                                     <button class="change-user-info">
-                                        비밀번호 변경
+                                        회원 정보 수정
                                     </button>
                                 </div>
                             </div>

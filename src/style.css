@@ -148,21 +148,59 @@
     height: 28px;
 }
 
-/* 카테고리 네비 css */
-.all-category-container {
-    display: flex;
-    border-bottom: 1px solid #f5f5f5;
+/* swiper */
+.swiper { width: 950px; height: 400px; margin: 24px 0; border-radius: 4px;}
+.swiper-slide.fst { background: url("https://grepp-programmers.s3.amazonaws.com/production/file_resource/2866/certi-book-event_1200x628.png") center center / cover no-repeat;}
+.swiper-slide.snd { background: url("https://i.ytimg.com/vi/H91z8YxNrOY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBPmx01JUAv4_WSAp2NkHqKuVOUQQ")center center / cover no-repeat;}
+.swiper-slide.trd { background: url("https://i.ytimg.com/vi/6kzsVLNZQ0E/maxresdefault.jpg") center center / cover no-repeat;}
+.swiper-slide.fth { background: url("https://contents.kyobobook.co.kr/pmtn/2022/event/68a088ac677f48a689f5dce8046cce7f.jpg") center center / cover no-repeat;}
+
+.swiper-button-prev::after {
+    color: #fff;
+    transition: all 0.1s ease;
 }
 
+.swiper-button-next::after {
+    color: #fff;
+    transition: all 0.1s ease;
+}
+
+.swiper-button-prev:hover:after { 
+    color: #000;
+}
+
+.swiper-button-next:hover:after { 
+    color: #000;
+}
+
+
+/* 카테고리 네비 css */
+.all-category-container {
+    border-bottom: 1px solid lightgray;;
+}
+
+.all-category-list { display: flex; justify-content: space-between; align-items: center;}
+
+.populate-book-list { display: flex; justify-content: center; align-items: center; gap: 52px; padding: 18px;}
+
 .all-category-link {
-    display: inline-flex;
+    display: inline-block;
     padding: 18px;
 }
 
-.all-category-text {
-    font-weight: 700;
-    font-size: 16px;
-    color: #000000;
+.all-category-text, .populate-book-list li a {
+    font-weight: 500;
+    font-size: 24px;
+    color: darkgray;
+    transition: all 0.35s ease;
+}
+
+.all-category-text:hover { 
+    color: #000;
+}
+
+.populate-book-list li:hover a {
+    color: #000;
 }
 
 /* 메인 css */
@@ -196,7 +234,7 @@
     border-radius: 10px;
 }
 
-.select-category-section {
+/* .select-category-section {
     margin-top: 100px;
 }
 
@@ -258,8 +296,165 @@
     overflow: visible;
     font-weight: 700;
     font-size: 14px;
+} */
+
+/*오늘의 책*/
+.introduction-corner {
+    margin: 50px auto;
 }
 
+.introduction-corner > h2 {
+    text-align: start;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.introduction-content {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.introduction-content > img {
+    width: 229px;
+    height: 337px;
+    filter: drop-shadow(0 0 4px grey);
+}
+
+.introduction-detail {
+    text-align: start;
+    padding: 0 50px 0 100px;
+}
+
+.introduction-detail p {
+    padding-bottom: 15px;
+}
+
+.introduction-detail > .title {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.introduction-detail > .author {
+    color: #787878;
+}
+
+.introduction-detail > .price {
+    font-size: 16px;
+    font-weight: 600;
+}
+.introduction-detail > .intro {
+    font-weight: 600;
+    color: #606db8;
+}
+
+.introduction-detail > .description {
+    color: #787878;
+}
+/* 책 리스트 */
+
+.products-list-header {
+    text-align: start;
+    padding: 20px;
+    font-size: 17px;
+}
+
+.products-list-body {
+    height: 440px;
+    position: relative;
+    overflow: hidden;
+}
+
+.products-list-body .slides {
+    position: absolute;
+    width: 5700px;
+    left: 0;
+    transition: left 0.5s ease-out;
+}
+
+.products-list-info {
+    float: left;
+    height: 400px;
+    width: 160px;
+    border: 0;
+    display: inline-block;
+    padding: 20px 15px;
+}
+
+.products-list-info > img {
+    width: 160px;
+    height: 225px;
+    filter: drop-shadow(0 0 4px grey);
+    border-radius: 10px;
+    padding-bottom: 20px;
+}
+.products-list-info > p {
+    padding-bottom: 5px;
+    text-align: start;
+}
+.products-list-info > p.title {
+    display: block;
+    font-size: 17px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.products-list-info > p.introduction {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.products-list-carousel {
+    position: relative;
+}
+.chevron-btn {
+    position: absolute;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px #a8a7a7;
+    cursor: pointer;
+}
+
+.fa-chevron-circle-left {
+    left: -50px;
+    top: 180px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.fa-chevron-circle-right {
+    right: -50px;
+    top: 180px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* top으로 스크롤 되는 버튼 */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 60px;
+    right: 40px;
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    color: #9e9e9e;
+    background-color: white;
+    filter: drop-shadow(0 0 3px grey);
+    transition: opacity 0.7s ease-in-out;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-to-top > p {
+    font-size: 13px;
+    font-weight: 500;
+}
 /* 푸터 css */
 #footer {
     width: 100%;
