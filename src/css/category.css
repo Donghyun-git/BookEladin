@@ -186,37 +186,9 @@ section h2 { font-size: 24px; color:#606DB8; font-weight: 400; }
 .admin-button { margin-left: 360px; display: flex; align-items: center;}
 .admin-button-area { display: flex; flex-direction: column; justify-content: center; align-items: center;}
 .admin-button-area button { width: 84px; margin: 6px 4px; padding: 8px 20px; background-color: #606DB8; font-size: 14px; color: #fff; border-radius: 5px;}
-
-/* 배송 관리 */
-
-.delivery-col1 td { text-align: left; padding-top: 8px; font-size: 18px; color: #606DB8;}
-.delivery-col2 { text-align: left;}
-
-.delivery-col2-list td { text-align: left; position: relative; font-size: 16px; font-weight: 400;}
-.delivery-col2-list td:nth-child(odd) { padding-left: 0;}
-.delivery-col2-list.first { margin-top: 20px;}
-.delivery-col2-list .col2-button1 { padding-left: 68px;}
-.delivery-col2-list button { padding: 4px 20px; background-color: #606DB8; font-size: 11px; color: #fff; border-radius: 5px; }
-.delivery-col2-list { margin: 6px 0;}
-.delivery-col2-list td { padding: 2px 0; }
-select { width: 66%; height: 24px; font-size: 12px; position: relative;}
-.col2-drop:before { content:""; width: 1px; height: 6px; background-color: rgb(31, 49, 151); position: absolute; top: 11px; right: 46px; transform:rotate(45deg)}
-.col2-drop:after { content:""; width: 1px; height: 6px; background-color: rgb(31, 49, 151); position: absolute; top: 11px; right: 50px; transform:rotate(-45deg)}
-
-select:focus { outline: 1px solid #606DB8;}
-
-/* 주문 내역 */
-
-.order-col1 td { text-align: left; padding-top: 8px; font-size: 18px; color: #606DB8;}
-.order-col2 { text-align: left;}
-
-.order-col2-list td { text-align: left; position: relative; font-size: 16px; font-weight: 400;}
-.order-col2-list td:nth-child(odd) { padding-left: 0;}
-.order-col2-list.first { margin-top: 20px;}
-.order-col2-list .col2-button1 { padding-left: 68px;}
-.order-col2-list button { padding: 4px 20px; background-color: #606DB8; font-size: 11px; color: #fff; border-radius: 5px; }
-.order-col2-list { margin: 6px 0;}
-.order-col2-list td { padding: 2px 0; }
+.admin-button-area p { width: 84px; margin: 6px 4px; padding: 8px 20px; background-color: #dedede; font-size: 14px; color: #000; border-radius: 5px; text-align: center; padding: 8px 4px; }
+/* 주문,배송 관리 */
+.header-nav-list { display: flex; justify-content: center; align-items: center;}
 
 /* 상품등록, 수정 modal */
 .fix_modal, .update_modal { width: 50%; height: 85vh; position: fixed; top: 80px; left: 394px; border: 2px solid lightgray; border-radius: 20px; background-color: #fff; z-index: 2; display: none;}
