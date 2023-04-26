@@ -1,8 +1,6 @@
 const accessToken = localStorage.getItem('accessToken');
 const refreshToken = localStorage.getItem('refreshToken');
 
-//쿠키에 refreshToken 저장
-document.cookie = `refreshToken=${refreshToken}; path=/`;
 
 const getCategoriesForUser = async () => {
     const header = {
