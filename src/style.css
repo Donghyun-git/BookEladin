@@ -156,19 +156,23 @@
     border-radius: 4px;
 }
 .swiper-slide.fst {
-    background: url("https://grepp-programmers.s3.amazonaws.com/production/file_resource/2866/certi-book-event_1200x628.png")
+    background: url("https://media.discordapp.net/attachments/1097500162722627588/1100802655980372109/001.png?width=1799&height=719")
         center center / cover no-repeat;
 }
 .swiper-slide.snd {
-    background: url("https://i.ytimg.com/vi/H91z8YxNrOY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBPmx01JUAv4_WSAp2NkHqKuVOUQQ")
+    background: url("https://media.discordapp.net/attachments/1097500162722627588/1100802656227840050/002.png?width=1799&height=719")
         center center / cover no-repeat;
 }
 .swiper-slide.trd {
-    background: url("https://i.ytimg.com/vi/6kzsVLNZQ0E/maxresdefault.jpg")
+    background: url("https://media.discordapp.net/attachments/1097500162722627588/1100802656479490118/003.png?width=1799&height=719")
         center center / cover no-repeat;
 }
 .swiper-slide.fth {
-    background: url("https://contents.kyobobook.co.kr/pmtn/2022/event/68a088ac677f48a689f5dce8046cce7f.jpg")
+    background: url("https://media.discordapp.net/attachments/1097500162722627588/1100802656685015040/004.png?width=1799&height=719")
+        center center / cover no-repeat;
+}
+.swiper-slide.fiv {
+    background: url("https://media.discordapp.net/attachments/1097500162722627588/1100802657016369163/005.png?width=1799&height=719")
         center center / cover no-repeat;
 }
 
