@@ -1,6 +1,7 @@
 //index.html 에서 쓰는 api script , getCategory.js에 access,refresh token 변수 존재
 const getProductsForUser = async () => {
-    if(localStorage.getItem('accessToken')){
+    if (localStorage.getItem('accessToken')) {
+        // 회원이 로그인한 상태
         const header = {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -9,32 +10,42 @@ const getProductsForUser = async () => {
         };
 
         const Products = await axios.get(
-            "http://localhost:5500/books/products",
+            'http://localhost:5500/books/products',
             header
         );
 
         const { data } = Products.data;
 
         return data;
-    } else if (localStorage.getItem('uuid')){
+    } else if (localStorage.getItem('uuid')) {
+        // 비회원 로그인한 상태
         const header = {
             headers: {
-                uuid: `${uuid}` //나중에;
+                uuid: `${uuid}`, //나중에;
             },
             withCredentials: true,
         };
 
         const Products = await axios.get(
-            "http://localhost:5500/books/products",
+            'http://localhost:5500/books/products',
             header
         );
 
         const { data } = Products.data;
-            console.log(data);
+        console.log(data);
         return data;
+
+        // else {
+        // window.alert('로그인 후 이용해주세요!');
+        // window.location.href = './pages/login.html'
     } else {
-        window.alert('로그인 후 이용해주세요!');
-        window.location.href = './pages/login.html';
+        const Products = await axios.get(
+            'http://localhost:5500/books/products'
+        );
+
+        const { data } = Products.data;
+        console.log(data);
+        return data;
     }
 };
 
