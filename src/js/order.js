@@ -39,7 +39,7 @@ class OrderList {
     }
 
     async setOrder() {
-        this.order = await IDB.getAllIDB();
+        this.order = await IDB.getOrderIDB();
         console.log(this.order);
     }
 
@@ -53,13 +53,13 @@ class OrderList {
                 <section class="product-detail">
                     <img
                         class="cover"
-                        src="${order.url}"
+                        src="${order.imgUrl}"
                         alt="example_cover"
                     />
                     <div class="book-detail">
                         <p class="title">${order.title}</p>
                         <p class="author">
-                            ${order.authors}
+                            ${order.author}
                         </p>
                     </div>
                     <p class="price">${order.price}</p>
@@ -90,8 +90,9 @@ class OrderList {
 class OrderForm {
 
     constructor(form) {
-        this.form = form
-        this.state = []
+        this.form = form;
+        this.state = [];
+        this.orderCount = [];
     }
 
     setState() {
@@ -136,21 +137,60 @@ class OrderForm {
     }
 
     async orderIDB() {
-        const data = await IDB.getAllIDB();
-        
-        console.log(data);
+        const data = await IDB.getOrderIDB();
+        const items = []
+        for (let idx = 0; idx < data.length; idx++) {
+            const item = { 
+                productId: data[idx].productId,
+                quantity: data[idx].quantity,
+                price: data[idx].price
+             }
+             items.push(item)
+             this.orderCount.push(data[idx].id)
+        }
+
+        return items
+    }
+
+    async deleteIDB() {
+        this.orderCount.map((count) => {
+            IDB.deleteIDB(count);
+        })
     }
 
     async postDeliveryInfo() {
+        const items = await this.orderIDB();
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        console.log(items)
         const data = {
-            receiverName: this.state[0],
-            postCode: this.state[1],
-            address: this.state[2],
-            addressDetail: this.state[3],
-            receiverPhone: this.state[4],
-            deliveryMessage: this.state[5],
+            userId: userData.userId,
+            items: items,
+            deliveryInfo: {
+                receiverName: this.state[0],
+                postCode: this.state[1],
+                address: this.state[2],
+                addressDetail: this.state[3],
+                receiverPhone: this.state[4],
+                deliveryMessage: this.state[5],
+            }
         }
-        API.post('http://localhost:3000/item', data)
+        console.log(data)
+        const header = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            },
+            withCredentials: true,
+        }
+        try {
+            const response = await axios.post('http://localhost:5500/orders/user', data, header,)
+            console.log(response.data.data);
+            window.alert('결제가 완료되었습니다.')
+            localStorage.setItem('order', JSON.stringify(response.data.data))
+            this.deleteIDB();
+            location.href = "order_ok.html";
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     render() {
@@ -162,7 +202,6 @@ const orderList = new OrderList(List)
 orderList.render();
 
 const orderForm = new OrderForm(form) 
-orderForm.orderIDB();
 orderForm.render();
 
 // for (let i = 0; i < prices.length; i++) {
