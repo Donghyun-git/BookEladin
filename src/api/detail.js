@@ -126,8 +126,7 @@ getProductByProductId().then((res) => {
 
     addCartBtn.addEventListener("click", () => {
         addIdxDB(title, author, price, imgUrl, productId, false);
-        window.alert("장바구니에 담겼습니다.");
-        // openAlert();
+        openAlert();
     });
 
     buyBtn.addEventListener("click", () => {
@@ -152,6 +151,28 @@ getProductByProductId().then((res) => {
             },
         ];
         IDB.addIDB(book);
+    }
+
+    const cartAlert = document.querySelector(".cart-alert");
+    const closeButton = document.querySelector(".close-alert");
+    const cancelButton = document.querySelector(".cancel-button");
+    const confirmButton = document.querySelector(".confirm-button");
+
+    closeButton.addEventListener("click", closeAlert);
+    cancelButton.addEventListener("click", closeAlert);
+    confirmButton.addEventListener("click", () => {
+        location.href = "cart.html";
+    });
+
+    function closeAlert() {
+        cartAlert.style.display = "none";
+    }
+
+    function openAlert() {
+        cartAlert.style.display = "flex";
+        setTimeout(() => {
+            cartAlert.style.display = "none";
+        }, 3000);
     }
 });
 
