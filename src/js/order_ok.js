@@ -37,7 +37,7 @@ class OrderOk {
 
     async template() {
         await this.setState()
-        
+        console.log(this.setState())
         const template = `
             <ul class="list-row-1">
                 <li><a>주문번호</a></li>

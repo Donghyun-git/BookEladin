@@ -8,7 +8,7 @@ const getMyAllOrders = async () => {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
-            withCrenditials: true,
+            withCredentials: true,
         };
         const uri = `http://localhost:5500/orders/user/${userId}`;
 

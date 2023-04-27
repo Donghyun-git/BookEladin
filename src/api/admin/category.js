@@ -63,6 +63,9 @@ const createCategory = async (categoryValue) => {
         window.alert('카테고리가 추가되었습니다!');
         window.location.href = './manage_category.html';
     } catch (err){
+        if(err.response.status === 400){
+            window.alert('등록하실 카테고리명을 입력해주세요!');
+        }
         console.log(err);
     }
 };
@@ -133,6 +136,9 @@ const updateCategory = async (currentCategory, newCategory) => {
             window.alert("카테고리가 수정되었습니다!");
             window.location.href = "./manage_category.html";
         } catch (err) {
+            if(err.response.status === 400){
+                window.alert('현재 카테고리명과 수정하실 카테고리명을 입력해주세요!');
+            }
             console.log(err);
         }
 };

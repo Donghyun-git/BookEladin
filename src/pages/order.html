@@ -189,9 +189,7 @@
                                             type="text"
                                             name="address1"
                                             placeholder="주소"
-                                            <!--
                                             value=""
-                                            --
                                         />
                                         <input
                                             id="address2"
@@ -230,16 +228,16 @@
                                             <option value="">
                                                 --메시지 선택 (선택사항)
                                             </option>
-                                            <option value="message1">
+                                            <option value="배송 전에 미리 연락 바랍니다.">
                                                 배송 전에 미리 연락 바랍니다.
                                             </option>
-                                            <option value="message2">
+                                            <option value="부재 시 경비실에 맡겨주세요.">
                                                 부재 시 경비실에 맡겨주세요.
                                             </option>
-                                            <option value="message3">
+                                            <option value="부재 시 문 앞에 놓아주세요.">
                                                 부재 시 문 앞에 놓아주세요.
                                             </option>
-                                            <option value="message4">
+                                            <option value="택배함에 보관해주세요.">
                                                 택배함에 보관해주세요.
                                             </option>
                                         </select>
@@ -248,17 +246,10 @@
                             </div>
                             <div class="agreement">
                                 <h3>구매 동의</h3>
-                                <input
-                                    type="checkbox"
-                                    name="purchase-agree"
-                                    id="check-btn"
-                                />
-                                <label for="check-btn"
-                                    ><span
-                                        >상품, 가격, 유의 사항 등을 확인하였으며
-                                        구매에 동의합니다.</span
-                                    ></label
-                                >
+                                <label for="check-btn"></label>
+                                <input type="checkbox" name="purchase-agree" id="check-btn"/>
+                                <span>상품, 가격, 유의 사항 등을 확인하였으며 구매에 동의합니다.</span>
+                                
                             </div>
                             <div>
                                 <button type="button" class="purchase-btn">

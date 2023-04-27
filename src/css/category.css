@@ -210,7 +210,8 @@ section h2 { font-size: 24px; color:#606DB8; font-weight: 400; }
 .modal-cont input { width: 80%; }
 .modal-cont div { display: flex; justify-content: space-between; align-items: center; padding: 12px 0;}
 .modal-cont div:nth-child(4) { justify-content: flex-start;}
-.modal-cont div:nth-child(4) select { margin-left: 25px; width: 16%; height: 35px;}
+.modal-cont div:nth-child(4) select { margin-left: 36px; width: 16%; height: 35px;}
+.modal-cont div:nth-child(4) select:focus { outline: 1.5px solid #606DB8;}
 .modal-cont div:last-child { align-items:flex-start; }
 .modal-cont div:last-child input { height: 258px; }
 .modal-cont div label { padding-left: 12px; }

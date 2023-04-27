@@ -133,7 +133,20 @@ class Cart extends CartSection {
         const cartList = this.state;
 
         let template = '';
-        cartList.map((item) => {
+
+        if(cartList.length === 0){
+            template += `
+                <div class="no-items" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 106px;">
+                    <div class="no-items-img">
+                        <img src="../img/eladin_genie.png" alt="엘라딘 이미지" style="width: 30%;">
+                    </div>
+                    <div class="no-items-cont">
+                        <p style="font-size: 24px; font-weight: 500;">장바구니가 텅 비었어요~</p>
+                    </div>
+                </div>
+            `
+        } else {
+            cartList.map((item) => {
             //원화 단위로 변환
             const formattedPrice = item.price.toLocaleString() + '원';
 
@@ -182,6 +195,8 @@ class Cart extends CartSection {
                 </li>
             `;
         });
+        }
+        
 
         return template;
     }
