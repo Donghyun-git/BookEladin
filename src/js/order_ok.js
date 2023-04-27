@@ -81,6 +81,8 @@ const orderOk = new OrderOk(deliveryHistory)
 
 orderOk.render();
 
-homeBtn.addEventListener('click', ()=> {
-    localStorage.clear();
-})
+if(localStorage.getItem('uuid')){
+    homeBtn.addEventListener("click", () => {
+        localStorage.clear();
+    });
+}

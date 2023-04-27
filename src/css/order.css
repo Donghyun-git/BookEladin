@@ -290,6 +290,10 @@ h3 {
 
 .delivery-detail .postcode-input > button {
     width: 120px;
+    border-radius: 4px;
+    background-color: #6f79a8;
+    color: white;
+    margin-left: 6px;
 }
 
 /* input#check-btn {

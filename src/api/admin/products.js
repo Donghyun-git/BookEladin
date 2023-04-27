@@ -145,8 +145,7 @@ getProducts().then((res) => {
     </div>
 </li>
         `;
-        `;
-    });
+});
     productsArea.innerHTML = adminBookList;
 });
 

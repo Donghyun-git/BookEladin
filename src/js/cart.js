@@ -145,6 +145,10 @@ class Cart extends CartSection {
         this.state = await IDB.getAllIDB();
     }
 
+    async innerHTML() {
+        
+    }
+
     async template() {
         await this.setState();
         const cartList = this.state;
@@ -153,7 +157,7 @@ class Cart extends CartSection {
 
         if (cartList.length === 0) {
             template += `
-                <div class="no-items" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 106px;">
+                <div class="no-items mt30" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 40px;">
                     <div class="no-items-img">
                         <img src="../img/eladin_genie.png" alt="엘라딘 이미지" style="width: 30%;">
                     </div>
@@ -216,7 +220,7 @@ class Cart extends CartSection {
 
         return template;
     }
-
+    
     async addEvent() {
         this.target.addEventListener("click", (e) => {
             if (e.target.classList.contains("cart-section-item-select")) {
