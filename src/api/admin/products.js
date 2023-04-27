@@ -135,9 +135,16 @@ getProducts().then((res) => {
             <button class="admin-delete-button" data-did="${
                 book.productId
             }">삭제</button>
+            <button class="admin-fix-button" data-uid=${
+                book.productId
+            }>수정</button>
+            <button class="admin-delete-button" data-did="${
+                book.productId
+            }">삭제</button>
         </div>
     </div>
 </li>
+        `;
         `;
     });
     productsArea.innerHTML = adminBookList;
@@ -176,9 +183,20 @@ const createProducts = async () => {
         };
         const products = await axios.post(uri, body, header);
         console.log(products);
-        window.alert('상품이 추가 되었습니다!');
-        closeUpdateModal();
-        window.location.href = './manage_products.html';
+        // window.alert('상품이 추가 되었습니다!');
+        // closeUpdateModal();
+        // window.location.href = "./manage_products.html";
+
+        modalContent.innerHTML = "상품이 추가 되었습니다!";
+        openModal();
+        setTimeout(() => {
+            closeUpdateModal();
+            location.href = "./manage_products.html";
+        }, 2000);
+        closeModalBtn.addEventListener("click", () => {
+            closeUpdateModal();
+            location.href = "./manage_products.html";
+        });
     } catch (err) {
         console.log(err);
     }
@@ -202,8 +220,16 @@ const deleteProducts = async (productId) => {
         withCredentials: header.withCredentials,
     });
     console.log(products);
-    window.alert('삭제되었습니다!');
-    window.location.href = './manage_products.html';
+    //    window.alert('삭제되었습니다!');
+    //    window.location.href = "./manage_products.html";
+    modalContent.innerHTML = "삭제되었습니다!";
+    openModal();
+    setTimeout(() => {
+        location.href = "./manage_products.html";
+    }, 2000);
+    closeModalBtn.addEventListener("click", () => {
+        location.href = "./manage_products.html";
+    });
 };
 
 productsArea.addEventListener('click', (e) => {
@@ -244,8 +270,16 @@ const fixProducts = async () => {
 
         const products = await axios.patch(uri, body, header);
         console.log(products);
-        window.alert('수정되었습니다!');
-        window.location.href = './manage_products.html';
+        // window.alert("수정되었습니다!");
+        // window.location.href = "./manage_products.html";
+        modalContent.innerHTML = "수정되었습니다!";
+        openModal();
+        setTimeout(() => {
+            location.href = "./manage_products.html";
+        }, 2000);
+        closeModalBtn.addEventListener("click", () => {
+            location.href = "./manage_products.html";
+        });
     } catch (err) {
         console.log(err);
     }
@@ -259,4 +293,15 @@ productsArea.addEventListener('click', (e) => {
         productId = e.target.dataset.uid;
         openFixModal();
     }
+});
+
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
 });

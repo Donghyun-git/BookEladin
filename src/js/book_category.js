@@ -104,12 +104,12 @@ class Book {
             const uuid = document.cookie.split("=")[1];
             header.headers.uuid = uuid;
         }
-        try{
+        try {
             const data = await axios.get(`${uri}/${encodedQuery}`, header);
             this.state = await data.data.data;
             this.err = "";
-        } catch(err){
-            if(err.response.status === 400){
+        } catch (err) {
+            if (err.response.status === 400) {
                 this.err = "카테고리에 책이 존재하지 않습니다!";
             }
         }
@@ -122,11 +122,10 @@ class Book {
 
         let template = "";
 
-        if(errorMessage === ""){
-            await bookList.map((book, i) => {
-                //원화 단위로 변환
-                const formattedPrice = book.price.toLocaleString() + "원";
-                template += `
+        await bookList.map((book, i) => {
+            //원화 단위로 변환
+            const formattedPrice = book.price.toLocaleString() + "원";
+            template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
                         <div class="category-book-img-link">
@@ -190,13 +189,13 @@ class Book {
             </li>
             `;
         }
-        
+
         return template;
     }
 
     async addEvent() {
         console.log(this.state);
-        
+
         this.target.addEventListener("click", (e) => {
             e.stopImmediatePropagation();
             if (e.target.classList.contains("add-cart")) {
@@ -234,7 +233,7 @@ class Book {
                 localStorage.setItem("detail", JSON.stringify(detailData));
             }
 
-            if (e.target.classList.contains("order-book")) {;
+            if (e.target.classList.contains("order-book")) {
                 const { title, author, price, imgUrl, productId } =
                     this.state[e.target.dataset.index];
 
@@ -285,6 +284,12 @@ const confirmButton = document.querySelector(".confirm-button");
 
 closeButton.addEventListener("click", closeAlert);
 cancelButton.addEventListener("click", closeAlert);
+cartAlert.addEventListener("click", (e) => {
+    if (e.target.closest(".cart-alert-container")) {
+        return;
+    }
+    cartAlert.style.display = "none";
+});
 confirmButton.addEventListener("click", () => {
     location.href = "cart.html";
 });

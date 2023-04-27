@@ -3,19 +3,24 @@ const userData = JSON.parse(localStorage.getItem("userData"));
 const adminName = document.querySelector(".user-name");
 const email = document.querySelector(".email");
 
+// //window alert 대용 모달
+// const modal = document.querySelector(".modal");
+// const modalContent = document.querySelector(".modal-text");
+// const closeModalBtn = document.querySelector(".close-modal-btn");
+
 adminName.innerHTML = userData.userName;
 email.innerHTML = userData.email;
 
 /* 상품 수정 모달 */
-const buttonArea = document.querySelector('.category.container .row.mt30');
+const buttonArea = document.querySelector(".category.container .row.mt30");
 const fixModal = document.querySelector(".order_modal");
 const closeFixButton = document.querySelector(".fix-modal-close");
 
 const openFixModal = (e) => {
-    if(e.target.dataset.uid){
+    if (e.target.dataset.uid) {
         fixModal.classList.add("on");
         orderNumber = e.target.dataset.uid;
-    } else if(e.target.dataset.did){
+    } else if (e.target.dataset.did) {
         orderNumber = e.target.dataset.did;
         deleteOrder();
     }
@@ -25,10 +30,8 @@ const closeFixModal = () => {
     fixModal.classList.remove("on");
 };
 
-
 buttonArea.addEventListener("click", openFixModal);
 closeFixButton.addEventListener("click", closeFixModal);
-
 
 /* [관리자] 주문정보 리스트 불러오기 */
 const getOrders = async () => {
@@ -51,18 +54,25 @@ getOrders().then((orders) => {
     const { foundAllOrders, titleList, userNameList } = orders;
     let orderHTML = "";
 
-    let totalPrice= 0;
+    let totalPrice = 0;
     foundAllOrders.forEach((order, idx) => {
-        order.items.forEach(v => totalPrice += v.price);
-        const orderDate = order.createdAt.split('T')[0];
-        const { address, addressDetail, postCode, receiverName, receiverPhone, deliveryMessage } = order.deliveryInfo;
+        order.items.forEach((v) => (totalPrice += v.price));
+        const orderDate = order.createdAt.split("T")[0];
+        const {
+            address,
+            addressDetail,
+            postCode,
+            receiverName,
+            receiverPhone,
+            deliveryMessage,
+        } = order.deliveryInfo;
         const { deliveryStatus } = order;
         const { orderNumber } = order.orderInfo;
 
         const presentOrder = titleList[idx][0];
         const orderCount = titleList[idx].length;
         const orderUser = userNameList[idx];
-        
+
         orderHTML += `
                 <li class="admin-book-item">
                     <div class="admin-order">
@@ -87,11 +97,15 @@ getOrders().then((orders) => {
                     </div>
                     <div class="admin-order-info">
                         <p class="address"><b>도로명 주소: </b>${address}</p>
-                        <p class="addressDetail"><b>상세 주소: </b>${addressDetail || "상세주소가 없어요"}</p>
+                        <p class="addressDetail"><b>상세 주소: </b>${
+                            addressDetail || "상세주소가 없어요"
+                        }</p>
                         <p class="postCode"><b>우편 번호: </b>${postCode}</p>
                         <p class="receiverName"><b>수신자: </b>${receiverName}</p>
                         <p class="receiverPhone"><b>연락처: </b>${receiverPhone}</p>
-                        <p class="deliveryMessage"><b>배송메세지: </b>${deliveryMessage || "배송메시지 없어요."}</p>
+                        <p class="deliveryMessage"><b>배송메세지: </b>${
+                            deliveryMessage || "배송메시지 없어요."
+                        }</p>
                     </div>
                     <div class="admin-order-button">
                         <div class="admin-button-area">
@@ -104,16 +118,15 @@ getOrders().then((orders) => {
                 `;
 
         totalPrice = 0;
-})
+    });
 
-orderList.innerHTML = orderHTML;
-    
+    orderList.innerHTML = orderHTML;
 });
 
 /* [관리자] 배송 상태 수정 */
 let orderNumber;
 const updateDeliveryStatus = async () => {
-    try{
+    try {
         const uri = "http://localhost:5500/orders/admin";
         const deliveryStatus = document.querySelector(
             ".select-deliverystatus"
@@ -131,15 +144,25 @@ const updateDeliveryStatus = async () => {
 
         const response = await axios.patch(uri, body, header);
         console.log(response);
-        window.alert('배송 상태가 수정되었습니다!');
-        window.location.href = "./manage_orders.html";
-    } catch(err){
+        // window.alert("배송 상태가 수정되었습니다!");
+        // window.location.href = "./manage_orders.html";
+        modalContent.innerHTML = "배송 상태가 수정되었습니다!";
+        openModal();
+        setTimeout(() => {
+            location.href = "./manage_orders.html";
+        }, 2000);
+        closeModalBtn.addEventListener("click", () => {
+            location.href = "./manage_orders.html";
+        });
+    } catch (err) {
         console.log(err);
     }
-}
+};
 
-const changeDeliveryStatusButton = document.querySelector('.fix-delivery-complete');
-changeDeliveryStatusButton.addEventListener('click', updateDeliveryStatus); 
+const changeDeliveryStatusButton = document.querySelector(
+    ".fix-delivery-complete"
+);
+changeDeliveryStatusButton.addEventListener("click", updateDeliveryStatus);
 
 /* [관리자] 주문 목록 삭제 */
 const deleteOrder = async () => {
@@ -159,11 +182,28 @@ const deleteOrder = async () => {
             withCredentials: header.withCredentials,
         });
         console.log(response);
-        window.alert("주문이 삭제 되었습니다!");
-        window.location.href = "./manage_orders.html";
-        
+        // window.alert("주문이 삭제 되었습니다!");
+        // window.location.href = "./manage_orders.html";
+        modalContent.innerHTML = "주문이 삭제 되었습니다!";
+        openModal();
+        setTimeout(() => {
+            location.href = "./manage_orders.html";
+        }, 2000);
+        closeModalBtn.addEventListener("click", () => {
+            location.href = "./manage_orders.html";
+        });
     } catch (err) {
         console.log(err);
     }
 };
 
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});

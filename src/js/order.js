@@ -6,6 +6,11 @@ const form = document.getElementById("form");
 const esseatialInput = document.querySelectorAll(".essential");
 const List = document.querySelector(".product-list");
 
+//모달
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-text");
+const closeModalBtn = document.querySelector(".close-modal-btn");
+
 chevron[0].addEventListener("click", () => {
     let box = chevron[0].parentElement.nextSibling.nextSibling;
     if (box.style.display == "none") {
@@ -106,17 +111,25 @@ class OrderForm {
 
         for (let idx = 0; idx < this.state.length - 1; idx++) {
             if (this.state[idx] === "") {
-                alert("필수 입력 사항을 모두 작성해주세요.");
+                // alert("필수 입력 사항을 모두 작성해주세요.");
+                modalContent.innerHTML = "필수 입력 사항을 모두 작성해주세요.";
+                openModal();
 
                 throw new Error("필수 입력 사항을 모두 작성해주세요.");
             }
         }
         const regul = /^01\d{1}-\d{4}-\d{4}$/;
         if (!regul.test(this.state[4])) {
-            alert("휴대전화는 010-0000-0000형식으로 입력해주세요.");
+            // alert("휴대전화는 010-0000-0000형식으로 입력해주세요.");
+            modalContent.innerHTML =
+                "휴대전화는 010-0000-0000 형식으로 입력해주세요.";
+            openModal();
+
             throw new Error("휴대전화는 010-0000-0000 형식으로 입력해주세요.");
         } else if (checkBtn.checked === false) {
-            alert("구매 동의 항목에 체크해주세요.");
+            // alert("구매 동의 항목에 체크해주세요.");
+            modalContent.innerHTML = "구매 동의 항목에 체크해주세요";
+            openModal();
 
             throw new Error("구매 동의 항목에 체크해주세요");
         }
@@ -136,14 +149,14 @@ class OrderForm {
             }
         });
 
-        this.form.addEventListener('input', (e) => {
-            if (e.target.classList.contains('password')) {
+        this.form.addEventListener("input", (e) => {
+            if (e.target.classList.contains("password")) {
                 e.target.value = e.target.value
-                .replace(/[^0-9]/g, '')
-                .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
-                .replace(/(\-{1,2})$/g, "");
+                    .replace(/[^0-9]/g, "")
+                    .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+                    .replace(/(\-{1,2})$/g, "");
             }
-        })
+        });
     }
 
     async orderIDB() {
@@ -193,11 +206,11 @@ class OrderForm {
 
         const header = accessToken
             ? {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-                withCredentials: true,
-            }
+                  headers: {
+                      Authorization: `Bearer ${accessToken}`,
+                  },
+                  withCredentials: true,
+              }
             : { withCredentials: true };
 
         const url = accessToken
@@ -206,9 +219,20 @@ class OrderForm {
         try {
             const response = await axios.post(url, data, header);
 
+            console.log(response.data.data);
+            // window.alert("결제가 완료되었습니다.");
+            modalContent.innerHTML = "결제가 완료되었습니다.";
+            openModal();
+            setTimeout(() => {
+                location.href = "order_ok.html";
+            }, 2000);
+            closeModalBtn.addEventListener("click", () => {
+                location.href = "order_ok.html";
+            });
+
             localStorage.setItem("order", JSON.stringify(response.data.data));
             this.deleteIDB();
-            location.href = "order_ok.html";
+            // location.href = "order_ok.html";
         } catch (err) {
             console.log(err);
         }
@@ -231,3 +255,14 @@ orderForm.render();
 // }
 
 // let result = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});

@@ -1,12 +1,17 @@
-const signupButton = document.querySelector('#signup-btn');
+const signupButton = document.querySelector("#signup-btn");
 
-signupButton.addEventListener('click', async () => {
+//모달
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-text");
+const closeModalBtn = document.querySelector(".close-modal-btn");
+
+signupButton.addEventListener("click", async () => {
     //input
-    const idInput = document.querySelector('#id');
-    const passwordInput = document.querySelector('#password');
-    const checkPasswordInput = document.querySelector('#check-password');
-    const userNameInput = document.querySelector('#name');
-    const emailInput = document.querySelector('#email');
+    const idInput = document.querySelector("#id");
+    const passwordInput = document.querySelector("#password");
+    const checkPasswordInput = document.querySelector("#check-password");
+    const userNameInput = document.querySelector("#name");
+    const emailInput = document.querySelector("#email");
     //input value값(공백 제거)
     const id = idInput.value.trim();
     const password = passwordInput.value.trim();
@@ -17,15 +22,19 @@ signupButton.addEventListener('click', async () => {
     // 유효성검사용 정규표현식
     const regul1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/;
 
-   if (password === "") {
+    if (password === "") {
         setErrorFor(passwordInput, "비밀번호를 입력하세요.");
     } else if (!regul1.test(password)) {
+        setErrorFor(passwordInput, "8~16자 영문, 숫자를 사용하세요.");
+    } else if (checkPassword === "") {
+        setErrorFor(checkPasswordInput, "비밀번호를 입력하세요.");
         setErrorFor(passwordInput, "8~16자 영문, 숫자를 사용하세요.");
     } else if (checkPassword === "") {
         setErrorFor(checkPasswordInput, "비밀번호를 입력하세요.");
     } else if (password !== checkPassword) {
         setErrorFor(checkPasswordInput, "비밀번호가 일치하지 않습니다.");
     } else {
+        const uri = "http://localhost:5500/auth/signup";
         const uri = "http://localhost:5500/auth/signup";
         const userData = {
             userId: id,
@@ -36,6 +45,7 @@ signupButton.addEventListener('click', async () => {
         const header = {
             headers: {
                 "Content-type": "application/json",
+                "Content-type": "application/json",
             },
         };
 
@@ -43,50 +53,71 @@ signupButton.addEventListener('click', async () => {
             .post(uri, userData, header)
             .then((res) => {
                 console.log(res);
-                window.alert(`${res.data.message}`);
-                window.location.href = "./login.html";
+                // window.alert(`${res.data.message}`);
+                modalContent.innerHTML = `${res.data.message}`;
+                openModal();
+                setTimeout(() => {
+                    location.href = "./login.html";
+                }, 2000);
+                closeModalBtn.addEventListener("click", () => {
+                    location.href = "./login.html";
+                });
+
+                // window.location.href = "./login.html";
             })
             .catch((err) => {
                 if (err.response.data.message) {
-                    window.alert(`${err.response.data.message}`);
+                    // window.alert(`${err.response.data.message}`);
+                    modalContent.innerHTML = `${err.response.data.message}`;
+                    openModal();
                 } else {
-                    window.alert("회원가입에 실패했습니다!");
+                    // window.alert("회원가입에 실패했습니다!");
+                    modalContent.innerHTML = "회원가입에 실패했습니다!";
+                    openModal();
                 }
             });
     }
 
     function setErrorFor(input, message) {
         const inputFormDiv = input.parentElement;
-        const small = inputFormDiv.querySelector('small');
+        const small = inputFormDiv.querySelector("small");
 
         small.innerText = message;
-        inputFormDiv.classList.remove('success');
-        inputFormDiv.classList.add('error');
+        inputFormDiv.classList.remove("success");
+        inputFormDiv.classList.add("error");
     }
 });
 
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});
 
 /* 아이디 유효성 검사 api */
 
- const isValidId = (id) => {
-     const regExp = /^[a-zA-Z0-9]{5,}$/;
-     return regExp.test(id);
- };
+const isValidId = (id) => {
+    const regExp = /^[a-zA-Z0-9]{5,}$/;
+    return regExp.test(id);
+};
 
-
-const emailField = document.querySelector('#email');
+const emailField = document.querySelector("#email");
 const idField = document.querySelector("#id");
-const userNameField = document.querySelector('#name');
+const userNameField = document.querySelector("#name");
 
 idField.addEventListener("input", async (e) => {
-    
     console.log("텍스트 상자에 포커스가 있습니다.");
     const isValid = isValidId(idField.value);
     const signUpIdArea = document.querySelector(".signup-id");
     const idFieldText = document.querySelector(".signup-id small");
 
-    if(isValid){
-        signUpIdArea.classList.remove('red');
+    if (isValid) {
+        signUpIdArea.classList.remove("red");
         try {
             const userId = idField.value;
 
@@ -98,37 +129,37 @@ idField.addEventListener("input", async (e) => {
             };
             const response = await axios.get(uri, header);
             console.log(response);
-            if(response.data.data){
+            if (response.data.data) {
                 signUpIdArea.classList.add("red");
                 signUpIdArea.classList.remove("green");
-                idFieldText.innerText = "누군가가 사용하고 있어요."
+                idFieldText.innerText = "누군가가 사용하고 있어요.";
             } else {
                 signUpIdArea.classList.add("green");
                 signUpIdArea.classList.remove("red");
                 idFieldText.innerText = `멋진 아이디네요!`;
             }
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     } else {
-        if(idField.value == ""){
+        if (idField.value == "") {
             signUpIdArea.classList.remove("green");
             signUpIdArea.classList.add("red");
             idFieldText.innerText = "아이디를 입력해주세요.";
         } else {
             signUpIdArea.classList.remove("green");
             signUpIdArea.classList.add("red");
-            idFieldText.innerText = "영어와 숫자로 이루어진 5글자 이상 적어주세요.";
+            idFieldText.innerText =
+                "영어와 숫자로 이루어진 5글자 이상 적어주세요.";
         }
-    }   
+    }
 });
 
-
 /* 이메일 유효성 검사 */
- const isValidEmail = (email) => {
-     const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-     return regExp.test(email);
- };
+const isValidEmail = (email) => {
+    const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return regExp.test(email);
+};
 
 emailField.addEventListener("input", async (e) => {
     console.log("텍스트 상자에 포커스가 있습니다.");
@@ -169,25 +200,24 @@ emailField.addEventListener("input", async (e) => {
         } else {
             signUpEmailArea.classList.remove("green");
             signUpEmailArea.classList.add("red");
-            emailFieldText.innerText =
-                "이메일 형식에 맞게 적어주세요!";
+            emailFieldText.innerText = "이메일 형식에 맞게 적어주세요!";
         }
     }
 });
 
 /* 닉네임 중복 검사 */
 
- const isValidUserName = (userName) => {
-     const regExp = /^[가-힣ㅣa-zA-Z0-9]{3,}$/;
-     return regExp.test(userName);
- };
+const isValidUserName = (userName) => {
+    const regExp = /^[가-힣ㅣa-zA-Z0-9]{3,}$/;
+    return regExp.test(userName);
+};
 
 userNameField.addEventListener("input", async (e) => {
     console.log("텍스트 상자에 포커스가 있습니다.");
     const userNameArea = document.querySelector(".signup-name");
     const userNameFieldText = document.querySelector(".signup-name small");
     const isValid = isValidUserName(userNameField.value);
-    
+
     if (isValid) {
         userNameArea.classList.remove("red");
         try {
@@ -221,7 +251,8 @@ userNameField.addEventListener("input", async (e) => {
         } else {
             userNameArea.classList.remove("green");
             userNameArea.classList.add("red");
-            userNameFieldText.innerText = "영문, 숫자, 글자 단위로 3글자 이상 입력해주세요!";
+            userNameFieldText.innerText =
+                "영문, 숫자, 글자 단위로 3글자 이상 입력해주세요!";
         }
     }
 });

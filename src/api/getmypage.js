@@ -1,3 +1,8 @@
+//모달
+// const modal = document.querySelector(".modal");
+// const modalContent = document.querySelector(".modal-text");
+// const closeModalBtn = document.querySelector(".close-modal-btn");
+
 /* 사용자 주문 내역 렌더링 */
 const getMyAllOrders = async () => {
     const userData = JSON.parse(localStorage.getItem("userData"));
@@ -105,8 +110,18 @@ const cancelOrder = async () => {
         });
 
         console.log(cancelResponse);
-        window.alert("주문이 성공적으로 취소 되었습니다!");
-        window.location.href = "./mypage.html";
+        // window.alert("주문이 성공적으로 취소 되었습니다!");
+        modalContent.innerHTML = "주문이 성공적으로 취소 되었습니다!";
+        openModal();
+        setTimeout(() => {
+            location.href = "./mypage.html";
+        }, 2000);
+
+        closeModalBtn.addEventListener("click", () => {
+            location.href = "./mypage.html";
+        });
+
+        // window.location.href = "./mypage.html";
     } catch (err) {
         console.log(err);
     }
@@ -118,4 +133,15 @@ orderListArea.addEventListener("click", (e) => {
         orderNumber = e.target.dataset.order;
         cancelOrder();
     }
+});
+
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
 });

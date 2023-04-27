@@ -3,6 +3,11 @@ const newArea = document.querySelector(".new-products");
 const recommendArea = document.querySelector(".recommend-products");
 import { fetchProducts } from "./api/getProducts.js";
 
+//모달
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-text");
+const closeModalBtn = document.querySelector(".close-modal-btn");
+
 const productsList = await fetchProducts();
 // console.log(productsList);
 
@@ -160,7 +165,10 @@ const filterRole = (e) => {
             e.preventDefault();
             window.location.href = "./pages/manage_category.html";
         } else {
-            window.alert("접근 권한이 없습니다!");
+            // window.alert("접근 권한이 없습니다!");
+            // console.log("얍");
+            modalContent.innerHTML = "접근 권한이 없습니다!";
+            openModal();
         }
     }
 };
@@ -194,3 +202,14 @@ const moveToEladinPickDetailPage = () => {
 
 EladinPicKImg.addEventListener("click", moveToEladinPickDetailPage);
 EladinPicKTitle.addEventListener("click", moveToEladinPickDetailPage);
+
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});

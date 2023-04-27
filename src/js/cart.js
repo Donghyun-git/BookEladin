@@ -1,10 +1,15 @@
-import IDB from './indexedDB.js';
+import IDB from "./indexedDB.js";
 
-const cartUl = document.querySelector('.cart-section-list');
-const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
-const allDeleteBtn = document.querySelector('.cart-list-all-select-delete');
-const nonOrderBtn = document.querySelector('.no-user-order-btn');
-const orderBtn = document.querySelector('.user-order-btn');
+const cartUl = document.querySelector(".cart-section-list");
+const allSelectBtn = document.querySelector(".cart-list-all-select-btn");
+const allDeleteBtn = document.querySelector(".cart-list-all-select-delete");
+const nonOrderBtn = document.querySelector(".no-user-order-btn");
+const orderBtn = document.querySelector(".user-order-btn");
+
+//모달
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-text");
+const closeModalBtn = document.querySelector(".close-modal-btn");
 
 class CartSection {
     constructor() {
@@ -12,9 +17,9 @@ class CartSection {
     }
 
     addSectionEvent() {
-        allSelectBtn.addEventListener('click', (e) => {
+        allSelectBtn.addEventListener("click", (e) => {
             const checkBoxList = document.querySelectorAll(
-                '.cart-section-item-select'
+                ".cart-section-item-select"
             );
 
             checkBoxList.forEach((checkBox) => {
@@ -34,18 +39,20 @@ class CartSection {
             this.sectionRender();
         });
 
-        allDeleteBtn.addEventListener('click', (e) => {
+        allDeleteBtn.addEventListener("click", (e) => {
             IDB.clearIDB();
             location.reload();
-            
+
             this.selectCount = [];
             this.sectionRender();
         });
 
-        nonOrderBtn.addEventListener('click', async (e) => {
+        nonOrderBtn.addEventListener("click", async (e) => {
             if (this.selectCount.length === 0) {
                 e.preventDefault();
-                alert('주문하실 상품이 없습니다.');
+                // alert('주문하실 상품이 없습니다.');
+                modalContent.innerHTML = "선택하신 상품이 없습니다.";
+                openModal();
             } else {
                 // Update the order property of the selected items
                 // You can remove this part if you don't need it anymore
@@ -55,16 +62,26 @@ class CartSection {
             }
         });
 
-        orderBtn.addEventListener('click', async (e) => {
-            if (!localStorage.getItem('accessToken')) {
+        orderBtn.addEventListener("click", async (e) => {
+            if (!localStorage.getItem("accessToken")) {
                 e.preventDefault();
-                alert('로그인 후 이용해주세요.');
-                location.href = './login.html';
+                // alert("로그인 후 이용해주세요.");
+                modalContent.innerHTML = "로그인 후 이용해주세요.";
+                openModal();
+                setTimeout(() => {
+                    location.href = "./login.html";
+                }, 2000);
+                closeModalBtn.addEventListener("click", () => {
+                    location.href = "./login.html";
+                });
             }
 
             if (this.selectCount.length === 0) {
                 e.preventDefault();
-                alert('주문하실 상품이 없습니다.');
+                // alert('주문하실 상품이 없습니다.');
+                modalContent.innerHTML = "선택하신 상품이 없습니다.";
+                openModal();
+
                 return;
             }
             // Update the order property of the selected items
@@ -77,34 +94,34 @@ class CartSection {
 
     totalCountRender() {
         const totalCount = document.querySelector(
-            '.cart-section-select-item-count-text'
+            ".cart-section-select-item-count-text"
         );
         const totalCountIco = document.querySelector(
-            '.cart-section-select-check-ico'
+            ".cart-section-select-check-ico"
         );
         if (this.selectCount.length > 0) {
             totalCount.innerHTML = `${this.selectCount.length}개를 선택하셨습니다.`;
-            totalCount.classList.remove('text-no');
-            totalCountIco.classList.remove('ico-no');
+            totalCount.classList.remove("text-no");
+            totalCountIco.classList.remove("ico-no");
         } else {
-            totalCount.innerHTML = '선택한 상품이 없습니다.';
-            totalCount.classList.add('text-no');
-            totalCountIco.classList.add('ico-no');
+            totalCount.innerHTML = "선택한 상품이 없습니다.";
+            totalCount.classList.add("text-no");
+            totalCountIco.classList.add("ico-no");
         }
     }
 
     totalAmountRender() {
         const totalAmount = document.querySelector(
-            '.cart-section-select-item-total-amount'
+            ".cart-section-select-item-total-amount"
         );
         const selectAmount = document.querySelectorAll(
-            '.cart-section-item-price'
+            ".cart-section-item-price"
         );
         let amount = 0;
         selectAmount.forEach((item) => {
-            if (this.selectCount.includes(item.getAttribute('value'))) {
+            if (this.selectCount.includes(item.getAttribute("value"))) {
                 console.log(item.innerText);
-                amount += parseInt(item.innerText.replace(/,/g, ''));
+                amount += parseInt(item.innerText.replace(/,/g, ""));
             }
         });
 
@@ -132,9 +149,9 @@ class Cart extends CartSection {
         await this.setState();
         const cartList = this.state;
 
-        let template = '';
+        let template = "";
 
-        if(cartList.length === 0){
+        if (cartList.length === 0) {
             template += `
                 <div class="no-items" style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 106px;">
                     <div class="no-items-img">
@@ -144,13 +161,13 @@ class Cart extends CartSection {
                         <p style="font-size: 24px; font-weight: 500;">장바구니가 텅 비었어요~</p>
                     </div>
                 </div>
-            `
+            `;
         } else {
             cartList.map((item) => {
-            //원화 단위로 변환
-            const formattedPrice = item.price.toLocaleString() + '원';
+                //원화 단위로 변환
+                const formattedPrice = item.price.toLocaleString() + "원";
 
-            template += `
+                template += `
                 <li class="cart-section-item">
                     <div class="cart-section-item-selcet-box">
                         <input
@@ -194,62 +211,61 @@ class Cart extends CartSection {
                     </div>
                 </li>
             `;
-        });
+            });
         }
-        
 
         return template;
     }
 
     async addEvent() {
-        this.target.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cart-section-item-select')) {
+        this.target.addEventListener("click", (e) => {
+            if (e.target.classList.contains("cart-section-item-select")) {
                 if (this.selectCount.includes(e.target.value)) {
                     this.selectCount.splice(
                         this.selectCount.indexOf(e.target.value),
                         1
                     );
                     IDB.updateIDB(Number(e.target.value), false);
-                    console.log(this.selectCount)
+                    console.log(this.selectCount);
                 } else {
                     this.selectCount.push(e.target.value);
                     IDB.updateIDB(Number(e.target.value), true);
-                    console.log(this.selectCount)
+                    console.log(this.selectCount);
                 }
             }
 
-            if (e.target.classList.contains('cart-section-item-delete-btn')) {
+            if (e.target.classList.contains("cart-section-item-delete-btn")) {
                 IDB.deleteIDB(Number(e.target.value));
                 location.reload();
             }
             this.sectionRender();
 
-            if (e.target.classList.contains('minus-btn')) {
+            if (e.target.classList.contains("minus-btn")) {
                 const quantity = e.target.nextElementSibling;
                 const priceElement = e.target
-                    .closest('.cart-section-item-price-box')
-                    .querySelector('.cart-section-item-price');
+                    .closest(".cart-section-item-price-box")
+                    .querySelector(".cart-section-item-price");
                 const originalPrice = parseInt(priceElement.dataset.price);
 
                 if (quantity.value > 1) {
                     quantity.value -= 1;
                     const updatedPrice = originalPrice * quantity.value;
                     priceElement.innerText =
-                        updatedPrice.toLocaleString() + '원';
+                        updatedPrice.toLocaleString() + "원";
                     this.sectionRender(); // Call sectionRender after updating the price
                 }
             }
 
-            if (e.target.classList.contains('plus-btn')) {
+            if (e.target.classList.contains("plus-btn")) {
                 const quantity = e.target.previousElementSibling;
                 const priceElement = e.target
-                    .closest('.cart-section-item-price-box')
-                    .querySelector('.cart-section-item-price');
+                    .closest(".cart-section-item-price-box")
+                    .querySelector(".cart-section-item-price");
                 const originalPrice = parseInt(priceElement.dataset.price);
 
                 quantity.value = Number(quantity.value) + 1;
                 const updatedPrice = originalPrice * quantity.value;
-                priceElement.innerText = updatedPrice.toLocaleString() + '원';
+                priceElement.innerText = updatedPrice.toLocaleString() + "원";
                 this.sectionRender(); // Call sectionRender after updating the price
             }
         });
@@ -267,3 +283,14 @@ class Cart extends CartSection {
 
 const cart = new Cart(cartUl);
 cart.render();
+
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+});

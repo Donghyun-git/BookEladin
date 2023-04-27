@@ -1,5 +1,10 @@
 const updateButton = document.querySelector(".change-user-info");
 
+// //모달
+// const modal = document.querySelector(".modal");
+// const modalContent = document.querySelector(".modal-text");
+// const closeModalBtn = document.querySelector(".close-modal-btn");
+
 const isMatchEmail = (email) => {
     const deleteSpace = email.value.trim();
     if (deleteSpace.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) return true;
@@ -29,13 +34,19 @@ const updateUserInfo = async () => {
 
     if (!isMatchEmail(email)) {
         email.style.outline = inValidOutlineStyle;
-        window.alert("이메일 형식이 올바르지 않습니다!");
+        // window.alert("이메일 형식이 올바르지 않습니다!");
+        modalContent.innerHTML = "이메일 형식이 올바르지 않습니다!";
+        openModal();
     } else if (!isMatchPassword(password, checkPassword)) {
         password.style.outline = inValidOutlineStyle;
         checkPassword.style.outline = inValidOutlineStyle;
-        window.alert(
-            "패스워드 형식이 올바르지 않습니다! 일치여부도 다시 한 번 확인해주세요!"
-        ); // 여기부분까지만 건드려주세용. +요기는 비번이랑 비번확인 체크가 같이 있고, 클릭이벤트 핸들러라서 아래에다가 작성했어용.
+        // window.alert("패스워드 형식이 올바르지 않습니다! 일치여부도 다시 한 번 확인해주세요!");
+
+        modalContent.innerHTML =
+            "패스워드 형식이 올바르지 않습니다! 일치여부도 다시 한 번 확인해주세요!";
+        openModal();
+
+        // 여기부분까지만 건드려주세용. +요기는 비번이랑 비번확인 체크가 같이 있고, 클릭이벤트 핸들러라서 아래에다가 작성했어용.
     } else {
         try {
             const accessToken = localStorage.getItem("accessToken");
@@ -57,17 +68,24 @@ const updateUserInfo = async () => {
             const updateMessage = await updateResponse.data.message;
             localStorage.setItem(
                 "myData",
-                JSON.stringify({ data: {
-                    userName: body.userName,
-                    email: body.email,
-                    userId: userId,
-                }})
-            ); 
-            window.alert(updateMessage);
+                JSON.stringify({
+                    data: {
+                        userName: body.userName,
+                        email: body.email,
+                        userId: userId,
+                    },
+                })
+            );
+            // window.alert(updateMessage);
+            modalContent.innerHTML = `${updateMessage}`;
+            openModal();
+
             window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
-            window.alert(`서버오류입니다! ${err.response.data.message}`);
+            // window.alert(`서버오류입니다! ${err.response.data.message}`);
+            modalContent.innerHTML = `${err.response.data.message}`;
+            openModal();
         }
     }
 };
@@ -79,7 +97,7 @@ updateButton.addEventListener("click", updateUserInfo);
 const password = document.querySelector("#new-password");
 const checkPassword = document.querySelector("#new-password-check");
 
-const inputList = [ password, checkPassword];
+const inputList = [password, checkPassword];
 
 inputList.forEach((input) => {
     input.addEventListener("keyup", () => {
@@ -131,12 +149,12 @@ function setSuccessFor(input) {
 
 /* 이메일 유효성 검사 */
 const emailArea = document.querySelector(".email-field");
-const emailField = document.querySelector('.change-email');
+const emailField = document.querySelector(".change-email");
 
- const isValidEmail = (email) => {
-     const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-     return regExp.test(email);
- };
+const isValidEmail = (email) => {
+    const regExp = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return regExp.test(email);
+};
 
 emailField.addEventListener("input", async (e) => {
     console.log("텍스트 상자에 포커스가 있습니다.");
@@ -178,8 +196,7 @@ emailField.addEventListener("input", async (e) => {
         } else {
             emailArea.classList.remove("green");
             emailArea.classList.add("red");
-            emailFieldText.innerText =
-                "이메일 형식에 맞게 적어주세요!";
+            emailFieldText.innerText = "이메일 형식에 맞게 적어주세요!";
         }
     }
 });
@@ -187,12 +204,12 @@ emailField.addEventListener("input", async (e) => {
 /* 닉네임 중복 검사 */
 
 const nameArea = document.querySelector(".name-field");
-const nameField = document.querySelector('.change-username');
+const nameField = document.querySelector(".change-username");
 
- const isValidName = (name) => {
-     const regExp = /^[가-힣ㅣa-zA-Z0-9]{3,}$/;
-     return regExp.test(name);
- };
+const isValidName = (name) => {
+    const regExp = /^[가-힣ㅣa-zA-Z0-9]{3,}$/;
+    return regExp.test(name);
+};
 
 nameField.addEventListener("input", async (e) => {
     console.log("텍스트 상자에 포커스가 있습니다.");
@@ -229,7 +246,6 @@ nameField.addEventListener("input", async (e) => {
         } catch (err) {
             console.log(err);
         }
-
     } else {
         if (nameValue == "") {
             nameArea.classList.remove("green");
@@ -242,4 +258,15 @@ nameField.addEventListener("input", async (e) => {
                 "영문, 숫자, 글자 단위로 3글자 이상 입력해주세요!";
         }
     }
+});
+
+// 모달
+function openModal() {
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 2000);
+}
+closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
 });
