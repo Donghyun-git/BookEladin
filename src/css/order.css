@@ -154,8 +154,6 @@ main h2 {
     font-size: 25px;
     font-weight: 400;
     background-color: #3e4989;
-    position: sticky;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,6 +163,7 @@ main h2 {
     height: 70px;
     font-size: 23px;
     padding: 0 10px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
