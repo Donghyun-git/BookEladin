@@ -135,6 +135,15 @@ class OrderForm {
                 }
             }
         });
+
+        this.form.addEventListener('input', (e) => {
+            if (e.target.classList.contains('password')) {
+                e.target.value = e.target.value
+                .replace(/[^0-9]/g, '')
+                .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+                .replace(/(\-{1,2})$/g, "");
+            }
+        })
     }
 
     async orderIDB() {
