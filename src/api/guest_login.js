@@ -51,8 +51,10 @@ const NonMemberlogIn = async () => {
             window.alert(`${data.message}`);
             window.location.href = '../pages/order.html';
         } catch (err) {
-            if (err.response.data.message) {
-                window.alert(`${err.response.data.message}`);
+            if (err.response.status === 500) {
+                window.alert("이미 등록되어 있는 닉네임 입니다!");
+            } else if(err.response.data.message){
+                window.alert(`${err.response.date.message}`);
             } else {
                 window.alert('로그인에 실패했습니다!');
             }

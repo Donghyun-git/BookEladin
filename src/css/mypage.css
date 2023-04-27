@@ -47,6 +47,7 @@
     line-height: 18px;
     text-align: center;
     color: #787878;
+    cursor:pointer;
 }
 
 .header-top-item:first-child::after {
