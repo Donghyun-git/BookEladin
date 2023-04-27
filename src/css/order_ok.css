@@ -3,19 +3,33 @@
 @import "./font-awesome.css";
 
 /* 전체 레이아웃 */
-#wrap { width: 100%; }
-#header { width: 100%; }
-#main { width: 100%; }
-
+#wrap {
+    width: 100%;
+}
+#header {
+    width: 100%;
+}
+#main {
+    width: 100%;
+}
 
 /* 공용 컨테이너 */
-.container { width: 950px; margin: 0 auto; text-align: center;}
+.container {
+    width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /* 로그인, 회원가입, 주문완료 */
-.login.container { width: 700px; margin: 0 auto; text-align: center;}
+.login.container {
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /* 레이아웃 여백 */
-.row { }  
+.row {
+}
 
 /* 헤더 */
 
@@ -132,31 +146,134 @@
 }
 
 .header-info-basket,
-.header-info-my { 
-    display: inline-flex; 
-    justify-content: center; 
-    align-items: center; 
-    padding: 6px; 
+.header-info-my {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
 }
 
 .basket-img,
-.my-img { 
-    width: 28px; 
-    height: 28px; 
+.my-img {
+    width: 28px;
+    height: 28px;
 }
 
 /* 주문완료 */
-.order_ok .row { margin-top: 5rem;}
-.order_ok-tit h2 { font-size: 3rem; font-weight: 500;}
-.order_ok-subtit h3 { font-size: 2rem; font-weight: 350; padding: 8px 0 14px 0;}
+.order_ok .row {
+    margin-top: 5rem;
+}
+.order_ok-tit h2 {
+    font-size: 3rem;
+    font-weight: 500;
+}
+.order_ok-subtit h3 {
+    font-size: 2rem;
+    font-weight: 350;
+    padding: 8px 0 14px 0;
+}
 
-.order_ok-list { display: flex; flex-direction: column; justify-content: center; border: 3px solid lightgray; width: 40%; margin: 0 auto; }
-.order_ok-list ul { display:flex;  padding: 16px 12px; border-bottom: 1.5px solid lightgray;}
-.order_ok-list ul:last-child { margin-bottom: -1px;}
-.order_ok-list ul li { display: inline-block; }
-.order_ok-list ul li:first-child { width: 20%; text-align: center;}
-.order_ok-list ul li:first-child a {  color: rgb(159, 159, 159)}
-.order_ok-list ul li:last-child { width: 80%; text-align: left; padding-left: 18px;}
-.order_ok-list .list-row-2 p { color: darkgray;}
-.order_ok-hmbtn { margin: 16px auto 0 auto; width: 40%; background-color: #606DB8; padding: 12px 0;}
-.order_ok-hmbtn a { color: #fff; font-size: 2rem; font-weight: 350;}
+.order_ok-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid lightgray;
+    width: 40%;
+    margin: 0 auto;
+}
+.order_ok-list ul {
+    display: flex;
+    padding: 16px 12px;
+    border-bottom: 1.5px solid lightgray;
+}
+.order_ok-list ul:last-child {
+    margin-bottom: -1px;
+}
+.order_ok-list ul li {
+    display: inline-block;
+}
+.order_ok-list ul li:first-child {
+    width: 20%;
+    text-align: center;
+}
+.order_ok-list ul li:first-child a {
+    color: rgb(159, 159, 159);
+}
+.order_ok-list ul li:last-child {
+    width: 80%;
+    text-align: left;
+    padding-left: 18px;
+}
+.order_ok-list .list-row-2 p {
+    color: darkgray;
+}
+.order_ok-hmbtn {
+    margin: 16px auto 0 auto;
+    width: 40%;
+    background-color: #606db8;
+    padding: 12px 0;
+}
+.order_ok-hmbtn a {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 350;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.modal.active {
+    opacity: 1;
+    height: 100%;
+}
+
+.modal-content {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #8899fb;
+}
+.modal-content > .fa {
+    font-size: 23px;
+}
+.modal-text {
+    padding: 0 50px 0 10px;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    font-size: 37px;
+    cursor: pointer;
+}
+
+.close-modal-btn:focus {
+    outline: none;
+}
+
+.modal.active .modal-content {
+    opacity: 80%;
+    transform: translate(-50%, 0%);
+}
