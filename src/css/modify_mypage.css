@@ -74,6 +74,7 @@
 .header-title-link {
     display: flex;
     align-items: center;
+    padding-left: 14px;
 }
 
 .header-title-link .logo-img {
@@ -205,14 +206,13 @@ main h3 {
     bottom: 6px;
 }
 
-
 .id-field {
     padding-left: 28px;
-    color:#606db8;
+    color: #606db8;
     font-size: 14px;
 }
 
-.change-userid { 
+.change-userid {
     margin-left: 8px;
 }
 
@@ -263,7 +263,7 @@ main h3 {
 
 .email-field small {
     position: absolute;
-    bottom:8px;
+    bottom: 8px;
 }
 
 .table .password-field input {
