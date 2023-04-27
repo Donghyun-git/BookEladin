@@ -405,8 +405,8 @@
 .ico-no::after {
     content: "\00d7";
     position: absolute;
-    top: -18px;
-    right: 4px;
+    top: -15px;
+    right: 6px;
     font-size: 35px;
     color: #ffffff;
 }
