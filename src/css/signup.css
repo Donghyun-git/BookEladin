@@ -1,4 +1,4 @@
-@import "./font.css";
+@import "./fonts.css";
 @import "./default.css";
 @import "./font-awesome.css";
 
@@ -43,9 +43,9 @@
 }
 .header-logo h1 {
     color: #606db8;
-    font-size: 40px;
-    letter-spacing: 0.1em;
-    font-weight: bold;
+    font-size: 50px;
+    font-weight: 700;
+    margin: 12px 0 0 22px;
 }
 
 .header-user {
