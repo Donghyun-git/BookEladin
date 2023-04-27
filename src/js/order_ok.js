@@ -1,16 +1,17 @@
 const deliveryHistory = document.querySelector('.order_ok-list')
+const { orderInfo, deliveryInfo } = (JSON.parse(localStorage.getItem('order')))
 
-console.log(deliveryHistory)
-let { orderInfo, deliveryInfo } = (JSON.parse(localStorage.getItem('order')))
-const concatObj = (obj1, obj2) => {
-    const newObj = {};
-    for (let key in obj1) {
-        newObj[key] = obj1[key];
+const getAxios = async (url, query) => {
+    const header = {
+        withCredentials: true,
     }
-    for (let key in obj2) {
-        newObj[key] = obj2[key];
-    }
-    return newObj;
+    const res = await axios.get(`${url}/${query}`, header);
+
+    const orderNumber = res.data.data.foundOrder.orderInfo.orderNumber;
+    const data = res.data.data.foundOrder.deliveryInfo;
+
+    data.orderNumber = orderNumber;
+    return data
 }
 
 
@@ -21,14 +22,22 @@ class OrderOk {
         this.state;
     }
 
-    setState() {
-        this.state = concatObj(orderInfo, deliveryInfo)
-        console.log(this.state);
+    async setState() {
+        try {
+            this.state = await getAxios(
+                "http://localhost:5500/orders", 
+                orderInfo.orderNumber
+            )
+        } catch(err) {
+            console.log(err);
+        }
+
+        console.log(this.state)
     }
 
-    template() {
-        this.setState()
-
+    async template() {
+        await this.setState()
+        
         const template = `
             <ul class="list-row-1">
                 <li><a>주문번호</a></li>
@@ -60,8 +69,8 @@ class OrderOk {
         return template;
     }
 
-    render() {
-        let template = this.template();
+    async render() {
+        let template = await this.template();
 
         this.target.innerHTML = template;
     }
