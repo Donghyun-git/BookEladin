@@ -121,11 +121,11 @@ class Book {
         const errorMessage = this.err;
 
         let template = "";
-        if(errorMessage === ""){
-        await bookList.map((book, i) => {
-            //원화 단위로 변환
-            const formattedPrice = book.price.toLocaleString() + "원";
-            template += `
+        if (errorMessage === "") {
+            await bookList.map((book, i) => {
+                //원화 단위로 변환
+                const formattedPrice = book.price.toLocaleString() + "원";
+                template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
                         <div class="category-book-img-link">
@@ -304,3 +304,32 @@ function openAlert() {
         cartAlert.style.display = "none";
     }, 3000);
 }
+
+// 자동 스크롤 버튼
+const scrollToTopBtn = document.querySelector(".scroll-to-top");
+
+// 버튼 클릭 시 스무스하게 스크롤
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+}
+
+// 현재 스크롤 위치 파악하고 버튼 노출 조절
+function checkScroll() {
+    const scrollTop = document.documentElement.scrollTop;
+
+    if (scrollTop > 0) {
+        scrollToTopBtn.style.display = "flex";
+        scrollToTopBtn.style.opacity = 1;
+    } else {
+        scrollToTopBtn.style.opacity = 0;
+        setTimeout(() => {
+            scrollToTopBtn.style.display = "none";
+        }, 700);
+    }
+}
+
+scrollToTopBtn.addEventListener("click", scrollToTop);
+window.addEventListener("scroll", checkScroll);
