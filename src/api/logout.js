@@ -48,6 +48,7 @@ function openModal() {
         modal.classList.remove("active");
     }, 2000);
 }
-closeModalBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
-});
+
+// closeModalBtn.addEventListener("click", () => {
+//     modal.classList.remove("active");
+// });

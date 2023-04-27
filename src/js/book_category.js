@@ -121,7 +121,7 @@ class Book {
         const errorMessage = this.err;
 
         let template = "";
-
+        if(errorMessage === ""){
         await bookList.map((book, i) => {
             //원화 단위로 변환
             const formattedPrice = book.price.toLocaleString() + "원";

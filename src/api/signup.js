@@ -35,7 +35,6 @@ signupButton.addEventListener("click", async () => {
         setErrorFor(checkPasswordInput, "비밀번호가 일치하지 않습니다.");
     } else {
         const uri = "http://localhost:5500/auth/signup";
-        const uri = "http://localhost:5500/auth/signup";
         const userData = {
             userId: id,
             password: password,
