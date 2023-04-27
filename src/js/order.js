@@ -169,8 +169,8 @@ class OrderForm {
         // console.log(items);
 
         const data = {
-            userId: userData ? userData.userId : null,
-            uuid: !userData ? uuid : null,
+            userId: userData ? userData.userId : "",
+            uuid: !userData ? uuid : "",
             items: items,
             deliveryInfo: {
                 receiverName: this.state[0],
@@ -181,8 +181,7 @@ class OrderForm {
                 deliveryMessage: this.state[5],
             },
         };
-        console.log(data);
-        
+
         const header = accessToken
             ? {
                 headers: {
@@ -198,8 +197,6 @@ class OrderForm {
         try {
             const response = await axios.post(url, data, header);
 
-            console.log(response.data.data);
-            window.alert("결제가 완료되었습니다.");
             localStorage.setItem("order", JSON.stringify(response.data.data));
             this.deleteIDB();
             location.href = "order_ok.html";
@@ -207,7 +204,7 @@ class OrderForm {
             console.log(err);
         }
     }
-    
+
     render() {
         this.addEvent();
     }
