@@ -24,18 +24,20 @@ class CartSection {
                     !this.selectCount.includes(checkBox.value)
                 ) {
                     this.selectCount.push(checkBox.value);
+                    IDB.updateIDB(Number(checkBox.value), true);
                 } else if (!e.target.checked) {
                     this.selectCount = [];
+                    IDB.updateIDB(Number(checkBox.value), false);
                 }
             });
+            console.log(this.selectCount);
             this.sectionRender();
         });
 
         allDeleteBtn.addEventListener('click', (e) => {
-            this.selectCount.forEach((count) => {
-                IDB.deleteIDB(Number(count));
-                location.reload();
-            });
+            IDB.clearIDB();
+            location.reload();
+            
             this.selectCount = [];
             this.sectionRender();
         });
@@ -46,9 +48,6 @@ class CartSection {
                 alert('주문하실 상품이 없습니다.');
             } else {
                 // Update the order property of the selected items
-                for (const num of this.selectCount) {
-                    await IDB.updateIDB(Number(num), true);
-                }
                 // You can remove this part if you don't need it anymore
                 // this.selectCount.map((num) => {
                 //     IDB.updateIDB({ num: num });
@@ -69,9 +68,6 @@ class CartSection {
                 return;
             }
             // Update the order property of the selected items
-            for (const num of this.selectCount) {
-                await IDB.updateIDB(Number(num), true);
-            }
             // You can remove this part if you don't need it anymore
             // this.selectCount.map((num) => {
             //     IDB.updateIDB({ num: num });
@@ -198,8 +194,12 @@ class Cart extends CartSection {
                         this.selectCount.indexOf(e.target.value),
                         1
                     );
+                    IDB.updateIDB(Number(e.target.value), false);
+                    console.log(this.selectCount)
                 } else {
                     this.selectCount.push(e.target.value);
+                    IDB.updateIDB(Number(e.target.value), true);
+                    console.log(this.selectCount)
                 }
             }
 
