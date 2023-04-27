@@ -93,7 +93,7 @@ getProductByProductId().then((res) => {
                                     <ul>
 
                                         <li>
-                                            <a href="#" style="font-size: 24px;"
+                                            <a style="font-size: 24px;"
                                                 ><i
                                                     class="fa fa-shopping-cart add-cart"
                                                     aria-hidden="true"
@@ -101,7 +101,7 @@ getProductByProductId().then((res) => {
                                             ></a>
                                         </li>
                                         <li class="buy-button">
-                                            <a href="#">바로구매</a>
+                                            <a>바로구매</a>
                                         </li>
                                     </ul>
                                 </div>
