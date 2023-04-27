@@ -8,6 +8,6 @@ window.addEventListener('load', async () => {
     const emailText = document.querySelector(".change-email");
 
     nameText.value = userName;
-    idText.value = userId;
+    idText.innerText = userId;
     emailText.value = myData.data.email;
 })
