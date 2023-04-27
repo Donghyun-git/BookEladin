@@ -70,6 +70,7 @@ class Book {
     constructor(target) {
         this.target = target;
         this.state;
+        this.err;
     }
 
     // async setState() {
@@ -103,21 +104,29 @@ class Book {
             const uuid = document.cookie.split("=")[1];
             header.headers.uuid = uuid;
         }
-        
-        const data = await axios.get(`${uri}/${encodedQuery}`, header);
-        this.state = await data.data.data
+        try{
+            const data = await axios.get(`${uri}/${encodedQuery}`, header);
+            this.state = await data.data.data;
+            this.err = "";
+        } catch(err){
+            if(err.response.status === 400){
+                this.err = "카테고리에 책이 존재하지 않습니다!";
+            }
+        }
     }
 
     async template() {
         await this.setState();
         const bookList = this.state;
+        const errorMessage = this.err;
 
         let template = "";
 
-        await bookList.map((book, i) => {
-            //원화 단위로 변환
-            const formattedPrice = book.price.toLocaleString() + "원";
-            template += `
+        if(errorMessage === ""){
+            await bookList.map((book, i) => {
+                //원화 단위로 변환
+                const formattedPrice = book.price.toLocaleString() + "원";
+                template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
                         <div class="category-book-img-link">
@@ -166,7 +175,22 @@ class Book {
                     </div>
                 </li>
             `;
-        });
+            });
+        } else {
+            template += `
+            <li>
+                <div class="no-items" style="margin-top: 100px; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 106px;">
+                    <div class="no-items-img">
+                        <img src="../img/eladin_genie.png" alt="엘라딘 이미지" style="width: 30%;">
+                    </div>
+                    <div class="no-items-cont">
+                        <p style="font-size: 24px; font-weight: 500;">카테고리에 등록된 책이 없어요.</p>
+                    </div>
+                </div>
+            </li>
+            `;
+        }
+        
         return template;
     }
 

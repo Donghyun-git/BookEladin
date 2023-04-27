@@ -91,16 +91,9 @@ getProductByProductId().then((res) => {
 
                                 <div class="main-user-buy">
                                     <ul>
+
                                         <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-heart"
-                                                    aria-hidden="true"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
+                                            <a href="#" style="font-size: 24px;"
                                                 ><i
                                                     class="fa fa-shopping-cart add-cart"
                                                     aria-hidden="true"

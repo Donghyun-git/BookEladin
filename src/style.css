@@ -1,6 +1,7 @@
 @import "./css/fonts.css";
 @import "./css/default.css";
 @import "./css/font-awesome.css";
+@import "./css/animate.min.css";
 
 /* 전체 레이아웃 */
 #wrap {
