@@ -57,7 +57,7 @@ getMyAllOrders().then((myOrder) => {
                 <div style="width: 30%; margin-left: 34px;">
                     <p class="orderNumber"><b>주문번호</b> - ${orderNumber}</p>
                     <p class="title">${titleList[idx]}</p>
-                    <p class="price">${items[0].price} 원</p>
+                    <p class="price">${items[0].price.toLocaleString()} 원</p>
                 </div>
                 <div style="width:25%;">
                     <p class="address"><b>주소</b> <br> ${address} ${addressDetail}</p>
