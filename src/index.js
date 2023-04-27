@@ -25,7 +25,8 @@ let RecommendProducts = productsList
 function addProductList(productsType, typeArea) {
     let newHtml = "";
     productsType.forEach((products) => {
-        const { author, productId, introduction, price, title, imgUrl } = products;
+        const { author, productId, introduction, price, title, imgUrl } =
+            products;
 
         const formattedPrice = price.toLocaleString() + "원";
 
@@ -101,7 +102,7 @@ const scrollToTopBtn = document.querySelector(".scroll-to-top");
 function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "smooth",
     });
 }
 
@@ -124,16 +125,15 @@ scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", checkScroll);
 
 /* 포인터 스크롤 */
-const bestSeller = document.querySelector('.best-seller');
+const bestSeller = document.querySelector(".best-seller");
 const newBook = document.querySelector(".new-book");
 const recommendBook = document.querySelector(".recommend-book");
-
 
 const moveToBest = (e) => {
     e.preventDefault();
     const targetElement = document.getElementById("best-seller");
     targetElement.scrollIntoView({ behavior: "smooth" });
-}
+};
 
 const moveToRecommend = (e) => {
     e.preventDefault();
@@ -147,9 +147,9 @@ const moveToNew = (e) => {
     targetElement.scrollIntoView({ behavior: "smooth" });
 };
 
-bestSeller.addEventListener('click', moveToBest);
-recommendBook.addEventListener('click', moveToRecommend);
-newBook.addEventListener('click', moveToNew);
+bestSeller.addEventListener("click", moveToBest);
+recommendBook.addEventListener("click", moveToRecommend);
+newBook.addEventListener("click", moveToNew);
 
 /* admin, user 필터링 */
 
@@ -160,25 +160,37 @@ const filterRole = (e) => {
             e.preventDefault();
             window.location.href = "./pages/manage_category.html";
         } else {
-            window.alert('접근 권한이 없습니다!');
+            window.alert("접근 권한이 없습니다!");
         }
     }
-}
+};
 
-const adminPageButton = document.querySelector('.adminpage-button');
-adminPageButton.addEventListener('click', filterRole);
+const adminPageButton = document.querySelector(".adminpage-button");
+adminPageButton.addEventListener("click", filterRole);
 
 /* 베스트셀러, 추천도서, 신간도서 상세페이지 */
 
 const moveToDetailPage = (e) => {
-    if(e.target.dataset.id){
-        const productId = { 
-            productId: e.target.dataset.id 
+    if (e.target.dataset.id) {
+        const productId = {
+            productId: e.target.dataset.id,
         };
-        localStorage.setItem('detail', JSON.stringify(productId));
+        localStorage.setItem("detail", JSON.stringify(productId));
     }
-}
+};
 
 bestSellerArea.addEventListener("click", moveToDetailPage);
 newArea.addEventListener("click", moveToDetailPage);
 recommendArea.addEventListener("click", moveToDetailPage);
+
+// 엘라딘의 선택 상세페이지
+const EladinPicKImg = document.querySelector(".introduction-content img");
+const EladinPicKTitle = document.querySelector(".introduction-content .title");
+
+const moveToEladinPickDetailPage = () => {
+    console.log("냥");
+    localStorage.setItem("detail", JSON.stringify({ productId: 41 }));
+};
+
+EladinPicKImg.addEventListener("click", moveToEladinPickDetailPage);
+EladinPicKTitle.addEventListener("click", moveToEladinPickDetailPage);
