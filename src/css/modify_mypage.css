@@ -195,6 +195,17 @@ main h3 {
         "email email-field"
         "password password-field";
 }
+
+.name-field {
+    position: relative;
+    height: 180px;
+}
+.name-field small {
+    position: absolute;
+    bottom: 6px;
+}
+
+
 .id-field {
     padding-left: 28px;
     color:#606db8;
@@ -252,7 +263,7 @@ main h3 {
 
 .email-field small {
     position: absolute;
-    bottom:30px;
+    bottom:8px;
 }
 
 .table .password-field input {
@@ -281,6 +292,26 @@ main h3 {
 }
 
 /* 유효성 검사용 작업 중 */
+
+.red small {
+    font-size: 14px;
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.red input {
+    outline: 2px solid red;
+}
+
+.red input:focus {
+    outline: 2px solid red;
+}
+
+.green small {
+    font-size: 14px;
+    color: #22d14b;
+    visibility: visible;
+}
 
 small {
     visibility: hidden;

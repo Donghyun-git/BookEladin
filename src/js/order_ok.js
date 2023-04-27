@@ -1,5 +1,6 @@
 const deliveryHistory = document.querySelector('.order_ok-list');
 const orderData = (JSON.parse(localStorage.getItem('order')));
+const homeBtn = document.querySelector('.order_ok-hmbtn');
 const query =  orderData.createdOrder ? 
     orderData.createdOrder :
     orderData  
@@ -79,3 +80,7 @@ class OrderOk {
 const orderOk = new OrderOk(deliveryHistory)
 
 orderOk.render();
+
+homeBtn.addEventListener('click', ()=> {
+    localStorage.clear();
+})

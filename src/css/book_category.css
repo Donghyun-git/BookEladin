@@ -162,8 +162,9 @@
 
 .nav-side-category-bar {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     cursor: pointer;
 }
 

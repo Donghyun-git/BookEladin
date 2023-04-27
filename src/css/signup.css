@@ -126,6 +126,33 @@
 }
 
 /* 유효성 검사용 start */
+.red small {
+    font-size: 14px;
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.red input {
+    outline: 2px solid red;
+}
+
+.red input:focus {
+    outline: 2px solid red;
+}
+
+.green small {
+    font-size: 14px;
+    color: #22d14b;
+    visibility: visible;
+}
+
+.green input {
+    outline: solid 2px #606db8;
+}
+
+.green input:focus {
+    outline: solid 2px #606db8;
+}
 
 .error input#id,
 .error input#password,

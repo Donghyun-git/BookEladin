@@ -154,7 +154,7 @@ newBook.addEventListener("click", moveToNew);
 /* admin, user 필터링 */
 
 const filterRole = (e) => {
-    if (localStorage.getItem("userData")) {
+    if (localStorage.getItem("userData")){
         const { role } = JSON.parse(localStorage.getItem("userData"));
         if (role === "admin") {
             e.preventDefault();
