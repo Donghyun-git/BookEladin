@@ -378,7 +378,7 @@
     padding-bottom: 15px;
 }
 
-.introduction-detail > .title {
+.introduction-detail .title {
     font-size: 23px;
     font-weight: 500;
 }
