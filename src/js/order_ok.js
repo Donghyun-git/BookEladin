@@ -1,19 +1,22 @@
-const deliveryHistory = document.querySelector('.order_ok-list')
-const { orderInfo, deliveryInfo } = (JSON.parse(localStorage.getItem('order')))
+const deliveryHistory = document.querySelector('.order_ok-list');
+const orderData = (JSON.parse(localStorage.getItem('order')));
+const query =  orderData.createdOrder ? 
+    orderData.createdOrder :
+    orderData  
 
 const getAxios = async (url, query) => {
     const header = {
         withCredentials: true,
     }
     const res = await axios.get(`${url}/${query}`, header);
+    console.log(res);
 
-    const orderNumber = res.data.data.foundOrder.orderInfo.orderNumber;
-    const data = res.data.data.foundOrder.deliveryInfo;
+    const orderNumber = res.data.data.foundOrder.orderInfo.orderNumber 
+    const data = res.data.data.foundOrder.deliveryInfo
 
     data.orderNumber = orderNumber;
     return data
 }
-
 
 class OrderOk {
 
@@ -26,7 +29,7 @@ class OrderOk {
         try {
             this.state = await getAxios(
                 "http://localhost:5500/orders", 
-                orderInfo.orderNumber
+                query.orderInfo.orderNumber
             )
         } catch(err) {
             console.log(err);
