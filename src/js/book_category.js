@@ -50,6 +50,7 @@ class Category {
 
     async addEvent() {
         this.target.addEventListener("click", (e) => {
+            e.stopImmediatePropagation();
             if (e.target.classList.contains("nav-side-category-link")) {
                 title.innerText = e.target.innerText;
                 query = title.textContent;
@@ -60,7 +61,6 @@ class Category {
 
     async render() {
         const template = await this.template();
-
         this.target.innerHTML = template;
         this.addEvent();
     }
@@ -103,9 +103,9 @@ class Book {
             const uuid = document.cookie.split("=")[1];
             header.headers.uuid = uuid;
         }
-
-        this.state = await axios.get(`${uri}/${encodedQuery}`, header);
-        this.addEvent(this.state.data.data);
+        
+        const data = await axios.get(`${uri}/${encodedQuery}`, header);
+        this.state = await data.data.data
     }
 
     async template() {
@@ -114,7 +114,7 @@ class Book {
 
         let template = "";
 
-        await bookList.data.data.map((book, i) => {
+        await bookList.map((book, i) => {
             //원화 단위로 변환
             const formattedPrice = book.price.toLocaleString() + "원";
             template += `
@@ -170,19 +170,21 @@ class Book {
         return template;
     }
 
-    async addEvent(categories) {
-        const categoriesData = categories;
+    async addEvent() {
+        console.log(this.state);
+        
         this.target.addEventListener("click", (e) => {
+            e.stopImmediatePropagation();
             if (e.target.classList.contains("add-cart")) {
                 const { title, author, price, imgUrl, productId } =
-                    categoriesData[e.target.dataset.index];
-                console.log(categoriesData[e.target.dataset.index]);
+                    this.state[e.target.dataset.index];
+                console.log(this.state[e.target.dataset.index]);
                 this.addIdxDB(title, author, price, imgUrl, productId, false);
                 openAlert();
             }
 
             if (e.target.classList.contains("category-book-img")) {
-                const foundData = categoriesData.find((v) => {
+                const foundData = this.state.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
                 const {
@@ -208,9 +210,9 @@ class Book {
                 localStorage.setItem("detail", JSON.stringify(detailData));
             }
 
-            if (e.target.classList.contains("order-book")) {
+            if (e.target.classList.contains("order-book")) {;
                 const { title, author, price, imgUrl, productId } =
-                    categoriesData[e.target.dataset.index];
+                    this.state[e.target.dataset.index];
 
                 this.addIdxDB(title, author, price, imgUrl, productId, true);
                 if (localStorage.getItem("userData")) {
@@ -223,9 +225,9 @@ class Book {
     }
 
     async render() {
-        const template = await this.template();
-
+        let template = await this.template();
         this.target.innerHTML = template;
+        this.addEvent();
     }
 
     async addIdxDB(title, author, price, imgUrl, productId, order) {
