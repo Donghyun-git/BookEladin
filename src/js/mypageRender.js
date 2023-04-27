@@ -1,7 +1,7 @@
 //어차피 마이페이지 접근은 토큰이 있을 때만 접근 가능함.
 window.addEventListener("load", async () => {
-   const myData = JSON.parse(localStorage.getItem("myData"));
-   const userData = JSON.parse(localStorage.getItem("userData"));
+   const myData = await JSON.parse(localStorage.getItem("myData"));
+   const userData = await JSON.parse(localStorage.getItem("userData"));
    const userName = document.querySelector(".user-name");
    const userEmail = document.querySelector(".email");
 
