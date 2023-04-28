@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <title>엘라딘</title>
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <link rel="stylesheet" type="text/css" href="../css/detail.css" />
     </head>
     <body>
         <div id="wrap">
-           <header class="header">
+            <header class="header">
                 <div class="header-container container">
                     <div class="header-top-bar">
                         <ul class="header-top-list">
@@ -34,16 +39,17 @@
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
-                            <form class="header-title-search" role="seacrch">
-                                <div class="header-title-search-bar">
+                            <div class="header-title-search">
+                                <div class="header-title-search-bar animated flipInX">
                                     <img
                                         src="https://svgsilh.com/svg/1093183.svg"
                                         alt="돋보기"
                                         class="search-img"
                                     />
-                                    <input type="text" class="search-input" />
+                                    <input type="text" class="search-input"/>
+                                    <button class="search-button">검색</button>
                                 </div>
-                            </form>
+                            </div>
                             <div class="header-title-info">
                                 <div class="header-info-item">
                                     <a
@@ -78,16 +84,12 @@
             <main id="main" role="main">
                 <div class="container">
                     <div class="row">
-                        <article class="main-book">
-                            
-                        </article>
+                        <article class="main-book"></article>
 
                         <article class="main-review">
                             <div class="main-review-intro">
                                 <h3>작품 소개</h3>
-                                <p>
-                                    작품 소개가 없습니다.
-                                </p>
+                                <p>작품 소개가 없습니다.</p>
                             </div>
 
                             <form action="#">
@@ -106,7 +108,7 @@
                             <div class="review-all">
                                 <ul class="review-all-hd">
                                     <li>
-                                        <a href="#">전체 <span>3</span></a>
+                                        <a href="#">전체 <span>4</span></a>
                                     </li>
                                     <li><a href="#">최신순</a></li>
                                 </ul>
@@ -115,6 +117,65 @@
                                 <ul class="be-data">
                                     <li class="review-list-info">
                                         <div>⭐︎⭐︎⭐︎⭐︎⭐︎</div>
+                                        <div>
+                                            <span>hee***</span
+                                            ><span class="info-tag"
+                                                >구매자</span
+                                            >
+                                        </div>
+                                        <div class="info-date">2022.11.19.</div>
+                                        <div class="info-black">
+                                            <a href="#">신고</a>
+                                            <a href="#">차단</a>
+                                        </div>
+                                    </li>
+                                    <li class="review-list-cont">
+                                        여운이 많이 남네요. <br />천천히 아껴서
+                                        읽고 싶은 책이에요.
+                                    </li>
+                                </ul>
+                                <ul class="be-data">
+                                    <li class="review-list-info">
+                                        <div>⭐︎⭐︎⭐︎⭐︎⭐︎</div>
+                                        <div>
+                                            <span>ddo***</span
+                                            ><span class="info-tag"
+                                                >구매자</span
+                                            >
+                                        </div>
+                                        <div class="info-date">2022.11.19.</div>
+                                        <div class="info-black">
+                                            <a href="#">신고</a>
+                                            <a href="#">차단</a>
+                                        </div>
+                                    </li>
+                                    <li class="review-list-cont">
+                                        최고다 진짜 추천추천
+                                    </li>
+                                </ul>
+                                <ul class="be-data">
+                                    <li class="review-list-info">
+                                        <div>⭐︎⭐︎⭐︎⭐︎⭐︎</div>
+                                        <div>
+                                            <span>bib***</span
+                                            ><span class="info-tag"
+                                                >구매자</span
+                                            >
+                                        </div>
+                                        <div class="info-date">2022.11.19.</div>
+                                        <div class="info-black">
+                                            <a href="#">신고</a>
+                                            <a href="#">차단</a>
+                                        </div>
+                                    </li>
+                                    <li class="review-list-cont">
+                                        왜 그렇게 이 책을 추천하는지 알 것
+                                        같다... 특히 표현력이 너무 좋았습니다.
+                                    </li>
+                                </ul>
+                                <ul class="be-data">
+                                    <li class="review-list-info">
+                                        <div>⭐︎⭐︎⭐︎⭐︎</div>
                                         <div>
                                             <span>keu***</span
                                             ><span class="info-tag"
@@ -128,30 +189,32 @@
                                         </div>
                                     </li>
                                     <li class="review-list-cont">
-                                        Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing elit. Odit sint perspiciatis
-                                        praesentium porro reiciendis pariatur
-                                        doloremque quo quis alias facilis quos
-                                        aut at dicta ea, magnam maiores ipsa
-                                        enim eos! Lorem ipsum dolor sit, amet
-                                        consectetur adipisicing elit. Atque
-                                        placeat dicta cum illo dolorum ea
-                                        nesciunt dolor perspiciatis voluptatum,
-                                        voluptate ipsam quia asperiores sequi
-                                        obcaecati quasi fuga corporis non eos.
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Fugit porro modi
-                                        adipisci possimus fugiat eius rem
-                                        voluptas nisi suscipit sunt ea corporis
-                                        libero, quaerat blanditiis nemo beatae
-                                        rerum laborum omnis.
+                                        몰입력이 대단한 소설입니다. <br />
+                                        감정을 고스란히 잔잔하게 전하는 느낌을
+                                        받으며 한편의 영화를 본
+                                        느낌이었습니다.<br />
+                                        저자의 다른 책들도 찾아 읽고있어요.
                                     </li>
-                                </ul>
                                 </ul>
                             </div>
                         </article>
                     </div>
                     <!--main-container-->
+                    <div class="cart-alert">
+                        <div class="cart-alert-container">
+                            <div class="quit_btn">
+                                <button class="close-alert">&times;</button>
+                            </div>
+                            <div class="cart-alert-content">
+                                <h2>상품이 장바구니에 담겼습니다.</h2>
+                                <p>장바구니로 이동하시겠습니까?</p>
+                            </div>
+                            <div class="cart-alert-button">
+                                <button class="cancel-button">취소</button>
+                                <button class="confirm-button">확인</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
 
@@ -189,8 +252,9 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../api/mypage.js"></script>
     <script src="../js/isLogin.js"></script>
     <script src="../api/logout.js"></script>
-    <script src="../api/mypage.js"></script>
-    <script src="../api/detail.js"></script>
+    <script type="module" src="../api/detail.js"></script>
+    <script src="../api/search.js"></script>
 </html>

@@ -1,7 +1,26 @@
-//어차피 마이페이지 접근은 토큰이 있을 때만 접근 가능함.
-const myData = JSON.parse(localStorage.getItem('myData'));
-const userName = document.querySelector('.user-name');
-const userEmail = document.querySelector('.email');
+window.addEventListener("load", async () => {
+    const myDataJson = localStorage.getItem("myData");
+    const userDataJson = localStorage.getItem("userData");
 
-userName.innerHTML = `${myData.userName}`;
-userEmail.innerHTML = `${myData.email}`;
+    const myData = myDataJson && JSON.parse(myDataJson);
+    const userData = userDataJson && JSON.parse(userDataJson);
+
+    const userName = document.querySelector(".user-name");
+    const userEmail = document.querySelector(".email");
+
+    if (
+        (myData && userData && myData.data.userName !== userData.userName) ||
+        myData.data.email !== userData.email
+    ) {
+        userName.innerHTML = myData.data.userName;
+        userEmail.innerHTML = myData.data.email;
+    } else if (userData) {
+        userName.innerHTML = userData.userName;
+        userEmail.innerHTML = userData.email;
+    }
+});
+
+for(let i=0; i=0; i){
+    window.location.reload();
+}
+    

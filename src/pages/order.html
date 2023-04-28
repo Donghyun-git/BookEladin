@@ -4,8 +4,13 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <title>엘라딘</title>
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <link rel="stylesheet" type="text/css" href="../css/order.css" />
     </head>
     <body>
@@ -16,12 +21,12 @@
                     <div class="header-top-bar">
                         <ul class="header-top-list">
                             <li class="header-top-item">
-                                <a href="./pages/signup.html" class="join"
+                                <a href="./signup.html" class="join"
                                     >회원가입</a
                                 >
                             </li>
                             <li class="header-top-item">
-                                <a href="./pages/login.html" class="login"
+                                <a href="./login.html" class="login"
                                     >로그인</a
                                 >
                             </li>
@@ -30,24 +35,17 @@
                     <div class="header-title">
                         <nav class="header-title-nav">
                             <div class="header-title-logo">
-                                <a href="." class="header-title-link">
+                                <a
+                                    href="../index.html"
+                                    class="header-title-link"
+                                >
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
-                            <form class="header-title-search" role="seacrch">
-                                <div class="header-title-search-bar">
-                                    <img
-                                        src="https://svgsilh.com/svg/1093183.svg"
-                                        alt="돋보기"
-                                        class="search-img"
-                                    />
-                                    <input type="text" class="search-input" />
-                                </div>
-                            </form>
                             <div class="header-title-info">
                                 <div class="header-info-item">
                                     <a
-                                        href="./pages/cart.html"
+                                        href="./cart.html"
                                         class="header-info-basket"
                                     >
                                         <img
@@ -59,7 +57,7 @@
                                 </div>
                                 <div class="header-info-item">
                                     <a
-                                        href="./pages/mypage.html"
+                                        href="./mypage.html"
                                         class="header-info-my"
                                     >
                                         <img
@@ -181,7 +179,7 @@
                                             type="text"
                                             name="address1"
                                             placeholder="주소"
-                                            value="123123"
+                                            value=""
                                         />
                                         <input
                                             id="address2"
@@ -203,7 +201,7 @@
                                         <input
                                             type="tel"
                                             id="phone-num"
-                                            class="essential"
+                                            class="essential password"
                                             name="phone-num"
                                             maxlength="13"
                                         />
@@ -212,20 +210,32 @@
                                         <p>배송메세지</p>
                                     </div>
                                     <div class="message-field field">
-                                        <select name="message" id="message" class="essential">
+                                        <select
+                                            name="message"
+                                            id="message"
+                                            class="essential"
+                                        >
                                             <option value="">
                                                 --메시지 선택 (선택사항)
                                             </option>
-                                            <option value="message1">
+                                            <option
+                                                value="배송 전에 미리 연락 바랍니다."
+                                            >
                                                 배송 전에 미리 연락 바랍니다.
                                             </option>
-                                            <option value="message2">
+                                            <option
+                                                value="부재 시 경비실에 맡겨주세요."
+                                            >
                                                 부재 시 경비실에 맡겨주세요.
                                             </option>
-                                            <option value="message3">
+                                            <option
+                                                value="부재 시 문 앞에 놓아주세요."
+                                            >
                                                 부재 시 문 앞에 놓아주세요.
                                             </option>
-                                            <option value="message4">
+                                            <option
+                                                value="택배함에 보관해주세요."
+                                            >
                                                 택배함에 보관해주세요.
                                             </option>
                                         </select>
@@ -234,16 +244,15 @@
                             </div>
                             <div class="agreement">
                                 <h3>구매 동의</h3>
+                                <label for="check-btn"></label>
                                 <input
                                     type="checkbox"
                                     name="purchase-agree"
                                     id="check-btn"
                                 />
-                                <label for="check-btn"
-                                    ><span
-                                        >상품, 가격, 유의 사항 등을 확인하였으며
-                                        구매에 동의합니다.</span
-                                    ></label
+                                <span
+                                    >상품, 가격, 유의 사항 등을 확인하였으며
+                                    구매에 동의합니다.</span
                                 >
                             </div>
                             <div>
@@ -254,6 +263,18 @@
                         </form>
                     </div>
                 </div>
+                <!-- 모달 영역 시작 -->
+                <div class="modal">
+                    <div class="modal-content">
+                        <i
+                            class="fa fa-exclamation-circle"
+                            aria-hidden="true"
+                        ></i>
+                        <p class="modal-text">모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
+                        <button class="close-modal-btn">&times;</button>
+                    </div>
+                </div>
+                <!-- 모달 영역 끗~ -->
             </main>
             <footer id="footer" style="border: none">
                 <div class="footer">

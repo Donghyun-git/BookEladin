@@ -4,27 +4,26 @@ import API from "../api/rest.js";
 const nav = document.querySelector(".nav-side-category-bar");
 const ul = document.querySelector(".category-book-list");
 const title = document.querySelector(".category-book-title");
+const cartAlert = document.querySelector(".cart-alert");
 
 let query = "경영/경제";
 
 class Category {
-    target;
-    state;
-
     constructor(target) {
         this.target = target;
         this.state;
     }
 
     async setState() {
-        this.state = await API.get("http://34.64.105.163:80/books/categories");
+        this.state = await API.get("http://localhost:5500/books/categories");
     }
 
     async template() {
         await this.setState();
-        const categoryList = this.state;
+        const categoryList = this.state.data.data;
+        console.log(categoryList);
         let template = "";
-        await categoryList.data.map((category) => {
+        await categoryList.map((category) => {
             template += `
                 <div class="nav-side-category-link">
                     ${category}
@@ -37,6 +36,7 @@ class Category {
 
     async addEvent() {
         this.target.addEventListener("click", (e) => {
+            e.stopImmediatePropagation();
             if (e.target.classList.contains("nav-side-category-link")) {
                 title.innerText = e.target.innerText;
                 query = title.textContent;
@@ -47,46 +47,72 @@ class Category {
 
     async render() {
         const template = await this.template();
-
         this.target.innerHTML = template;
         this.addEvent();
     }
 }
 
 class Book {
-    target;
-    state;
-
     constructor(target) {
         this.target = target;
         this.state;
+        this.err;
     }
+
+    // async setState() {
+    //     let encodedQuery = encodeURIComponent(query);
+    //     const uri = 'http://localhost:5500/books/categories';
+    // const accessToken = localStorage.getItem("accessToken");
+    // const header = {
+    //     headers: {
+    //         Authorization: `Bearer ${accessToken}`,
+    //     },
+    //     withCrenditials: true,
+    // };
+    // this.state = await axios.get(`${uri}/${encodedQuery}`, header);
+    //     this.state = await axios.get(`${uri}/${encodedQuery}`);
+
+    //     this.addEvent(this.state.data.data);
+    // }
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = "http://34.64.105.163:80/books/categories";
+        const uri = "http://localhost:5500/books/categories";
         const accessToken = localStorage.getItem("accessToken");
         const header = {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-            withCrenditials: true,
+            headers: {},
+            withCredentials: true,
         };
-        this.state = await axios.get(`${uri}/${encodedQuery}`, header);
 
-        this.addEvent(this.state.data.data);
+        const accessToken = localStorage.getItem("accessToken");
+        if (accessToken) {
+            header.headers.Authorization = `Bearer ${accessToken}`;
+        } else if (document.cookie.includes("uuid")) {
+            const uuid = document.cookie.split("=")[1];
+            header.headers.uuid = uuid;
+        }
+        try {
+            const data = await axios.get(`${uri}/${encodedQuery}`, header);
+            this.state = await data.data.data;
+            this.err = "";
+        } catch (err) {
+            if (err.response.status === 400) {
+                this.err = "카테고리에 책이 존재하지 않습니다!";
+            }
+        }
     }
 
     async template() {
         await this.setState();
         const bookList = this.state;
+        const errorMessage = this.err;
 
         let template = "";
-
-        await bookList.data.data.map((book, i) => {
-            //원화 단위로 변환
-            const formattedPrice = book.price.toLocaleString() + "원";
-            template += `
+        if (errorMessage === "") {
+            await bookList.map((book, i) => {
+                //원화 단위로 변환
+                const formattedPrice = book.price.toLocaleString() + "원";
+                template += `
                 <li class="category-book-item">
                     <div class="category-book-item-img-area">
                         <div class="category-book-img-link">
@@ -129,26 +155,46 @@ class Book {
                         <button class="add-cart" data-index="${i}">
                             카트에 담기
                         </button>
-                        <button class="order-book">
+                        <button class="order-book" data-index="${i}">
                             바로 구매
                         </button>
                     </div>
                 </li>
             `;
-        });
+            });
+        } else {
+            template += `
+            <li>
+                <div class="no-items" style="margin-top: 100px; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 106px;">
+                    <div class="no-items-img">
+                        <img src="../img/eladin_genie.png" alt="엘라딘 이미지" style="width: 30%;">
+                    </div>
+                    <div class="no-items-cont">
+                        <p style="font-size: 24px; font-weight: 500;">카테고리에 등록된 책이 없어요.</p>
+                    </div>
+                </div>
+            </li>
+            `;
+        }
+
         return template;
     }
 
-    async addEvent(categories) {
-        const categoriesData = categories;
+    async addEvent() {
+        console.log(this.state);
+
         this.target.addEventListener("click", (e) => {
+            e.stopImmediatePropagation();
             if (e.target.classList.contains("add-cart")) {
-                const { title, author, price, imgUrl } =
-                    categoriesData[e.target.dataset.index];
-                this.addIdxDB(title, author, price, imgUrl);
+                const { title, author, price, imgUrl, productId } =
+                    this.state[e.target.dataset.index];
+                console.log(this.state[e.target.dataset.index]);
+                this.addIdxDB(title, author, price, imgUrl, productId, false);
+                openAlert();
             }
+
             if (e.target.classList.contains("category-book-img")) {
-                const foundData = categoriesData.find((v) => {
+                const foundData = this.state.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
                 const {
@@ -173,18 +219,38 @@ class Book {
 
                 localStorage.setItem("detail", JSON.stringify(detailData));
             }
+
+            if (e.target.classList.contains("order-book")) {
+                const { title, author, price, imgUrl, productId } =
+                    this.state[e.target.dataset.index];
+
+                this.addIdxDB(title, author, price, imgUrl, productId, true);
+                if (localStorage.getItem("userData")) {
+                    location.href = "order.html";
+                } else {
+                    location.href = "guest_login.html";
+                }
+            }
         });
     }
 
     async render() {
-        const template = await this.template();
-
+        let template = await this.template();
         this.target.innerHTML = template;
+        this.addEvent();
     }
 
-    async addIdxDB(title, author, price, imgUrl) {
+    async addIdxDB(title, author, price, imgUrl, productId, order) {
         const book = [
-            { title: title, author: author, price: price, imgUrl: imgUrl },
+            {
+                title: title,
+                author: author,
+                price: price,
+                imgUrl: imgUrl,
+                productId: productId,
+                order: !!order,
+                quantity: 1,
+            },
         ];
         IDB.addIDB(book);
     }
@@ -196,3 +262,63 @@ category.render();
 const book = new Book(ul);
 book.render();
 // book.addEvent();
+
+// 장바구니 alert
+
+const closeButton = document.querySelector(".close-alert");
+const cancelButton = document.querySelector(".cancel-button");
+const confirmButton = document.querySelector(".confirm-button");
+
+closeButton.addEventListener("click", closeAlert);
+cancelButton.addEventListener("click", closeAlert);
+cartAlert.addEventListener("click", (e) => {
+    if (e.target.closest(".cart-alert-container")) {
+        return;
+    }
+    cartAlert.style.display = "none";
+});
+confirmButton.addEventListener("click", () => {
+    location.href = "cart.html";
+});
+
+function closeAlert() {
+    cartAlert.style.display = "none";
+}
+
+function openAlert() {
+    cartAlert.style.display = "flex";
+    setTimeout(() => {
+        cartAlert.style.display = "none";
+    }, 3000);
+}
+
+// 자동 스크롤 버튼
+const scrollToTopBtn = document.querySelector(".scroll-to-top");
+
+// 버튼 클릭 시 스무스하게 스크롤
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
+}
+
+// 현재 스크롤 위치 파악하고 버튼 노출 조절
+function checkScroll() {
+    const scrollTop = document.documentElement.scrollTop;
+
+    if (scrollTop > 0) {
+        scrollToTopBtn.style.display = "flex";
+        scrollToTopBtn.style.opacity = 1;
+    } else {
+        scrollToTopBtn.style.opacity = 0;
+        setTimeout(() => {
+            scrollToTopBtn.style.display = "none";
+        }, 700);
+    }
+}
+
+scrollToTopBtn.addEventListener("click", scrollToTop);
+window.addEventListener("scroll", checkScroll);
+
+

@@ -21,16 +21,19 @@ async function getQuery(url, query) {
     return res.json();
 }
 
-async function post(url, data) {
-    const res = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
+// async function post(url, data) {
+//     const res = await fetch(url, {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+//         },
+//         credentials: 'include',
+//         body: JSON.stringify(data),
+//     });
 
-    console.log(res.json())
-}
+//     console.log(res);
+// }
 
-export default { get, getQuery, post };
+export default { get, getQuery};

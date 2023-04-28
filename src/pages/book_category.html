@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <link rel="stylesheet" href="../css/book_category.css" />
         <title>엘라딘</title>
     </head>
@@ -35,16 +40,17 @@
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
-                            <form class="header-title-search" role="seacrch">
-                                <div class="header-title-search-bar">
+                            <div class="header-title-search">
+                                <div class="header-title-search-bar animated flipInX">
                                     <img
                                         src="https://svgsilh.com/svg/1093183.svg"
                                         alt="돋보기"
                                         class="search-img"
                                     />
-                                    <input type="text" class="search-input" />
+                                    <input type="text" class="search-input"/>
+                                    <button class="search-button">검색</button>
                                 </div>
-                            </form>
+                            </div>
                             <div class="header-title-info">
                                 <div class="header-info-item">
                                     <a
@@ -79,10 +85,9 @@
             <!-- 메인 영역 시작 -->
             <main class="main">
                 <div class="main-container container">
-                    <nav class="nav-side-category-bar">
-                    </nav>
+                    <nav class="nav-side-category-bar"></nav>
                     <section class="category-book-list-section">
-                            <div class="category-book-title">경영/경제</div>
+                        <div class="category-book-title">경영/경제</div>
                         <ul class="category-book-list">
                             <!-- <li class="category-book-item">
                                 <div class="category-book-item-img-area">
@@ -304,9 +309,9 @@
                                     </a>
                                 </li>
                                 <!-->
-                            </ul>
-                            
-                            <!-- <a href="" class="category-book-page-next">
+                        </ul>
+
+                        <!-- <a href="" class="category-book-page-next">
                                 <div class="category-page-next-text">
                                     <svg
                                         width="14px"
@@ -325,8 +330,43 @@
                                     </svg>
                                 </div>
                             </a> -->
-                        </div>
                     </section>
+                    <!-- 모달 영역 시작 -->
+                    <div class="modal">
+                        <div class="modal-content">
+                            <i
+                                class="fa fa-exclamation-circle"
+                                aria-hidden="true"
+                            ></i>
+                            <p class="modal-text">
+                                모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            </p>
+                            <button class="close-modal-btn">&times;</button>
+                        </div>
+                    </div>
+                    <!-- 모달 영역 끗~ -->
+
+                    <!-- 스크롤 버튼 -->
+                    <button class="scroll-to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                        <p>TOP</p>
+                    </button>
+                    <!-- 모달 -->
+                    <div class="cart-alert">
+                        <div class="cart-alert-container">
+                            <div class="quit_btn">
+                                <button class="close-alert">&times;</button>
+                            </div>
+                            <div class="cart-alert-content">
+                                <h2>상품이 장바구니에 담겼습니다.</h2>
+                                <p>장바구니로 이동하시겠습니까?</p>
+                            </div>
+                            <div class="cart-alert-button">
+                                <button class="cancel-button">취소</button>
+                                <button class="confirm-button">확인</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </main>
             <!-- 메인 영역 종료 -->
@@ -368,8 +408,9 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="../js/book_category.js"></script>
     <script src="../js/isLogin.js"></script>
-    <script src="../api/logout.js"></script>
     <script src="../api/mypage.js"></script>
-    <script type="module"src="../js/book_category.js"></script>
+    <script src="../api/logout.js"></script>
+    <script src="../api/search.js"></script>
 </html>

@@ -46,6 +46,7 @@
     line-height: 18px;
     text-align: center;
     color: #787878;
+    cursor: pointer;
 }
 
 .header-top-item:first-child::after {
@@ -74,6 +75,7 @@
 .header-title-link {
     display: flex;
     align-items: center;
+    padding-left: 14px;
 }
 
 .header-title-link .logo-img {
@@ -154,8 +156,6 @@ main h2 {
     font-size: 25px;
     font-weight: 400;
     background-color: #3e4989;
-    position: sticky;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,6 +165,7 @@ main h2 {
     height: 70px;
     font-size: 23px;
     padding: 0 10px;
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -203,7 +204,7 @@ h3 {
     align-items: center;
     display: grid;
     grid-template-columns: 200px 1fr 130px;
-    grid-template-areas: "cover book-detail price";
+    grid-template-areas: "cover book-detail quantity price";
     user-select: none;
 }
 
@@ -217,6 +218,13 @@ h3 {
 }
 
 .product-detail > .price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3e4989;
+}
+
+.product-detail .quantity {
+    justify-self: end;
     font-size: 20px;
     font-weight: 700;
     color: #3e4989;
@@ -291,30 +299,38 @@ h3 {
 
 .delivery-detail .postcode-input > button {
     width: 120px;
+    border-radius: 4px;
+    background-color: #6f79a8;
+    color: white;
+    margin-left: 6px;
 }
 
-input#check-btn {
+/* input#check-btn {
     display: none;
-}
+} */
 
 .agreement > h3 {
     height: 70px;
     font-size: 23px;
-    font-weight: 500px;
+    font-weight: 500;
     padding: 0 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.agreement > label > span {
+#message:focus {
+    outline: 2px solid #606db8;
+}
+
+.agreement > span {
     font-size: 16px;
     font-weight: 500;
     padding-left: 10px;
     vertical-align: middle;
 }
 
-input#check-btn + label:before {
+/* input#check-btn + label:before {
     content: "";
     width: 17px;
     height: 17px;
@@ -322,7 +338,7 @@ input#check-btn + label:before {
     border: 2px solid #7780b1;
     border-radius: 4px;
     vertical-align: middle;
-}
+} */
 
 input#check-btn:checked + label:before {
     content: "";
@@ -336,6 +352,65 @@ input#check-btn:checked + label:before {
     font-size: 20px;
     margin: 60px 0;
     background-color: #7780b1;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.modal.active {
+    opacity: 1;
+    height: 100%;
+}
+
+.modal-content {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #8899fb;
+}
+.modal-content > .fa {
+    font-size: 23px;
+}
+.modal-text {
+    padding: 0 50px 0 10px;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    font-size: 37px;
+    cursor: pointer;
+}
+
+.close-modal-btn:focus {
+    outline: none;
+}
+
+.modal.active .modal-content {
+    opacity: 80%;
+    transform: translate(-50%, 0%);
 }
 
 #footer {

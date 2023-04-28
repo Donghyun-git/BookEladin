@@ -4,8 +4,13 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Eladin</title>
-        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
+        <title>엘라딘</title>
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link rel="stylesheet" type="text/css" href="../css/mypage.css" />
         <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
@@ -41,16 +46,17 @@
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
-                            <form class="header-title-search" role="seacrch">
-                                <div class="header-title-search-bar">
+                            <div class="header-title-search">
+                                <div class="header-title-search-bar animated flipInX">
                                     <img
                                         src="https://svgsilh.com/svg/1093183.svg"
                                         alt="돋보기"
                                         class="search-img"
                                     />
-                                    <input type="text" class="search-input" />
+                                    <input type="text" class="search-input"/>
+                                    <button class="search-button">검색</button>
                                 </div>
-                            </form>
+                            </div>
                             <div class="header-title-info">
                                 <div class="header-info-item">
                                     <a
@@ -110,67 +116,22 @@
                         </section>
                         <div class="main-orderlist">
                             <h2 class="header-text">주문/배송 목록</h2>
-                            <section>
-                                <p class="order-date">2023-04-19</p>
-                                <div class="order-content">
-                                    <img
-                                        class="cover"
-                                        src="../img/example_cover.jpeg"
-                                        alt="example_cover"
-                                    />
-                                    <p class="title">운영체제 [제 10판]</p>
-                                    <p class="price">39,000</p>
-                                    <p class="delivery-status">수령 완료</p>
-                                    <button class="review-btn">
-                                        리뷰 작성
-                                    </button>
-                                </div>
-                                <div class="order-content">
-                                    <img
-                                        class="cover"
-                                        src="../img/example_cover.jpeg"
-                                        alt="example_cover"
-                                    />
-                                    <p class="title">운영체제 [제 10판]</p>
-                                    <p class="price">39,000</p>
-                                    <p class="delivery-status">수령 완료</p>
-                                    <button class="review-btn">
-                                        리뷰 작성
-                                    </button>
-                                </div>
-                            </section>
-                            <section>
-                                <p class="order-date">2023-04-19</p>
-                                <div class="order-content">
-                                    <img
-                                        class="cover"
-                                        src="../img/example_cover.jpeg"
-                                        alt="example_cover"
-                                    />
-                                    <p class="title">운영체제 [제 10판]</p>
-                                    <p class="price">39,000</p>
-                                    <p class="delivery-status">수령 완료</p>
-                                    <button class="review-btn">
-                                        리뷰 작성
-                                    </button>
-                                </div>
-                                <div class="order-content">
-                                    <img
-                                        class="cover"
-                                        src="../img/example_cover.jpeg"
-                                        alt="example_cover"
-                                    />
-                                    <p class="title">운영체제 [제 10판]</p>
-                                    <p class="price">39,000</p>
-                                    <p class="delivery-status">수령 완료</p>
-                                    <button class="review-btn">
-                                        리뷰 작성
-                                    </button>
-                                </div>
-                            </section>
+                            <section></section>
                         </div>
                     </div>
                 </div>
+                <!-- 모달 영역 시작 -->
+                <div class="modal">
+                    <div class="modal-content">
+                        <i
+                            class="fa fa-exclamation-circle"
+                            aria-hidden="true"
+                        ></i>
+                        <p class="modal-text">모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
+                        <button class="close-modal-btn">&times;</button>
+                    </div>
+                </div>
+                <!-- 모달 영역 끗~ -->
             </main>
             <footer id="footer" style="border: none">
                 <div class="footer">
@@ -206,8 +167,10 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="../js/isLogin.js"></script>
-        <script src="../api/logout.js"></script>
         <script src="../api/mypage.js"></script>
         <script src="../js/mypageRender.js"></script>
+        <script src="../api/logout.js"></script>
+        <script src="../api/getmypage.js"></script>
+        <script src="../api/search.js"></script>
     </body>
 </html>

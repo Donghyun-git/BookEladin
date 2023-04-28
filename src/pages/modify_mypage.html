@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>엘라딘</title>
         <link
             rel="icon"
             href="../favicon.png"
@@ -45,16 +45,6 @@
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
-                            <form class="header-title-search" role="seacrch">
-                                <div class="header-title-search-bar">
-                                    <img
-                                        src="https://svgsilh.com/svg/1093183.svg"
-                                        alt="돋보기"
-                                        class="search-img"
-                                    />
-                                    <input type="text" class="search-input" />
-                                </div>
-                            </form>
                             <div class="header-title-info">
                                 <div class="header-info-item">
                                     <a
@@ -98,7 +88,7 @@
                         <h3>정보 변경</h3>
                         <div class="table">
                             <div class="name default">
-                                <p>이름</p>
+                                <p>닉네임</p>
                             </div>
                             <div class="name-field field">
                                 <input
@@ -106,17 +96,13 @@
                                     class="change-username"
                                     name="username"
                                 />
+                                <small>Error message</small>
                             </div>
                             <div class="id default">
                                 <p>아이디</p>
                             </div>
                             <div class="id-field field">
-                                <input
-                                    type="text"
-                                    class="change-userid"
-                                    name="userid"
-                                    disabled
-                                />
+                                <div class="change-userid"></div>
                             </div>
                             <div class="email default">
                                 <p>이메일</p>
@@ -206,6 +192,18 @@
                         </div>
                     </div>
                 </div>
+                <!-- 모달 영역 시작 -->
+                <div class="modal">
+                    <div class="modal-content">
+                        <i
+                            class="fa fa-exclamation-circle"
+                            aria-hidden="true"
+                        ></i>
+                        <p class="modal-text">모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
+                        <button class="close-modal-btn">&times;</button>
+                    </div>
+                </div>
+                <!-- 모달 영역 끗~ -->
             </main>
             <footer id="footer" style="border: none">
                 <div class="footer">
