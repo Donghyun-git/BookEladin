@@ -3,7 +3,7 @@ const searchButton = document.querySelector(".search-button");
 
 const getSearchProducts = async (query) => {
     try {
-        const uri = `http://localhost:5500/books/search?q=${query}`;
+        const uri = `http://www.eladin.store/books/search?q=${query}`;
         const header = {
             headers: {},
             withCredentials: true,

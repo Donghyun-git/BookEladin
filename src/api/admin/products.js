@@ -163,7 +163,7 @@ const createProducts = async () => {
         const formData = new FormData();
         formData.append('imageFile', updateImg.files[0]);
 
-        const uri = 'http://localhost:5500/books/products';
+        const uri = 'http://www.eladin.store/books/products';
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,

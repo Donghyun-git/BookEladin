@@ -175,7 +175,7 @@ emailField.addEventListener("input", async (e) => {
         try {
             const userEmail = emailField.value;
 
-            const uri = `http://localhost:5500/auth/check-email/${userEmail}`;
+            const uri = `http://www.eladin.store/auth/check-email/${userEmail}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
@@ -232,7 +232,7 @@ nameField.addEventListener("input", async (e) => {
             console.log("@@@@@@@@@@@@@@@@try 들어옴");
             const userName = nameValue;
 
-            const uri = `http://localhost:5500/auth/check-username/${userName}`;
+            const uri = `http://www.eladin.store/auth/check-username/${userName}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",

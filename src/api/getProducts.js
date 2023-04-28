@@ -10,7 +10,7 @@ const getProductsForUser = async () => {
         };
 
         const Products = await axios.get(
-            'http://localhost:5500/books/products',
+            'http://www.eladin.store/books/products',
             header
         );
 
@@ -28,7 +28,7 @@ const getProductsForUser = async () => {
         };
 
         const Products = await axios.get(
-            'http://localhost:5500/books/products',
+            'http://www.eladin.store/books/products',
             header
         );
 
@@ -37,7 +37,7 @@ const getProductsForUser = async () => {
         return data;
     } else {
         const Products = await axios.get(
-            'http://localhost:5500/books/products'
+            'http://www.eladin.store/books/products'
         );
 
         const { data } = Products.data;

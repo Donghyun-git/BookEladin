@@ -29,7 +29,7 @@ class OrderOk {
     async setState() {
         try {
             this.state = await getAxios(
-                "http://localhost:5500/orders", 
+                "http://www.eladin.store/orders", 
                 query.orderInfo.orderNumber
             )
         } catch(err) {

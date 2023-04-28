@@ -138,7 +138,7 @@ const updateCategoryBtn = document.querySelector(".update-category-button");
 
 const updateCategory = async (currentCategory, newCategory) => {
     try {
-        const uri = "http://localhost:5500/books/categories/category";
+        const uri = "http://www.eladin.store/books/categories/category";
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
