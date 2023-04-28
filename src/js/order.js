@@ -66,7 +66,8 @@ class OrderList {
                             ${order.author}
                         </p>
                     </div>
-                    <p class="price">${order.price.toLocaleString()}원</p>
+                    <p class="price">${(order.price * order.quantity).toLocaleString()}원</p>
+                    <p class="quantity">수량 ${order.quantity}개<p>
                 </section>
             `;
         });
@@ -77,7 +78,7 @@ class OrderList {
         let total = 0;
         const orderPrice = document.querySelector(".order-price");
         await this.order.map((o) => {
-            total += Number(o.price);
+            total += Number(o.price * o.quantity);
         });
 
         orderPrice.innerText = total.toLocaleString() + "원";
