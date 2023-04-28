@@ -88,20 +88,18 @@
 /* 로그인 */
 .login-content {
     width: 450px;
-    background-color: white;
-    filter: drop-shadow(0 0 3px grey);
-    border-radius: 30px;
 }
 
 .login-title {
     font-size: 25px;
-    padding-top: 40px;
-    padding-bottom: 25px;
+    padding-top: 20px;
+    padding-bottom: 15px;
 }
 
 .login-description {
     color: rgb(106, 106, 106);
-    padding-bottom: 25px;
+    padding-bottom: 35px;
+    font-size: 15px;
 }
 
 .login-area input {
@@ -120,7 +118,7 @@
 
 /* 유효성 검사용 시작 */
 
-.field { 
+.field {
     position: relative;
 }
 
