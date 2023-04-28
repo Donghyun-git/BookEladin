@@ -5,6 +5,7 @@ const allSelectBtn = document.querySelector(".cart-list-all-select-btn");
 const allDeleteBtn = document.querySelector(".cart-list-all-select-delete");
 const nonOrderBtn = document.querySelector(".no-user-order-btn");
 const orderBtn = document.querySelector(".user-order-btn");
+const cartAlert = document.querySelector(".cart-alert");
 
 //모달
 const modal = document.querySelector(".modal");
@@ -40,8 +41,12 @@ class CartSection {
         });
 
         allDeleteBtn.addEventListener("click", (e) => {
-            IDB.clearIDB();
-            location.reload();
+            openAlert();
+            confirmButton.addEventListener("click", () => {
+                cartAlert.style.display = "none";
+                IDB.clearIDB();
+                location.reload();
+            });
 
             this.selectCount = [];
             this.sectionRender();
@@ -209,7 +214,7 @@ class Cart extends CartSection {
                         >
                         <div class="cart-section-quantity-btn">
                             <button type="button" class="minus-btn"></button>
-                            <input type="number" class="item-quantity" value="1">
+                            <input type="number" class="item-quantity" value="1" id=${item.id}>
                             <button type="button" class="plus-btn"></button>
                         </div>
                     </div>
@@ -220,7 +225,7 @@ class Cart extends CartSection {
 
         return template;
     }
-    
+
     async addEvent() {
         this.target.addEventListener("click", (e) => {
             if (e.target.classList.contains("cart-section-item-select")) {
@@ -239,12 +244,20 @@ class Cart extends CartSection {
             }
 
             if (e.target.classList.contains("cart-section-item-delete-btn")) {
-                IDB.deleteIDB(Number(e.target.value));
-                location.reload();
+                openAlert();
+                let value = e.target.value
+                const confirmButton = document.querySelector(".confirm-button");
+                confirmButton.addEventListener('click', () => {
+                    e.stopImmediatePropagation();
+                    IDB.deleteIDB(Number(value));
+                    location.reload();
+                })
+                
             }
             this.sectionRender();
 
             if (e.target.classList.contains("minus-btn")) {
+                const key = Number(e.target.nextElementSibling.getAttribute('id'))
                 const quantity = e.target.nextElementSibling;
                 const priceElement = e.target
                     .closest(".cart-section-item-price-box")
@@ -253,6 +266,7 @@ class Cart extends CartSection {
 
                 if (quantity.value > 1) {
                     quantity.value -= 1;
+                    IDB.updateQuantityIDB(key, quantity.value)
                     const updatedPrice = originalPrice * quantity.value;
                     priceElement.innerText =
                         updatedPrice.toLocaleString() + "원";
@@ -261,6 +275,7 @@ class Cart extends CartSection {
             }
 
             if (e.target.classList.contains("plus-btn")) {
+                const key = Number(e.target.previousElementSibling.getAttribute('id'))
                 const quantity = e.target.previousElementSibling;
                 const priceElement = e.target
                     .closest(".cart-section-item-price-box")
@@ -268,6 +283,7 @@ class Cart extends CartSection {
                 const originalPrice = parseInt(priceElement.dataset.price);
 
                 quantity.value = Number(quantity.value) + 1;
+                IDB.updateQuantityIDB(key, quantity.value)
                 const updatedPrice = originalPrice * quantity.value;
                 priceElement.innerText = updatedPrice.toLocaleString() + "원";
                 this.sectionRender(); // Call sectionRender after updating the price
@@ -298,3 +314,22 @@ function openModal() {
 closeModalBtn.addEventListener("click", () => {
     modal.classList.remove("active");
 });
+
+
+//삭제 모달
+const closeButton = document.querySelector(".close-alert");
+const cancelButton = document.querySelector(".cancel-button");
+const confirmButton = document.querySelector(".confirm-button");
+
+closeButton.addEventListener("click", closeAlert);
+cancelButton.addEventListener("click", closeAlert);
+
+
+
+function closeAlert() {
+    cartAlert.style.display = "none";
+}
+
+function openAlert() {
+    cartAlert.style.display = "flex";
+}
