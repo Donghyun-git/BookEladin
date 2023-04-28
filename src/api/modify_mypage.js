@@ -80,7 +80,14 @@ const updateUserInfo = async () => {
             modalContent.innerHTML = `${updateMessage}`;
             openModal();
 
-            window.location.href = "./mypage.html";
+            setTimeout(() => {
+                location.href = "./mypage.html";
+            }, 2000);
+            closeModalBtn.addEventListener("click", () => {
+                location.href = "./mypage.html";
+            });
+
+            // window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
             // window.alert(`서버오류입니다! ${err.response.data.message}`);
