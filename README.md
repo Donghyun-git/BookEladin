@@ -154,7 +154,7 @@
 
 ```bash
 git clone {.....repository_name}.git
-cd {repository_name}
+cd {repository_name}}
 npm install
 npm run start
 ```
@@ -174,7 +174,7 @@ ACCESS_TOKEN_EXPIRES_IN={ACCESS_TOKEN_EXPIRES_IN}
 
 ### Copyright
 
-Copyright © Eladin All Rights Reserved.
+Copyright © Eladin All Rights Reserved
 
 
 
