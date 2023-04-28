@@ -1,4 +1,3 @@
-import API from "../api/rest.js";
 import IDB from "./indexedDB.js";
 
 const chevron = document.querySelectorAll(".fa-chevron-down");
