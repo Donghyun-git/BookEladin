@@ -1,4 +1,4 @@
-@import "./font.css";
+@import "./fonts.css";
 @import "./default.css";
 @import "./font-awesome.css";
 
@@ -43,9 +43,8 @@
 }
 .header-logo h1 {
     color: #606db8;
-    font-size: 40px;
-    letter-spacing: 0.1em;
-    font-weight: bold;
+    font-size: 50px;
+    font-weight: 700;
 }
 
 .header-user {
@@ -89,7 +88,6 @@
 /* 로그인 */
 .login-content {
     width: 450px;
-    height: 580px;
     background-color: white;
     filter: drop-shadow(0 0 3px grey);
     border-radius: 30px;
@@ -111,7 +109,7 @@
     height: 50px;
     display: flex;
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 38px;
 }
 
 .login-area input::placeholder {
@@ -121,6 +119,44 @@
 }
 
 /* 유효성 검사용 시작 */
+
+.field { 
+    position: relative;
+}
+
+.field small {
+    position: absolute;
+    bottom: -32px;
+    left: 30px;
+}
+
+.red small {
+    font-size: 14px;
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.red input {
+    outline: 2px solid red;
+}
+
+.red input:focus {
+    outline: 2px solid red;
+}
+
+.green small {
+    font-size: 14px;
+    color: #22d14b;
+    visibility: visible;
+}
+
+.green input {
+    outline: solid 2px #606db8;
+}
+
+.green input:focus {
+    outline: solid 2px #606db8;
+}
 
 small {
     visibility: hidden;
@@ -135,7 +171,7 @@ small {
     width: 380px;
     height: 60px;
     display: inline-block;
-    margin: 20px auto;
+    margin: -20px auto 38px auto;
     background-color: #606db8;
     color: white;
     font-size: 20px;

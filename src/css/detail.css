@@ -200,7 +200,7 @@
 }
 .author h4 {
     display: inline-block;
-    padding: 2px 34px 2px 0;
+    padding: 2px 56px 2px 0;
 }
 .main-book-info ul li:first-child div {
     margin: 0;
@@ -213,7 +213,7 @@
     justify-content: flex-start;
 }
 .book-info-cont ul li:first-child {
-    width: 60px;
+    width: 84px;
 }
 .publisher {
     margin-top: 30px !important;
