@@ -333,3 +333,5 @@ function checkScroll() {
 
 scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", checkScroll);
+
+

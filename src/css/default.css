@@ -363,6 +363,8 @@ input:focus {
     top: -9999px;
 }
 
+.search-button { visibility: hidden;}
+
 .w100 {
     width: 100% !important;
     display: block;
