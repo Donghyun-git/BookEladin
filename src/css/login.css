@@ -22,9 +22,10 @@
 
 /* 로그인, 회원가입, 주문확인 */
 .login.container {
-    width: 700px;
-    margin: 0 auto;
+    width: 450px;
+    margin: 20px auto;
     text-align: center;
+    padding: 0 20px 50px 20px;
 }
 
 /* 레이아웃 여백 */
@@ -91,13 +92,14 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    align-items: center;
     text-align: left;
 }
 .login-area .login-tit {
     text-align: center;
     margin-top: 6rem;
     margin-bottom: 2rem;
-    font-size: 4rem;
+    font-size: 2.2rem;
     font-weight: 400;
 }
 .login-area .login-form-label {
@@ -107,14 +109,19 @@
 .login-area-center {
     text-align: center;
 }
+
+.login-area input {
+    width: 380px;
+    height: 50px;
+}
 .login-button input {
     margin-top: 40px;
-    height: 46px;
+    height: 60px;
     color: #fff;
     padding: 0 15px;
     display: block;
     font-size: 16px;
-    width: 105%;
+    width: 410px;
     background: #606db8;
     border: none;
     border-radius: 4px;
