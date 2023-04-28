@@ -141,8 +141,9 @@ class Book {
                     </div>
                     <div class="category-book-item-introduce">
                         <h3 class="category-book-item-title-head">
-                            <a
+                            <a href="./detail.html"
                                 class="category-book-item-title"
+                                data-id="${book.productId}"
                                 >${book.title}</a
                             >
                         </h3>
@@ -206,7 +207,10 @@ class Book {
                 openAlert();
             }
 
-            if (e.target.classList.contains("category-book-img")) {
+            if (
+                e.target.classList.contains("category-book-img") ||
+                e.target.classList.contains("category-book-item-title")
+            ) {
                 const foundData = this.state.find((v) => {
                     return v.productId == e.target.dataset.id;
                 });
@@ -229,7 +233,6 @@ class Book {
                     introduction: introduction,
                     publisher: publisher,
                 };
-
                 localStorage.setItem("detail", JSON.stringify(detailData));
             }
 
@@ -333,5 +336,3 @@ function checkScroll() {
 
 scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", checkScroll);
-
-

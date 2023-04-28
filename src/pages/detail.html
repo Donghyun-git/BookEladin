@@ -40,13 +40,15 @@
                                 </a>
                             </div>
                             <div class="header-title-search">
-                                <div class="header-title-search-bar animated flipInX">
+                                <div
+                                    class="header-title-search-bar animated flipInX"
+                                >
                                     <img
                                         src="https://svgsilh.com/svg/1093183.svg"
                                         alt="돋보기"
                                         class="search-img"
                                     />
-                                    <input type="text" class="search-input"/>
+                                    <input type="text" class="search-input" />
                                     <button class="search-button">검색</button>
                                 </div>
                             </div>
@@ -199,6 +201,17 @@
                             </div>
                         </article>
                     </div>
+                    <!-- 모달 -->
+                    <div class="modal">
+                        <div class="modal-content">
+                            <i
+                                class="fa fa-exclamation-circle"
+                                aria-hidden="true"
+                            ></i>
+                            <p class="modal-text">모달 내용</p>
+                            <button class="close-modal-btn">&times;</button>
+                        </div>
+                    </div>
                     <!--main-container-->
                     <div class="cart-alert">
                         <div class="cart-alert-container">
@@ -252,9 +265,9 @@
     </body>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../api/mypage.js"></script>
     <script src="../js/isLogin.js"></script>
     <script src="../api/logout.js"></script>
+    <script src="../api/mypage.js"></script>
     <script type="module" src="../api/detail.js"></script>
     <script src="../api/search.js"></script>
 </html>
