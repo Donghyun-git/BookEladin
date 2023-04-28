@@ -1,31 +1,36 @@
+import IDB from "../js/indexedDB.js";
 
-
-const detailData = JSON.parse(localStorage.getItem('detail'));
+const detailData = JSON.parse(localStorage.getItem("detail"));
 // const { productId, author, title, imgUrl, price, introduction, publisher } = detailData;
+
 const { productId } = detailData;
 
 const getProductByProductId = async () => {
     const uri = `http://34.64.105.163:80/books//products/${productId}`;
     const header = {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
+        headers: {},
         withCredentials: true,
+    };
+    if (localStorage.getItem("accessToken")) {
+        header.headers.Authorization = `Bearer ${localStorage.getItem(
+            "accessToken"
+        )}`;
+    } else if (document.cookie.includes("uuid")) {
+        const uuid = document.cookie.split("=")[1];
+        header.headers.uuid = uuid;
     }
-
     try {
         const detailResponse = await axios.get(uri, header);
         const { data } = detailResponse.data;
 
         return data;
-
-    } catch(err) {
+    } catch (err) {
         console.log(err);
     }
-}
-getProductByProductId().then(res => {
+};
+getProductByProductId().then((res) => {
     console.log(res);
-    const mainBook = document.querySelector('.main-book');
+    const mainBook = document.querySelector(".main-book");
     mainBook.innerHTML = `
         <div class="main-book-img">
                                 <img
@@ -63,7 +68,9 @@ getProductByProductId().then(res => {
                                                     <ul>
                                                         <li>출판사</li>
                                                         <li>
-                                                            <p>${res.publisher}</p>
+                                                            <p>${
+                                                                res.publisher
+                                                            }</p>
                                                         </li>
                                                     </ul>
                                                     <ul class="product-id">
@@ -78,30 +85,23 @@ getProductByProductId().then(res => {
                                 <div class="price">
                                     <ul>
                                         <li>판매가</li>
-                                        <li class="price-won">${res.price} 원</li>
+                                        <li class="price-won">${res.price.toLocaleString()} 원</li>
                                     </ul>
                                 </div>
 
                                 <div class="main-user-buy">
                                     <ul>
+
                                         <li>
-                                            <a href="#"
+                                            <a style="font-size: 24px;"
                                                 ><i
-                                                    class="fa fa-heart"
-                                                    aria-hidden="true"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                                ><i
-                                                    class="fa fa-shopping-cart"
+                                                    class="fa fa-shopping-cart add-cart"
                                                     aria-hidden="true"
                                                 ></i
                                             ></a>
                                         </li>
                                         <li class="buy-button">
-                                            <a href="#">바로구매</a>
+                                            <a>바로구매</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -109,7 +109,85 @@ getProductByProductId().then(res => {
     `;
     const introduction = document.querySelector(".main-review-intro p");
     introduction.innerHTML = res.introduction;
+
+    const addCartBtn = document.querySelector(".add-cart");
+    const buyBtn = document.querySelector(".buy-button");
+
+    //장바구니담기, 주문하기
+    const { title, author, price, imgUrl, productId } = res;
+    console.log(title, author, price, imgUrl, productId);
+
+    addCartBtn.addEventListener("click", () => {
+        addIdxDB(title, author, price, imgUrl, productId, false);
+        openAlert();
+    });
+
+    buyBtn.addEventListener("click", () => {
+        addIdxDB(title, author, price, imgUrl, productId, true);
+        if (localStorage.getItem("userData")) {
+            location.href = "order.html";
+        } else {
+            location.href = "guest_login.html";
+        }
+    });
+
+    function addIdxDB(title, author, price, imgUrl, productId, order) {
+        const book = [
+            {
+                title: title,
+                author: author,
+                price: price,
+                imgUrl: imgUrl,
+                productId: productId,
+                order: !!order,
+                quantity: 1,
+            },
+        ];
+        IDB.addIDB(book);
+    }
+
+    const cartAlert = document.querySelector(".cart-alert");
+    const closeButton = document.querySelector(".close-alert");
+    const cancelButton = document.querySelector(".cancel-button");
+    const confirmButton = document.querySelector(".confirm-button");
+
+    closeButton.addEventListener("click", closeAlert);
+    cancelButton.addEventListener("click", closeAlert);
+    confirmButton.addEventListener("click", () => {
+        location.href = "cart.html";
+    });
+
+    function closeAlert() {
+        cartAlert.style.display = "none";
+    }
+
+    function openAlert() {
+        cartAlert.style.display = "flex";
+        setTimeout(() => {
+            cartAlert.style.display = "none";
+        }, 3000);
+    }
 });
 
+// 장바구니 alert
 
+// const closeButton = document.querySelector(".close-alert");
+// const cancelButton = document.querySelector(".cancel-button");
+// const confirmButton = document.querySelector(".confirm-button");
 
+// closeButton.addEventListener("click", closeAlert);
+// cancelButton.addEventListener("click", closeAlert);
+// confirmButton.addEventListener("click", () => {
+//     location.href = "cart.html";
+// });
+
+// function closeAlert() {
+//     cartAlert.style.display = "none";
+// }
+
+// function openAlert() {
+//     cartAlert.style.display = "flex";
+//     setTimeout(() => {
+//         cartAlert.style.display = "none";
+//     }, 3000);
+// }

@@ -4,23 +4,17 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>엘라딘</title>
         <link
             rel="icon"
             href="../favicon.png"
             type="image/x-icon"
             sizes="16x16"
         />
-        <link rel="stylesheet" type="text/css" href="../css/default.css" />
-        <link rel="stylesheet" type="text/css" href="../css/mypage.css" />
-        <link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
-        />
+        <link rel="stylesheet" href="../css/book_category.css" />
+        <title>엘라딘</title>
     </head>
     <body>
-        <div id="wrap">
+        <div class="app-title">
             <!-- 헤더 영역 시작 -->
             <header class="header">
                 <div class="header-container container">
@@ -90,51 +84,55 @@
                 </div>
             </header>
             <!-- 헤더 영역 종료 -->
+            <!-- 메인 영역 시작 -->
+            <main class="main">
+                <div class="main-container container">
+                    <nav class="nav-side-category-bar"></nav>
+                    <section class="category-book-list-section">
+                        <div class="category-book-title">검색 결과</div>
+                        <ul class="category-book-list"></ul>
+                    </section>
+                    <!-- 모달 영역 시작 -->
+                    <div class="modal">
+                        <div class="modal-content">
+                            <i
+                                class="fa fa-exclamation-circle"
+                                aria-hidden="true"
+                            ></i>
+                            <p class="modal-text">
+                                모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
+                            </p>
+                            <button class="close-modal-btn">&times;</button>
+                        </div>
+                    </div>
+                    <!-- 모달 영역 끗~ -->
 
-            <main id="main" role="main">
-                <div class="container">
-                    <div class="row">
-                        <h2 class="header-text">마이페이지</h2>
-                        <section class="main-profile">
-                            <div class="main-avata">
-                                <img
-                                    width="133px"
-                                    height="133px"
-                                    src="../img/eladin_genie.png"
-                                    alt="eladin_genie"
-                                />
+                    <!-- 스크롤 버튼 -->
+                    <button class="scroll-to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                        <p>TOP</p>
+                    </button>
+                    <!-- 모달 -->
+                    <div class="cart-alert">
+                        <div class="cart-alert-container">
+                            <div class="quit_btn">
+                                <button class="close-alert">&times;</button>
                             </div>
-                            <div class="main-aboutUser">
-                                <div class="top">
-                                    <h3 class="user-name">홍길동</h3>
-                                    <a href="./modify_mypage.html"
-                                        ><button class="update-detail-btn">
-                                            내 정보 변경
-                                        </button></a
-                                    >
-                                </div>
-                                <p class="email">eladin@gmail.com</p>
+                            <div class="cart-alert-content">
+                                <h2>상품이 장바구니에 담겼습니다.</h2>
+                                <p>장바구니로 이동하시겠습니까?</p>
                             </div>
-                        </section>
-                        <div class="main-orderlist">
-                            <h2 class="header-text">주문/배송 목록</h2>
-                            <section></section>
+                            <div class="cart-alert-button">
+                                <button class="cancel-button">취소</button>
+                                <button class="confirm-button">확인</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- 모달 영역 시작 -->
-                <div class="modal">
-                    <div class="modal-content">
-                        <i
-                            class="fa fa-exclamation-circle"
-                            aria-hidden="true"
-                        ></i>
-                        <p class="modal-text">모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
-                        <button class="close-modal-btn">&times;</button>
-                    </div>
-                </div>
-                <!-- 모달 영역 끗~ -->
             </main>
+            <!-- 메인 영역 종료 -->
+
+            <!-- 푸터 영역 시작 -->
             <footer id="footer" style="border: none">
                 <div class="footer">
                     <div class="container">
@@ -165,14 +163,14 @@
                     </div>
                 </div>
             </footer>
+            <!-- 푸터 영역 종료 -->
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="../js/isLogin.js"></script>
-        <script src="../js/mypageRender.js"></script>
-        <script src="../api/logout.js"></script>
-        <script src="../api/mypage.js"></script>
-        <script src="../api/getmypage.js"></script>
-        <script src="../api/search.js"></script>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/isLogin.js"></script>
+    <script src="../api/logout.js"></script>
+    <script src="../api/search.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../api/mypage.js"></script>
 </html>

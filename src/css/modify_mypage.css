@@ -74,6 +74,7 @@
 .header-title-link {
     display: flex;
     align-items: center;
+    padding-left: 14px;
 }
 
 .header-title-link .logo-img {
@@ -188,12 +189,31 @@ main h3 {
     border: 2px solid rgba(128, 128, 128, 0.224);
     font-size: 17px;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 1fr 3fr 6fr;
+    grid-template-rows: 1fr 1fr 3fr 9fr;
     grid-template-areas:
         "name name-field"
         "id id-field"
         "email email-field"
         "password password-field";
+}
+
+.name-field {
+    position: relative;
+    height: 180px;
+}
+.name-field small {
+    position: absolute;
+    bottom: 6px;
+}
+
+.id-field {
+    padding-left: 28px;
+    color: #606db8;
+    font-size: 14px;
+}
+
+.change-userid {
+    margin-left: 8px;
 }
 
 .table > .default {
@@ -237,6 +257,15 @@ main h3 {
     background: #606db8;
 }
 
+.email-field {
+    position: relative;
+}
+
+.email-field small {
+    position: absolute;
+    bottom: 8px;
+}
+
 .table .password-field input {
     border: 1px solid darkgrey;
     position: relative;
@@ -262,7 +291,27 @@ main h3 {
     background: #606db8;
 }
 
-/* 유효성 검사용 작업 중 */
+/* 유효성 검사용*/
+
+.red small {
+    font-size: 14px;
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.red input {
+    outline: 2px solid red;
+}
+
+.red input:focus {
+    outline: 2px solid red;
+}
+
+.green small {
+    font-size: 14px;
+    color: #22d14b;
+    visibility: visible;
+}
 
 small {
     visibility: hidden;
@@ -311,7 +360,64 @@ small {
     visibility: visible;
 }
 
-/* 유효성 검사용 작업 중 */
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.modal.active {
+    opacity: 1;
+    height: 100%;
+}
+
+.modal-content {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #8899fb;
+}
+.modal-content > .fa {
+    font-size: 23px;
+}
+.modal-text {
+    padding: 0 50px 0 10px;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    font-size: 37px;
+    cursor: pointer;
+}
+
+.close-modal-btn:focus {
+    outline: none;
+}
+
+.modal.active .modal-content {
+    opacity: 80%;
+    transform: translate(-50%, 0%);
+}
 
 #footer {
     width: 100%;

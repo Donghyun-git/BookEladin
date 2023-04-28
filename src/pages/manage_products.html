@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Eladin</title>
+        <title>엘라딘 - 관리자</title>
         <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link rel="stylesheet" type="text/css" href="../css/mypage.css" />
@@ -15,6 +15,9 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css"
         />
     </head>
+    <style>
+        .fix_modal, .update_modal { display: none; width: 50%; height: 85vh; position: fixed; top: 80px; left: 394px; border: 2px solid lightgray; border-radius: 20px; background-color: #fff; z-index: 2;}
+    </style>
     <body>
         <!-- 상품 등록 모달 -->
         <div class="update_modal">
@@ -42,11 +45,8 @@
                                 <select name="categorylist" class="update-categorylist">
                                     
                                 </select>
-                                
-                            </div>
-                            <div>
-                                <label for="img">이미지</label>
-                                <input type="text" class="update-img" name="img" />
+                                <label for="img" class="custom-file-upload"><i class="fa fa-cloud-upload"></i>이미지</label>
+                                <input id="img" class ="update-img hidden" type="file" name="img" accept="image/jpeg, image/png" />
                             </div>
                             <div>
                                 <label for="publisher">출판사</label>
@@ -63,10 +63,9 @@
                                 ></textarea>
                             </div>
                         </div>
-
                         <div class="modal-button">
                             <button class="update-modal-close">취소</button>
-                            <button class="add-product-complete">완료</button>
+                            <button type ="submit" class="add-product-complete">완료</button>
                         </div>
                     </div>
                 </div>
@@ -160,6 +159,13 @@
                                     <div class="header-title-name">Eladin</div>
                                 </a>
                             </div>
+                            <div class="header-nav-list">
+                                <ul>
+                                    <li><a href="./manage_category.html">카테고리</a></li>
+                                    <li><a href="./manage_products.html">상품목록</a></li>
+                                    <li><a href="./manage_orders.html">주문/배송 목록</a></li>
+                                </ul>
+                            </div>  
                             
                             </div>
                         </nav>
@@ -206,6 +212,16 @@
                         </div>
                     </div>
                 </div>
+            <!-- 모달 영역 시작 -->
+            <div class="modal">
+                <div class="modal-content">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    <p class="modal-text">모달 내용</p>
+                    <button class="close-modal-btn">&times;</button>
+                </div>
+            </div>
+            <!-- 모달 영역 끗~ -->
+
             </main>
             <footer id="footer" style="border: none">
                 <div class="footer">

@@ -1,6 +1,7 @@
 @import "./css/fonts.css";
 @import "./css/default.css";
 @import "./css/font-awesome.css";
+@import "./css/animate.min.css";
 
 /* 전체 레이아웃 */
 #wrap {
@@ -46,6 +47,7 @@
     line-height: 18px;
     text-align: center;
     color: #787878;
+    cursor: pointer;
 }
 
 .header-top-item:first-child::after {
@@ -74,19 +76,55 @@
 .header-title-link {
     display: flex;
     align-items: center;
+    padding-left: 14px;
 }
 
 .header-title-link .logo-img {
     width: 50px;
     height: 50px;
-    padding-right: 8px;
+   padding-right: 8px;
 }
 
 .header-title-link .header-title-name {
+    position: relative;
     font-weight: 700;
     font-size: 50px;
     color: #606db8;
 }
+
+.header-title-link .header-title-name:hover span {
+    opacity: 1;
+    top: -24px;
+}
+
+.header-title-link .header-title-name span {
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    font-size: 12px;
+    width: 100px;
+    color: #fff;
+    transform: translateX(-50%);
+    line-height: 1.6;
+    background: #606db8;
+    padding: 3px 9px;
+    border-radius: 6px 0px;
+    font-weight: 400;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.header-title-link .header-title-name span:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    border-top: 5px solid #606db8;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-left: -4px;
+}
+    
+
 
 .header-title-search {
     display: flex;
@@ -110,7 +148,7 @@
     margin-right: 12px;
 }
 
-.search-input {
+.header .search-input {
     width: 100%;
     height: 100%;
     padding: 10px 12px;
@@ -120,7 +158,7 @@
     font-size: 14px;
 }
 
-.search-input:focus {
+.header .search-input:focus {
     outline: none;
 }
 
@@ -149,11 +187,33 @@
 }
 
 /* swiper */
-.swiper { width: 950px; height: 400px; margin: 24px 0; border-radius: 4px;}
-.swiper-slide.fst { background: url("https://grepp-programmers.s3.amazonaws.com/production/file_resource/2866/certi-book-event_1200x628.png") center center / cover no-repeat;}
-.swiper-slide.snd { background: url("https://i.ytimg.com/vi/H91z8YxNrOY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBPmx01JUAv4_WSAp2NkHqKuVOUQQ")center center / cover no-repeat;}
-.swiper-slide.trd { background: url("https://i.ytimg.com/vi/6kzsVLNZQ0E/maxresdefault.jpg") center center / cover no-repeat;}
-.swiper-slide.fth { background: url("https://contents.kyobobook.co.kr/pmtn/2022/event/68a088ac677f48a689f5dce8046cce7f.jpg") center center / cover no-repeat;}
+.swiper {
+    width: 950px;
+    height: 400px;
+    margin: 24px 0;
+    border-radius: 18px;
+    z-index: 1;
+}
+.swiper-slide.fst {
+    background: url("https://media.discordapp.net/attachments/1097500162722627589/1100816919638061198/001.png?width=1799&height=719")
+        center center / cover no-repeat;
+}
+.swiper-slide.snd {
+    background: url("https://media.discordapp.net/attachments/1097500162722627589/1100816919889711145/002.png?width=1799&height=719")
+        center center / cover no-repeat;
+}
+.swiper-slide.trd {
+    background: url("https://media.discordapp.net/attachments/1097500162722627589/1100816920132989059/003.png?width=1799&height=719")
+        center center / cover no-repeat;
+}
+.swiper-slide.fth {
+    background: url("https://media.discordapp.net/attachments/1097500162722627589/1100816920409817218/004.png?width=1799&height=719")
+        center center / cover no-repeat;
+}
+.swiper-slide.fiv {
+    background: url("https://media.discordapp.net/attachments/1097500162722627589/1100816920632111164/005.png?width=1799&height=719")
+        center center / cover no-repeat;
+}
 
 .swiper-button-prev::after {
     color: #fff;
@@ -165,42 +225,66 @@
     transition: all 0.1s ease;
 }
 
-.swiper-button-prev:hover:after { 
+.swiper-button-prev:hover:after {
     color: #000;
 }
 
-.swiper-button-next:hover:after { 
+.swiper-button-next:hover:after {
     color: #000;
 }
-
 
 /* 카테고리 네비 css */
-.all-category-container {
-    border-bottom: 1px solid lightgray;;
+.all-category-nav {
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 
-.all-category-list { display: flex; justify-content: space-between; align-items: center;}
+.all-category-container {
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0px 5px 5px -5px gray;
+    background-color: white;
+}
 
-.populate-book-list { display: flex; justify-content: center; align-items: center; gap: 52px; padding: 18px;}
+.all-category-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.all-category-list .fa-bars {
+    font-size: 23px;
+    padding-right: 10px;
+    color: #787878;
+}
+
+.populate-book-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 52px;
+    padding: 18px;
+}
 
 .all-category-link {
     display: inline-block;
     padding: 18px;
 }
 
-.all-category-text, .populate-book-list li a {
+.all-category-text,
+.populate-book-list li a {
     font-weight: 500;
-    font-size: 24px;
-    color: darkgray;
+    font-size: 21px;
+    color: rgb(112, 112, 112);
     transition: all 0.35s ease;
 }
 
-.all-category-text:hover { 
+.all-category-text:hover {
     color: #000;
 }
 
 .populate-book-list li:hover a {
-    color: #000;
+    color: #606db8;
 }
 
 /* 메인 css */
@@ -315,7 +399,7 @@
     padding: 20px;
 }
 
-.introduction-content > img {
+.introduction-content img {
     width: 229px;
     height: 337px;
     filter: drop-shadow(0 0 4px grey);
@@ -330,7 +414,7 @@
     padding-bottom: 15px;
 }
 
-.introduction-detail > .title {
+.introduction-detail .title {
     font-size: 23px;
     font-weight: 500;
 }
@@ -381,7 +465,7 @@
     padding: 20px 15px;
 }
 
-.products-list-info > img {
+.products-list-info img {
     width: 160px;
     height: 225px;
     filter: drop-shadow(0 0 4px grey);
@@ -455,6 +539,66 @@
     font-size: 13px;
     font-weight: 500;
 }
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.modal.active {
+    opacity: 1;
+    height: 100%;
+}
+
+.modal-content {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #8899fb;
+}
+.modal-content > .fa {
+    font-size: 23px;
+}
+.modal-text {
+    padding: 0 50px 0 10px;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    font-size: 37px;
+    cursor: pointer;
+}
+
+.close-modal-btn:focus {
+    outline: none;
+}
+
+.modal.active .modal-content {
+    opacity: 80%;
+    transform: translate(-50%, 0%);
+}
+
 /* 푸터 css */
 #footer {
     width: 100%;

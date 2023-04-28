@@ -4,15 +4,20 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" href="../favicon.png" type="image/x-icon" sizes="16x16">
-        <title>Eladin</title>
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
+        <title>엘라딘</title>
         <link rel="stylesheet" href="../css/login.css" />
     </head>
     <body>
         <div id="wrap">
             <header id="header">
                 <div class="container">
-                    <div class="row">
+                    <div class="row mt30">
                         <div class="header">
                             <div class="header-logo">
                                 <!-- <img src="../img/test.jpeg" alt="로고 이미지"> -->
@@ -29,84 +34,66 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="header-user-info">
-                                    <ul>
-                                        <li>
-                                            <a href="./cart.html"
-                                                ><i
-                                                    class="fa fa-shopping-cart"
-                                                    aria-hidden="true"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                        <li>
-                                            <a href="./mypage.html"
-                                                ><i
-                                                    class="fa fa-user"
-                                                    blank="_target"
-                                                    aria-hidden="true"
-                                                ></i
-                                            ></a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-      <article id="login">
-        <div class="login container">
-          <div class="row">
-              <div class="login-area">
-                <div class="login-area-center">
-                  <h2 class="login-tit">
-                    환영합니다! Eladin 이에요! <br />
-                    우측 상단 버튼을 통해 회원가입 해주세요!
-                  </h2>
-                </div>
-
-                                <div class="login-id mt40">
-                                    <label for="id" class="login-form-label"
-                                        >아이디</label
-                                    >
-                                    <input
-                                        type="text"
-                                        name="id"
-                                        id="id"
-                                        placeholder="아이디"
-                                    />
-                                </div>
-                                <div class="login-pw mt20">
-                                    <label for="password" class="form-label"
-                                        >비밀번호</label
-                                    >
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        id="password"
-                                        placeholder="비밀번호"
-                                    />
-                                </div>
-                                <div class="login-button">
-                                    <input
-                                        type="submit"
-                                        value="로그인"
-                                        id="login_btn"
-                                    />
-                                </div>
+            <article id="login">
+                <div class="login container">
+                    <div class="row">
+                        <div class="login-area">
+                            <div class="login-area-center">
+                                <h2 class="login-tit">
+                                    환영합니다! Eladin이에요! <br />
+                                    우측 상단 버튼을 통해 회원가입 해주세요!
+                                </h2>
                             </div>
-                        </form>
+
+                            <div class="login-id mt40">
+                                <label for="id" class="login-form-label"
+                                    >아이디</label
+                                >
+                                <input
+                                    type="text"
+                                    name="id"
+                                    id="id"
+                                    placeholder="아이디"
+                                />
+                            </div>
+                            <div class="login-pw mt20">
+                                <label for="password" class="form-label"
+                                    >비밀번호</label
+                                >
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="비밀번호"
+                                />
+                            </div>
+                            <div class="login-button">
+                                <input
+                                    type="submit"
+                                    value="로그인"
+                                    id="login_btn"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-              </div>
-          </div>
+            </article>
         </div>
-      </article>
-    </div>
-  </body>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="../api/login.js"></script>
+        <div class="modal">
+            <div class="modal-content">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <p class="modal-text">모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
+                <button class="close-modal-btn">&times;</button>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../api/login.js"></script>
 </html>

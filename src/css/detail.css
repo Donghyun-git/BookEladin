@@ -1,19 +1,28 @@
-@import "./font.css";
+@import "./fonts.css";
 @import "./default.css";
 @import "./font-awesome.css";
 
 /* 전체 레이아웃 */
-#wrap { width: 100%; }
-#header { width: 100%; }
-#main { width: 100%; }
-
+#wrap {
+    width: 100%;
+}
+#header {
+    width: 100%;
+}
+#main {
+    width: 100%;
+}
 
 /* 공용 컨테이너 */
-.container { width: 950px; margin: 0 auto; text-align: center;}
+.container {
+    width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /* 레이아웃 여백 */
-.row { }  
-
+.row {
+}
 
 /* 헤더 */
 /* .header { display: flex; justify-content:space-between; align-items: center; flex-wrap: nowrap;}
@@ -81,6 +90,7 @@
 .header-title-link {
     display: flex;
     align-items: center;
+    padding-left: 14px;
 }
 
 .header-title-link .logo-img {
@@ -157,59 +167,372 @@
 
 /* 메인 */
 
-#main .row { padding: 24px;}
-.main-book { display: flex; justify-content: flex-start; flex-wrap: nowrap;}
-.main-book-img { width: 180px; height: 260px; margin-left:56px;}
-.main-book-img img { width: 100%; height: 100%;}
+#main .row {
+    padding: 24px;
+}
+.main-book {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+.main-book-img {
+    width: 180px;
+    height: 260px;
+    margin-left: 56px;
+}
+.main-book-img img {
+    width: 100%;
+    height: 100%;
+}
 
-.main-book-info { text-align: left; margin-left: 62px; width: 500px;}
-.main-book-info ul li:nth-child(3) div { margin-top: 12px; font-weight: 500;}
-.author { color: black; margin-top: 24px !important;}
-.author h4 { display: inline-block; padding: 2px 34px 2px 0;}
-.main-book-info ul li:first-child div { margin: 0;}
-.book-info-cont { font-size: 18px;}
-.book-info-cont ul { display: flex; justify-content: flex-start;}
-.book-info-cont ul li:first-child { width: 60px; }
-.publisher { margin-top: 30px !important}
-.publisher p { padding-left: 8px;}
-.product-id li:last-child { padding-left: 8px;}
+.main-book-info {
+    text-align: left;
+    margin-left: 62px;
+    width: 500px;
+}
+.main-book-info ul li:nth-child(3) div {
+    margin-top: 12px;
+    font-weight: 500;
+}
+.author {
+    color: black;
+    margin-top: 24px !important;
+}
+.author h4 {
+    display: inline-block;
+    padding: 2px 56px 2px 0;
+}
+.main-book-info ul li:first-child div {
+    margin: 0;
+}
+.book-info-cont {
+    font-size: 18px;
+}
+.book-info-cont ul {
+    display: flex;
+    justify-content: flex-start;
+}
+.book-info-cont ul li:first-child {
+    width: 84px;
+}
+.publisher {
+    margin-top: 30px !important;
+}
+.publisher p {
+    padding-left: 8px;
+}
+.product-id li:last-child {
+    padding-left: 8px;
+}
 
-.publisher li:first-child, .product-id li:first-child { font-weight: 700;}
+.publisher li:first-child,
+.product-id li:first-child {
+    font-weight: 700;
+}
 
-.price { margin-top: 70px; position: relative;}
-.price:before { content:""; width: 506px; height: 1px; background-color: gray; position: absolute; bottom: -7px; right: 0;}
-.price ul li:first-child { font-size: 16px; color: gray; margin-left: 61px;}
-.price ul { display: flex; justify-content: space-between; align-items: center;}
-.price .price-won { font-size: 18px; font-weight: 700; color: #606DB8;}
+.price {
+    margin-top: 70px;
+    position: relative;
+}
+.price:before {
+    content: "";
+    width: 506px;
+    height: 1px;
+    background-color: gray;
+    position: absolute;
+    bottom: -7px;
+    right: 0;
+}
+.price ul li:first-child {
+    font-size: 16px;
+    color: gray;
+    margin-left: 61px;
+}
+.price ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price .price-won {
+    font-size: 18px;
+    font-weight: 700;
+    color: #606db8;
+}
 
-.main-user-buy ul { display: flex; justify-content: flex-end; align-items: center; margin-top: 20px;}
-.main-user-buy ul li { display: flex; align-items: center; justify-content: center; width: 46px; height: 44px; border: 1px solid lightgray; background-color: #fff; text-align: center; border-radius: 5px; margin: 0 2px;}
-.main-user-buy ul .buy-button { padding: 0 32px; background-color: #606DB8; }
-.buy-button a { color: #fff;}
+.main-user-buy ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+.main-user-buy ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 44px;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    margin: 0 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.main-user-buy ul li:hover {
+    background-color: #606db8;
+}
+
+.main-user-buy ul li:hover a {
+    color: #fff;
+}
+
+.main-user-buy ul .buy-button {
+    padding: 0 32px;
+    background-color: #606db8;
+}
+.main-user-buy ul .buy-button:hover {
+    background-color: #5260b2;
+}
+.buy-button a {
+    color: #fff;
+}
 
 /* 리뷰 */
 
-.main-review { margin-top: 80px; text-align: left;}
-.main-review h3 { margin-bottom: 24px; font-size: 1.5em; color: #606DB8; position:relative;}
-.main-review h3:before { content:""; width: 100%; height: 3px; background-color: lightgray; position: absolute; bottom: -4px; left: 0;}
-.main-review-write { margin-top: 55px; overflow: hidden;}
-.main-review-write input { height: 210px; width: 96%; margin: 0 auto; border: 2px solid lightgray;}
-.main-review-write button { float: right; padding: 8px 32px; margin-top: 20px; background-color: #606DB8; border: 1px solid lightgray; color: #fff; text-align: center; border-radius: 5px; }
+.main-review {
+    margin-top: 80px;
+    text-align: left;
+}
+.main-review h3 {
+    margin-bottom: 24px;
+    font-size: 1.5em;
+    color: #606db8;
+    position: relative;
+}
+.main-review h3:before {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: lightgray;
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+}
+.main-review-write {
+    margin-top: 55px;
+    overflow: hidden;
+}
+.main-review-write input {
+    height: 120px;
+    width: 96%;
+    margin: 0 auto;
+    border: 2px solid lightgray;
+}
+.main-review-write button {
+    float: right;
+    padding: 8px 32px;
+    margin-top: 20px;
+    background-color: #606db8;
+    border: 1px solid lightgray;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
 
-.main-show-review { margin-top: 36px;}
-.review-all .review-all-hd { display: flex; justify-content: space-between; align-items: center; font-size: 24px; border-bottom: 2px solid lightgray; }
-.review-all .review-all-hd li a { color: rgb(82, 77, 77); }
-.review-all .review-all-hd li:last-child { font-size: 20px; }
+.main-show-review {
+    margin-top: 36px;
+}
+.review-all .review-all-hd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    border-bottom: 2px solid lightgray;
+}
+.review-all .review-all-hd li a {
+    color: rgb(82, 77, 77);
+}
+.review-all .review-all-hd li:last-child {
+    font-size: 20px;
+}
 
-.review-list ul .review-list-info { width: 20%;}
-.review-list ul .review-list-cont { width: 80%;}
-.review-list .be-data { display: flex; justify-content: center; align-items: center; padding: 6px 0 8px 12px; border-bottom: 1px solid lightgray;}
+.review-list ul .review-list-info {
+    width: 20%;
+}
+.review-list ul .review-list-cont {
+    width: 80%;
+    text-align: start;
+}
+.review-list .be-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 0 8px 12px;
+    border-bottom: 1px solid lightgray;
+}
+
+/* 모달창 */
+
+.cart-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-alert-container {
+    background-color: white;
+    width: 50%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    position: relative;
+}
+
+.quit_btn {
+    text-align: end;
+    height: 20px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+.close-alert {
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close-alert:focus {
+    outline: none;
+}
+
+.cart-alert-content h2 {
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+.cart-alert-content p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.cart-alert-button {
+    display: flex;
+    justify-content: center;
+}
+
+.cart-alert-button button {
+    width: 150px;
+    height: 50px;
+    margin-left: 10px;
+    border-radius: 7px;
+    font-size: 18px;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #818080;
+}
+
+.confirm-button {
+    background-color: #606db8;
+}
+
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.modal.active {
+    opacity: 1;
+    height: 100%;
+}
+
+.modal-content {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #8899fb;
+}
+.modal-content > .fa {
+    font-size: 23px;
+}
+.modal-text {
+    padding: 0 50px 0 10px;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    font-size: 37px;
+    cursor: pointer;
+}
+
+.close-modal-btn:focus {
+    outline: none;
+}
+
+.modal.active .modal-content {
+    opacity: 80%;
+    transform: translate(-50%, 0%);
+}
 
 /* 푸터 */
 
-#footer { width: 100%; border-top: 1px solid #dbdbdb }
-.footer {  text-align: center; padding: 20px 50px; font-size: 10px;}
-.footer li { position: relative; display: inline; padding: 0 7px 0 10px; white-space: nowrap;}
-.footer address { padding-top: 15px;}
-.footer li:before { content: ''; width: 1px; height: 12px; background-color: #dbdbdb; position: absolute; left:0; top: 2px;}
-.footer li:first-child:before { width: 0; }
+#footer {
+    width: 100%;
+    border-top: 1px solid #dbdbdb;
+}
+.footer {
+    text-align: center;
+    padding: 20px 50px;
+    font-size: 10px;
+}
+.footer li {
+    position: relative;
+    display: inline;
+    padding: 0 7px 0 10px;
+    white-space: nowrap;
+}
+.footer address {
+    padding-top: 15px;
+}
+.footer li:before {
+    content: "";
+    width: 1px;
+    height: 12px;
+    background-color: #dbdbdb;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+.footer li:first-child:before {
+    width: 0;
+}

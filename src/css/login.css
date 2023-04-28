@@ -1,4 +1,4 @@
-@import "./font.css";
+@import "./fonts.css";
 @import "./default.css";
 @import "./font-awesome.css";
 
@@ -22,9 +22,10 @@
 
 /* 로그인, 회원가입, 주문확인 */
 .login.container {
-    width: 700px;
-    margin: 0 auto;
+    width: 450px;
+    margin: 20px auto;
     text-align: center;
+    padding: 0 20px 50px 20px;
 }
 
 /* 레이아웃 여백 */
@@ -43,9 +44,9 @@
 }
 .header-logo h1 {
     color: #606db8;
-    font-size: 40px;
-    letter-spacing: 0.1em;
-    font-weight: bold;
+    font-size: 50px;
+    font-weight: 700;
+    margin: 12px 0 0 12px;
 }
 
 .header-user {
@@ -91,13 +92,14 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    align-items: center;
     text-align: left;
 }
 .login-area .login-tit {
     text-align: center;
     margin-top: 6rem;
     margin-bottom: 2rem;
-    font-size: 4rem;
+    font-size: 2.2rem;
     font-weight: 400;
 }
 .login-area .login-form-label {
@@ -107,14 +109,19 @@
 .login-area-center {
     text-align: center;
 }
+
+.login-area input {
+    width: 380px;
+    height: 50px;
+}
 .login-button input {
     margin-top: 40px;
-    height: 46px;
+    height: 60px;
     color: #fff;
     padding: 0 15px;
     display: block;
     font-size: 16px;
-    width: 105%;
+    width: 410px;
     background: #606db8;
     border: none;
     border-radius: 4px;
@@ -128,4 +135,63 @@
 .login-pw,
 .login-button {
     font-size: 2rem;
+}
+/* 모달 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.modal.active {
+    opacity: 1;
+    height: 100%;
+}
+
+.modal-content {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, -50%);
+    background-color: rgb(0, 0, 0);
+    padding: 0 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
+    color: white;
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    color: #8899fb;
+}
+.modal-content > .fa {
+    font-size: 23px;
+}
+.modal-text {
+    padding: 3px 50px 0 10px;
+}
+
+.close-modal-btn {
+    border: none;
+    background-color: transparent;
+    color: rgb(128, 128, 128);
+    font-size: 37px;
+    cursor: pointer;
+    padding-top: 3px;
+}
+
+.close-modal-btn:focus {
+    outline: none;
+}
+
+.modal.active .modal-content {
+    opacity: 80%;
+    transform: translate(-50%, 0%);
 }
