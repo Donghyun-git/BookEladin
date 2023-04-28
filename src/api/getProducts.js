@@ -33,7 +33,6 @@ const getProductsForUser = async () => {
         );
 
         const { data } = Products.data;
-        console.log(data);
         return data;
     } else {
         const Products = await axios.get(
@@ -41,7 +40,6 @@ const getProductsForUser = async () => {
         );
 
         const { data } = Products.data;
-        console.log(data);
         return data;
     }
 };

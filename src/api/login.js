@@ -22,7 +22,6 @@ const logIn = async () => {
     try {
         const response = await axios.post(uri, loginData, header);
         const { data } = await response;
-        console.log(response);
         const { accessToken, refreshToken } = data.data;
         localStorage.setItem("userData", JSON.stringify(data.data));
         localStorage.setItem("accessToken", accessToken);

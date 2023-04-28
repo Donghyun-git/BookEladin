@@ -63,9 +63,6 @@ const createCategory = async (categoryValue) => {
         };
 
         const categories = await axios.post(uri, body, header);
-        console.log(categories);
-        // window.alert('카테고리가 추가되었습니다!');
-        // window.location.href = './manage_category.html';
 
         modalContent.innerHTML = "카테고리가 추가되었습니다!";
         openModal();
@@ -112,11 +109,6 @@ const deleteCategory = async (e) => {
                 data: { category: categoryName },
                 withCredentials: header.withCredentials,
             });
-
-            console.log(categories);
-
-            // window.alert("카테고리가 삭제되었습니다!");
-            // window.location.href = "./manage_category.html";
             modalContent.innerHTML = "카테고리가 삭제되었습니다!";
             openModal();
             setTimeout(() => {
@@ -150,9 +142,7 @@ const updateCategory = async (currentCategory, newCategory) => {
             updateCategory: newCategory,
         };
         const categories = await axios.patch(uri, body, header);
-        console.log(categories);
-        // window.alert("카테고리가 수정되었습니다!");
-        // window.location.href = "./manage_category.html";
+
         modalContent.innerHTML = "카테고리가 수정되었습니다!";
         openModal();
         setTimeout(() => {

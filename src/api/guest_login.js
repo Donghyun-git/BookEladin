@@ -25,9 +25,7 @@ const NonMemberlogIn = async () => {
     try {
         const response = await axios.post(uri, loginData, header);
         const { data } = await response;
-        console.log(response);
         const { uuid } = data.data;
-        console.log(uuid);
         localStorage.setItem("uuid", uuid);
         // window.alert(`${data.message}`);
         modalContent.innerHTML = `${data.message}`;
@@ -87,7 +85,7 @@ const isValidEmail = (email) => {
 };
 
 emailField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
     const isValid = isValidEmail(emailField.value);
     const logInEmailArea = document.querySelector(".login-email");
     const emailFieldText = document.querySelector(".login-email small");
@@ -104,7 +102,6 @@ emailField.addEventListener("input", async (e) => {
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 logInEmailArea.classList.add("red");
                 logInEmailArea.classList.remove("green");
@@ -137,7 +134,7 @@ const isValidUserName = (userName) => {
 };
 
 userNameField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
     const userNameArea = document.querySelector(".login-name");
     const userNameFieldText = document.querySelector(".login-name small");
     const isValid = isValidUserName(userNameField.value);
@@ -154,7 +151,6 @@ userNameField.addEventListener("input", async (e) => {
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 userNameArea.classList.add("red");
                 userNameArea.classList.remove("green");
@@ -187,7 +183,7 @@ const isValidPassword = (password) => {
 };
 
 passwordField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
     const passwordArea = document.querySelector(".login-pw");
     const passwordFieldText = document.querySelector('.login-pw small');
     const isValid = isValidPassword(passwordField.value);
@@ -215,7 +211,7 @@ const isValidPasswordCheck = (checkPassword) => {
 };
 
 checkPassword.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
     const checkPasswordArea = document.querySelector(".check-pw");
     const checkPasswordFieldText = document.querySelector(".check-pw small");
     const isValid = isValidPasswordCheck(checkPassword.value);

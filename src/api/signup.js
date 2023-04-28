@@ -51,8 +51,6 @@ signupButton.addEventListener("click", async () => {
         await axios
             .post(uri, userData, header)
             .then((res) => {
-                console.log(res);
-                // window.alert(`${res.data.message}`);
                 modalContent.innerHTML = `${res.data.message}`;
                 openModal();
                 setTimeout(() => {
@@ -62,15 +60,12 @@ signupButton.addEventListener("click", async () => {
                     location.href = "./login.html";
                 });
 
-                // window.location.href = "./login.html";
             })
             .catch((err) => {
                 if (err.response.data.message) {
-                    // window.alert(`${err.response.data.message}`);
                     modalContent.innerHTML = `${err.response.data.message}`;
                     openModal();
                 } else {
-                    // window.alert("회원가입에 실패했습니다!");
                     modalContent.innerHTML = "회원가입에 실패했습니다!";
                     openModal();
                 }
@@ -110,7 +105,7 @@ const idField = document.querySelector("#id");
 const userNameField = document.querySelector("#name");
 
 idField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
     const isValid = isValidId(idField.value);
     const signUpIdArea = document.querySelector(".signup-id");
     const idFieldText = document.querySelector(".signup-id small");
@@ -127,7 +122,6 @@ idField.addEventListener("input", async (e) => {
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 signUpIdArea.classList.add("red");
                 signUpIdArea.classList.remove("green");
@@ -178,7 +172,6 @@ emailField.addEventListener("input", async (e) => {
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 signUpEmailArea.classList.add("red");
                 signUpEmailArea.classList.remove("green");
@@ -212,7 +205,7 @@ const isValidUserName = (userName) => {
 };
 
 userNameField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
     const userNameArea = document.querySelector(".signup-name");
     const userNameFieldText = document.querySelector(".signup-name small");
     const isValid = isValidUserName(userNameField.value);
@@ -229,7 +222,6 @@ userNameField.addEventListener("input", async (e) => {
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 userNameArea.classList.add("red");
                 userNameArea.classList.remove("green");

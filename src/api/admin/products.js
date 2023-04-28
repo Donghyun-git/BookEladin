@@ -47,7 +47,7 @@ const updateCategoryList = document.querySelector('.update-categorylist');
 const fixCategoryList = document.querySelector('.fix-categorylist');
 
 const getCategories = async () => {
-    const uri = "http://www.eladin.store/books/categories";
+    const uri = 'http://www.eladin.store/books/categories';
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -83,7 +83,7 @@ const getProducts = async () => {
     };
 
     const Products = await axios.get(
-        "http://www.eladin.store/books/products",
+        'http://www.eladin.store/books/products',
         header
     );
 
@@ -91,13 +91,10 @@ const getProducts = async () => {
 
     return data;
 };
-// ${book.imgUrl}
 getProducts().then((res) => {
     let adminBookList = '';
     const filtered = res.filter((book) => book.productId > 300);
     filtered.forEach((book) => {
-        console.log(book.imgUrl);
-        // book.imgUrl = '../img/eladin_genie.png';
         adminBookList += `
         
             <li class="admin-book-item">
@@ -159,7 +156,6 @@ const createProducts = async () => {
         const updatePublisher = document.querySelector('.update-publisher');
         const updateInfo = document.querySelector('.update-intro');
 
-        // console.log(updateImg)
         const formData = new FormData();
         formData.append('imageFile', updateImg.files[0]);
 
@@ -180,16 +176,12 @@ const createProducts = async () => {
             introduction: updateInfo.value,
         };
 
+        // formData.append("body", body); // formData에 바디정보 추가
         for (const key in body) {
             formData.append(key, body[key]);
         }
-        // formData.append("body", body); // formData에 바디정보 추가
 
         const products = await axios.post(uri, formData, header);
-        console.log(products);
-        // window.alert('상품이 추가 되었습니다!');
-        // closeUpdateModal();
-        // window.location.href = "./manage_products.html";
 
         modalContent.innerHTML = '상품이 추가 되었습니다!';
         openModal();
@@ -223,9 +215,6 @@ const deleteProducts = async (productId) => {
         headers: header.headers,
         withCredentials: header.withCredentials,
     });
-    console.log(products);
-    //    window.alert('삭제되었습니다!');
-    //    window.location.href = "./manage_products.html";
     modalContent.innerHTML = '삭제되었습니다!';
     openModal();
     setTimeout(() => {
@@ -273,9 +262,7 @@ const fixProducts = async () => {
         };
 
         const products = await axios.patch(uri, body, header);
-        console.log(products);
-        // window.alert("수정되었습니다!");
-        // window.location.href = "./manage_products.html";
+
         modalContent.innerHTML = '수정되었습니다!';
         openModal();
         setTimeout(() => {

@@ -49,7 +49,6 @@ const getOrders = async () => {
 };
 
 getOrders().then((orders) => {
-    console.log(orders);
     const orderList = document.querySelector(".admin-order-data");
     const { foundAllOrders, titleList, userNameList } = orders;
     let orderHTML = "";
@@ -143,9 +142,6 @@ const updateDeliveryStatus = async () => {
         };
 
         const response = await axios.patch(uri, body, header);
-        console.log(response);
-        // window.alert("배송 상태가 수정되었습니다!");
-        // window.location.href = "./manage_orders.html";
         modalContent.innerHTML = "배송 상태가 수정되었습니다!";
         openModal();
         setTimeout(() => {
@@ -166,7 +162,6 @@ changeDeliveryStatusButton.addEventListener("click", updateDeliveryStatus);
 
 /* [관리자] 주문 목록 삭제 */
 const deleteOrder = async () => {
-    console.log(orderNumber);
     try {
         const uri = "http://www.eladin.store/orders/admin";
         const header = {
@@ -181,9 +176,6 @@ const deleteOrder = async () => {
             data: { orderNumber: orderNumber },
             withCredentials: header.withCredentials,
         });
-        console.log(response);
-        // window.alert("주문이 삭제 되었습니다!");
-        // window.location.href = "./manage_orders.html";
         modalContent.innerHTML = "주문이 삭제 되었습니다!";
         openModal();
         setTimeout(() => {

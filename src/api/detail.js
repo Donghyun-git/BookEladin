@@ -29,7 +29,6 @@ const getProductByProductId = async () => {
     }
 };
 getProductByProductId().then((res) => {
-    console.log(res);
     const mainBook = document.querySelector(".main-book");
     mainBook.innerHTML = `
         <div class="main-book-img">
@@ -115,7 +114,6 @@ getProductByProductId().then((res) => {
 
     //장바구니담기, 주문하기
     const { title, author, price, imgUrl, productId } = res;
-    console.log(title, author, price, imgUrl, productId);
 
     addCartBtn.addEventListener("click", () => {
         addIdxDB(title, author, price, imgUrl, productId, false);

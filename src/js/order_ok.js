@@ -10,7 +10,6 @@ const getAxios = async (url, query) => {
         withCredentials: true,
     }
     const res = await axios.get(`${url}/${query}`, header);
-    console.log(res);
 
     const orderNumber = res.data.data.foundOrder.orderInfo.orderNumber 
     const data = res.data.data.foundOrder.deliveryInfo

@@ -18,7 +18,6 @@ const getSearchProducts = async (query) => {
         }
 
         const response = await axios.get(uri, header);
-        console.log(response);
         localStorage.setItem("search", JSON.stringify(response.data.data));
         location.href = "./search.html";
     } catch (err) {

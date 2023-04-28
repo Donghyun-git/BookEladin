@@ -5,13 +5,13 @@
 
 /* 사용자 주문 내역 렌더링 */
 const getMyAllOrders = async () => {
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem('userData'));
     const userId = userData.userId;
 
     try {
         const header = {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             withCredentials: true,
         };
@@ -25,33 +25,32 @@ const getMyAllOrders = async () => {
     }
 };
 getMyAllOrders().then((myOrder) => {
-    const orderListArea = document.querySelector(".main-orderlist section");
-    console.log(myOrder);
+    const orderListArea = document.querySelector('.main-orderlist section');
     const { foundOrders, imgUrlList, titleList } = myOrder;
     const dateList = [];
     foundOrders.forEach((date) => {
-        dateList.push(date.createdAt.split("T")[0]);
+        dateList.push(date.createdAt.split('T')[0]);
     });
     const setDateList = [...new Set(dateList)];
 
     setDateList.forEach((date) => {
         // 한번 돔 날짜 하나여서.
-        const dateTag = document.createElement("p");
+        const dateTag = document.createElement('p');
         const dateText = document.createTextNode(`${date}`);
         dateTag.classList.add(`${date}`);
-        dateTag.classList.add("order-date");
+        dateTag.classList.add('order-date');
         dateTag.appendChild(dateText);
         orderListArea.appendChild(dateTag);
 
         foundOrders.forEach((cont, idx) => {
             //두번돔 데이터 두개니까.
-            let html = "";
+            let html = '';
             const { deliveryInfo, deliveryStatus, items, orderInfo } = cont;
             const { orderNumber } = orderInfo;
             const { address, addressDetail, receiverName, receiverPhone } =
                 deliveryInfo;
-            const orderDate = cont.createdAt.split("T")[0];
-            if (orderDate == dateTag.classList.value.split(" ")[0]) {
+            const orderDate = cont.createdAt.split('T')[0];
+            if (orderDate == dateTag.classList.value.split(' ')[0]) {
                 html += `
                 <div class="order-content">
                 <img
@@ -81,12 +80,12 @@ getMyAllOrders().then((myOrder) => {
             </div>
             `;
             }
-            dateTag.insertAdjacentHTML("afterend", html);
+            dateTag.insertAdjacentHTML('afterend', html);
         });
     });
 });
 
-myPage.addEventListener("click", getUserInfo);
+myPage.addEventListener('click', getUserInfo);
 
 /* [사용자] 마이페이지 주문 취소 */
 
@@ -94,11 +93,11 @@ let orderNumber;
 
 const cancelOrder = async () => {
     try {
-        const uri = "http://www.eladin.store/orders/user";
+        const uri = 'http://www.eladin.store/orders/user';
 
         const header = {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },
             withCredentials: true,
         };
@@ -109,16 +108,14 @@ const cancelOrder = async () => {
             withCredentials: header.withCredentials,
         });
 
-        console.log(cancelResponse);
-        // window.alert("주문이 성공적으로 취소 되었습니다!");
-        modalContent.innerHTML = "주문이 성공적으로 취소 되었습니다!";
+        modalContent.innerHTML = '주문이 성공적으로 취소 되었습니다!';
         openModal();
         setTimeout(() => {
-            location.href = "./mypage.html";
+            location.href = './mypage.html';
         }, 2000);
 
-        closeModalBtn.addEventListener("click", () => {
-            location.href = "./mypage.html";
+        closeModalBtn.addEventListener('click', () => {
+            location.href = './mypage.html';
         });
 
         // window.location.href = "./mypage.html";
@@ -127,8 +124,8 @@ const cancelOrder = async () => {
     }
 };
 
-const orderListArea = document.querySelector(".main-orderlist section");
-orderListArea.addEventListener("click", (e) => {
+const orderListArea = document.querySelector('.main-orderlist section');
+orderListArea.addEventListener('click', (e) => {
     if (e.target.dataset.order) {
         orderNumber = e.target.dataset.order;
         cancelOrder();
@@ -137,11 +134,11 @@ orderListArea.addEventListener("click", (e) => {
 
 // 모달
 function openModal() {
-    modal.classList.add("active");
+    modal.classList.add('active');
     setTimeout(() => {
-        modal.classList.remove("active");
+        modal.classList.remove('active');
     }, 2000);
 }
-closeModalBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
+closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
 });

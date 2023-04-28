@@ -76,7 +76,6 @@ const updateUserInfo = async () => {
                     },
                 })
             );
-            // window.alert(updateMessage);
             modalContent.innerHTML = `${updateMessage}`;
             openModal();
 
@@ -87,10 +86,8 @@ const updateUserInfo = async () => {
                 location.href = "./mypage.html";
             });
 
-            // window.location.href = "./mypage.html";
         } catch (err) {
             console.log(err);
-            // window.alert(`서버오류입니다! ${err.response.data.message}`);
             modalContent.innerHTML = `${err.response.data.message}`;
             openModal();
         }
@@ -164,7 +161,7 @@ const isValidEmail = (email) => {
 };
 
 emailField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
 
     const emailValue = emailField.value.trim();
     const isValid = isValidEmail(emailValue);
@@ -182,7 +179,6 @@ emailField.addEventListener("input", async (e) => {
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 emailArea.classList.add("red");
                 emailArea.classList.remove("green");
@@ -219,7 +215,7 @@ const isValidName = (name) => {
 };
 
 nameField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
 
     const nameValue = nameField.value.trim();
     const isValid = isValidName(nameValue);
@@ -227,9 +223,7 @@ nameField.addEventListener("input", async (e) => {
 
     if (isValid) {
         nameArea.classList.remove("red");
-        console.log("try문 전@@@@@@@@@@@@@@@@");
         try {
-            console.log("@@@@@@@@@@@@@@@@try 들어옴");
             const userName = nameValue;
 
             const uri = `http://www.eladin.store/auth/check-username/${userName}`;
@@ -238,9 +232,7 @@ nameField.addEventListener("input", async (e) => {
                     "Content-type": "application/json",
                 },
             };
-            console.log("요청 전@@@@@@@@@@@@@@@@");
             const response = await axios.get(uri, header);
-            console.log("요청 후@@@@@@@@@@@@@@@@");
             if (response.data.data) {
                 nameArea.classList.add("red");
                 nameArea.classList.remove("green");
