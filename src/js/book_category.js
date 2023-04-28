@@ -1,5 +1,4 @@
 import IDB from "./indexedDB.js";
-import API from "../api/rest.js";
 
 const nav = document.querySelector(".nav-side-category-bar");
 const ul = document.querySelector(".category-book-list");

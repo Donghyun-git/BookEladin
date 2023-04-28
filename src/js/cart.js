@@ -46,10 +46,9 @@ class CartSection {
                 cartAlert.style.display = "none";
                 IDB.clearIDB();
                 location.reload();
+                this.selectCount = [];
+                this.sectionRender();
             });
-
-            this.selectCount = [];
-            this.sectionRender();
         });
 
         nonOrderBtn.addEventListener("click", async (e) => {
@@ -68,7 +67,8 @@ class CartSection {
         });
 
         orderBtn.addEventListener("click", async (e) => {
-            if (!localStorage.getItem("accessToken")) {
+            if (!localStorage.getItem("accessToken") &&
+                this.selectCount.length > 0) {
                 e.preventDefault();
                 // alert("로그인 후 이용해주세요.");
                 modalContent.innerHTML = "로그인 후 이용해주세요.";
@@ -214,7 +214,7 @@ class Cart extends CartSection {
                         >
                         <div class="cart-section-quantity-btn">
                             <button type="button" class="minus-btn"></button>
-                            <input type="number" class="item-quantity" value="1" id=${item.id}>
+                            <input type="number" class="item-quantity" value="${item.quantity}" id=${item.id} readonly>
                             <button type="button" class="plus-btn"></button>
                         </div>
                     </div>
@@ -245,14 +245,13 @@ class Cart extends CartSection {
 
             if (e.target.classList.contains("cart-section-item-delete-btn")) {
                 openAlert();
-                let value = e.target.value
                 const confirmButton = document.querySelector(".confirm-button");
-                confirmButton.addEventListener('click', () => {
-                    e.stopImmediatePropagation();
-                    IDB.deleteIDB(Number(value));
+     
+                confirmButton.addEventListener('click', (ev) => {
+                    ev.stopImmediatePropagation();
+                    IDB.deleteIDB(Number(e.target.value));
                     location.reload();
                 })
-                
             }
             this.sectionRender();
 
