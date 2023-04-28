@@ -19,3 +19,8 @@ window.addEventListener("load", async () => {
         userEmail.innerHTML = userData.email;
     }
 });
+
+for(let i=0; i=0; i){
+    window.location.reload();
+}
+    
