@@ -5,7 +5,7 @@ const closeModalBtn = document.querySelector(".close-modal-btn");
 
 if (
     localStorage.getItem("accessToken") ||
-    localStorage.getItem("refreshToken")
+    localStorage.getItem("uuid")
 ) {
     const logoutButton = document.querySelector("#logout-button");
 

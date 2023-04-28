@@ -333,3 +333,18 @@ function closeAlert() {
 function openAlert() {
     cartAlert.style.display = "flex";
 }
+// 비회원주문하기 경로
+const guestOrderButton = document.querySelector('.no-user-order-btn');
+
+guestOrderButton.addEventListener('click', () => {
+    if(localStorage.getItem("uuid")){
+        document.querySelector('.cart-section-btns a:first-child').setAttribute('href', "./order.html");
+    }
+});
+
+if(localStorage.getItem("accessToken")){
+    const cartSectionBtns = document.querySelector(".cart-section-btns");
+    const firstChild = cartSectionBtns.children[0];
+    cartSectionBtns.removeChild(firstChild);
+    document.querySelector('.user-order-btn').innerText = "주문 하기"
+}

@@ -5,7 +5,7 @@ const closeModalBtn = document.querySelector(".close-modal-btn");
 
 if (
     localStorage.getItem("accessToken") ||
-    localStorage.getItem("refreshToken")
+    localStorage.getItem("uuid")
 ) {
     const logoutButton = document.querySelector("#logout-button");
 
@@ -17,7 +17,6 @@ if (
             },
             withCredentials: true,
         };
-
         try {
             const uri = "http://localhost:5500/auth/logout";
             const logoutResponse = await axios.delete(uri, header);
