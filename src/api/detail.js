@@ -6,7 +6,7 @@ const detailData = JSON.parse(localStorage.getItem("detail"));
 const { productId } = detailData;
 
 const getProductByProductId = async () => {
-    const uri = `http://34.64.105.163:80/books//products/${productId}`;
+    const uri = `http://www.eladin.store/books//products/${productId}`;
     const header = {
         headers: {},
         withCredentials: true,

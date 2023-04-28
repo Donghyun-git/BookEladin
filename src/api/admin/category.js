@@ -15,7 +15,7 @@ const categoriesArea = document.querySelector(".category.container .row.mt30");
 /* [관리자] 카테고리 리스트 불러오기 */
 
 const getCategories = async () => {
-    const uri = "http://34.64.105.163/books/categories";
+    const uri = "http://www.eladin.store/books/categories";
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -94,7 +94,7 @@ const deleteCategory = async (e) => {
         const categoryName = e.target.dataset.name.toString(); //삭제하려는 카테고리명 추출.
 
         try {
-            const uri = "http://34.64.105.163/books/categories/category";
+            const uri = "http://www.eladin.store/books/categories/category";
             const header = {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem(

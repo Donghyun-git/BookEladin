@@ -18,7 +18,7 @@ if (
             withCredentials: true,
         };
         try {
-            const uri = "http://34.64.105.163:80/auth/logout";
+            const uri = "http://www.eladin.store/auth/logout";
             const logoutResponse = await axios.delete(uri, header);
             const logoutMessage = logoutResponse.data;
             localStorage.clear();

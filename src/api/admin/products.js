@@ -203,7 +203,7 @@ addProductBtn.addEventListener('click', createProducts);
 
 /* [관리자] 책 정보 삭제 */
 const deleteProducts = async (productId) => {
-    const uri = `http://34.64.105.163/books/products/${productId}`;
+    const uri = `http://www.eladin.store/books/products/${productId}`;
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -244,7 +244,7 @@ const fixProducts = async () => {
         const fixPublisher = document.querySelector('.fix-publisher');
         const fixInfo = document.querySelector('.fix-intro');
 
-        const uri = `http://34.64.105.163/books/products/${productId}`;
+        const uri = `http://www.eladin.store/books/products/${productId}`;
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,

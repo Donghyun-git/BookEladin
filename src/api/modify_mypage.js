@@ -62,7 +62,7 @@ const updateUserInfo = async () => {
                 password: password.value,
                 email: email.value,
             };
-            const uri = "http://34.64.105.163:80/auth/me";
+            const uri = "http://www.eladin.store/auth/me";
 
             const updateResponse = await axios.patch(uri, body, header);
             const updateMessage = await updateResponse.data.message;
