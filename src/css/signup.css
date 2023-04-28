@@ -22,7 +22,7 @@
 
 /* 로그인, 회원가입, 주문확인 */
 .signup.container {
-    width: 500px;
+    width: 410px;
     margin: 0 auto;
     text-align: center;
 }
@@ -96,8 +96,9 @@
 .signup-area .signup-tit {
     text-align: center;
     margin-top: 6rem;
-    margin-bottom: 2rem;
-    font-size: 4rem;
+    margin-bottom: 5rem;
+    padding-left: 40px;
+    font-size: 3rem;
     font-weight: 400;
 }
 .signup-area .signup-form-label {
@@ -108,9 +109,14 @@
 .signup-area-center {
     text-align: center;
 }
+
+.signup-area input {
+    height: 50px;
+}
+
 .signup-button input {
-    margin: 40px 0 56px 0;
-    height: 46px;
+    margin: 20px 0 56px 0;
+    height: 60px;
     color: #fff;
     padding: 0 15px;
     display: block;
