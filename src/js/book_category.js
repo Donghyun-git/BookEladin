@@ -95,8 +95,6 @@ class Book {
             headers: {},
             withCredentials: true,
         };
-
-        const accessToken = localStorage.getItem('accessToken');
         if (accessToken) {
             header.headers.Authorization = `Bearer ${accessToken}`;
         } else if (document.cookie.includes('uuid')) {
