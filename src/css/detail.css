@@ -325,7 +325,7 @@
     overflow: hidden;
 }
 .main-review-write input {
-    height: 210px;
+    height: 120px;
     width: 96%;
     margin: 0 auto;
     border: 2px solid lightgray;
@@ -363,6 +363,7 @@
 }
 .review-list ul .review-list-cont {
     width: 80%;
+    text-align: start;
 }
 .review-list .be-data {
     display: flex;
