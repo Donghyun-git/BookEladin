@@ -5,6 +5,7 @@ const allSelectBtn = document.querySelector('.cart-list-all-select-btn');
 const allDeleteBtn = document.querySelector('.cart-list-all-select-delete');
 const nonOrderBtn = document.querySelector('.no-user-order-btn');
 const orderBtn = document.querySelector('.user-order-btn');
+const cartAlert = document.querySelector(".cart-alert");
 
 class CartSection {
     constructor() {
@@ -35,8 +36,11 @@ class CartSection {
         });
 
         allDeleteBtn.addEventListener('click', (e) => {
-            IDB.clearIDB();
-            location.reload();
+            openAlert()
+            confirmButton.addEventListener("click", () => {  
+                IDB.clearIDB();
+                location.reload();
+            });
             
             this.selectCount = [];
             this.sectionRender();
@@ -219,8 +223,12 @@ class Cart extends CartSection {
             }
 
             if (e.target.classList.contains('cart-section-item-delete-btn')) {
-                IDB.deleteIDB(Number(e.target.value));
-                location.reload();
+                openAlert()
+                
+                confirmButton.addEventListener("click", () => {  
+                    IDB.deleteIDB(Number(e.target.value));
+                    location.reload();
+                });
             }
             this.sectionRender();
 
@@ -267,3 +275,20 @@ class Cart extends CartSection {
 
 const cart = new Cart(cartUl);
 cart.render();
+
+
+const closeButton = document.querySelector(".close-alert");
+const cancelButton = document.querySelector(".cancel-button");
+const confirmButton = document.querySelector(".confirm-button");
+
+closeButton.addEventListener("click", closeAlert);
+cancelButton.addEventListener("click", closeAlert);
+
+
+function closeAlert() {
+    cartAlert.style.display = "none";
+}
+
+function openAlert() {
+    cartAlert.style.display = "flex";  
+}
