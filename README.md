@@ -2,7 +2,7 @@
 
 ---
 
-<div align="middle"> <img alt="엘라딘 로고" src="./src/public/eladin.png" width=300> </div><br>
+<div align="middle"> <img alt="엘라딘 로고" src="./src/img/eladin.png" width=300> </div><br>
 
 
 ## 프로젝트 주제
@@ -17,7 +17,7 @@
 
 💡 John Doe (존 도씨, 오타쿠) : <strong>"책을 사고 싶어요. 근데 나가기가 너무 귀찮은걸요?"</strong>
 
-<div align="middle"> <img alt="엘라딘 로고" src="./src/public/readme.png" width=300> </div><br>
+<div align="middle"> <img alt="엘라딘 로고" src="./src/img/readme.png" width=300> </div><br>
 <br />
 
 ## 서비스 소개
@@ -61,7 +61,7 @@
 
 ## Infra
 
-<div align="middle"> <img alt="infra" src="./src/public/infra.png" width=900> </div><br>
+<div align="middle"> <img alt="infra" src="./src/img/infra.png" width=900> </div><br>
 
 <br/>
 
