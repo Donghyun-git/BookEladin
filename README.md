@@ -80,14 +80,13 @@
 | :dolphin: 김희산    | BE        |
 
 ### 프론트엔드
-
 - **Vanilla Javascript**, HTML, CSS
 - Font-Awesome
 - Goole-fonts
 - animate.css
 - swiper.js
 - 카카오(다음) 주소 API
-
+#### 역할
 - :dog: 안동현
     - 페이지 레이아웃, 회원가입 유효성 검사, 로그인, 검색 기능 등
 - :cat: 권성경
@@ -96,14 +95,13 @@
     - 페이지 레이아웃, 장바구니(Indexed DB) 등
 
 ### 백엔드
-
 - **Nodejs + Express** 
 - dotenv,cookie-parser,cors
 - jsonwebtoken,uuid
 - bcrypt
 - mongoose
 - multer
-
+#### 역할
 - :tiger: 박지원
     - Dummy Data 수집 -kakao 도서검색 API 구현
     - 유저,상품,주문 스키마 작성 및 모델 구현
