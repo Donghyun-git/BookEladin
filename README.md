@@ -98,22 +98,34 @@
 
 ### 백엔드
 
-- **Express** 
-- 백엔드분들 적어주세요..
+- **Nodejs + Express** 
+- dotenv,cookie-parser,cors
+- jsonwebtoken,uuid
+- bcrypt
+- mongoose
+- multer
 <br>
 - :tiger: 박지원
-    - 적어적어
+    - Dummy Data 수집 -kakao 도서검색 API 구현
+    - 유저,상품,주문 스키마 작성 및 모델 구현
+    - 로그인 중복 검사 API 구현
+    - 비회원 인증 API 구현
+    - 상품,주문 API구현
+    - 비회원 uuid 유효성 검사 미들웨어 구현
 - :dolphin: 김희산
-    - 적어적어
+    - 서버 구축 및 데이터베이스 연결(mongoDB)
+    - 회원가입,로그인 API 구현
+    - JWT 유효성검사 미들웨어 구현
+    - 이미지 업로드 미들웨어 구현
+    - VM 배포,Nginx 라우팅,도메인 연결
 
-### 폴더 구조
+<!-- ### 폴더 구조
 이거 어떻게적어야되징...
 - 프론트: `src/pages` 폴더
 - 백: `src/pages` 이외 폴더 전체
 - 실행: **프론트, 백 동시에, express로 실행**
-
-<br />
-
+-->
+<br>
 ### Collaboration Tools
 
 - Notion : 수정이 빈번하고 같이 수정해야하는 것, API 명세
@@ -126,11 +138,13 @@
 
 ### 코드 컨벤션
 
-- CSS 클래스명은 `-` 으로 잇기.
+- CSS 클래스명은 `-` 으로 표시
 - 파일명이 여러 단어로 이루어지면 ‘- (하이픈)’ 으로 연결하기
 - 변수명 Camel Case
-
-- 백엔드 : 적어주세요 <<
+- 함수명 동사로시작
+- Prettier 라이브러리 적용
+- dotenv 라이브러리로 환경변수 관리 및 사용
+- 객체지향,함수형 프로그래밍 패러다임
 
 ### Commit 컨벤션
 
@@ -145,10 +159,10 @@
 
 ### 배포
 
-백엔드 .. 적어죠.. ㅠㅠ
-
-- google domain 적용
-- letsencrypt ssl 무료 인증서 적용
+- GCP에서 VM 인스턴스를 생성
+- Nginx를 설치하고, 설정하여 웹 서버로 활용
+- Gabia Domain, Goole Domain을 구입하여, DNS 설정을 통해 도메인과 VM 인스턴스를 연결
+- Let's Encrypt에서 무료 SSL 인증서를 발급받아 Nginx 웹 서버에 적용하여 HTTPS 프로토콜을 지원하도록 설정
 
 ### 실행 방법
 
@@ -181,4 +195,4 @@ Copyright © Eladin All Rights Reserved
 ---
 
 본 프로젝트에서 제공하는 모든 코드 등의는 저작권법에 의해 보호받는 ㈜엘리스의 자산이며, 무단 사용 및 도용, 복제 및 배포를 금합니다.
-Copyright 2022 엘리스 Inc. All rights reserved.
+Copyright 2023 엘리스 Inc. All rights reserved.
