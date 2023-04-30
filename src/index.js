@@ -9,7 +9,6 @@ const modalContent = document.querySelector(".modal-text");
 const closeModalBtn = document.querySelector(".close-modal-btn");
 
 const productsList = await fetchProducts();
-// console.log(productsList);
 
 //초기값을 ""으로 할당해주지 않으면 undefined로 초기화되어 출력됨!
 let bestProductsHtml = "";
@@ -73,7 +72,7 @@ chevronRightBtn.forEach((button, idx) => {
         }
         //슬라이딩 되는 부분
         if (currentIdx[idx] < 5) {
-            console.log(currentIdx);
+
             slides.style.left = -(currentIdx[idx] + 1) * 950 + "px";
             currentIdx[idx] += 1;
         }
@@ -93,7 +92,6 @@ chevronLeftBtn.forEach((button, idx) => {
         }
         //슬라이딩 되는 부분
         if (currentIdx[idx] > 0) {
-            console.log(currentIdx);
             slides.style.left = -(currentIdx[idx] - 1) * 950 + "px";
             currentIdx[idx] -= 1;
         }
@@ -165,8 +163,6 @@ const filterRole = (e) => {
             e.preventDefault();
             window.location.href = "./pages/manage_category.html";
         } else {
-            // window.alert("접근 권한이 없습니다!");
-            // console.log("얍");
             modalContent.innerHTML = "접근 권한이 없습니다!";
             openModal();
         }
@@ -196,7 +192,6 @@ const EladinPicKImg = document.querySelector(".introduction-content img");
 const EladinPicKTitle = document.querySelector(".introduction-content .title");
 
 const moveToEladinPickDetailPage = () => {
-    console.log("냥");
     localStorage.setItem("detail", JSON.stringify({ productId: 41 }));
 };
 

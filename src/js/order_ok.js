@@ -10,7 +10,6 @@ const getAxios = async (url, query) => {
         withCredentials: true,
     }
     const res = await axios.get(`${url}/${query}`, header);
-    console.log(res);
 
     const orderNumber = res.data.data.foundOrder.orderInfo.orderNumber 
     const data = res.data.data.foundOrder.deliveryInfo
@@ -29,7 +28,7 @@ class OrderOk {
     async setState() {
         try {
             this.state = await getAxios(
-                "http://localhost:5500/orders", 
+                "https://www.eladin.store/orders", 
                 query.orderInfo.orderNumber
             )
         } catch(err) {

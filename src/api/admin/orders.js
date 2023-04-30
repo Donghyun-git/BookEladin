@@ -35,7 +35,7 @@ closeFixButton.addEventListener("click", closeFixModal);
 
 /* [관리자] 주문정보 리스트 불러오기 */
 const getOrders = async () => {
-    const uri = "http://localhost:5500/orders/admin";
+    const uri = "https://www.eladin.store/orders/admin";
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -49,7 +49,6 @@ const getOrders = async () => {
 };
 
 getOrders().then((orders) => {
-    console.log(orders);
     const orderList = document.querySelector(".admin-order-data");
     const { foundAllOrders, titleList, userNameList } = orders;
     let orderHTML = "";
@@ -127,7 +126,7 @@ getOrders().then((orders) => {
 let orderNumber;
 const updateDeliveryStatus = async () => {
     try {
-        const uri = "http://localhost:5500/orders/admin";
+        const uri = "https://www.eladin.store/orders/admin";
         const deliveryStatus = document.querySelector(
             ".select-deliverystatus"
         ).value;
@@ -143,9 +142,6 @@ const updateDeliveryStatus = async () => {
         };
 
         const response = await axios.patch(uri, body, header);
-        console.log(response);
-        // window.alert("배송 상태가 수정되었습니다!");
-        // window.location.href = "./manage_orders.html";
         modalContent.innerHTML = "배송 상태가 수정되었습니다!";
         openModal();
         setTimeout(() => {
@@ -166,9 +162,8 @@ changeDeliveryStatusButton.addEventListener("click", updateDeliveryStatus);
 
 /* [관리자] 주문 목록 삭제 */
 const deleteOrder = async () => {
-    console.log(orderNumber);
     try {
-        const uri = "http://localhost:5500/orders/admin";
+        const uri = "https://www.eladin.store/orders/admin";
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -181,9 +176,6 @@ const deleteOrder = async () => {
             data: { orderNumber: orderNumber },
             withCredentials: header.withCredentials,
         });
-        console.log(response);
-        // window.alert("주문이 삭제 되었습니다!");
-        // window.location.href = "./manage_orders.html";
         modalContent.innerHTML = "주문이 삭제 되었습니다!";
         openModal();
         setTimeout(() => {

@@ -62,7 +62,7 @@ const updateUserInfo = async () => {
                 password: password.value,
                 email: email.value,
             };
-            const uri = "http://34.64.105.163:80/auth/me";
+            const uri = "https://www.eladin.store/auth/me";
 
             const updateResponse = await axios.patch(uri, body, header);
             const updateMessage = await updateResponse.data.message;
@@ -76,14 +76,18 @@ const updateUserInfo = async () => {
                     },
                 })
             );
-            // window.alert(updateMessage);
             modalContent.innerHTML = `${updateMessage}`;
             openModal();
 
-            window.location.href = "./mypage.html";
+            setTimeout(() => {
+                location.href = "./mypage.html";
+            }, 2000);
+            closeModalBtn.addEventListener("click", () => {
+                location.href = "./mypage.html";
+            });
+
         } catch (err) {
             console.log(err);
-            // window.alert(`서버오류입니다! ${err.response.data.message}`);
             modalContent.innerHTML = `${err.response.data.message}`;
             openModal();
         }
@@ -157,7 +161,7 @@ const isValidEmail = (email) => {
 };
 
 emailField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
 
     const emailValue = emailField.value.trim();
     const isValid = isValidEmail(emailValue);
@@ -168,14 +172,13 @@ emailField.addEventListener("input", async (e) => {
         try {
             const userEmail = emailField.value;
 
-            const uri = `http://localhost:5500/auth/check-email/${userEmail}`;
+            const uri = `https://www.eladin.store/auth/check-email/${userEmail}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
                 },
             };
             const response = await axios.get(uri, header);
-            console.log(response);
             if (response.data.data) {
                 emailArea.classList.add("red");
                 emailArea.classList.remove("green");
@@ -212,7 +215,7 @@ const isValidName = (name) => {
 };
 
 nameField.addEventListener("input", async (e) => {
-    console.log("텍스트 상자에 포커스가 있습니다.");
+    // console.log("텍스트 상자에 포커스가 있습니다.");
 
     const nameValue = nameField.value.trim();
     const isValid = isValidName(nameValue);
@@ -220,20 +223,16 @@ nameField.addEventListener("input", async (e) => {
 
     if (isValid) {
         nameArea.classList.remove("red");
-        console.log("try문 전@@@@@@@@@@@@@@@@");
         try {
-            console.log("@@@@@@@@@@@@@@@@try 들어옴");
             const userName = nameValue;
 
-            const uri = `http://localhost:5500/auth/check-username/${userName}`;
+            const uri = `https://www.eladin.store/auth/check-username/${userName}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
                 },
             };
-            console.log("요청 전@@@@@@@@@@@@@@@@");
             const response = await axios.get(uri, header);
-            console.log("요청 후@@@@@@@@@@@@@@@@");
             if (response.data.data) {
                 nameArea.classList.add("red");
                 nameArea.classList.remove("green");

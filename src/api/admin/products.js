@@ -47,7 +47,7 @@ const updateCategoryList = document.querySelector('.update-categorylist');
 const fixCategoryList = document.querySelector('.fix-categorylist');
 
 const getCategories = async () => {
-    const uri = 'http://localhost:5500/books/categories';
+    const uri = 'https://www.eladin.store/books/categories';
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -83,7 +83,7 @@ const getProducts = async () => {
     };
 
     const Products = await axios.get(
-        'http://localhost:5500/books/products',
+        'https://www.eladin.store/books/products',
         header
     );
 
@@ -91,20 +91,20 @@ const getProducts = async () => {
 
     return data;
 };
-
 getProducts().then((res) => {
     let adminBookList = '';
     const filtered = res.filter((book) => book.productId > 300);
     filtered.forEach((book) => {
         adminBookList += `
+        
             <li class="admin-book-item">
     <div class="admin-book-item-img-area">
         <a href="" class="admin-book-img-link">
-            <img
-                src="${book.imgUrl}"
-                alt="책 이미지"
-                class="admin-book-img"
-            />
+        <img width="133px" height="150px"
+        src=${book.imgUrl}
+        alt="책 이미지"
+        class="admin-book-img"
+        />
         </a>
     </div>
     <div class="admin-book-item-introduce">
@@ -135,24 +135,19 @@ getProducts().then((res) => {
             <button class="admin-delete-button" data-did="${
                 book.productId
             }">삭제</button>
-            <button class="admin-fix-button" data-uid=${
-                book.productId
-            }>수정</button>
-            <button class="admin-delete-button" data-did="${
-                book.productId
-            }">삭제</button>
         </div>
     </div>
 </li>
         `;
-});
+    });
     productsArea.innerHTML = adminBookList;
 });
 
 /* [관리자] 상품 추가 */
+
 const createProducts = async () => {
     try {
-        // const imgUrl = document.querySelector('.imgUrl');
+        // const imgUrl = document.querySelector(".imgUrl");
         const updateTitle = document.querySelector('.update-title');
         const updateAuthor = document.querySelector('.update-author');
         const updatePrice = document.querySelector('.update-price');
@@ -161,13 +156,14 @@ const createProducts = async () => {
         const updatePublisher = document.querySelector('.update-publisher');
         const updateInfo = document.querySelector('.update-intro');
 
-        // const formData = new FormData();
-        // formData.append('imageFile', imgUrl.files[0]);
+        const formData = new FormData();
+        formData.append('imageFile', updateImg.files[0]);
 
-        const uri = 'http://localhost:5500/books/products';
+        const uri = 'https://www.eladin.store/books/products';
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                'content-type': 'multipart/form-data',
             },
             withCredentials: true,
         };
@@ -176,25 +172,26 @@ const createProducts = async () => {
             author: updateAuthor.value,
             price: updatePrice.value,
             category: updateCategory.value,
-            formData,
             publisher: updatePublisher.value,
             introduction: updateInfo.value,
         };
-        const products = await axios.post(uri, body, header);
-        console.log(products);
-        // window.alert('상품이 추가 되었습니다!');
-        // closeUpdateModal();
-        // window.location.href = "./manage_products.html";
 
-        modalContent.innerHTML = "상품이 추가 되었습니다!";
+        // formData.append("body", body); // formData에 바디정보 추가
+        for (const key in body) {
+            formData.append(key, body[key]);
+        }
+
+        const products = await axios.post(uri, formData, header);
+
+        modalContent.innerHTML = '상품이 추가 되었습니다!';
         openModal();
         setTimeout(() => {
             closeUpdateModal();
-            location.href = "./manage_products.html";
+            location.href = './manage_products.html';
         }, 2000);
-        closeModalBtn.addEventListener("click", () => {
+        closeModalBtn.addEventListener('click', () => {
             closeUpdateModal();
-            location.href = "./manage_products.html";
+            location.href = './manage_products.html';
         });
     } catch (err) {
         console.log(err);
@@ -206,7 +203,7 @@ addProductBtn.addEventListener('click', createProducts);
 
 /* [관리자] 책 정보 삭제 */
 const deleteProducts = async (productId) => {
-    const uri = `http://localhost:5500/books/products/${productId}`;
+    const uri = `https://www.eladin.store/books/products/${productId}`;
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -218,16 +215,13 @@ const deleteProducts = async (productId) => {
         headers: header.headers,
         withCredentials: header.withCredentials,
     });
-    console.log(products);
-    //    window.alert('삭제되었습니다!');
-    //    window.location.href = "./manage_products.html";
-    modalContent.innerHTML = "삭제되었습니다!";
+    modalContent.innerHTML = '삭제되었습니다!';
     openModal();
     setTimeout(() => {
-        location.href = "./manage_products.html";
+        location.href = './manage_products.html';
     }, 2000);
-    closeModalBtn.addEventListener("click", () => {
-        location.href = "./manage_products.html";
+    closeModalBtn.addEventListener('click', () => {
+        location.href = './manage_products.html';
     });
 };
 
@@ -250,7 +244,7 @@ const fixProducts = async () => {
         const fixPublisher = document.querySelector('.fix-publisher');
         const fixInfo = document.querySelector('.fix-intro');
 
-        const uri = `http://localhost:5500/books/products/${productId}`;
+        const uri = `https://www.eladin.store/books/products/${productId}`;
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -268,16 +262,14 @@ const fixProducts = async () => {
         };
 
         const products = await axios.patch(uri, body, header);
-        console.log(products);
-        // window.alert("수정되었습니다!");
-        // window.location.href = "./manage_products.html";
-        modalContent.innerHTML = "수정되었습니다!";
+
+        modalContent.innerHTML = '수정되었습니다!';
         openModal();
         setTimeout(() => {
-            location.href = "./manage_products.html";
+            location.href = './manage_products.html';
         }, 2000);
-        closeModalBtn.addEventListener("click", () => {
-            location.href = "./manage_products.html";
+        closeModalBtn.addEventListener('click', () => {
+            location.href = './manage_products.html';
         });
     } catch (err) {
         console.log(err);
@@ -296,11 +288,11 @@ productsArea.addEventListener('click', (e) => {
 
 // 모달
 function openModal() {
-    modal.classList.add("active");
+    modal.classList.add('active');
     setTimeout(() => {
-        modal.classList.remove("active");
+        modal.classList.remove('active');
     }, 2000);
 }
-closeModalBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
+closeModalBtn.addEventListener('click', () => {
+    modal.classList.remove('active');
 });

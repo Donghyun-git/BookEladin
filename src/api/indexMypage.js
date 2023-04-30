@@ -30,7 +30,7 @@ const getUserInfo = async (e) => {
                 withCredentials: true,
             };
 
-            const uri = `http://localhost:5500/auth/users/${userId}`;
+            const uri = `https://www.eladin.store/auth/users/${userId}`;
 
             const myPageResponse = await axios.get(uri, header);
             const myPageData = myPageResponse.data;

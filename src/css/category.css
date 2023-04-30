@@ -453,8 +453,8 @@ section h2 {
     justify-content: flex-start;
 }
 .modal-cont div:nth-child(4) select {
-    margin-left: 36px;
-    width: 16%;
+    margin-left: 62px;
+    width: 100px;
     height: 35px;
 }
 .modal-cont div:nth-child(4) select:focus {
@@ -553,4 +553,28 @@ section h2 {
 .modal.active .modal-content {
     opacity: 80%;
     transform: translate(-50%, 0%);
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  margin-left: 12px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #606db8;
+  color: #fff;
+}
+
+.custom-file-upload:hover {
+  background-color: #5260b2;
+}
+
+.hidden {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
 }

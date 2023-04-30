@@ -45,16 +45,8 @@
                                 <select name="categorylist" class="update-categorylist">
                                     
                                 </select>
-                                
-                            </div>
-                            <div>
-                                <label for="img">이미지</label>
-                                <input type="text" class="update-img" name="img" />
-                                <form action="http://localhost:5500/books/upload" method="post" enctype="multipart/form-data">
-                                    <input type="file" name="img" accept="image/jpeg, image/png" />
-                                    <button type="submit">Upload Image</button>
-                                
-
+                                <label for="img" class="custom-file-upload"><i class="fa fa-cloud-upload"></i>이미지</label>
+                                <input id="img" class ="update-img hidden" type="file" name="img" accept="image/jpeg, image/png" />
                             </div>
                             <div>
                                 <label for="publisher">출판사</label>
@@ -71,11 +63,9 @@
                                 ></textarea>
                             </div>
                         </div>
-
                         <div class="modal-button">
                             <button class="update-modal-close">취소</button>
                             <button type ="submit" class="add-product-complete">완료</button>
-                        </form>
                         </div>
                     </div>
                 </div>

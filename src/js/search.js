@@ -18,7 +18,6 @@ if (localStorage.getItem("search")) {
         searchList.innerHTML = template;
     } else {
         const searchData = JSON.parse(localStorage.getItem("search"));
-        console.log(searchData);
         searchData.forEach((book, idx) => {
             const formattedPrice = book.price.toLocaleString() + "원";
             template += `
