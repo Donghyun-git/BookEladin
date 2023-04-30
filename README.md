@@ -2,7 +2,7 @@
 
 ---
 
-<div align="middle"> <img alt="엘라딘 로고" src="./src/img/eladin_genie.png" width=300> </div><br>
+<div align="middle"> <img alt="엘라딘 로고" src="./src/public/eladin.png" width=300> </div><br>
 
 
 ## 프로젝트 주제
@@ -17,7 +17,7 @@
 
 💡 John Doe (존 도씨, 오타쿠) : <strong>"책을 사고 싶어요. 근데 나가기가 너무 귀찮은걸요?"</strong>
 
-<div align="middle"> <img alt="엘라딘 로고" src="./src/img/readme.png" width=300> </div><br>
+<div align="middle"> <img alt="엘라딘 로고" src="./src/public/readme.png" width=300> </div><br>
 <br />
 
 ## 서비스 소개
@@ -37,10 +37,9 @@
 
 ## 데모 사이트
 
--  백엔드 분들 오면은.
+- https://www.eladin.store
 
 ## API 설계 문서
-백엔드 분들 오면은.
 - 
 
 ## 기술 스택
@@ -62,7 +61,7 @@
 
 ## Infra
 
-<div align="middle"> <img alt="infra" src="./src/img/infra.png" width=900> </div><br>
+<div align="middle"> <img alt="infra" src="./src/public/infra.png" width=900> </div><br>
 
 <br/>
 
@@ -88,13 +87,13 @@
 - animate.css
 - swiper.js
 - 카카오(다음) 주소 API
-<br>
+
 - :dog: 안동현
-  - 페이지 레이아웃, 회원가입 유효성 검사, 로그인, 검색 기능 등
+    - 페이지 레이아웃, 회원가입 유효성 검사, 로그인, 검색 기능 등
 - :cat: 권성경
-  - 페이지 레이아웃, 모달 창, DAUM 주소 api, 회원가입 유효성 검사 등 
+    - 페이지 레이아웃, 모달 창, DAUM 주소 api, 회원가입 유효성 검사 등 
 - :mouse: 박정민
-  - 페이지 레이아웃, 장바구니(Indexed DB) 등
+    - 페이지 레이아웃, 장바구니(Indexed DB) 등
 
 ### 백엔드
 
@@ -104,7 +103,7 @@
 - bcrypt
 - mongoose
 - multer
-<br>
+
 - :tiger: 박지원
     - Dummy Data 수집 -kakao 도서검색 API 구현
     - 유저,상품,주문 스키마 작성 및 모델 구현
@@ -119,13 +118,7 @@
     - 이미지 업로드 미들웨어 구현
     - VM 배포,Nginx 라우팅,도메인 연결
 
-<!-- ### 폴더 구조
-이거 어떻게적어야되징...
-- 프론트: `src/pages` 폴더
-- 백: `src/pages` 이외 폴더 전체
-- 실행: **프론트, 백 동시에, express로 실행**
--->
-<br>
+
 ### Collaboration Tools
 
 - Notion : 수정이 빈번하고 같이 수정해야하는 것, API 명세
