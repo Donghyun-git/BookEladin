@@ -2,7 +2,7 @@
 
 ---
 
-<div align="middle"> <img alt="엘라딘 로고" src="./src/img/eladin.png" width=300> </div><br>
+<div align="middle"> <img alt="엘라딘 로고" src="./src/img/eladin_genie.png" width=300> </div><br>
 
 
 ## 프로젝트 주제
