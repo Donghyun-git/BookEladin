@@ -62,7 +62,7 @@ const updateUserInfo = async () => {
                 password: password.value,
                 email: email.value,
             };
-            const uri = "http://www.eladin.store/auth/me";
+            const uri = "https://www.eladin.store/auth/me";
 
             const updateResponse = await axios.patch(uri, body, header);
             const updateMessage = await updateResponse.data.message;
@@ -172,7 +172,7 @@ emailField.addEventListener("input", async (e) => {
         try {
             const userEmail = emailField.value;
 
-            const uri = `http://www.eladin.store/auth/check-email/${userEmail}`;
+            const uri = `https://www.eladin.store/auth/check-email/${userEmail}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
@@ -226,7 +226,7 @@ nameField.addEventListener("input", async (e) => {
         try {
             const userName = nameValue;
 
-            const uri = `http://www.eladin.store/auth/check-username/${userName}`;
+            const uri = `https://www.eladin.store/auth/check-username/${userName}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",

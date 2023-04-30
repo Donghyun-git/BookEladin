@@ -8,7 +8,7 @@ const closeModalBtn = document.querySelector(".close-modal-btn");
 const logIn = async () => {
     const id = document.querySelector("#id").value;
     const password = document.querySelector("#password").value;
-    const uri = "http://www.eladin.store/auth/login";
+    const uri = "https://www.eladin.store/auth/login";
     const loginData = {
         userId: id,
         password: password,

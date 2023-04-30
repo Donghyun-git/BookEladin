@@ -211,8 +211,8 @@ class OrderForm {
             : { withCredentials: true };
 
         const url = accessToken
-            ? 'http://www.eladin.store/orders/user'
-            : 'http://www.eladin.store/orders/nonmember';
+            ? 'https://www.eladin.store/orders/user'
+            : 'https://www.eladin.store/orders/nonmember';
         try {
             const response = await axios.post(url, data, header);
 

@@ -15,7 +15,7 @@ const getMyAllOrders = async () => {
             },
             withCredentials: true,
         };
-        const uri = `http://www.eladin.store/orders/user/${userId}`;
+        const uri = `https://www.eladin.store/orders/user/${userId}`;
 
         const myAllOrders = await axios.get(uri, header);
 
@@ -93,7 +93,7 @@ let orderNumber;
 
 const cancelOrder = async () => {
     try {
-        const uri = 'http://www.eladin.store/orders/user';
+        const uri = 'https://www.eladin.store/orders/user';
 
         const header = {
             headers: {

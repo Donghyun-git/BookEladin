@@ -11,7 +11,7 @@ const NonMemberlogIn = async () => {
     const userName = document.querySelector("#name").value.trim();
     const password = document.querySelector("#password").value.trim();
 
-    const uri = "http://www.eladin.store/auth/loginNonMember";
+    const uri = "https://www.eladin.store/auth/loginNonMember";
     const loginData = {
         email: email,
         userName: userName,
@@ -95,7 +95,7 @@ emailField.addEventListener("input", async (e) => {
         try {
             const userEmail = emailField.value;
 
-            const uri = `http://www.eladin.store/auth/check-email/${userEmail}`;
+            const uri = `https://www.eladin.store/auth/check-email/${userEmail}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
@@ -144,7 +144,7 @@ userNameField.addEventListener("input", async (e) => {
         try {
             const userName = userNameField.value;
 
-            const uri = `http://www.eladin.store/auth/check-username/${userName}`;
+            const uri = `https://www.eladin.store/auth/check-username/${userName}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",

@@ -35,7 +35,7 @@ closeFixButton.addEventListener("click", closeFixModal);
 
 /* [관리자] 주문정보 리스트 불러오기 */
 const getOrders = async () => {
-    const uri = "http://www.eladin.store/orders/admin";
+    const uri = "https://www.eladin.store/orders/admin";
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -126,7 +126,7 @@ getOrders().then((orders) => {
 let orderNumber;
 const updateDeliveryStatus = async () => {
     try {
-        const uri = "http://www.eladin.store/orders/admin";
+        const uri = "https://www.eladin.store/orders/admin";
         const deliveryStatus = document.querySelector(
             ".select-deliverystatus"
         ).value;
@@ -163,7 +163,7 @@ changeDeliveryStatusButton.addEventListener("click", updateDeliveryStatus);
 /* [관리자] 주문 목록 삭제 */
 const deleteOrder = async () => {
     try {
-        const uri = "http://www.eladin.store/orders/admin";
+        const uri = "https://www.eladin.store/orders/admin";
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

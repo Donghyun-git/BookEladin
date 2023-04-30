@@ -34,7 +34,7 @@ signupButton.addEventListener("click", async () => {
     } else if (password !== checkPassword) {
         setErrorFor(checkPasswordInput, "비밀번호가 일치하지 않습니다.");
     } else {
-        const uri = "http://www.eladin.store/auth/signup";
+        const uri = "https://www.eladin.store/auth/signup";
         const userData = {
             userId: id,
             password: password,
@@ -115,7 +115,7 @@ idField.addEventListener("input", async (e) => {
         try {
             const userId = idField.value;
 
-            const uri = `http://www.eladin.store/auth/check-userid/${userId}`;
+            const uri = `https://www.eladin.store/auth/check-userid/${userId}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
@@ -165,7 +165,7 @@ emailField.addEventListener("input", async (e) => {
         try {
             const userEmail = emailField.value;
 
-            const uri = `http://www.eladin.store/auth/check-email/${userEmail}`;
+            const uri = `https://www.eladin.store/auth/check-email/${userEmail}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
@@ -215,7 +215,7 @@ userNameField.addEventListener("input", async (e) => {
         try {
             const userName = userNameField.value;
 
-            const uri = `http://www.eladin.store/auth/check-username/${userName}`;
+            const uri = `https://www.eladin.store/auth/check-username/${userName}`;
             const header = {
                 headers: {
                     "Content-type": "application/json",
