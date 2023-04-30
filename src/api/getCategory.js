@@ -14,7 +14,7 @@ const getCategoriesForUser = async () => {
         header.headers.uuid = uuid;
     }
 
-    const uri = 'http://localhost:5500/books/categories';
+    const uri = 'https://www.eladin.store/books/categories';
     const Category = await axios.get(uri, header);
     const { data } = Category.data;
     return data;
