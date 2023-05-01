@@ -635,3 +635,15 @@
     left: 0;
     top: 2px;
 }
+
+
+/* 미디어 쿼리 */
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    .row { 
+        padding: 0 15px;
+    }
+}
