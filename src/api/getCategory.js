@@ -1,7 +1,6 @@
 const accessToken = localStorage.getItem('accessToken');
 const refreshToken = localStorage.getItem('refreshToken');
 
-
 const getCategoriesForUser = async () => {
     const header = {
         headers: {},
@@ -15,7 +14,7 @@ const getCategoriesForUser = async () => {
         header.headers.uuid = uuid;
     }
 
-    const uri = 'http://localhost:5500/books/categories';
+    const uri = 'https://www.eladin.store/books/categories';
     const Category = await axios.get(uri, header);
     const { data } = Category.data;
     return data;
@@ -25,9 +24,3 @@ const fetchCategoryList = async () => {
     const categoryList = await getCategoriesForUser();
     return categoryList;
 };
-
-// 카테고리 리스트 불러오기.
-
-// fetchCategoryList().then((categoryList) => {
-//     localStorage.setItem('categoryList', categoryList);
-// });

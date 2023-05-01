@@ -8,7 +8,6 @@ const email = document.getElementById("email");
 const signupBtn = document.getElementById("signup-btn");
 
 const inputList = signupArea.querySelectorAll("input"); //변경 반영
-console.log(inputList);
 
 inputList.forEach((input) => {
     input.addEventListener("keyup", () => {

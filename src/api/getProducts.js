@@ -10,7 +10,7 @@ const getProductsForUser = async () => {
         };
 
         const Products = await axios.get(
-            'http://localhost:5500/books/products',
+            'https://www.eladin.store/books/products',
             header
         );
 
@@ -18,7 +18,6 @@ const getProductsForUser = async () => {
 
         return data;
     } else if (localStorage.getItem('uuid')) {
-        
         const uuid = localStorage.getItem('uuid');
         // 비회원 로그인한 상태
         const header = {
@@ -29,51 +28,25 @@ const getProductsForUser = async () => {
         };
 
         const Products = await axios.get(
-            'http://localhost:5500/books/products',
+            'https://www.eladin.store/books/products',
             header
         );
 
         const { data } = Products.data;
-        console.log(data);
         return data;
-
-        // else {
-        // window.alert('로그인 후 이용해주세요!');
-        // window.location.href = './pages/login.html'
     } else {
         const Products = await axios.get(
-            'http://localhost:5500/books/products'
+            'https://www.eladin.store/books/products'
         );
 
         const { data } = Products.data;
-        console.log(data);
         return data;
     }
 };
 
-// [사용자] 상품 목록 - 전체 책 조회 (로그인 안한 사용자나 비회원)
-// const getProductsForGuestUser = async () => {
-
-//     const Products = await axios.get("http://localhost:5500/books/products");
-//     const { data } = Products.data;
-
-//     return data;
-// };
-
 const fetchProducts = async () => {
-    // let productsList;
-    // if (accessToken) {
     let productsList = await getProductsForUser();
-    // } else {
-    //     productsList = await getProductsForGuestUser();
-    // }
     return productsList;
 };
-
-// 전체 상품 불러오기.
-
-// fetchProducts().then((productsList) => {
-//     localStorage.setItem('productsList', JSON.stringify(productsList));
-// });
 
 export { fetchProducts };

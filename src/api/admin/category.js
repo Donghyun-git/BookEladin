@@ -15,7 +15,7 @@ const categoriesArea = document.querySelector(".category.container .row.mt30");
 /* [관리자] 카테고리 리스트 불러오기 */
 
 const getCategories = async () => {
-    const uri = "http://localhost:5500/books/categories";
+    const uri = "https://www.eladin.store/books/categories";
     const header = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -50,8 +50,8 @@ const addCategoryBtn = document.querySelector(".add-category-button");
 const categoryInput = document.querySelector(".category-add input");
 
 const createCategory = async (categoryValue) => {
-    try {
-        const uri = "http://localhost:5500/books/categories/category";
+    try{
+        const uri = "https://www.eladin.store/books/categories/category";
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -63,9 +63,6 @@ const createCategory = async (categoryValue) => {
         };
 
         const categories = await axios.post(uri, body, header);
-        console.log(categories);
-        // window.alert('카테고리가 추가되었습니다!');
-        // window.location.href = './manage_category.html';
 
         modalContent.innerHTML = "카테고리가 추가되었습니다!";
         openModal();
@@ -97,7 +94,7 @@ const deleteCategory = async (e) => {
         const categoryName = e.target.dataset.name.toString(); //삭제하려는 카테고리명 추출.
 
         try {
-            const uri = "http://localhost:5500/books/categories/category";
+            const uri = "https://www.eladin.store/books/categories/category";
             const header = {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem(
@@ -112,11 +109,6 @@ const deleteCategory = async (e) => {
                 data: { category: categoryName },
                 withCredentials: header.withCredentials,
             });
-
-            console.log(categories);
-
-            // window.alert("카테고리가 삭제되었습니다!");
-            // window.location.href = "./manage_category.html";
             modalContent.innerHTML = "카테고리가 삭제되었습니다!";
             openModal();
             setTimeout(() => {
@@ -138,7 +130,7 @@ const updateCategoryBtn = document.querySelector(".update-category-button");
 
 const updateCategory = async (currentCategory, newCategory) => {
     try {
-        const uri = "http://localhost:5500/books/categories/category";
+        const uri = "https://www.eladin.store/books/categories/category";
         const header = {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -150,9 +142,7 @@ const updateCategory = async (currentCategory, newCategory) => {
             updateCategory: newCategory,
         };
         const categories = await axios.patch(uri, body, header);
-        console.log(categories);
-        // window.alert("카테고리가 수정되었습니다!");
-        // window.location.href = "./manage_category.html";
+
         modalContent.innerHTML = "카테고리가 수정되었습니다!";
         openModal();
         setTimeout(() => {

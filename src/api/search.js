@@ -3,7 +3,7 @@ const searchButton = document.querySelector(".search-button");
 
 const getSearchProducts = async (query) => {
     try {
-        const uri = `http://localhost:5500/books/search?q=${query}`;
+        const uri = `https://www.eladin.store/books/search?q=${query}`;
         const header = {
             headers: {},
             withCredentials: true,
@@ -18,7 +18,6 @@ const getSearchProducts = async (query) => {
         }
 
         const response = await axios.get(uri, header);
-        console.log(response);
         localStorage.setItem("search", JSON.stringify(response.data.data));
         location.href = "./search.html";
     } catch (err) {

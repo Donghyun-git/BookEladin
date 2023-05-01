@@ -8,7 +8,7 @@ const closeModalBtn = document.querySelector(".close-modal-btn");
 const logIn = async () => {
     const id = document.querySelector("#id").value;
     const password = document.querySelector("#password").value;
-    const uri = "http://localhost:5500/auth/login";
+    const uri = "https://www.eladin.store/auth/login";
     const loginData = {
         userId: id,
         password: password,
@@ -22,7 +22,6 @@ const logIn = async () => {
     try {
         const response = await axios.post(uri, loginData, header);
         const { data } = await response;
-        console.log(response);
         const { accessToken, refreshToken } = data.data;
         localStorage.setItem("userData", JSON.stringify(data.data));
         localStorage.setItem("accessToken", accessToken);

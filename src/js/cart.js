@@ -36,7 +36,6 @@ class CartSection {
                     IDB.updateIDB(Number(checkBox.value), false);
                 }
             });
-            console.log(this.selectCount);
             this.sectionRender();
         });
 
@@ -125,7 +124,6 @@ class CartSection {
         let amount = 0;
         selectAmount.forEach((item) => {
             if (this.selectCount.includes(item.getAttribute("value"))) {
-                console.log(item.innerText);
                 amount += parseInt(item.innerText.replace(/,/g, ""));
             }
         });
@@ -235,11 +233,9 @@ class Cart extends CartSection {
                         1
                     );
                     IDB.updateIDB(Number(e.target.value), false);
-                    console.log(this.selectCount);
                 } else {
                     this.selectCount.push(e.target.value);
                     IDB.updateIDB(Number(e.target.value), true);
-                    console.log(this.selectCount);
                 }
             }
 
