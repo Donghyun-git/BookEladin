@@ -38,7 +38,7 @@
 
 ## API 설계 문서
 
--
+-   https://parkjivvon.notion.site/ELADIN-API-Docs-4645123ffe104680ad596a570efa5af2
 
 ## 기술 스택
 
