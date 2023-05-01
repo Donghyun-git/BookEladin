@@ -14,9 +14,6 @@ class Category {
     }
 
     async setState() {
-<<<<<<< HEAD
-        this.state = await API.get("http://localhost:5500/books/categories");
-=======
         const uri = 'https://www.eladin.store/books/categories';
         const header = {
             headers: {},
@@ -32,7 +29,6 @@ class Category {
         }
 
         this.state = await axios.get(uri, header);
->>>>>>> dev
     }
 
     async template() {
@@ -93,12 +89,8 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-<<<<<<< HEAD
-        const uri = "http://localhost:5500/books/categories";
-=======
         const uri = 'https://www.eladin.store/books/categories';
         const accessToken = localStorage.getItem('accessToken');
->>>>>>> dev
         const header = {
             headers: {},
             withCredentials: true,
