@@ -89,7 +89,8 @@ class Book {
 
     async setState() {
         let encodedQuery = encodeURIComponent(query);
-        const uri = "https://www.eladin.store/books/categories";
+        const uri = 'https://www.eladin.store/books/categories';
+        const accessToken = localStorage.getItem('accessToken');
         const header = {
             headers: {},
             withCredentials: true,
