@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="icon"
+            href="../favicon.png"
+            type="image/x-icon"
+            sizes="16x16"
+        />
+        <title>엘라딘</title>
+        <link rel="stylesheet" href="../css/guest_login.css" />
+    </head>
+    <body>
+        <div id="wrap">
+            <header id="header">
+                <div class="container">
+                    <div class="row mt30">
+                        <div class="header">
+                            <div class="header-logo">
+                                <!-- <img src="../img/test.jpeg" alt="로고 이미지"> -->
+                                <a href="../index.html"><h1>Eladin</h1></a>
+                            </div>
+                            <div class="header-user">
+                                <div class="header-user-login">
+                                    <ul>
+                                        <li>
+                                            <a href="./signup.html">회원가입</a>
+                                        </li>
+                                        <li>
+                                            <a href="./login.html">로그인</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="login container">
+                <div class="login-content row">
+                    <h2 class="login-title">비회원 주문조회</h2>
+                    <p class="login-description">
+                        주문조회를 위해 주문하실 때 기재하셨던<br />
+                        이메일과 패스워드를 입력해주세요.
+                    </p>
+                    <div class="login-area">
+                        <div class="login-email field">
+                            <input
+                                type="text"
+                                name="email"
+                                id="email"
+                                placeholder="E-mail"
+                            />
+                        </div>
+                        <div class="login-pw pwform field">
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="비밀번호"
+                            />
+                        </div>
+
+                        <div class="next-button">
+                            <input
+                                type="submit"
+                                value="주문조회하기"
+                                id="next_btn"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <!-- 모달 영역 시작 -->
+                <div class="modal">
+                    <div class="modal-content">
+                        <i
+                            class="fa fa-exclamation-circle"
+                            aria-hidden="true"
+                        ></i>
+                        <p class="modal-text">모달 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
+                        <button class="close-modal-btn">&times;</button>
+                    </div>
+                </div>
+                <!-- 모달 영역 끗~ -->
+            </main>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../api/getGuestInfo.js"></script>
+</html>
