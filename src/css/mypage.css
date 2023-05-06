@@ -255,10 +255,10 @@ main .header-text {
 }
 
 .review-btn {
-    margin: 8px 0;
+    margin: 5px 0;
     width: 120px;
-    height: 50px;
-    font-size: 17px;
+    height: 40px;
+    font-size: 15px;
     font-weight: 500;
     border: 2.5px solid #606db8;
     border-radius: 10px;
@@ -269,6 +269,83 @@ main .header-text {
 .review-btn:hover {
     background-color: #606db8;
     color: white;
+}
+
+/* 주문정보 수정 모달 */
+.edit-order {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 34%;
+    width: 400px;
+    height: 650px;
+    z-index: 9999;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.edit-order.on {
+    display: block;
+}
+
+.edit-order-content {
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 17px;
+}
+
+.edit-order-content > h1 {
+    width: 83%;
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #57619f95;
+}
+.edit-order-content label {
+    display: inline-block;
+    padding-bottom: 10px;
+    font-size: 17px;
+}
+.edit-order-content input {
+    width: 300px;
+    margin-bottom: 15px;
+}
+
+.edit-order-content .postcode-input {
+    display: flex;
+}
+
+.edit-order-content .postcode-input > input {
+    width: 160px;
+}
+
+.edit-order-content .postcode-input > button {
+    width: 130px;
+    height: 45px;
+    border-radius: 4px;
+    background-color: #6f79a8;
+    color: white;
+    margin-left: 10px;
+}
+
+.edit-order-btn {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-order-btn button {
+    margin: 10px;
+    padding: 10px;
+    width: 154px;
+    border-radius: 8px;
+    background: #e6e6e6;
 }
 
 /* 모달 */
