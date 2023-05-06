@@ -19,7 +19,6 @@ const getAxios = async (url, query) => {
 }
 
 class OrderOk {
-
     constructor(target) {
         this.target = target;
         this.state;

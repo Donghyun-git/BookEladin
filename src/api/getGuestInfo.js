@@ -19,9 +19,19 @@ closeModalBtn.addEventListener("click", () => {
 
 
 /* [ 비회원 ] 주문조회 */
+// 데이터 저장
+const saveData = (key, value, expirationMinutes) => {
+  const expirationMS = expirationMinutes * 60 * 1000;
+  const expirationTime = Date.now() + expirationMS;
+  const data = {
+    value: value,
+    expirationTime: expirationTime,
+  };
+  localStorage.setItem(key, JSON.stringify(data));
+};
 
-const getGuestOrder = async () => {
-    const uri = `http://localhost:5500/ 회식하고싶다.`;
+const getMyAllOrdersForGuest = async () => {
+    const uri = `https://www.eladin.store/orders/guest`;
 
     const header = {
         headers: {
@@ -38,17 +48,21 @@ const getGuestOrder = async () => {
     try {
         const response = await axios.post(uri, body, header);
         console.log(response);
-        // localStorage.setItem('')
-        modalContent.innerText = "통신성공"
-        openModal();
+        saveData("guestOrder", response.data.data, 5); // 5분 후에 데이터 만료
+        location.href = "./guest_orderinfo.html";  
     } catch(err) {
         console.log(err);
-        modalContent.innerText = "에러지롱~";
-        openModal();
+        if(err.response.status === 400){
+            modalContent.innerText = "이메일과 비밀번호를 다시 확인해주세요!";
+            openModal();
+        } else {
+            modalContent.innerText = `${err.response.data.message}`;
+            openModal();
+        }
     }
 }
 
-nextBtn.addEventListener('click', getGuestOrder);
+nextBtn.addEventListener('click', getMyAllOrdersForGuest);
 
 
 

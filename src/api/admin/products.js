@@ -211,7 +211,7 @@ const deleteProducts = async (productId) => {
         withCredentials: true,
     };
 
-    const products = await axios.delete(uri, {
+    const products = await axios.delete(uri, {   
         headers: header.headers,
         withCredentials: header.withCredentials,
     });

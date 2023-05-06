@@ -39,7 +39,8 @@
 }
 
 .header-top-item .join,
-.header-top-item .login {
+.header-top-item .login,
+.header-top-item .guest {
     display: inline-flex;
     padding: 12px;
     font-weight: 700;

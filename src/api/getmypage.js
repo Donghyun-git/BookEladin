@@ -170,7 +170,7 @@ const completeEditOrder = async () => {
     const newReceiverPhone = document.querySelector("#phone-num");
 
     try {
-        const uri = "http://localhost:5500/orders/user";
+        const uri = "https://www.eladin.store/orders/user";
 
         const header = {
             headers: {

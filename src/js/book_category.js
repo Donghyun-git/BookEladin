@@ -4,6 +4,7 @@ const nav = document.querySelector('.nav-side-category-bar');
 const ul = document.querySelector('.category-book-list');
 const title = document.querySelector('.category-book-title');
 const cartAlert = document.querySelector('.cart-alert');
+const accessToken = localStorage.getItem('accessToken');
 
 let query = '경영/경제';
 

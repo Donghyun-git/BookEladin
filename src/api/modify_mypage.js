@@ -63,7 +63,6 @@ const updateUserInfo = async () => {
                 email: email.value,
             };
             const uri = "https://www.eladin.store/auth/me";
-
             const updateResponse = await axios.patch(uri, body, header);
             const updateMessage = await updateResponse.data.message;
             localStorage.setItem(

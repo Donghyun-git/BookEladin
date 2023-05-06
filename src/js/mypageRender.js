@@ -1,6 +1,7 @@
 window.addEventListener("load", async () => {
     const myDataJson = localStorage.getItem("myData");
     const userDataJson = localStorage.getItem("userData");
+    // const guestDataJson = localStorage.getItem("guest");
 
     const myData = myDataJson && JSON.parse(myDataJson);
     const userData = userDataJson && JSON.parse(userDataJson);
