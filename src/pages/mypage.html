@@ -122,6 +122,69 @@
                         </div>
                     </div>
                 </div>
+                <!-- 주문정보 수정 -->
+                <div class="edit-order">
+                    <div class="edit-order-content">
+                        <h1>주문 정보 수정</h1>
+                        <div>
+                            <label for="recipient">수령인</label>
+                            <input
+                                type="text"
+                                id="recipient"
+                                name="recipient"
+                            />
+                        </div>
+                        <div>
+                            <label for="adress">배송지</label>
+                            <div class="address-field field">
+                                <div class="postcode-input">
+                                    <input
+                                        id="postcode"
+                                        class="essential order-form"
+                                        type="text"
+                                        name="postcode"
+                                        placeholder="우편번호"
+                                    />
+                                    <button type="button" id="search-btn">
+                                        주소검색
+                                    </button>
+                                </div>
+                                <input
+                                    id="address1"
+                                    class="essential"
+                                    type="text"
+                                    name="address1"
+                                    placeholder="주소"
+                                    value=""
+                                />
+                                <input
+                                    id="address2"
+                                    class="essential"
+                                    type="text"
+                                    name="address2"
+                                    placeholder="상세 주소"
+                                />
+                                <input
+                                    id="extraAddress"
+                                    type="text"
+                                    placeholder="참고 항목"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone-num">휴대전화</label>
+                            <input
+                                type="text"
+                                id="phone-num"
+                                name="phone-num"
+                            />
+                        </div>
+                        <div class="edit-order-btn">
+                            <button class="cancel">닫기</button>
+                            <button class="complete">수정하기</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- 모달 영역 시작 -->
                 <div class="modal">
                     <div class="modal-content">
@@ -174,5 +237,7 @@
         <script src="../api/mypage.js"></script>
         <script src="../api/getmypage.js"></script>
         <script src="../api/search.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script src="../api/address.js"></script>
     </body>
 </html>
